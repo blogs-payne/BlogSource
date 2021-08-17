@@ -3,7 +3,7 @@
 #git pull https://github.com/theme-next/hexo-theme-next themes/next
 
 # local deployment
-export NODE_OPTIONS="--max-old-space-size=32768"
+export NODE_OPTIONS="--max-old-space-size=8192"
 hexo clean
 hexo generate
 hexo server --debug

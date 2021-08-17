@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # deployment
-export NODE_OPTIONS="--max-old-space-size=32768"
+export NODE_OPTIONS="--max-old-space-size=8192"
 npm run clean
-npm run generate
+npm run build
 npm run deploy
 npm run clean
