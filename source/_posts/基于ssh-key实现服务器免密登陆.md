@@ -1,9 +1,15 @@
 ---
 title: 基于ssh-key实现服务器免密登陆
 author: Payne
-tags: ["ssh", "Linux", "服务器"]
+tags:
+  - ssh
+  - Linux
+  - 服务器
 categories:
-  - ["ssh", "Linux", "服务器"]
+  - - ssh
+    - Linux
+    - 服务器
+abbrlink: 34306
 date: 2021-08-05 22:39:59
 ---
 

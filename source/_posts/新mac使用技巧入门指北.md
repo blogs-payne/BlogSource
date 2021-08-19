@@ -1,9 +1,11 @@
 ---
 title: 新mac使用技巧入门指北
 author: Payne
-tags: ["Mac"]
+tags:
+  - Mac
 categories:
-- ["Mac"]
+  - - Mac
+abbrlink: 34489
 date: 2021-04-26 19:59:17
 ---
 当第一手拿到mac，第一件事也许是去。。。

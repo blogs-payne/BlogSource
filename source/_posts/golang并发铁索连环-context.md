@@ -1,9 +1,11 @@
 ---
 title: golang并发铁索连环-context
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 2392
 date: 2021-02-12 23:31:00
 ---
 

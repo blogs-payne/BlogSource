@@ -1,9 +1,11 @@
 ---
 title: Golang-自定义类型
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 41426
 date: 2020-11-21 22:41:10
 ---
 

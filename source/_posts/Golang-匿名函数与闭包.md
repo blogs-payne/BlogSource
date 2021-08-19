@@ -1,9 +1,11 @@
 ---
 title: Golang-匿名函数与闭包
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 45903
 date: 2020-11-21 22:37:44
 ---
 ## 匿名函数

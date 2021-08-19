@@ -1,9 +1,22 @@
 ---
 title: 常见安全产品(pc)
 author: Payne
-tags: ["爬虫", "Crawler", "Web Spider", "数据采集", "JS", "Chrome", "JavaScript", "技巧"]
+tags:
+  - 爬虫
+  - Crawler
+  - Web Spider
+  - 数据采集
+  - JS
+  - Chrome
+  - JavaScript
+  - 技巧
 categories:
-- ["爬虫", "Crawler", "JavaScript", "技巧", "JS"]
+  - - 爬虫
+    - Crawler
+    - JavaScript
+    - 技巧
+    - JS
+abbrlink: 63324
 date: 2021-07-11 21:36:28
 ---
 

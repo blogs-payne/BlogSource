@@ -1,9 +1,11 @@
 ---
 title: Golang-接口(interface)
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 1962
 date: 2020-11-26 21:57:37
 ---
 

@@ -1,9 +1,11 @@
 ---
 title: 盘点go并发那些事儿
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 9672
 date: 2021-02-03 20:56:48
 ---
 

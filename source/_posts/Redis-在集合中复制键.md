@@ -1,9 +1,15 @@
 ---
 title: 'Redis:在集合中复制键'
 author: Payne
-tags: ['Redis', 'redis', '小技巧']
+tags:
+  - Redis
+  - redis
+  - 小技巧
 categories:
-  - ['Redis', 'redis', '小技巧']
+  - - Redis
+    - redis
+    - 小技巧
+abbrlink: 38075
 date: 2021-06-03 19:06:09
 ---
 

@@ -1,9 +1,11 @@
 ---
 title: Supervisor-程序管理更加得心应手
 author: Payne
-tags: ["技术杂谈"]
+tags:
+  - 技术杂谈
 categories:
-  - ["技术杂谈"]
+  - - 技术杂谈
+abbrlink: 9129
 date: 2021-01-12 19:33:32
 ---
 

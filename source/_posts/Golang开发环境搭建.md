@@ -1,10 +1,12 @@
 ---
 title: Golang介绍
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
-date: 2020-11-21 22:10:19
+  - - Go
 author: Payne
+abbrlink: 10520
+date: 2020-11-21 22:10:19
 ---
 
 > Go 语言开发包

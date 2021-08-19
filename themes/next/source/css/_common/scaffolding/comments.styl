@@ -1,0 +1,117 @@
+.comments {
+  margin-top: 500px;
+  overflow: hidden;
+  background: var(--content-bg-color);
+  padding: 50px 70px;
+
+  .gt-container {
+    .gt-comment-username {
+      color: $red-customize;
+    }
+
+    .gt-header-textarea {
+      border: none;
+    }
+
+    .gt-avatar {
+      img {
+        border-radius: 50%;
+      }
+    }
+
+    .gt-comment-content {
+      background-color: var(--content-bg-color) !important;
+      color: var(--text-color) !important;
+      border-radius: 5px;
+    }
+
+    .gt-comment-content:hover {
+      box-shadow: none;
+    }
+
+    .gt-comment-body {
+      color: var(--text-color) !important;
+    }
+
+    .gt-btn-login {
+      border: 20px solid $red-customize;
+      background-color: $red-customize;
+    }
+
+    .gt-btn-preview {
+      border: 20px solid $red-customize;
+      color: $red-customize;
+      background: var(--content-bg-color);
+    }
+
+    .gt-ico-text {
+      color: $red-customize;
+    }
+
+    .gt-action {
+      color: $red-customize;
+    }
+
+    .gt-link-project {
+      color: $red-customize;
+      border-bottom: 1px dashed $red-customize;
+    }
+
+    .gt-error {
+      color: $red-customize;
+    }
+
+    .gt-counts {
+      .gt-link.gt-link-counts {
+        color: $red-customize;
+        border-bottom: 1px dashed $red-customize;
+      }
+    }
+
+    .gt-ico.gt-ico-reply svg {
+      fill: $red-customize;
+    }
+
+    .gt-ico.gt-ico-tip .gt-svg svg {
+      fill: $red-customize;
+    }
+  }
+}
+
+.comment-button-group {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  margin: 1em 0;
+
+  .comment-button {
+    margin: .1em .2em;
+
+    &.active {
+      background: var(--btn-default-hover-bg);
+      border-color: var(--btn-default-hover-border-color);
+      color: var(--btn-default-hover-color);
+    }
+  }
+}
+
+.comment-position {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.tabs-comment {
+  background: var(--content-bg-color);
+  margin-top: 4em;
+  padding-top: 0;
+
+  .comments {
+    border: 0;
+    box-shadow: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+}

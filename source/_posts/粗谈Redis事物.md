@@ -1,9 +1,15 @@
 ---
 title: 粗谈Redis事物
 author: Payne
-tags: ["NoSQL", "Redis","数据库"]
+tags:
+  - NoSQL
+  - Redis
+  - 数据库
 categories:
-  - ["Redis", "NoSQL","数据库"]
+  - - Redis
+    - NoSQL
+    - 数据库
+abbrlink: 22168
 date: 2021-01-23 16:54:19
 ---
 ## Redis 事务是什么东东

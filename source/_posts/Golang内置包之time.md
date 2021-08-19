@@ -1,9 +1,11 @@
 ---
 title: Golang内置包之time
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 11529
 date: 2020-12-01 23:55:27
 ---
 

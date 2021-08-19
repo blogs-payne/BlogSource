@@ -1,9 +1,16 @@
 ---
 title: 网页调试之debugger原理与绕过
 author: Payne
-tags: ["爬虫", "Crawler", "浏览器", "调试", "JS"]
+tags:
+  - 爬虫
+  - Crawler
+  - 浏览器
+  - 调试
+  - JS
 categories:
-- ["爬虫", "调试"]
+  - - 爬虫
+    - 调试
+abbrlink: 2477
 date: 2021-06-09 09:02:14
 ---
 

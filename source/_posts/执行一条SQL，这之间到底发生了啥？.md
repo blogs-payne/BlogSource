@@ -1,9 +1,13 @@
 ---
 title: 执行一条SQL，这之间到底发生了啥？
 author: Payne
-tags: ["MySQL", "数据库"]
+tags:
+  - MySQL
+  - 数据库
 categories:
-  - ["数据库", "MySQL"]
+  - - 数据库
+    - MySQL
+abbrlink: 11430
 date: 2021-01-03 21:26:58
 ---
 

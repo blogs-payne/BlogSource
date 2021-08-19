@@ -1,9 +1,11 @@
 ---
 title: Golang-Defer详解
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 17571
 date: 2020-11-21 22:39:13
 ---
 ## defer触发时机

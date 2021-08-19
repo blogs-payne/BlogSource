@@ -1,9 +1,18 @@
 ---
 title: 网页调试之JSHook
 author: Payne
-tags: ["爬虫", "Crawler", "浏览器", "调试", "JS", "Hook"]
+tags:
+  - 爬虫
+  - Crawler
+  - 浏览器
+  - 调试
+  - JS
+  - Hook
 categories:
-- ["爬虫", "调试", "Hook"]
+  - - 爬虫
+    - 调试
+    - Hook
+abbrlink: 33650
 date: 2021-06-12 22:25:29
 ---
 

@@ -1,9 +1,11 @@
 ---
 title: Golang并发深入了解
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 34063
 date: 2020-12-06 10:46:37
 ---
 ## 协程控制需要

@@ -1,9 +1,11 @@
 ---
 title: Golang并发编程初探
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 21490
 date: 2020-12-06 10:43:18
 ---
 ## 基本概念了解：

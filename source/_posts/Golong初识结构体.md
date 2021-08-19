@@ -1,9 +1,11 @@
 ---
 title: Golang初识结构体
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 64552
 date: 2020-11-21 22:43:30
 ---
 ## 结构体

@@ -1,9 +1,11 @@
 ---
 title: Golang常量-变量-匿名变量
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 29980
 date: 2020-11-21 22:13:59
 ---
 

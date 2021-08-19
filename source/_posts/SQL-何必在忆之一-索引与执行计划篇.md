@@ -1,9 +1,13 @@
 ---
 title: 'SQL,何必在忆之一(索引与执行计划篇)'
 author: Payne
-tags: ["MySQL", "数据库"]
+tags:
+  - MySQL
+  - 数据库
 categories:
-  - ["数据库", "MySQL"]
+  - - 数据库
+    - MySQL
+abbrlink: 18675
 date: 2021-01-13 20:41:20
 ---
 

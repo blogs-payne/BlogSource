@@ -1,9 +1,15 @@
 ---
 title: 详探Redis.conf
 author: Payne
-tags: ["NoSQL", "Redis","数据库"]
+tags:
+  - NoSQL
+  - Redis
+  - 数据库
 categories:
-  - ["Redis", "NoSQL","数据库"]
+  - - Redis
+    - NoSQL
+    - 数据库
+abbrlink: 12856
 date: 2021-01-18 01:26:08
 ---
 

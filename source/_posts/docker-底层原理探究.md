@@ -1,9 +1,11 @@
 ---
 title: docker 底层原理探究
 author: Payne
-tags: ["docker"]
+tags:
+  - docker
 categories:
-- ["容器编排"]
+  - - 容器编排
+abbrlink: 54288
 date: 2021-01-24 13:12:10
 ---
 

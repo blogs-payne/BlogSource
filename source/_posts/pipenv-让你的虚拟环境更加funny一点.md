@@ -1,9 +1,12 @@
 ---
 title: pipenv 让你的虚拟环境更加funny一点
 author: Payne
-tags: ["Python"]
+tags:
+  - Python
 categories:
-- ["Python", "技术杂谈"]
+  - - Python
+    - 技术杂谈
+abbrlink: 22141
 date: 2020-12-22 00:34:28
 ---
 

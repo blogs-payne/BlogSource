@@ -1,9 +1,18 @@
 ---
 title: 网站防护总结之pc
 author: Payne
-tags: ["爬虫", "Crawler", "浏览器", "调试", "JS", "Hook"]
+tags:
+  - 爬虫
+  - Crawler
+  - 浏览器
+  - 调试
+  - JS
+  - Hook
 categories:
-    - ["爬虫", "调试", "Hook"]
+  - - 爬虫
+    - 调试
+    - Hook
+abbrlink: 63974
 date: 2021-07-02 17:25:18
 ---
 ## 为什么需要数据防护？

@@ -1,10 +1,12 @@
 ---
 title: Golang运算符
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
-date: 2020-11-21 22:10:19
+  - - Go
 author: Payne
+abbrlink: 61463
+date: 2020-11-21 22:10:19
 ---
 > 本章目标：
 >

@@ -1,9 +1,11 @@
 ---
 title: Golang基础指令
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 18957
 date: 2020-11-21 22:13:59
 ---
 

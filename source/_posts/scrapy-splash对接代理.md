@@ -1,9 +1,13 @@
 ---
 title: scrapy-splash对接代理
 author: Payne
-tags: ["scrapy", "splash", "scrapy-splash"]
+tags:
+  - scrapy
+  - splash
+  - scrapy-splash
 categories:
-- ["技术杂谈"]
+  - - 技术杂谈
+abbrlink: 3018
 date: 2020-12-19 14:11:52
 ---
 ## Scrapy-Splash使用及代理失败处理

@@ -1,9 +1,11 @@
 ---
 title: 盘点go并发那些事儿之二-并发控制得心应手
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 37640
 date: 2021-02-04 22:27:25
 ---
 ## 盘点Golang并发那些事儿之二

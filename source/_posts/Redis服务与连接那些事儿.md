@@ -1,9 +1,15 @@
 ---
 title: Redis服务与连接那些事儿
 author: Payne
-tags: ["NoSQL", "Redis","数据库"]
+tags:
+  - NoSQL
+  - Redis
+  - 数据库
 categories:
-  - ["Redis", "NoSQL","数据库"]
+  - - Redis
+    - NoSQL
+    - 数据库
+abbrlink: 51496
 date: 2021-01-18 01:28:06
 ---
 

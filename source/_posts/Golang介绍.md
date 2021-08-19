@@ -1,10 +1,12 @@
 ---
 title: Golang介绍
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
-date: 2020-11-21 21:52:58
+  - - Go
 author: payne
+abbrlink: 10519
+date: 2020-11-21 21:52:58
 ---
 
 

@@ -1,9 +1,11 @@
 ---
 title: golang并发模式
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 41600
 date: 2021-02-12 23:31:07
 ---
 

@@ -1,9 +1,11 @@
 ---
 title: Book List
 author: Payne
-tags: ["Book"]
+tags:
+  - Book
 categories:
-- ["Book"]
+  - - Book
+abbrlink: 19099
 date: 2021-01-24 13:12:10
 ---
 

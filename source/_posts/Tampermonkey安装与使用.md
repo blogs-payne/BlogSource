@@ -1,9 +1,11 @@
 ---
 title: Tampermonkey安装与使用
 author: Payne
-tags: ["Tampermonkey"]
+tags:
+  - Tampermonkey
 categories:
-  - ["Tampermonkey"]
+  - - Tampermonkey
+abbrlink: 7658
 date: 2021-06-03 18:52:47
 ---
 ## Tampermonkey

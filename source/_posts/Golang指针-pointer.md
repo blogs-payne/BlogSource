@@ -1,9 +1,11 @@
 ---
 title: Golang指针-pointer
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 10091
 date: 2020-11-21 22:13:59
 ---
 区别于C/C++中的指针，Go语言中的指针不能进行偏移和运算，是安全指针。

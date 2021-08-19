@@ -1,9 +1,15 @@
 ---
 title: Redis概览与安装
 author: Payne
-tags: ["NoSQL", "Redis","数据库"]
+tags:
+  - NoSQL
+  - Redis
+  - 数据库
 categories:
-  - ["Redis", "NoSQL","数据库"]
+  - - Redis
+    - NoSQL
+    - 数据库
+abbrlink: 16021
 date: 2021-01-14 01:29:01
 ---
 ## Redis概览

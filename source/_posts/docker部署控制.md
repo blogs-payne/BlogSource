@@ -1,9 +1,11 @@
 ---
 title: docker部署控制
 author: Payne
-tags: ["docker"]
+tags:
+  - docker
 categories:
-- ["容器编排"]
+  - - 容器编排
+abbrlink: 4479
 date: 2020-12-13 23:44:48
 ---
 ## Docker swarm部署控制

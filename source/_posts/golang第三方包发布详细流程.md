@@ -1,9 +1,15 @@
 ---
 title: golang第三方包发布详细流程
 author: Payne
-tags: ["Go", "git", "github"]
+tags:
+  - Go
+  - git
+  - github
 categories:
-- ["Go", "git", "github"]
+  - - Go
+    - git
+    - github
+abbrlink: 16882
 date: 2021-03-31 03:13:58
 ---
 ### 发布golang第三方包

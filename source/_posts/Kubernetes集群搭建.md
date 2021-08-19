@@ -1,9 +1,15 @@
 ---
 title: Kubernetes集群搭建
 author: Payne
-tags: ["Kubernetes", "docker","容器编排", "部署"]
+tags:
+  - Kubernetes
+  - docker
+  - 容器编排
+  - 部署
 categories:
-  - ["Kubernetes", "docker"]
+  - - Kubernetes
+    - docker
+abbrlink: 18864
 date: 2021-02-07 01:59:26
 ---
 其实本节的文章我在很久之前就已经发过了一次，但不够详细，层次不轻。我今天部署的时候看的够呛(虽然也是部署成功了)，也算是对以前的坑，做个忏悔吧。本文可能会比较boring，但请相信这并不是我的本意。这一定是最精简的笔记之一，相信我这绝对不是混水。

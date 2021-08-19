@@ -1,9 +1,11 @@
 ---
 title: Golang函数初探
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 15677
 date: 2020-11-21 22:36:08
 ---
 

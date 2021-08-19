@@ -1,9 +1,11 @@
 ---
 title: Golang并发编程
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 52507
 date: 2020-12-06 10:46:03
 ---
 ## 单个goroutine

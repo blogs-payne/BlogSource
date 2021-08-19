@@ -1,9 +1,11 @@
 ---
 title: Golang-Array
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 62372
 date: 2020-11-21 22:13:59
 ---
 ## Array(数组)的介绍

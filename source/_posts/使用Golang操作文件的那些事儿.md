@@ -1,9 +1,11 @@
 ---
 title: 使用Golang操作文件的那些事儿
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 1627
 date: 2020-11-28 00:11:57
 ---
 ## Golang 文件操作

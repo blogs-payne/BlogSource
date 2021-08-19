@@ -1,9 +1,11 @@
 ---
 title: Golang-结构体实现学生管理系统
 author: Payne
-tags: ["Go"]
+tags:
+  - Go
 categories:
-- ["Go"]
+  - - Go
+abbrlink: 1506
 date: 2020-11-23 23:45:57
 ---
 ## 基于“结构体”实现简易版学生管理系统
