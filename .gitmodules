@@ -1,3 +1,6 @@
 [submodule "hexo-theme-next"]
 	path = hexo-theme-next
 	url = https://github.com/theme-next/hexo-theme-next
+[submodule "theme-next-canvas-nest"]
+	path = theme-next-canvas-nest
+	url = https://github.com/theme-next/theme-next-canvas-nest

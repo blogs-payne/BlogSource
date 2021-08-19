@@ -7,7 +7,7 @@
 
 {% block content %}
 
-  {{ partial('_macro/post.swig', {post: page}) }}
+  {{ partial('_macro/single.swig', {post: page}) }}
 
 {% endblock %}
 
