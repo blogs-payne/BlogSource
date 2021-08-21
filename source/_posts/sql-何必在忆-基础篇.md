@@ -161,7 +161,7 @@ resetconnection(\x) Clean session context.
 **库名与库属性**
 
 ```sql
-## 增
+#增
 create database dbname
 eg: create database dbname charset utf8mb4
 ## 删
@@ -173,9 +173,13 @@ show databases;
 ```
 
 > 建库规范：
-> 1.库名不能有大写字母,不能太长(<30字符) 多平台兼容性问题  
-> 2.建库要加字符集      
+> 
+> 1.库名不能有大写字母,不能太长(<30字符) 多平台兼容性问题
+> 
+> 2.建库要加字符集
+> 
 > 3.库名不能有数字开头
+> 
 > 4.库名要和业务相关
 
 **表**
@@ -487,7 +491,9 @@ truncate table student;
 ```
 
 > 区别:
+> 
 > delete: DML操作, 是逻辑性质删除,逐行进行删除,速度慢.
+> 
 > truncate: DDL操作,对与表段中的数据页进行清空,速度快.
 
 伪删除：用update来替代delete，最终保证业务中查不到（select）
