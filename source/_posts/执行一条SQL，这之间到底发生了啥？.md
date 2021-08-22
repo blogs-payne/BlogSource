@@ -1,3 +1,4 @@
+---
 title: 执行一条SQL，这之间到底发生了啥？
 author: Payne
 tags:
@@ -6,9 +7,9 @@ tags:
 categories:
   - - 数据库
     - MySQL
-    abbrlink: 11430
-    date: 2021-01-03 21:26:58
-
+abbrlink: 11430
+date: 2021-01-03 21:26:58
+---
 ### MySQL模型初探
 
 MySQL基础结构是采用典型的C/S工作模型(即是server/client)
@@ -125,8 +126,6 @@ MySQLd的工作模型可分为两块，`server`层，`引擎层`，server层可�
 7. 日志记录(bingo二进制日志\glog，默认不开启。需人工开启)
 
 MySQL中有查询缓存这么一说(query_cache,默认不开启)，当业务量有大量相同的查询等操作，我们一般采用Redis进行一个缓存.
-
-
 
 ### 存储引擎层
 

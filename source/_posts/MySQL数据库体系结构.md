@@ -1,12 +1,13 @@
 ---
 title: MySQL数据库体系结构
-date: 2021-08-21 10:42:42
 tags:
   - MySQL
   - 数据库
 categories:
   - - 数据库
     - MySQL
+abbrlink: 1647551827
+date: 2021-08-21 10:42:42
 ---
 
 ## MySQL体系结构

@@ -1,12 +1,13 @@
 ---
 title: MySQL数据库一些概念
-date: 2021-08-21 10:04:42
 tags:
   - MySQL
   - 数据库
 categories:
   - - 数据库
     - MySQL
+abbrlink: 1376532068
+date: 2021-08-21 10:04:42
 ---
 
 # MySQL数据库一些概念
