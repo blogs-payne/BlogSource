@@ -11,7 +11,9 @@ date: 2020-12-06 10:46:03
 ## 单个goroutine
 
 Go语言中使用`goroutine`非常简单，只需要在调用函数的时候在前面加上`go`关键字，就可以为一个函数创建一个`goroutine`。
+
 <!--more-->
+
 一个`goroutine`必定对应一个函数，可以创建多个`goroutine`去执行相同的函数。开启一个goroutine，示例如下
 
 ```go

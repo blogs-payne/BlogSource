@@ -17,7 +17,9 @@ Go官方文档中对defer的执行时机做了阐述，分别是。
 - 包裹defer的函数返回时
 - 包裹defer的函数执行到末尾时        
 - 所在的goroutine发生panic时
+- 
 <!--more-->
+
 ## defer执行顺序
 
 当一个方法中有多个defer时， defer会将要延迟执行的方法“压栈”，当defer被触发时，将所有“压栈”的方法“出栈”并执行。所以defer的执行顺序是LIFO的。

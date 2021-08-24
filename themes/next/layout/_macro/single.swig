@@ -1,7 +1,7 @@
 {##################}
 {### POST BLOCK ###}
 {##################}
-<article itemscope itemtype="http://schema.org/Article" class="post-block index"
+<article itemscope itemtype="http://schema.org/Article" class="post-block single"
          lang="{{ post.lang or config.language }}">
   <link itemprop="mainEntityOfPage" href="{{ post.permalink }}">
 
@@ -23,8 +23,8 @@
     {%- if post.link %}
     {%- if post.sticky > 0 %}
     <span class="post-sticky-flag" title="{{ __('post.sticky') }}">
-      <i class="fa fa-thumbtack"></i>
-    </span>
+                <i class="fa fa-thumbtack"></i>
+              </span>
     {%- endif %}
     {%- set postTitleIcon = '<i class="fa fa-external-link-alt"></i>' %}
     {%- set postText = post.title or post.link %}

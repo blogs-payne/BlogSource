@@ -16,7 +16,9 @@ date: 2021-02-04 22:27:25
 - 无法有效的控制并发
 
 首先我们再来看看下面这个栗子，代码如下
+
 <!--more-->
+
 ```go
 // example-goroutine anonymous
 

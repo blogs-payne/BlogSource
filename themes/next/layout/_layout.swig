@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ config.language }}">
 <head>
+  {% set assets_base_url = '' %}
+  {% if theme.cdn.jsdelivr.enabled %}
+    {% set assets_base_url = 'https://cdn.jsdelivr.net/gh/' + theme.repository + theme.cdn.jsdelivr.version %}
+  {% endif %}
   {{ partial('_partials/head/head.swig', {}, {cache: theme.cache.enable}) }}
   {% include '_partials/head/head-unique.swig' %}
   {{- next_inject('head') }}
   <title>{% block title %}{% endblock %}</title>
+  <meta name="google-site-verification" content="p_bIcnvirkFzG2dYKuNDivKD8-STet5W7D-01woA2fc" />
   {{ partial('_third-party/analytics/index.swig', {}, {cache: theme.cache.enable}) }}
   {{ partial('_scripts/noscript.swig', {}, {cache: theme.cache.enable}) }}
 </head>
@@ -56,5 +61,6 @@
   {%- if theme.pjax %}
     </div>
   {%- endif %}
+
 </body>
 </html>

@@ -13,7 +13,9 @@ date: 2021-01-03 21:26:58
 ### MySQL模型初探
 
 MySQL基础结构是采用典型的C/S工作模型(即是server/client)
+
 <!--more-->
+
 以sshd与xshell为例,如下图所示
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwgy1gm9saa2hxxj30s60f0wfd.jpg)

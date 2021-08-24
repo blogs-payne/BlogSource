@@ -24,7 +24,9 @@ Golang(又称Go)是[Google](https://zh.wikipedia.org/wiki/Google)公司开发的
 [罗伯特·格瑞史莫](https://zh.wikipedia.org/w/index.php?title=羅伯特·格瑞史莫&action=edit&redlink=1)，[罗勃·派克](https://zh.wikipedia.org/wiki/羅勃·派克)（Rob Pike）及[肯·汤普逊](https://zh.wikipedia.org/wiki/肯·汤普逊)于2007年9月开始设计GO，稍后Ian Lance Taylor、Russ Cox加入项目。Go是基于[Inferno](https://zh.wikipedia.org/wiki/Inferno)操作系统所开发的。Go于2009年11月正式宣布推出，成为[开放源代码](https://zh.wikipedia.org/wiki/開放原始碼)项目，支持[Linux](https://zh.wikipedia.org/wiki/Linux)、[macOS](https://zh.wikipedia.org/wiki/MacOS)、[Windows](https://zh.wikipedia.org/wiki/Windows)等操作系统。在2016年，Go被软件评价公司TIOBE 选为“TIOBE 2016 年最佳语言”。
 
 目前，Go每半年发布一个二级版本（即从a.x升级到a.y）。
+
 <!--more-->
+
 ## 描述
 
 Go的语法接近[C语言](https://zh.wikipedia.org/wiki/C语言)，但对于[变量的声明](https://zh.wikipedia.org/w/index.php?title=变量的声明&action=edit&redlink=1)有所不同。Go支持[垃圾回收功能](https://zh.wikipedia.org/wiki/垃圾回收_(計算機科學))。Go的[并行计算](https://zh.wikipedia.org/wiki/并行计算)模型是以[东尼·霍尔](https://zh.wikipedia.org/wiki/東尼·霍爾)的[通信顺序进程](https://zh.wikipedia.org/wiki/交談循序程式)（CSP）为基础，采取类似模型的其他语言包括[Occam](https://zh.wikipedia.org/wiki/Occam)和[Limbo](https://zh.wikipedia.org/wiki/Limbo)[[3\]](https://zh.wikipedia.org/wiki/Go#cite_note-langfaq-3)，Go也具有这个模型的特征，比如[通道](https://zh.wikipedia.org/wiki/通道_(编程))传输。通过goroutine和通道等并行构造可以建造[线程池](https://zh.wikipedia.org/wiki/线程池)和[管道](https://zh.wikipedia.org/wiki/管道_(软件))等[[8\]](https://zh.wikipedia.org/wiki/Go#cite_note-8)。在1.8版本中开放插件（Plugin）的支持，这意味着现在能从Go中动态加载部分函数。

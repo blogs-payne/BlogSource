@@ -1,5 +1,6 @@
 ---
 title: MySQL数据类型
+author: Payne
 tags:
   - MySQL
   - 数据库
@@ -32,6 +33,8 @@ MySQL支持丰富的数据类型，总体上可以分为数值类型、日期和
 空间类型：Geometry、Point、LineString、MultiPoint、MultiLineString、MultiPolyGon、Polygon、GeometryCollection
 
 其他类型：JSON
+
+<!--more-->
 
 ### 数值类型
 

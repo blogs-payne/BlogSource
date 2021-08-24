@@ -18,12 +18,15 @@
 
     <a href="{{ config.root }}" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">{{ title }}</h1>
+      <h1 class="site-title">{{ title }}
+        {%- if subtitle %}
+        <span class="site-subtitle">
+          {{ subtitle }}
+        </span>
+        {%- endif %}
+      </h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-    {%- if subtitle %}
-      <p class="site-subtitle" itemprop="description">{{ subtitle }}</p>
-    {%- endif %}
     {%- if theme.custom_logo and (theme.scheme === 'Gemini' or theme.scheme === 'Pisces') %}
       <a>
         <img class="custom-logo-image" src="{{ theme.custom_logo }}" alt="{{ title }}">

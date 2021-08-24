@@ -5,7 +5,7 @@
          lang="{{ post.lang or config.language }}">
   <link itemprop="mainEntityOfPage" href="{{ post.permalink }}">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="{{ url_for(theme.avatar.url or theme.images + '/avatar.gif') }}">
       <meta itemprop="name" content="{{ author }}">
       <meta itemprop="description" content="{{ description }}">

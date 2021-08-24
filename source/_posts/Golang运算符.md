@@ -20,7 +20,9 @@ date: 2020-11-21 22:10:19
 运算符用于执行程序代码运算，会针对一个以上操作数项目来进行[运算](https://baike.baidu.com/item/运算/5866856)。例如：2+3，其[操作数](https://baike.baidu.com/item/操作数/7658270)是2和3，而运算符则是“+”。
 
 在vb2005中运算符大致可以分为5种类型：[算术运算符](https://baike.baidu.com/item/算术运算符/9324947)、[位运算符](https://baike.baidu.com/item/%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/2786163?fr=aladdin)、 [关系运算符](https://baike.baidu.com/item/关系运算符/352774)、[赋值运算符](https://baike.baidu.com/item/赋值运算符/2482721)、[逻辑运算符](https://baike.baidu.com/item/逻辑运算符/4123505)。
+
 <!--more-->
+
 ## 算数运算符
 
 | 运算符 | 描述 |

@@ -26,7 +26,9 @@ redis-server &
 # 使用自定义redis.conf启动
 redis-server path
 ```
+
 <!--more-->
+
 `redis-server`如图
 
 ![](https://tva1.sinaimg.cn/large/008eGmZEgy1gmoqnuejzfj31so0mitc6.jpg)

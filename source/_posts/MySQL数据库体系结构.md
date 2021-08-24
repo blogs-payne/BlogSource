@@ -1,5 +1,6 @@
 ---
 title: MySQL数据库体系结构
+author: Payne
 tags:
   - MySQL
   - 数据库
@@ -34,6 +35,8 @@ mysql -h 192.168.0.51 -P 3306 -u root -p paynepasswd
 # Socket方式(仅本地)
 mysql -S /tmp/mysql.sock -u root -p paynepasswd
 ```
+
+<!--more-->
 
 在Linux中`/etc/my.cnf`文件中显示（已完成MySQL的安装）
 

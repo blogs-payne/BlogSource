@@ -22,7 +22,9 @@ Golang条件语句是通过一条或多条语句的执行结果（True或者Fals
 Golang程序语言指定任何非0和非空（null）值为true，0 或者 null为false。
 
 Golang 编程中 if 语句用于控制程序的执行，基本形式为：
+
 <!--more-->
+
 ```go
 func main() {
     i:= 3

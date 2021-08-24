@@ -11,7 +11,9 @@ date: 2021-01-24 13:12:10
 
 
 Docker is written in the [Go programming language](https://golang.org/) and takes advantage of several features of the Linux kernel to deliver its functionality.
+
 <!--more-->
+
 Docker用`Go编程语言`编写，并利用Linux内核的多个功能来实现其功能。
 
 ## Namespaces(命名空间)

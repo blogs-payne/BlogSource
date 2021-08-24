@@ -39,11 +39,16 @@
   <meta name="baidu-site-verification" content="{{ theme.baidu_site_verification }}">
 {%- endif %}
 
-<link rel="stylesheet" href="{{ url_for(theme.css) }}/main.css">
+{% set assets_base_url = '' %}
+{% if theme.cdn.jsdelivr.enabled %}
+  {% set assets_base_url = 'https://cdn.jsdelivr.net/gh/' + theme.repository + '@master' %}
+{% endif %}
+
+<link rel="stylesheet" href="{{ assets_base_url }}/css/main.css">
 
 {{ next_font() }}
 
-{%- set font_awesome_uri = theme.vendors.fontawesome or next_vendors('font-awesome/css/all.min.css') %}
+{%- set font_awesome_uri = assets_base_url + '/lib/font-awesome/css/all.min.css' %}
 <link rel="stylesheet" href="{{ font_awesome_uri }}">
 
 {%- if theme.fancybox %}
@@ -52,8 +57,8 @@
 {%- endif %}
 
 {%- if theme.pace.enable %}
-  {%- set pace_css_uri = theme.vendors.pace_css or next_vendors('pace/pace-theme-' + theme.pace.theme + '.min.css') %}
-  {%- set pace_js_uri = theme.vendors.pace or next_vendors('pace/pace.min.js') %}
+  {%- set pace_css_uri = assets_base_url + '/lib/pace/pace-theme-' + theme.pace.theme + '.min.css' %}
+  {%- set pace_js_uri = assets_base_url + '/lib/pace/pace.min.js' %}
   <link rel="stylesheet" href="{{ pace_css_uri }}">
   <script src="{{ pace_js_uri }}"></script>
 {%- endif %}

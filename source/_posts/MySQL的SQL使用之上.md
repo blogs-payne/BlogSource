@@ -1,5 +1,6 @@
 ---
 title: MySQL的SQL使用之上
+author: Payne
 tags:
   - MySQL
   - 数据库
@@ -20,6 +21,8 @@ DML（Data Manipulation Language，数据操作语言）：用于操作数据记
 DCL（Data Control Language，数据控制语言）：用于定义数据库的访问权限和安全级别，主要包含GRANT、REVOKE、COMMIT和ROLLBACK等语句。
 
 DQL（Data Query Language，数据查询语言）：用于查询数据表中的数据记录，主要包含SELECT语句。
+
+<!--more-->
 
 ## DDL的应用
 

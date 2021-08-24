@@ -6,6 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/themes/next/source/lib/pace" />
       <excludeFolder url="file://$MODULE_DIR$/themes/next/source/lib/wowslide" />
       <excludeFolder url="file://$MODULE_DIR$/.deploy_git" />
+      <excludeFolder url="file://$MODULE_DIR$/public/lib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

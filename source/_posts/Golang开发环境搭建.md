@@ -21,7 +21,9 @@ date: 2020-11-21 22:10:19
 > - Visual Studio Code: <https://code.visualstudio.com/> 
 
 搭建 Go 语言开发环境，需要先下载 Go 语言开发包。
+
 <!--more-->
+
 ### 查看操作系统及版本
 
 Windows：![](https://tva1.sinaimg.cn/large/0081Kckwgy1gkfvrumlwpj31fk0m70x2.jpg)
