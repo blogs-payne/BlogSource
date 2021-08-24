@@ -570,7 +570,7 @@ comments:
   style: tabs
   # Choose a comment system to be displayed by default.
   # Available values: changyan | disqus | disqusjs | gitalk | livere | valine
-  active:
+  active: gitalk
   # Setting `true` means remembering the comment system selected by the visitor.
   storage: true
   # Lazyload all comment systems.
@@ -614,7 +614,7 @@ changyan:
 # Valine
 # For more information: https://valine.js.org, https://github.com/xCss/Valine
 valine:
-  enable: true
+  enable: false
   appid: v5yI1sEaxpTl6gCkO0dApNOH-gzGzoHsz # Your leancloud application appid
   appkey: ugl27izkUCvh7RIyvo7kcFCv # Your leancloud application appkey
   notify: false # Mail notifier
@@ -637,18 +637,18 @@ livere_uid: # <your_uid>
 # Gitalk
 # For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk
 gitalk:
-  enable: false
-  github_id: # GitHub repo owner
-  repo: # Repository name to store issues
-  client_id: # GitHub Application Client ID
-  client_secret: # GitHub Application Client Secret
-  admin_user: # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
+  enable: true
+  github_id: payne-wu # GitHub repo owner
+  repo: blogs-payne.github.io # Repository name to store issues
+  client_id: 3e29a2882273c7377d35 # GitHub Application Client ID
+  client_secret: 59774f1dc23ed11ec9f9738f618c2706e134e258 # GitHub Application Client Secret
+  admin_user: payne-wu # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # Gitalk's display language depends on user's browser or system environment
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
   language:
-
+  proxy: https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token
 
 # ---------------------------------------------------------------
 # Post Widgets & Content Sharing Services
