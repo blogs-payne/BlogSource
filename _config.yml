@@ -119,7 +119,7 @@ deploy:
 #    repo: git@github.com:Payne-Wu/payne-wu.github.io.git
 #    branch: master
   - type: git
-    repo: git@github.com:BLOGS-Payne/blogs-payne.github.io.git
+    repo: git@github.com:blogs-payne/blogs-payne.github.io.git
     branch: master
 
 
