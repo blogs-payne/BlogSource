@@ -108,12 +108,12 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  - type: git
-    repo: git@github.com:Payne-Wu/payne-wu.github.io.git
-    branch: master
 #  - type: git
-#    repo: git@github.com:BLOGS-Payne/blogs-payne.github.io.git
+#    repo: git@github.com:Payne-Wu/payne-wu.github.io.git
 #    branch: master
+  - type: git
+    repo: git@github.com:BLOGS-Payne/blogs-payne.github.io.git
+    branch: master
 
 
 
