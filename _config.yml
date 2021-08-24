@@ -105,6 +105,13 @@ ignore:
 #theme: landscape
 theme: next
 
+#repository: germey/blog
+#
+#cdn:
+#  jsdelivr:
+#    enabled: false
+#    version: "@master"
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
