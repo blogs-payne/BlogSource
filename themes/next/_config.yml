@@ -639,7 +639,7 @@ livere_uid: # <your_uid>
 gitalk:
   enable: true
   github_id: payne-wu # GitHub repo owner
-  repo: blogs-payne.github.io # Repository name to store issues
+  repo: git-comments # Repository name to store issues
   client_id: 3e29a2882273c7377d35 # GitHub Application Client ID
   client_secret: 59774f1dc23ed11ec9f9738f618c2706e134e258 # GitHub Application Client Secret
   admin_user: payne-wu # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
