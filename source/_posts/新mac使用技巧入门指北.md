@@ -108,7 +108,7 @@ git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core" remote set-url 
 > 由于我习惯于zsh终端。这里给出zsh的，后面还有bash的
 
 ```shell
-source <(kubectl completion zsh)
+source <(kubectl completion bash)
 ```
 
 如果是`bash`

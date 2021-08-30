@@ -105,12 +105,12 @@ ignore:
 #theme: landscape
 theme: next
 
-#repository: germey/blog
-#
-#cdn:
-#  jsdelivr:
-#    enabled: false
-#    version: "@master"
+repository: blogs-payne/blogs-payne.github.io
+
+cdn:
+  jsdelivr:
+    enabled: true
+    version: "@master"
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

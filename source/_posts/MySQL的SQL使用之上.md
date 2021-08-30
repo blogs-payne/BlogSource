@@ -37,7 +37,7 @@ DQL（Data Query Language，数据查询语言）：用于查询数据表中的�
 3. 建库要加字符集
 
 ```dart
-create database [if not exists] 数据库名 [charset 字符编码名称] [collate 排序规则];
+create database [if not exists] 数据库名 [charset 字符编码名称(utf8mb4)] [collate 排序规则(utf8mb4_general_ci)];
 ```
 
 #### 删
@@ -88,9 +88,10 @@ create table [if not exists] 表名(
 ) [表选项1,表选项2]
 
 # example
+
 CREATE TABLE IF NOT EXISTS `ch_people_msg` ( 
   `p_id`  SERIAL NOT NULL AUTO_INCREMENT COMMENT '用户id' , 
-  `p_uic` CHAR(18) NOT NULL UNIQUE  COMMENT '用户身份证',
+  `p_uic` CHAR(18) NOT NULL COMMENT '用户身份证',
   `p_nickname` VARCHAR(50) NOT NULL COMMENT '用户昵称', 
   `p_gender` ENUM('m','f', 'n') NOT NULL DEFAULT 'n' COMMENT '用户性别', 
   `p_age` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '用户年龄', 
@@ -98,8 +99,9 @@ CREATE TABLE IF NOT EXISTS `ch_people_msg` (
   `p_address` VARCHAR(100) NOT NULL COMMENT '用户地址', 
   `p_email` VARCHAR(50) NOT NULL COMMENT '用户邮箱', 
   `p_add_time` TIMESTAMP NOT NULL DEFAULT NOW() COMMENT '统计用户时间',
-   PRIMARY KEY (`p_id`)
-) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_generalci_ci COMMENT = '中国成员信息表';
+   PRIMARY KEY (`p_id`),
+   UNIQUE KEY `p_uic`(`p_uic`)
+) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT = '中国成员信息表';
 ```
 
 > 注意：字段结束为`,`分隔， 整体结束为`)`分隔
