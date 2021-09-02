@@ -2,11 +2,9 @@
 title: docker分层构建
 author: Payne
 tags:
-  - t
+  - docker
 categories:
-  - - Redis
-    - redis
-    - 小技巧
+  - - 容器编排
 abbrlink: 2890729769
 date: 2021-09-02 18:08:44
 ---
