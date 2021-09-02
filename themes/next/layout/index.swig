@@ -14,7 +14,7 @@
 
   <script>
     document.querySelectorAll('.random').forEach(item => item.src="https://picsum.photos/id/"
-    + Math.floor(Math.random() * 250)
+    + Math.floor(Math.random() * 300)
     + "/200/125?blur="
     + Math.floor(Math.random() * Math.floor(3)))
   </script>
