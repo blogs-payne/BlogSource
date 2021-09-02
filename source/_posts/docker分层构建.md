@@ -71,6 +71,8 @@ CMD ["supervisord","-c", "supervisord.conf"]
 FROM golang:1.16 as builder
 # Setting environment variables
 ENV GOPROXY="https://goproxy.cn,direct" GO111MODULE="on" CGO_ENABLED="0" GOOS="linux" GOARCH="amd64"
+## add rely
+go mod tidy 
 # Switch to workspace
 WORKDIR /go/src/github.com/gowebspider/goproxies/
 # Load file
