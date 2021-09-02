@@ -3,8 +3,9 @@ title: {{ title }}
 author: Payne
 date: {{ date }}
 tags:
-  - t
+  - t1
 categories:
-  - c
-  - cc
+  - - c1
+    - c2
+    - c3
 ---
