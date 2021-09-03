@@ -6,5 +6,5 @@
 export NODE_OPTIONS="--max-old-space-size=8192"
 hexo clean
 hexo generate
-hexo server --debug
+hexo server -p 4321 --debug
 hexo clean
