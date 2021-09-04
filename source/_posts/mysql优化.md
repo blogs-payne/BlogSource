@@ -2,11 +2,11 @@
 title: mysql优化
 author: Payne
 tags:
-  - t1
+  - MySQL
+  - 数据库
 categories:
-  - - c1
-    - c2
-    - c3
+  - - 数据库
+    - MySQL
 abbrlink: 507251385
 date: 2021-09-04 00:27:43
 ---
@@ -55,6 +55,6 @@ https://www.cnblogs.com/doublexi/p/9732274.html
 
 
 
-
+疯狂码字中...
 
 
