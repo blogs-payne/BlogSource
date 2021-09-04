@@ -32,6 +32,7 @@ jobs:
 
       - name: Hexo Build and Deploy
         run: |
+          find . -type f -name *.log -delete
           npm install
           npm run clean
           npm run build

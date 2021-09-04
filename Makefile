@@ -1,4 +1,4 @@
-all: deploy upload
+all: deploy upload clean
 
 
 build:
@@ -24,3 +24,7 @@ upload:
 	git add -A
 	git commit -m "upload"
 	git push origin source
+
+clean:
+	hexo clean && find . -type f -name *.log -delete
+	npm run clean
