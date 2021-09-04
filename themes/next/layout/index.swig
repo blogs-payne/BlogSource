@@ -22,7 +22,7 @@
   {% include '_partials/pagination.swig' %}
 
 {% endblock %}
-1084
+
 {% block sidebar %}
   {{ sidebar_template.render(false) }}
 {% endblock %}
