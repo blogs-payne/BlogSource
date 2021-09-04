@@ -5,7 +5,8 @@ name: Deploy
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  [push, pull_request]
+  push:
+    branches: [ source ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -18,17 +19,17 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
+
       - name: Env setup
-        run: | 
-          mkdir -p ~/.ssh/ 
-          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.GH_PG }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
           # setup deploy git account
           git config --global user.name "payne"
           git config --global user.email "wuzhipeng1289690157@gmail.com"
-      
+
       - name: Hexo Build and Deploy
         run: |
           npm install
