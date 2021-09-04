@@ -6,5 +6,4 @@
 hexo clean && find . -type f -name *.log -delete
 export NODE_OPTIONS="--max-old-space-size=8192"
 hexo generate
-#
 hexo server -p 4321 --debug
