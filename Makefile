@@ -22,8 +22,8 @@ deploy: $(build)
 .PHONY: deploy
 upload:
 	git add -A
-	git commit -m "upload"
-	git push origin source
+	git commit -m "Upload"
+	git push blogsource source:master
 
 clean:
 	hexo clean && find . -type f -name *.log -delete
