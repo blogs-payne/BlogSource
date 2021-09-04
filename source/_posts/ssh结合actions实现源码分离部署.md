@@ -1,16 +1,16 @@
 ---
-title: gitpage结合actions实现源码blog分离
+title: ssh结合actions实现源码分离部署
 author: Payne
 tags:
-  - t1
+  - ssh
+  - actions
+  - blog
 categories:
-  - - c1
-    - c2
-    - c3
-abbrlink: 3668856707
-date: 2021-09-04 10:35:33
+  - - blog
+    - ssh
+    - actions
+date: 2021-09-04 13:37:41
 ---
-
 本博客采用github page实现部署，但由于github的性质无法有效的进行分离快速部署。
 
 必须博客展示页，必须以username.github.io结尾，这样感觉不是很方便
@@ -108,6 +108,4 @@ jobs:
 ## 总结
 
 以上便是github page 源码保护分析详细过程，其基本原理就是将ssh部署的工作交给自动构建的Actions。
-
-
 

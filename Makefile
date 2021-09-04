@@ -22,7 +22,7 @@ deploy: $(build)
 .PHONY: deploy
 upload:
 	git add -A
-	git commit -m "Upload"
+	git commit -am "upload or change some file"
 	git push origin master:master
 
 clean:
