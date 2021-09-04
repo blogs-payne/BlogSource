@@ -228,3 +228,6 @@ dist
 .pnp.*
 
 .deploy_git
+
+!/gh-page
+!/gh-page.pub
