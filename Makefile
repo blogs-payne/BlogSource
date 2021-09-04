@@ -23,7 +23,7 @@ deploy: $(build)
 upload:
 	git add -A
 	git commit -m "Upload"
-	git push blogsource source:master
+	git push origin master:master
 
 clean:
 	hexo clean && find . -type f -name *.log -delete
