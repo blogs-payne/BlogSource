@@ -1,4 +1,4 @@
-all: deploy upload clean
+all: upload clean
 
 
 build:
