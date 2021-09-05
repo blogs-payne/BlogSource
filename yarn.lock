@@ -2461,10 +2461,10 @@ hexo-pagination@1.0.0:
   resolved "https://registry.npmjs.org/hexo-pagination/-/hexo-pagination-1.0.0.tgz"
   integrity sha512-miEVFgxchPr2qNWxw0JWpJ9R/Yaf7HjHBZVjvCCcqfbsLyYtCvIfJDxcEwz1sDOC/fLzYPqNnhUI73uNxBHRSA==
 
-hexo-related-popular-posts@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/hexo-related-popular-posts/-/hexo-related-popular-posts-4.0.0.tgz"
-  integrity sha512-oudCAf8VjjQGwU/Q9BT5KkbvU5JGfC/Glz1hW+jUHTgYvo+oNQZ58IYTe4eVcJ8WeEhzPGT2AfEV7TsFRRfjWw==
+hexo-related-popular-posts@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/hexo-related-popular-posts/-/hexo-related-popular-posts-5.0.1.tgz#8dc61e7f8bc40058c5adef34213364e3a1472bb5"
+  integrity sha512-X+7leZ708sXq1bgayful2HaGU22XAGPDZjqzpFUoeP8mXmJL51E2p66gqs7Xu+rygu4MMJQJvRK/fzGbHa8eqQ==
   dependencies:
     cheerio "^1.0.0-rc.2"
     columnify "^1.5.4"
