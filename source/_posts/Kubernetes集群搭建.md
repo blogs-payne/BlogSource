@@ -185,6 +185,8 @@ EOF
 #### 安装 kubectl kubelet kubeadm(`all`)
 
 ```sh
+# Ignore automatic updates
+echo "exclude=kube*" >> /etc/yum.conf
 # install kubectl kubelet kubeadm
 yum install -y kubectl kubelet kubeadm --disableexcludes=kubernetes
 #--disableexcludes=kubernetes  禁掉除了这个之外的别的仓库

@@ -12,19 +12,19 @@ test: $(build)
 
 
 .PHONY: deploy
-deploy: $(build)
+deploy:
 	npm run clean
 	npm run build
 	npm run deploy
 	npm run clean
 
 
-.PHONY: deploy
+.PHONY: upload
 upload:
 	git add -A
 	git commit -am "upload or change some file"
 	git push origin master:master
 
 clean:
-	hexo clean && find . -type f -name *.log -delete
+	find . -type f -name *.log -delete
 	npm run clean

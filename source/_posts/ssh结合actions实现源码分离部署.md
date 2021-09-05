@@ -9,6 +9,7 @@ categories:
   - - blog
     - ssh
     - actions
+abbrlink: 3847153486
 date: 2021-09-04 13:37:41
 ---
 本博客采用github page实现部署，但由于github的性质无法有效的进行分离快速部署。
