@@ -57,23 +57,6 @@ spec:
 ### PVC
 
 ```yaml
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nfspv-master
-spec:
-  capacity:
-    storage: 10Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
-  nfs:
-    path: /nfs
-    server: 192.168.0.27
-
----
 
 apiVersion: v1
 kind: Service
