@@ -22,15 +22,21 @@ date: 2021-09-03 23:46:49
 yum install -y nfs-common nfs-utils rpcbind
 mkdir /nfs && chmod 766 /nfs && chown nfsnobody /nfs/
 echo "/nfs *(rw,no_root_squash,no_all_squash,sync)" >> /etc/exports
+exportfs -r
 systemctl restart rpcbind && systemctl restart nfs && systemctl status rpcbind && systemctl status nfs
 ```
 
 #### 验证
 
+> IP: 主机地址
+
 ```dart
-showmount -e $IP
-mkdir /test && cd $_ && mount -t nfs $IP:/nfs /test
+showmount -e IP
+mkdir /test
+mount -t nfs IP:/nfs /test
+cd /test
 echo "asdsadsa" >> a.txt
+cd /
 umount /test && rm -rf /test
 ```
 
