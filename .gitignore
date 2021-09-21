@@ -231,3 +231,5 @@ dist
 
 !/gh-page
 !/gh-page.pub
+
+.idea
