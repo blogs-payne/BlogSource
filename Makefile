@@ -22,7 +22,7 @@ deploy:
 upload:
 	git pull
 	git add -A
-	git commit -am "upload or change some file"
+	-git commit -am "upload or change some file"
 	-git push origin master:master
 	-git push -u gitee
 
