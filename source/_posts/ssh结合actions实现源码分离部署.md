@@ -30,6 +30,8 @@ date: 2021-09-04 13:37:41
 ssh-keygen -t rsa -C "your email"
 ```
 
+> 若配置了全局的git email 可使用`ssh-keygen -t rsa -C "$(git config user.email)" -f gh-pages -N ""`
+
 完成后将在本地`$HOME/.ssh`中生成私钥`id_rsa`,与公钥，`id_rsa.pub`,将公钥上传到github上，进入https://github.com/settings/keys ，登陆自己的github账号。如下所示
 
 ![image-20210904121559885](https://tva1.sinaimg.cn/large/008i3skNgy1gu4h329orfj60tf0a775a02.jpg)
