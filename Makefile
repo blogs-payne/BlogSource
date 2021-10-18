@@ -16,13 +16,6 @@ test:
 	hexo server -p 4321 --debug
 
 
-deploy:
-	@npm run clean
-	@npm run build
-	@npm run deploy
-	@npm run clean
-
-
 upload:
 	@git pull
 	@git add -A
