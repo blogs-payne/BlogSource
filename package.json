@@ -30,7 +30,7 @@
     "hexo-renderer-stylus": "^2.0.1",
     "hexo-server": "^2.0.0",
     "hexo-symbols-count-time": "^0.7.1",
-    "highlight.js": "^11.2.0",
+    "highlight.js": "^11.3.1",
     "live2d-widget-model-wanko": "^1.0.5"
   },
   "devDependencies": {
