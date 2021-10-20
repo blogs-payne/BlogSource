@@ -2,11 +2,9 @@
 title: golang配置神器viper
 author: Payne
 tags:
-  - t1
+  - Go
 categories:
-  - - c1
-    - c2
-    - c3
+  - - Go
 abbrlink: 2559205426
 date: 2021-10-18 17:09:16
 ---
