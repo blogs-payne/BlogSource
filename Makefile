@@ -24,8 +24,8 @@ upload:
 	-#git push -u gitee
 
 clean:
-	@find . -type f -name *.log -delete
-	@npm run clean
+	-find . -type f -name *.log -delete
+	@hexo clean
 
 help:
 	@echo "usage: make [options]"
