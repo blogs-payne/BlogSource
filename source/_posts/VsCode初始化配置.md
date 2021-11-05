@@ -58,6 +58,10 @@ date: 2021-11-05 20:01:44
 
 ```
 
+代码提示：
+
+settings -搜索-> prevent -> none
+
 ## 插件
 
 ### Program Language
