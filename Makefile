@@ -5,7 +5,7 @@ rely:
 	yarn install --update-checksums
 
 
-build:
+build: clean
 	hexo clean && find . -type f -name *.log -delete
 	export NODE_OPTIONS="--max-old-space-size=8192"
 
@@ -29,8 +29,8 @@ clean:
 
 help:
 	@echo "usage: make [options]"
-	@echo "make: Release"
-	@echo "make rely: Assembling an environment based on yarn"
+	@echo "make Release"
+	@echo "make Dependencies: Assembling an environment based on yarn"
 	@echo "make build: Build It"
 	@echo "make test: Start debugging"
 	@echo "make deploy: Deployment that based on ssh"
