@@ -10,6 +10,11 @@ build: clean
 	export NODE_OPTIONS="--max-old-space-size=8192"
 
 
+clean:
+	-find . -type f -name *.log -delete
+	@hexo clean
+
+
 test:
 	hexo clean && find . -type f -name *.log -delete
 	hexo generate
@@ -21,11 +26,8 @@ upload:
 	@git add -A
 	@-git commit -am "upload or change some file"
 	@-git push origin master:master
-	-#git push -u gitee
+	-#git push -u gitee\
 
-clean:
-	-find . -type f -name *.log -delete
-	@hexo clean
 
 help:
 	@echo "usage: make [options]"
