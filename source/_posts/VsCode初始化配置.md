@@ -13,8 +13,7 @@ date: 2021-11-05 20:01:44
 
 ```json lines
 {
-  "workbench.colorTheme": "Monokai Dimmed",
-  "files.autoSave": "onFocusChange",
+  "workbench.colorTheme": "Solarized Light",
   "editor.formatOnSave": true,
   "editor.fontSize": 14,
   "editor.suggest.snippetsPreventQuickSuggestions": false,
@@ -34,15 +33,13 @@ date: 2021-11-05 20:01:44
   "editor.linkedEditing": true,
   "explorer.confirmDelete": false,
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
     "**/target": true,
-    "**/logs": true
-  },
-  "files.exclude": {
+    "**/logs": true,
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
@@ -51,11 +48,30 @@ date: 2021-11-05 20:01:44
     "**/*.js": {
       "when": "$(basename).ts"
     },
-    "**/node_modules": true,
     "**/.idea": true
+  },
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/target": true,
+    "**/logs": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "**/.idea": true
+  },
+  "vs-kubernetes": {
+    "vscode-kubernetes.minikube-path.mac": "/Users/wu.zhipeng/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go-nightly"
   }
 }
-
 ```
 
 代码提示：
