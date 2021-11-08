@@ -73,7 +73,6 @@ python-extension-pack
 Jupyter
 
 
-
 #### PHP
 
 php-extension-pack
@@ -86,6 +85,9 @@ Go Nightly
 
 > command + shift + p	`>go:install/Update Tools`
 
+#### vue
+
+vue pack
 
 
 #### Cloud 
@@ -102,12 +104,11 @@ Cloud code
 
 #### Reception
 
-View In Browser
+open in browser
 
-Auto rename tag
+Braun Extension Pack
 
-Auto close tag
-
+auto complete Tag
 
 
 #### Other
@@ -116,7 +117,7 @@ vscode-icons
 
 YAML
 
-Path Intellisense
+vsc-essentials
 
 stylelint
 
@@ -133,7 +134,7 @@ Bracket Pair Colorizer
 gitlens	`git config pull.rebase false`
 
 
-
+code studio pack
 
 
 ## 常用快捷键
