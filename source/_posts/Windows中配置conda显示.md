@@ -2,11 +2,12 @@
 title: Windows中配置conda显示
 author: Payne
 tags:
-  - t1
+  - powershell
+  - conda
 categories:
-  - - c1
-    - c2
-    - c3
+  - - powershell
+    - windows
+    - conda
 date: 2021-11-06 04:41:32
 ---
 
