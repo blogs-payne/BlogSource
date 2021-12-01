@@ -31,7 +31,6 @@ upload:
 
 help:
 	@echo "usage: make [options]"
-	@echo "make Release"
 	@echo "make Dependencies: Assembling an environment based on yarn"
 	@echo "make build: Build It"
 	@echo "make test: Start debugging"
