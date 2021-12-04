@@ -19,9 +19,13 @@ date: 2021-09-03 23:46:49
 ### 安装NFS
 
 ```bash
+# 下载nfs相关软件（全成员）
 yum install -y nfs-common nfs-utils rpcbind
+# 创建NFS共享文件夹，以及授权（需要root）
 mkdir /nfs && chmod 766 /nfs && chown nfsnobody /nfs/
+# 声明共享文件权限（NFS主服务器）
 echo "/nfs *(rw,no_root_squash,no_all_squash,sync)" >> /etc/exports
+# 
 exportfs -r
 systemctl restart rpcbind && systemctl restart nfs && systemctl status rpcbind && systemctl status nfs
 ```
@@ -30,9 +34,11 @@ systemctl restart rpcbind && systemctl restart nfs && systemctl status rpcbind &
 
 > IP: 主机地址
 
-```dart
+```bash
+# 查看共享目录
 showmount -e IP
 mkdir /test
+# 将本机目录（test）挂载至目标目录（nfs）
 mount -t nfs IP:/nfs /test
 cd /test
 echo "asdsadsa" >> a.txt
