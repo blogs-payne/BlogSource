@@ -10,8 +10,6 @@ categories:
 date: 2021-12-06 14:51:53
 ---
 
-
-
 ## uiautomator2 简介
 
 UiAutomator是Google提供的用来做安卓自动化测试的一个Java库，基于Accessibility服务。功能很强，可以对第三方App进行测试，获取屏幕上任意一个APP的任意一个控件属性，并对其进行任意操作。而uiautomator2便是UiAutomator的Python实现
