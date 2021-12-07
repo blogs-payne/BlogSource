@@ -103,11 +103,12 @@ sudo tar -C /usr/local/ -xzvf go1.15.4.linux-arm64.tar.gz
 
 # 环境变量配置
 # sudo vim /etc/profile
- export GOROOT=/usr/local/go
- export GOPATH=/home/bruce/go
- export GOBIN=$GOPATH/bin
- export PATH=$PATH:$GOROOT/bin
- export PATH=$PATH:$GOPATH/bin
+sudo cat >> /etc/profile << EOF
+export GOROOT=/usr/local/go
+export GOPATH=/home/bruce/go
+export GOBIN=\$GOPATH/bin
+export PATH=\$PATH:$GOROOT/bin
+EOF
 # 环境变量生效
 source /etc/profile
 ```
@@ -237,13 +238,13 @@ GOOS=linux GOARCH=amd64 go build /Users/stringle-004/go/main.go
 
 ## 第一个Golang程序
 
-```sh
-package main			# 可执行文件必须为package main开头
+```go
+package main			//  可执行文件必须为package main开头
 
-import "fmt"			# 导入“fmt”包，用于打印（fmt.Print（打印）、fmt.Println（换行打印）、fmt.Printf(格式化打印)等）
+import "fmt"			// 导入“fmt”包，用于打印（fmt.Print（打印）、fmt.Println（换行打印）、fmt.Printf(格式化打印)等）
 
-func main() {			# 主函数main
-	fmt.Print("你好，我叫payne")		# 输入
+func main() {			// 主函数main
+	fmt.Print("你好，我叫payne")		// 输入
 }
 # 你好，我叫payne
 ```
