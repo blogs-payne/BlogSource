@@ -217,7 +217,7 @@ Chrome商店 -> 搜索 Tampermonkey -> Tampermonkey 安装即可
 
 <div>
   <center>
-  	<font color=red size=5px style="font-family: cursive">Reference</br></font>
+  	<font color=red size=5px style="font-family: cursive">Reference<br></font>
 	</center>
 </div>
 
