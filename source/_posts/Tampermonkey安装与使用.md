@@ -1,18 +1,16 @@
 ---
-title: Tampermonkey安装与使用
-author: Payne
-tags:
-  - Tampermonkey
-categories:
-  - - Tampermonkey
-abbrlink: 7658
-date: 2021-06-03 18:52:47
+title: Tampermonkey安装与使用 author: Payne tags:
+
+- Tampermonkey categories:
+-
+    - Tampermonkey abbrlink: 7658 date: 2021-06-03 18:52:47
+
 ---
-  
 
 ## Tampermonkey
 
-**Tampermonkey** 是一款免费的浏览器扩展和最为流行的用户脚本管理器，虽然有些受支持的浏览器拥有原生的用户脚本支持，但 Tampermonkey 将在您的用户脚本管理方面提供更多的便利。 它提供了诸如便捷脚本安装、自动更新检查、标签中的脚本运行状况速览、内置的编辑器等众多功能， 同时Tampermonkey还有可能正常运行原本并不兼容的脚本。
+**Tampermonkey** 是一款免费的浏览器扩展和最为流行的用户脚本管理器，虽然有些受支持的浏览器拥有原生的用户脚本支持，但 Tampermonkey 将在您的用户脚本管理方面提供更多的便利。
+它提供了诸如便捷脚本安装、自动更新检查、标签中的脚本运行状况速览、内置的编辑器等众多功能， 同时Tampermonkey还有可能正常运行原本并不兼容的脚本。
 
 <!--more-->
 
@@ -37,8 +35,6 @@ Chrome商店 -> 搜索 Tampermonkey -> Tampermonkey 安装即可
 ![](https://tva1.sinaimg.cn/large/008i3skNgy1gr4ayxb6y3j31fo0mgwgp.jpg)
 
 打开右上角的 **开发者模式**，将已经下载的文件拖拽至上图所示的界面。即可完成安装。
-
-
 
 ### 使用第三方脚本
 
@@ -68,13 +64,11 @@ Chrome商店 -> 搜索 Tampermonkey -> Tampermonkey 安装即可
 
 @description 脚本描述（类似于编程中的注释，阐述该脚本的作用等）
 
-
 ##### 命名空间
 
 @namespace 脚本的命名空间(通常使用默认http://tampermonkey.net/，也可指定)
 
 @homepage, @homepageURL, @website and @source 在选项页面使用的作者主页，用于从脚本名称链接到给定页面。如果@namespace 标记以“http://”开头，则其内容也将用于此目的。
-
 
 ##### 版本控制
 
@@ -85,8 +79,6 @@ Chrome商店 -> 搜索 Tampermonkey -> Tampermonkey 安装即可
 @downloadURL：URL定义检测到更新时下载脚本的 URL。如果使用值 none，则不会进行更新检查。
 
 @supportURL 定义用户可以报告问题并获得个人支持的 URL。
-
-
 
 ##### 访问限制
 
@@ -112,7 +104,7 @@ Chrome商店 -> 搜索 Tampermonkey -> Tampermonkey 安装即可
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
     // Your code here...
     alert('HEllo')
@@ -131,9 +123,11 @@ Chrome商店 -> 搜索 Tampermonkey -> Tampermonkey 安装即可
 
 @match 与 @include 非常相似，然而@match更安全。它对 * 字符的含义设置了更严格的规则。
 
-@match 与 @include他们都是匹配基于一组由匹配模式定义的 URL。匹配模式本质上是以允许的方案开头的 URL。匹配模式本质上是以允许的方案（http、https、file 或 ftp，并且可以包含“*”字符）开头的 URL。特殊模式匹配以允许的方案开头的任何 URL。
+@match 与 @include他们都是匹配基于一组由匹配模式定义的 URL。匹配模式本质上是以允许的方案开头的 URL。匹配模式本质上是以允许的方案（http、https、file 或 ftp，并且可以包含“*”字符）开头的
+URL。特殊模式匹配以允许的方案开头的任何 URL。
 
-'*' 的含义取决于它是在方案、主机还是路径部分。如果方案是 *，则它匹配 http 或 https，而不匹配 file、ftp 或 urn。如果主机只是 *，那么它匹配任何主机。如果主机是 *._hostname_，则它匹配指定的主机或其任何子域。在路径部分，每个 '*' 匹配 0 个或多个字符。
+'*' 的含义取决于它是在方案、主机还是路径部分。如果方案是 *，则它匹配 http 或 https，而不匹配 file、ftp 或 urn。如果主机只是 *，那么它匹配任何主机。如果主机是 *._hostname_
+，则它匹配指定的主机或其任何子域。在路径部分，每个 '*' 匹配 0 个或多个字符。
 
 > @match 与 @include区别请参考
 >
@@ -177,13 +171,12 @@ Chrome商店 -> 搜索 Tampermonkey -> Tampermonkey 安装即可
 
 @run-at
 
-定义脚本被注入的时刻，与其他脚本处理程序相反， **@run-at** 定义了脚本想要运行的第一个可能时刻。这意味着可能会发生，使用 **@require** 标签的脚本可能会在文档加载后执行，导致获取所需脚本需要很长时间。无论如何，在给定注入时刻之后发生的所有 DOMNodeInserted 和 DOMContentLoaded 事件都被缓存并在注入时传递给脚本。
+定义脚本被注入的时刻，与其他脚本处理程序相反， **@run-at** 定义了脚本想要运行的第一个可能时刻。这意味着可能会发生，使用 **@require**
+标签的脚本可能会在文档加载后执行，导致获取所需脚本需要很长时间。无论如何，在给定注入时刻之后发生的所有 DOMNodeInserted 和 DOMContentLoaded 事件都被缓存并在注入时传递给脚本。
 
-@run-at document-start 脚本将尽快注入。
-@run-at document-body 如果 body 元素存在，脚本将被注入
-@run-at document-end 该脚本将在调度 DOMContentLoaded 事件时或之后注入。
-@run-at document-idle 脚本将在 DOMContentLoaded 事件被调度后注入。如果没有给出@run-at 标签，这是默认值。
-@run-at context-menu 如果在浏览器上下文菜单中单击该脚本（仅限基于 Chrome 的桌面浏览器），则会注入该脚本。
+@run-at document-start 脚本将尽快注入。 @run-at document-body 如果 body 元素存在，脚本将被注入 @run-at document-end 该脚本将在调度 DOMContentLoaded
+事件时或之后注入。 @run-at document-idle 脚本将在 DOMContentLoaded 事件被调度后注入。如果没有给出@run-at 标签，这是默认值。 @run-at context-menu
+如果在浏览器上下文菜单中单击该脚本（仅限基于 Chrome 的桌面浏览器），则会注入该脚本。
 
 > 建议使用@run-at document-start
 
@@ -215,10 +208,10 @@ Chrome商店 -> 搜索 Tampermonkey -> Tampermonkey 安装即可
 
 此标记使脚本在主页上运行，但不在 iframe 上运行。
 
-<div>
-  <center>
-  	<font color=red size=5px style="font-family: cursive">Reference<br></font>
-	</center>
+<div align="center">
+  <font color=red size=5px style="font-family: cursive">
+      Reference
+  </font>
 </div>
 
 - Tampermonkey官方地址：https://www.tampermonkey.net/
