@@ -2,11 +2,11 @@
 title: uiautomator2使用笔记
 author: Payne
 tags:
-  - t1
+  - uiautomator2
 categories:
-  - - c1
-    - c2
-    - c3
+  - - uiautomator2
+    - crawler
+    - mobile phone 
 date: 2021-12-06 14:51:53
 ---
 
