@@ -187,7 +187,13 @@ URL。特殊模式匹配以允许的方案开头的任何 URL。
 @grant 用于将 GM_* 函数、unsafeWindow 对象和一些强大的窗口函数列入白名单。如果没有给出@grant 标签，TM 猜测脚本需要。
 
 ```
-// @grant GM_setValue// @grant GM_getValue// @grant GM_setClipboard// @grant unsafeWindow// @grant window.close// @grant window.focus// @grant window.onurlchange
+// @grant GM_setValue
+// @grant GM_getValue
+// @grant GM_setClipboard
+// @grant unsafeWindow
+// @grant window.close
+// @grant window.focus
+// @grant window.onurlchange
 ```
 
 由于关闭和聚焦选项卡是一项强大的功能，因此也需要将其添加到 @grant 语句中。
@@ -195,7 +201,11 @@ URL。特殊模式匹配以允许的方案开头的任何 URL。
 如果脚本在单页应用程序上运行，那么它可以使用 window.onurlchange 来监听 URL 更改：
 
 ```
-// ==UserScript==...// @grant window.onurlchange// ==/UserScript==if (window.onurlchange === null) {  // feature is supported  window.addEventListener('urlchange', (info) => ...);}
+// ==UserScript==...
+// @grant window.onurlchange
+// ==/UserScript==if (window.onurlchange === null) {  
+// feature is supported  window.addEventListener('urlchange', (info) => ...);
+}
 ```
 
 如果@grant 后跟“none”，则沙箱将被禁用，脚本将直接在页面上下文中运行。在此模式下，没有 GM_* 功能，但 GM_info 属性将可用。
