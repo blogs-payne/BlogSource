@@ -7,6 +7,7 @@ categories:
   - - pymysql
     - python
     - iter
+abbrlink: 1032104040
 date: 2021-12-10 19:25:19
 ---
 

@@ -6,7 +6,8 @@ tags:
 categories:
   - - uiautomator2
     - crawler
-    - mobile phone 
+    - mobile phone
+abbrlink: 1235432439
 date: 2021-12-06 14:51:53
 ---
 

@@ -6,6 +6,7 @@ tags:
 categories:
   - - vim
     - Linux
+abbrlink: 1813580861
 date: 2021-12-07 16:49:09
 ---
 
