@@ -4,29 +4,23 @@ all: upload clean
 rely:
 	yarn install --update-checksums
 
-
-build: clean
-	hexo clean && find . -type f -name *.log -delete
-	export NODE_OPTIONS="--max-old-space-size=8192"
-
-
 clean:
-	-find . -type f -name *.log -delete
+	@find . -type f -name *.log -delete
 	@hexo clean
 
+build: clean
+	export NODE_OPTIONS="--max-old-space-size=32768"
+	npm run build
 
-test:
-	hexo clean && find . -type f -name *.log -delete
+test: clean build
 	hexo generate
 	hexo server -p 4321 --debug
 
-
-upload:
+upload: clean
 	@git pull
-	git add -A
+	@git add -A
 	@-git commit -am "upload or change some file"
 	@-git push origin master:master
-	-#git push -u gitee
 
 
 help:
