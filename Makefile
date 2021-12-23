@@ -1,19 +1,18 @@
 .PHONY: build test clean
 
 rely:
-	yarn install --update-checksums
+	@yarn install
+	@yarn install --update-checksums
 
 clean:
 	@find . -type f -name *.log -delete
-	@hexo clean
+	@npm run clean
 
 build: clean
-	export NODE_OPTIONS="--max-old-space-size=32768"
-	npm run build
+	@npm run build
 
-test: clean build
-	hexo generate
-	hexo server -p 4321 --debug
+test: build
+	@npm run server -p 4321 --debug
 
 deploy: clean
 	@git pull
