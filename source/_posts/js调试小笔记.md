@@ -118,7 +118,7 @@ XHR/fetch Breakpints：请求断点（拦截），当发生符合要求的将触
 
 类的方法里面 this = 类自己
 
-
+## referer
 
 https://blog.csdn.net/xc_zhou/article/details/106269239
 

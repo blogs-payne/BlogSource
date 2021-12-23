@@ -1,4 +1,3 @@
-all: upload clean
 .PHONY: build test clean
 
 rely:
@@ -16,7 +15,7 @@ test: clean build
 	hexo generate
 	hexo server -p 4321 --debug
 
-upload: clean
+deploy: clean
 	@git pull
 	@git add -A
 	@-git commit -am "upload or change some file"
