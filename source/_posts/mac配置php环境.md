@@ -1,24 +1,21 @@
 ---
-title: mac(m1)配置php xdebug
+title: mac配置php环境
 author: Payne
 tags:
-  - xdebug
   - php
 categories:
-  - - xdebug
-    - php
-abbrlink: 4294103192
-date: 2021-12-01 17:53:58
+  - - php
+    - xdebug
+    - homebrew
+date: 2021-12-29 13:48:44
 ---
 
-```shell
+```bash
 # 使用 `homebrew` 安装 php@7.4
 brew install php@7.4
 # 下载debug
 pecl install xdebug
-```
-
-```bash
+# set xdebug ini
 cat >> /opt/homebrew/etc/php/7.4/conf.d/ext-xdebug.ini << EOF
 zend_extension = "/opt/homebrew/Cellar/php@7.4/7.4.27/pecl/20190902/xdebug.so"
 xdebug.mode = debug
