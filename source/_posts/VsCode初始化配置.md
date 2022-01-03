@@ -2,40 +2,22 @@
 title: VsCode初始化配置
 author: Payne
 tags:
-  - Mac
+  - Visual Studio Code
 categories:
-  - - Mac
-    - Visual Studio Code
+  - - Visual Studio Code
 abbrlink: 2104691580
 date: 2021-11-05 20:01:44
 ---
 
 ## 配置
 
-```json lines
-{
-  "workbench.colorTheme": "Solarized Light",
+```json
+ "workbench.colorTheme": "Solarized Light",
+  "files.autoSave": "afterDelay",
   "editor.formatOnSave": true,
   "editor.fontSize": 14,
-  "editor.suggest.snippetsPreventQuickSuggestions": false,
-  "workbench.iconTheme": "vscode-icons",
-  "redhat.telemetry.enabled": true,
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "terminal.integrated.inheritEnv": false,
-  "git.enableSmartCommit": true,
-  "git.confirmSync": false,
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.linkedEditing": true,
-  "explorer.confirmDelete": false,
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
+  "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
@@ -66,16 +48,9 @@ date: 2021-11-05 20:01:44
     },
     "**/.idea": true
   },
-  "vs-kubernetes": {
-    "vscode-kubernetes.minikube-path.mac": "/Users/wu.zhipeng/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
-  },
-  "[go]": {
-    "editor.defaultFormatter": "golang.go-nightly"
-  }
-}
 ```
 
-代码提示：
+### 代码提示配置
 
 settings -搜索-> prevent -> none
 
@@ -85,26 +60,18 @@ settings -搜索-> prevent -> none
 
 #### Python
 
-python-extension-pack
-
-Jupyter
+| Plug                       | Desc |
+| -------------------------- | ---- |
+| Python Docstring Generator |      |
+| Python                     |      |
+| Python Environment Manager |      |
+| Visual Studio IntelliCode  |      |
+| Python Indent              |      |
 
 
 #### PHP
 
 php-extension-pack
-
-
-
-#### Go
-
-Go Nightly 
-
-> command + shift + p	`>go:install/Update Tools`
-
-#### vue
-
-vue pack
 
 
 #### Cloud 
@@ -117,15 +84,17 @@ Bridge to Kubernetes
 
 Cloud code
 
-
-
 #### Reception
+
+VS Code JavaScript (ES6) snippets
 
 open in browser
 
-Braun Extension Pack
-
 auto complete Tag
+
+auto rename Tag
+
+auto close Tag
 
 
 #### Other
@@ -136,39 +105,58 @@ YAML
 
 vsc-essentials
 
-stylelint
-
 Import Cost
 
-Prettier - Code formatter
-
-beautify
-
-Better Comments
-
-Bracket Pair Colorizer
-
-gitlens	`git config pull.rebase false`
+gitlens:	`git config pull.rebase false`
 
 
 code studio pack
 
-
 ## 常用快捷键
 
-> Mac
+### Window
 
-|                                                              |                                     |
-| ------------------------------------------------------------ | ----------------------------------- |
-| `ctrl + -`：代码返回上一级                                   | `ctrl + shift + -`： 代码前进下一级 |
-| `command + k + 0`:	收缩所有代码(0是代码折叠级别，同理可以换用1，2，3等) | `command + k + j` 取消收缩所有代码  |
-|                                                              |                                     |
+`Alt + →` ：代码前进下一级
 
-`comand + k + s`：快捷键文档
+`Alt + ←` ：代码返回上一级
 
-`opt + shift + f` ：代码格式化
+---
 
-`command + shift + P` 显示所有命令
+`Ctrl + K + 0`:	收缩所有代码(0是代码折叠级别，同理可以换用1，2，3等)
 
-`command + p` 打开最近文件
+`Ctrl + K + J`:	取消收缩所有代码
+
+---
+
+`Ctrl + K + S`：快捷键文档
+
+`Alt + Shift + F` ：代码格式化
+
+`Ctrl + Shift + P`： 显示所有命令
+
+`Ctrl + P`： 显示所有命令
+
+
+
+### Mac
+
+- `Ctrl + -`：代码返回上一级
+
+- `Ctrl + Shift + -`： 代码前进下一级
+
+---
+
+- `Command + K + 0`:	收缩所有代码(0是代码折叠级别，同理可以换用1，2，3等)
+
+- `Command + K + J` 取消收缩所有代码
+
+---
+
+- `Command + K + S`：快捷键文档
+
+- `Opt + Shift + F` ：代码格式化
+
+- `Command + Shift + P`： 显示所有命令
+
+- `Command + p` ：打开最近文件
 
