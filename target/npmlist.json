@@ -1,0 +1,75 @@
+{
+  "version": "0.0.0",
+  "name": "hexo-site",
+  "dependencies": {
+    "cross-env": {
+      "version": "7.0.3"
+    },
+    "hexo-abbrlink": {
+      "version": "2.2.1"
+    },
+    "hexo-admin": {
+      "version": "2.3.0"
+    },
+    "hexo-deployer-git": {
+      "version": "3.0.0"
+    },
+    "hexo-generator-archive": {
+      "version": "1.0.0"
+    },
+    "hexo-generator-author": {
+      "version": "0.0.5"
+    },
+    "hexo-generator-baidu-sitemap": {
+      "version": "0.1.9"
+    },
+    "hexo-generator-category": {
+      "version": "1.0.0"
+    },
+    "hexo-generator-feed": {
+      "version": "2.2.0"
+    },
+    "hexo-generator-index": {
+      "version": "2.0.0"
+    },
+    "hexo-generator-searchdb": {
+      "version": "1.4.0"
+    },
+    "hexo-generator-sitemap": {
+      "version": "2.2.0"
+    },
+    "hexo-generator-tag": {
+      "version": "1.0.0"
+    },
+    "hexo-related-popular-posts": {
+      "version": "4.0.0"
+    },
+    "hexo-renderer-ejs": {
+      "version": "2.0.0"
+    },
+    "hexo-renderer-kramed": {
+      "version": "0.1.4"
+    },
+    "hexo-renderer-stylus": {
+      "version": "2.0.1"
+    },
+    "hexo-server": {
+      "version": "2.0.0"
+    },
+    "hexo-symbols-count-time": {
+      "version": "0.7.1"
+    },
+    "hexo": {
+      "version": "4.2.1"
+    },
+    "highlight.js": {
+      "version": "11.3.1"
+    },
+    "live2d-widget-model-wanko": {
+      "version": "1.0.5"
+    },
+    "yarn": {
+      "version": "1.22.17"
+    }
+  }
+}
