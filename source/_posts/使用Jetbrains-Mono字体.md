@@ -7,6 +7,7 @@ categories:
   - - Jetbrains Mono
     - Jetbrains
     - Mono
+abbrlink: 515113131
 date: 2021-12-27 14:50:19
 ---
 

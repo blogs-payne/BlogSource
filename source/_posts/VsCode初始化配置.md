@@ -12,7 +12,7 @@ date: 2021-11-05 20:01:44
 ## 配置
 
 ```json
- "workbench.colorTheme": "Solarized Light",
+"workbench.colorTheme": "Solarized Light",
 "files.autoSave": "afterDelay",
 "editor.formatOnSave": true,
 "editor.fontSize": 14,

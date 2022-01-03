@@ -28,5 +28,3 @@ help:
 	@echo "make deploy: Deployment that based on ssh"
 	@echo "make upload:  Synchronization it"
 	@echo "make clean:  clean it all log and built file"
-
-
