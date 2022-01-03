@@ -1,6 +1,6 @@
 ---
-title: VsCode初始化配置
-author: Payne
+title: VsCode初始化配置 
+author: Payne 
 tags:
   - Visual Studio Code
 categories:
@@ -13,41 +13,41 @@ date: 2021-11-05 20:01:44
 
 ```json
  "workbench.colorTheme": "Solarized Light",
-  "files.autoSave": "afterDelay",
-  "editor.formatOnSave": true,
-  "editor.fontSize": 14,
-  "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontLigatures": true,
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/bower_components": true,
-    "**/target": true,
-    "**/logs": true,
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/*.js": {
-      "when": "$(basename).ts"
-    },
-    "**/.idea": true
-  },
-  "files.exclude": {
-    "**/node_modules": true,
-    "**/bower_components": true,
-    "**/target": true,
-    "**/logs": true,
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/*.js": {
-      "when": "$(basename).ts"
-    },
-    "**/.idea": true
-  },
+"files.autoSave": "afterDelay",
+"editor.formatOnSave": true,
+"editor.fontSize": 14,
+"editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
+"editor.fontLigatures": true,
+"search.exclude": {
+"**/node_modules": true,
+"**/bower_components": true,
+"**/target": true,
+"**/logs": true,
+"**/.git": true,
+"**/.svn": true,
+"**/.hg": true,
+"**/CVS": true,
+"**/.DS_Store": true,
+"**/*.js": {
+"when": "$(basename).ts"
+},
+"**/.idea": true
+},
+"files.exclude": {
+"**/node_modules": true,
+"**/bower_components": true,
+"**/target": true,
+"**/logs": true,
+"**/.git": true,
+"**/.svn": true,
+"**/.hg": true,
+"**/CVS": true,
+"**/.DS_Store": true,
+"**/*.js": {
+"when": "$(basename).ts"
+},
+"**/.idea": true
+},
 ```
 
 ### 代码提示配置
@@ -60,56 +60,34 @@ settings -搜索-> prevent -> none
 
 #### Python
 
-| Plug                       | Desc |
-| -------------------------- | ---- |
-| Python Docstring Generator |      |
-| Python                     |      |
-| Python Environment Manager |      |
-| Visual Studio IntelliCode  |      |
-| Python Indent              |      |
-
-
+- Python Docstring Generator
+- Python
+- Python Environment Manager
+- Visual Studio IntelliCode
+- Python Indent
 
 #### PHP
 
-php-extension-pack
+- php-extension-pack
 
+#### Cloud
 
-#### Cloud 
-
-Docker
-
-Kubernetes
-
-Bridge to Kubernetes
-
-Cloud code
+- DevOps Cloud Extension pack
 
 #### Reception
 
-VS Code JavaScript (ES6) snippets
-
-open in browser
-
-auto complete Tag
-
-auto rename Tag
-
-auto close Tag
-
+- VS Code JavaScript (ES6) snippets
+- open in browser
+- auto complete Tag
+- auto rename Tag
+- auto close Tag
+- Import Cost
 
 #### Other
 
-vscode-icons
-
-YAML
-
-vsc-essentials
-
-Import Cost
-
-gitlens:	`git config pull.rebase false`
-
+- vscode-icons
+- vsc-essentials
+- gitlens:    `git config pull.rebase false`
 
 code studio pack
 
@@ -123,9 +101,9 @@ code studio pack
 
 ---
 
-`Ctrl + K + 0`:	收缩所有代码(0是代码折叠级别，同理可以换用1，2，3等)
+`Ctrl + K + 0`:    收缩所有代码(0是代码折叠级别，同理可以换用1，2，3等)
 
-`Ctrl + K + J`:	取消收缩所有代码
+`Ctrl + K + J`:    取消收缩所有代码
 
 ---
 
@@ -137,8 +115,6 @@ code studio pack
 
 `Ctrl + P`： 显示所有命令
 
-
-
 ### Mac
 
 - `Ctrl + -`：代码返回上一级
@@ -147,7 +123,7 @@ code studio pack
 
 ---
 
-- `Command + K + 0`:	收缩所有代码(0是代码折叠级别，同理可以换用1，2，3等)
+- `Command + K + 0`:    收缩所有代码(0是代码折叠级别，同理可以换用1，2，3等)
 
 - `Command + K + J` 取消收缩所有代码
 
