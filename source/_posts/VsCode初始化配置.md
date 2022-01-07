@@ -11,43 +11,45 @@ date: 2021-11-05 20:01:44
 
 ## 配置
 
-```json
-"workbench.colorTheme": "Solarized Light",
-"files.autoSave": "afterDelay",
-"editor.formatOnSave": true,
-"editor.fontSize": 14,
-"editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
-"editor.fontLigatures": true,
-"search.exclude": {
-"**/node_modules": true,
-"**/bower_components": true,
-"**/target": true,
-"**/logs": true,
-"**/.git": true,
-"**/.svn": true,
-"**/.hg": true,
-"**/CVS": true,
-"**/.DS_Store": true,
-"**/*.js": {
-"when": "$(basename).ts"
-},
-"**/.idea": true
-},
-"files.exclude": {
-"**/node_modules": true,
-"**/bower_components": true,
-"**/target": true,
-"**/logs": true,
-"**/.git": true,
-"**/.svn": true,
-"**/.hg": true,
-"**/CVS": true,
-"**/.DS_Store": true,
-"**/*.js": {
-"when": "$(basename).ts"
-},
-"**/.idea": true
-},
+```json lines
+{
+  "workbench.colorTheme": "Solarized Light",
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "editor.fontSize": 14,
+  "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/target": true,
+    "**/logs": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "**/.idea": true
+  },
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/target": true,
+    "**/logs": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "**/.idea": true
+  },
+}
 ```
 
 ### 代码提示配置
