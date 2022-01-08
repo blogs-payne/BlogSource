@@ -25,11 +25,12 @@ import pprint
 import pymysql as pms
 from pymysql import cursors
 
-client_config = dict(host="localhost", user="user", passwd="passwd", db="db", charset="utf8mb4", cursorclass=pms.cursors.SSDictCursor)
 client = pms.connect(**client_config)
 cursor = client.cursor()
+
+step = 1000
 for pg in range(1000):
-    cursor.execute(f"select * from table limit {pg}, 10000;")
+    cursor.execute(f"select * from xiaohongshu_comment_note_2 limit {pg * step}, {step};")
     for _ in cursor.fetchall_unbuffered():
         pprint.pprint(_)
 ```

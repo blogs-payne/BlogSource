@@ -11,9 +11,14 @@ date: 2021-09-02 18:08:44
 
 ## 引子
 
-​		在构建、部署、测试等情景中下不知你也是否遇到过这么几个问题，构建慢、依赖安装慢、重复性构建。以至于每一次采用docker来构建时，都需要等上那么几分钟。有时候是非常的浪费时间，那么是否有方法进行一次分离构建呢。当然正如docker口号所说的那般"**Build once，Run anywher**"，
+在构建、部署、测试等情景中下不知你也是否遇到过这么几个问题，构建慢、依赖安装慢、重复性构建。
+以至于每一次采用docker来构建时，都需要等上那么几分钟。
 
-那么该如何解决“**构建慢、依赖安装慢、重复性构建**”的问题呢，看似三个或者更多问题，其实归根结底是一个问题——分层构建
+有时候是非常的浪费时间， 那么是否有方法进行一次分离构建呢。当然正如docker口号所说的那般"
+**Build once，Run anywher**"，
+
+那么该如何解决“**构建慢、依赖安装慢、重复性构建**”的问题呢，
+看似三个或者更多问题，其实归根结底是一个问题——分层构建
 
 ## 分层构建
 
@@ -63,20 +68,28 @@ CMD ["supervisord","-c", "supervisord.conf"]
 
 #### golang
 
-两层：	1.依赖构建 2.编译与项目构建
+两层： 1.依赖构建 2.编译与项目构建
 
-三层：	1. 依赖构建 2.编译构建 3. 运行文件构建
+三层： 1.依赖构建 2.编译构建 3.运行文件构建
 
 ```bash
 FROM golang:1.16 as builder
 # Setting environment variables
-ENV GOPROXY="https://goproxy.cn,direct" GO111MODULE="on" CGO_ENABLED="0" GOOS="linux" GOARCH="amd64"
-## add rely
-go mod tidy 
+ENV GOPROXY="https://goproxy.cn,direct" \
+    GO111MODULE="on" \
+    CGO_ENABLED="0" \
+    GOOS="linux" \
+    GOARCH="amd64"
+
 # Switch to workspace
 WORKDIR /go/src/github.com/gowebspider/goproxies/
+
 # Load file
 COPY . .
+
+## add rely
+go mod tidy
+ 
 # Build and place the results in /tmp/goproxies
 RUN go build -o /tmp/goproxies .
 
