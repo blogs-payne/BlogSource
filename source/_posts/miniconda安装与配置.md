@@ -11,13 +11,21 @@ date: 2022-01-10 13:29:40
 ---
 
 
-在科学计算、深度学习、机器学习等领域 Python 语言拥有举足轻重的地位，在后续验证码章节使用深度学习的方式破解各种验证码。此节搭建 Python 开发环境,相关链接如下： PyPi(第三方库)地址： https://pypi.org/
-Anconda 官方地址： https://www.anaconda.com/
-Anconda 官方文档： https://docs.conda.io/projects/conda/en/latest/userguide/install/index.html
-Anconda 下载地址： https://www.anaconda.com/products/individual#Downloads
-Anconda Installer repo: https://repo.anaconda.com/archive/
-Miniconda 下载地址：https://docs.conda.io/en/latest/miniconda.html
-Miniconda Installer repo: https://repo.anaconda.com/miniconda/
+在科学计算、深度学习、机器学习等领域 Python 语言拥有举足轻重的地位,Python 开发环境,相关链接如下： 
+- PyPi(第三方库)地址： https://pypi.org/
+
+- Anconda 官方地址： https://www.anaconda.com/
+
+- Anconda 官方文档： https://docs.conda.io/projects/conda/en/latest/userguide/install/index.html
+
+- Anconda 下载地址： https://www.anaconda.com/products/individual#Downloads
+
+- Anconda Installer repo: https://repo.anaconda.com/archive/
+
+- Miniconda 下载地址：https://docs.conda.io/en/latest/miniconda.html
+
+- Miniconda Installer repo: https://repo.anaconda.com/miniconda/
+
 安装 Python 的方式有很多种，但根据所需，Anconda 无疑是最好的选择。在这里以 Miniconda 为例，在 Windows、macOS 平台下的安装。
 
 ## 安装
