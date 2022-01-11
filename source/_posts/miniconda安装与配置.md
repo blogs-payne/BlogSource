@@ -32,9 +32,9 @@ date: 2022-01-10 13:29:40
 
 ```sh
 # Mac x86
-curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh && sh Miniconda3-latest-MacOSX-x86_64.sh 
+wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh && sh Miniconda3-latest-MacOSX-x86_64.sh 
 # Mac m1
-curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh && sh Miniconda3-latest-MacOSX-arm64.sh 
+wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh && sh Miniconda3-latest-MacOSX-arm64.sh 
 # Linux
 wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && sh Miniconda3-latest-Linux-x86_64.sh
 ```
