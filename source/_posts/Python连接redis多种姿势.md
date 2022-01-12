@@ -7,8 +7,8 @@ categories:
   - - Redis
     - Python
     - Batch
+abbrlink: 2887631422
 date: 2022-01-08 23:06:49
-
 ---
 
 示例环境
