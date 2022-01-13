@@ -11,9 +11,8 @@
     {{ partial('_macro/post.swig', {post: post, is_index: true}) }}
   {%- endfor %}
 
-
   <script>
-    document.querySelectorAll('.random').forEach(item => item.src="https://picsum.photos/id/" + Math.floor(Math.random() * Math.floor(300)) + "/200/135?blur="+ Math.floor(Math.random() * Math.floor(3)))
+        document.querySelectorAll('.random').forEach(item => item.src="https://picsum.photos/id/" + Math.floor(Math.random() * Math.floor(300)) + "/200/133")
   </script>
 
   {% include '_partials/pagination.swig' %}

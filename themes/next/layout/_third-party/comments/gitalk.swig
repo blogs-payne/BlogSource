@@ -14,7 +14,9 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       owner       : '{{ theme.gitalk.github_id }}',
       admin       : ['{{ theme.gitalk.admin_user }}'],
       id          : '{{ gitalk_md5(page.path) }}',
-      proxy       : '{{ theme.gitalk.proxy }}',
+      {%- if theme.gitalk.proxy %}
+        proxy       : '{{ theme.gitalk.proxy }}',
+      {%- endif %}
       {%- if theme.gitalk.language == '' %}
         language: window.navigator.language || window.navigator.userLanguage,
       {% else %}

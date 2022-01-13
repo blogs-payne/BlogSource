@@ -617,8 +617,8 @@ valine:
   enable: true
   appid: v5yI1sEaxpTl6gCkO0dApNOH-gzGzoHsz # Your leancloud application appid
   appkey: ugl27izkUCvh7RIyvo7kcFCv # Your leancloud application appkey
-  notify: false # Mail notifier
-  verify: false # Verification code
+  notify: true # Mail notifier
+  verify: true # Verification code
   placeholder: Just go go # Comment box placeholder
   avatar: mm # Gravatar style
   guest_info: nick,mail,link # Custom comment header
@@ -648,7 +648,7 @@ gitalk:
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
   language: zh-CN
-  proxy: https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token
+#  proxy: https://shielded-brushlands-08810.herokuapp.com/https://github.com/login/oauth/access_token
 
 # ---------------------------------------------------------------
 # Post Widgets & Content Sharing Services
