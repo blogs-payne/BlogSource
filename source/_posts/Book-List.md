@@ -11,13 +11,12 @@ date: 2021-01-24 13:12:10
 
 ## 图书清单
 
-### 系统
+### 操作系统
 
 操作系统导论
 
 现代操作系统
 
-<!--more-->
 
 深入理解计算机操作系统
 
@@ -35,8 +34,6 @@ date: 2021-01-24 13:12:10
 计算机是怎么跑起来的
 
 > 较为适合入门,鸟瞰全茂
-
-性能之巅：洞悉系统、企业与云计算洞悉系统、企业与云计算
 
 ###  计算机网络
 
@@ -496,6 +493,8 @@ Patten Recongnition and Machine Learning
 
 #### Docker
 
+[Docker从入门到实践](https://yeasy.gitbook.io/docker_practice/)
+
 深入浅出docker
 
 > 深入浅出的介绍了docker相关知识，清晰详细的操作步骤结合大量实际代码
@@ -526,7 +525,19 @@ Kubernetes进阶实战
 
 Kubernetes网络权威指南
 
+Kubernetes生产化与实践之路
 
+深入剖析Kubernetes
+
+Kubernetes源码剖析
+
+Kubernetes in Action
+
+云原生服务网格istio
+
+性能之巅：洞悉系统、企业与云计算洞悉系统、企业与云计算
+
+BPF之巅洞悉Linux系统和应用性能
 
 ### 软技能
 
