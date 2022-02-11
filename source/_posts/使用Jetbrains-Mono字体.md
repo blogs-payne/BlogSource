@@ -17,15 +17,13 @@ Jetbrains Mono 字体据说是Jetbrains 公司对于开发人员而开发的字�
 
 [Mono zh-cn](https://www.jetbrains.com/zh-cn/lp/mono/#how-to-install)
 
-
-
 ## 在Jetbrains编辑器中使用
 
 ### 设置
 
 **step 1**
 
-Preferences/Settings -> Editor -> Font，右边字体中选择 `Jetbrains Mono`, 
+Preferences/Settings -> Editor -> Font，右边字体中选择 `Jetbrains Mono`,
 
 > 我的设置
 >
@@ -43,13 +41,9 @@ Preferences/Settings -> Editor -> Color Scheme -> Color Scheme Font
 
 ![image-20211227150734888](https://tva1.sinaimg.cn/large/008i3skNgy1gxseoq1e4nj30ra0jo3zx.jpg)
 
-
-
 效果如下
 
 ![image-20211227151240648](https://tva1.sinaimg.cn/large/008i3skNgy1gxseu12227j30ol0llabw.jpg)
-
-
 
 ## 在Vscode中使用
 
@@ -73,8 +67,6 @@ Preferences/Settings -> Editor -> Color Scheme -> Color Scheme Font
   "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true
 ```
-
-
 
 显示如下所示
 

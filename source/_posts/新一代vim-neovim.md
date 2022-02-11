@@ -26,7 +26,8 @@ tar xzf nvim-macos.tar.gz
 nvim --version
 ```
 
-熟悉的所有Vim命令都可以在Neovim中使用，Neovim的配置文件格式也与Vim相同。不过，.vimrc在Neovim中不会自动加载。Neovim的配置文件遵守XDG基本目录结构，即所有的配置文件都放在`~/.config`目录中。Neovim的配置文件被保存在`~/.config/nvim`中
+熟悉的所有Vim命令都可以在Neovim中使用，Neovim的配置文件格式也与Vim相同。不过，.vimrc在Neovim中不会自动加载。Neovim的配置文件遵守XDG基本目录结构，即所有的配置文件都放在`~/.config`
+目录中。Neovim的配置文件被保存在`~/.config/nvim`中
 
 - `~/.config/nvim/init.vim`对应于`~/.vimrc`。
 
@@ -59,6 +60,7 @@ npm install -g neovim
 cpan Neovim::ext
 ```
 
-Neovim的默认选项与Vim有很大的不同。在现代的计算机世界里，文本编辑器的默认值需要对用户比较友好。默认情况下Vim的.vimrc文件并不包含任何默认设置，而Neovim默认已经设置好语法高亮、合理的缩进设置、wildmenu、高亮显示搜索结果和增量搜索（incsearch）等。可通过查看`:help nvim-defaults`了解Neovim的默认选项。
+Neovim的默认选项与Vim有很大的不同。在现代的计算机世界里，文本编辑器的默认值需要对用户比较友好。默认情况下Vim的.vimrc文件并不包含任何默认设置，而Neovim默认已经设置好语法高亮、合理的缩进设置、wildmenu、高亮显示搜索结果和增量搜索（incsearch）等。可通过查看`:help nvim-defaults`
+了解Neovim的默认选项。
 
 我的配置：https://github.com/Payne-Wu/Bracket/blob/master/SystemInitialization/Vim/vimrc

@@ -10,6 +10,7 @@ categories:
 abbrlink: 11430
 date: 2021-01-03 21:26:58
 ---
+
 ### MySQL模型初探
 
 MySQL基础结构是采用典型的C/S工作模型(即是server/client)
@@ -69,7 +70,7 @@ MySQL -h ip -P 3306 -u username -p passwd
 
 > 常用参数示例:
 >
-> `-S`:	指定socker文件
+> `-S`:    指定socker文件
 >
 > `-h`:   指定连接ip地址
 >
@@ -77,7 +78,7 @@ MySQL -h ip -P 3306 -u username -p passwd
 >
 > `-u`:  指定连接用户名
 >
-> `-p	指定连接密码
+> `-p 指定连接密码
 
 ### 发送指令
 
@@ -93,11 +94,9 @@ MySQL -h ip -P 3306 -u username -p passwd
 >
 > DQL 数据查询语言
 
-
-
 ## 服务器端(实例):
 
-实例：My sqld + 工作线程 + 预分配内存 
+实例：My sqld + 工作线程 + 预分配内存
 
 功能：管理数据(增删改查等)
 
@@ -177,10 +176,11 @@ select host,name from MySQL.user;
 
 3. 验证`用户权限`，顾名思义，这个没什么好说的
 
-4. 解析预处理，经过层层验证到了此步骤之后，说明此语句是可以被执行的。那么此时MySQLd会采用"演练"枚举列出所有的可执行方案。我们或多或少的知道，需要达到相同的效果，达成的方法有各种各样。此时MySQL会列举出所有的方案。例如，以"select host,name from MySQL.user;"这条SQL语句为例，它可达到目的的方式至少有两种，
+4. 解析预处理，经过层层验证到了此步骤之后，说明此语句是可以被执行的。那么此时MySQLd会采用"演练"枚举列出所有的可执行方案。我们或多或少的知道，需要达到相同的效果，达成的方法有各种各样。此时MySQL会列举出所有的方案。例如，以"
+   select host,name from MySQL.user;"这条SQL语句为例，它可达到目的的方式至少有两种，
 
-   - 方案1.对MySQL下的user表进行全表查询，后截断塞选出user表查询字段名(表头)为`host,name`的所有内容。
-   - 方案2.对MySQL下user表字段`host,name`进行查询，后直接输出
+    - 方案1.对MySQL下的user表进行全表查询，后截断塞选出user表查询字段名(表头)为`host,name`的所有内容。
+    - 方案2.对MySQL下user表字段`host,name`进行查询，后直接输出
 
    虽然二者执行的结果是一致的但资源消耗却并不是一致的
 

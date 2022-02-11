@@ -27,9 +27,7 @@ from pprint import pprint
 from concurrent.futures.process import ProcessPoolExecutor
 ```
 
-
-
-## Basic 
+## Basic
 
 ### Basic Client
 
@@ -54,9 +52,7 @@ rds = StrictRedis.from_url(rds_url)
 pprint(rds.info())
 ```
 
-
-
-## Connection Pool 
+## Connection Pool
 
 ### Connection Pool class
 
@@ -74,8 +70,6 @@ connection_pool_client = StrictRedis(connection_pool=connection_pool)
 pprint(connection_pool_client.info())
 ```
 
-
-
 ### Connection Pool class Base on URL
 
 ```python
@@ -85,32 +79,29 @@ connection_pool_client = StrictRedis(connection_pool=connection_pool)
 pprint(connection_pool_client.info())
 ```
 
-
-
 ## Pipeline
 
-> Batch process, Don't forget to use `pipeline.execute()` after the batch is finished 
+> Batch process, Don't forget to use `pipeline.execute()` after the batch is finished
 
 ```python
 pipeline = rds.pipeline(transaction=True)
 pipeline = connection_pool_client.pipeline(transaction=True)
 ```
 
-
-
 multiprocessing batch
 
 ```python
 def process_item():
-		# pipeline process logic
+
+
+# pipeline process logic
 
 def main():
     with ProcessPoolExecutor(max_workers=6) as p:
+
 　　　　 for _ in range(100):
-            p.submit(process_item)
+    p.submit(process_item)
 ```
-
-
 
 > tips: IO密集型用线程、协程，CPU密集型用进程
 

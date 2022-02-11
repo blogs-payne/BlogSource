@@ -8,6 +8,8 @@ categories:
 abbrlink: 17571
 date: 2020-11-21 22:39:13
 ---
+
+
 ## defer触发时机
 
 > A "defer" statement invokes a function whose execution is deferred to the moment the surrounding function returns, either because the surrounding function executed a return statement, reached the end of its function body, or because the corresponding goroutine is panicking.
@@ -15,9 +17,10 @@ date: 2020-11-21 22:39:13
 Go官方文档中对defer的执行时机做了阐述，分别是。
 
 - 包裹defer的函数返回时
-- 包裹defer的函数执行到末尾时        
+- 包裹defer的函数执行到末尾时
 - 所在的goroutine发生panic时
-- 
+-
+
 <!--more-->
 
 ## defer执行顺序
@@ -55,8 +58,8 @@ func d() {
 }
 ```
 
-- 没有defer：start  -> processing1  ->  processing2  -> end 
-- processing1、processing2 加入defer：start  -> end  -> processing2  -> processing1
+- 没有defer：start -> processing1 ->  processing2 -> end
+- processing1、processing2 加入defer：start -> end -> processing2 -> processing1
 
 ## defer使用规则
 

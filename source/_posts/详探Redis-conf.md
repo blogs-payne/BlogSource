@@ -21,14 +21,9 @@ date: 2021-01-18 01:26:08
 > redis.conf 默认路径：/opt/redis-6.0.10 路径下（如果为自定制安装，则在您设置的redis路径下）
 
 还记得我刚入行的时候，我的师傅就经常告诉我们`配置比开发更重要`，因为很多时候就是由于配置不当，而造成后期的难以预想的各种问题，
-以至于项目难以维护等等由于配置。进入一个公司首先的也是看相关项目的文档。so，如果需要对于redis有更深入的了解，与使用配置文件不可不读。
-为CURD，但不止于CURD。那么接下来我们对于`redis.conf`有个了解，话不多说，开干。
+以至于项目难以维护等等由于配置。进入一个公司首先的也是看相关项目的文档。so，如果需要对于redis有更深入的了解，与使用配置文件不可不读。 为CURD，但不止于CURD。那么接下来我们对于`redis.conf`有个了解，话不多说，开干。
 
 <!--more-->
-
-
-
-
 
 ## 前言
 
@@ -36,19 +31,19 @@ date: 2021-01-18 01:26:08
 Redis configuration file example.
 
 Note that in order to read the configuration file, Redis must be
-started with the file path as first argument:
+started with the file path as first argument :
 
 ./redis-server /path/to/redis.conf
 
-Note on units: when memory size is needed, it is possible to specify
-it in the usual form of 1k 5GB 4M and so forth:
+Note on units : when memory size is needed, it is possible to specify
+it in the usual form of 1k 5GB 4M and so forth :
 
-1k => 1000 bytes
-1kb => 1024 bytes
-1m => 1000000 bytes
-1mb => 1024*1024 bytes
-1g => 1000000000 bytes
-1gb => 1024*1024*1024 bytes
+1k = > 1000 bytes
+1kb = > 1024 bytes
+1m = > 1000000 bytes
+1mb = > 1024*1024 bytes
+1g = > 1000000000 bytes
+1gb = > 1024*1024*1024 bytes
 
 units are case insensitive so 1GB 1Gb 1gB are all the same.
 ```
@@ -83,7 +78,8 @@ include /path/to/local.conf
 include /path/to/other.conf
 ```
 
-我们知道Redis只有一个配置文件，如果多个人进行开发维护，那么就需要多个这样的配置文件，这时候多个配置文件就可以在此通过 include /path/to/local.conf 配置进来，而原本的 redis.conf 配置文件就作为一个总闸。
+我们知道Redis只有一个配置文件，如果多个人进行开发维护，那么就需要多个这样的配置文件，这时候多个配置文件就可以在此通过 include /path/to/local.conf 配置进来，而原本的 redis.conf
+配置文件就作为一个总闸。
 
 另外需要注意的时，如果将此配置写在redis.conf 文件的开头，那么后面的配置会覆盖引入文件的配置，如果想以引入文件的配置为主，那么需要将 include 配置写在 redis.conf 文件的末尾。
 
@@ -107,10 +103,10 @@ for connections from all available network interfaces on the host machine.
 It is possible to listen to just one or multiple selected interfaces using
 the "bind" configuration directive, followed by one or more IP addresses.
 # 默认情况下，如果未指定“ bind”配置指令，则Redis侦听主机上所有可用网络接口的连接。可以使用“ bind”配置指令仅侦听一个或多个所选接口，然后侦听一个或多个IP地址
-Examples:
+Examples :
 
 bind 192.168.1.100 10.0.0.1
-bind 127.0.0.1 ::1
+bind 127.0.0.1 : :1
 
 ~~~ WARNING ~~~ If the computer running Redis is directly exposed to the
 internet, binding to all the interfaces is dangerous and will expose the
@@ -123,14 +119,14 @@ IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES
 JUST COMMENT OUT THE FOLLOWING LINE.
 # 如果您确定要立即侦听所有接口，只需在后续行中注明即可。
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-bind 127.0.0.1 ::1
+bind 127.0.0.1 : :1
 
 
 
 Protected mode is a layer of security protection, in order to avoid that
 Redis instances left open on the internet are accessed and exploited.
 # 保护模式是安全保护的一层，目的是避免访问和利用Internet上打开的Redis实例。
-When protected mode is on and if:
+When protected mode is on and if :
 # 当保护模式开启时，如果
 1) The server is not binding explicitly to a set of addresses using the
 "bind" directive.
@@ -138,7 +134,7 @@ When protected mode is on and if:
 2) No password is configured.
 # 没有配置密码
 The server only accepts connections from clients connecting from the
-IPv4 and IPv6 loopback addresses 127.0.0.1 and ::1, and from Unix domain
+IPv4 and IPv6 loopback addresses 127.0.0.1 and : :1, and from Unix domain
 sockets.
 # 服务器仅接受来自客户端的连接，这些客户端从IPv4和IPv6回送地址127.0.0.1和:: 1以及Unix域套接字连接
 ```
@@ -227,7 +223,7 @@ timeout 0
 TCP keepalive.
 
 If non-zero, use SO_KEEPALIVE to send TCP ACKs to clients in absence
-of communication. This is useful for two reasons:
+of communication. This is useful for two reasons :
 # 如果不为零，请在没有通信的情况下使用SO_KEEPALIVE向客户端发送TCP ACK。这很有用，有两个原因：
 1) Detect dead peers.   # 检测死者
 2) Force network equipment in the middle to consider the connection to be
@@ -261,8 +257,6 @@ tcp保持300
 
 ## TLS/SSL
 
-
-
 ```
 By default, TLS/SSL is disabled. To enable it, the "tls-port" configuration
 directive can be used to define TLS-listening ports. To enable TLS on the
@@ -276,17 +270,15 @@ tls-port 6379
 
 指令可用于定义TLS侦听端口。
 
-
-
 ```ini
 Configure a X.509 certificate and private key to use for authenticating the
 server to connected clients, masters or cluster peers.  These files should be
 PEM formatted.
 # 配置X.509证书和私钥，用于对连接的客户端，主服务器或集群对等服务器进行身份验证。这些文件应为PEM格式
-tls-cert-file redis.crt 
+tls-cert-file redis.crt
 tls-key-file redis.key
 
-Configure a DH parameters file to enable Diffie-Hellman (DH) key exchange:
+Configure a DH parameters file to enable Diffie-Hellman (DH) key exchange :
 
 tls-dh-params-file redis.dh
 
@@ -315,22 +307,22 @@ Use the following directive to enable TLS on replication links.
 tls-replication yes
 
 By default, the Redis Cluster bus uses a plain TCP connection. To enable
-TLS for the bus protocol, use the following directive:
+TLS for the bus protocol, use the following directive :
 
 tls-cluster yes
 
 Explicitly specify TLS versions to support. Allowed values are case insensitive
-and include "TLSv1", "TLSv1.1", "TLSv1.2", "TLSv1.3" (OpenSSL >= 1.1.1) or
-any combination. To enable only TLSv1.2 and TLSv1.3, use:
+and include "TLSv1", "TLSv1.1", "TLSv1.2", "TLSv1.3" (OpenSSL > = 1.1.1) or
+any combination. To enable only TLSv1.2 and TLSv1.3, use :
 
 tls-protocols "TLSv1.2 TLSv1.3"
 
 Configure allowed ciphers.  See the ciphers(1ssl) manpage for more information
 about the syntax of this string.
 
-Note: this configuration applies only to <= TLSv1.2.
+Note : this configuration applies only to <= TLSv1.2.
 
-tls-ciphers DEFAULT:!MEDIUM
+tls-ciphers DEFAULT : !MEDIUM
 
 Configure allowed TLSv1.3 ciphersuites.  See the ciphers(1ssl) manpage for more
 information about the syntax of this string, and specifically for TLSv1.3
@@ -368,7 +360,7 @@ Note that Redis will write a pid file in /usr/local/var/run/redis.pid when daemo
 daemonize no
 ```
 
-　daemonize:设置为yes表示指定Redis以守护进程的方式启动（即后台启动）。默认值为 no
+daemonize:设置为yes表示指定Redis以守护进程的方式启动（即后台启动）。默认值为 no
 
 ```
 If you run Redis from upstart or systemd, Redis can interact with your
@@ -413,7 +405,7 @@ nothing bad happens, the server will start and run normally.
 pidfile /var/run/redis_6379.pid
 ```
 
-　pidfile: 配置PID文件路径，当redis作为守护进程运行的时候，它会把 pid 默认写到 /var/redis/run/redis_6379.pid 文件里面
+pidfile: 配置PID文件路径，当redis作为守护进程运行的时候，它会把 pid 默认写到 /var/redis/run/redis_6379.pid 文件里面
 
 ```
 Specify the server verbosity level.
@@ -430,7 +422,7 @@ output for logging but daemonize, logs will be sent to /dev/null
 logfile ""
 ```
 
-　loglevel ：定义日志级别。默认值为notice，有如下4种取值：
+loglevel ：定义日志级别。默认值为notice，有如下4种取值：
 
 > debug（大量信息，对开发/测试有用）
 >
@@ -459,7 +451,8 @@ dbid is a number between 0 and 'databases'-1
 databases 16
 ```
 
-databases：设置数据库的数目。默认的数据库是DB 0 ，可以在每个连接上使用select <dbid> 命令选择一个不同的数据库，dbid是一个介于0到databases - 1 之间的数值。默认值是 16，也就是说默认Redis有16个数据库。
+databases：设置数据库的数目。默认的数据库是DB 0 ，可以在每个连接上使用select <dbid> 命令选择一个不同的数据库，dbid是一个介于0到databases - 1 之间的数值。默认值是
+16，也就是说默认Redis有16个数据库。
 
 ```
 By default Redis shows an ASCII art logo only when started to log to the
@@ -496,9 +489,7 @@ save ""
 
 ```
 
-save 900 1
-save 300 10
-save 60 10000
+save 900 1 save 300 10 save 60 10000
 
 save：这里是用来配置触发 Redis的持久化条件，也就是什么时候将内存中的数据保存到硬盘。默认如下配置：
 
@@ -557,8 +548,6 @@ rdbcompression yes
 
 如果有可压缩的值或键，数据集可能会更大。
 
-
-
 ```ini
 Since version 5 of RDB a CRC64 checksum is placed at the end of the file.
 This makes the format more resistant to corruption but there is a performance
@@ -578,8 +567,6 @@ dbfilename dump.rdb
 
 将数据库转储到的文件名
 ```
-
-
 
 ```ini
 
@@ -617,14 +604,14 @@ rdb del同步文件编号
 请注意，必须在此处指定目录，而不是文件名。
 ```
 
-　dbfilename ：设置快照的文件名，默认是 dump.rdb
+dbfilename ：设置快照的文件名，默认是 dump.rdb
 
-　　⑥、dir：设置快照文件的存放路径，这个配置项一定是个目录，而不能是文件名。使用上面的 dbfilename 作为保存的文件名。
+⑥、dir：设置快照文件的存放路径，这个配置项一定是个目录，而不能是文件名。使用上面的 dbfilename 作为保存的文件名。
 
 ## REPLICATION（主从复制）
 
 ```ini
-REPLICATION 
+REPLICATION
 
 Master-Replica replication. Use replicaof to make a Redis instance a copy of
 another Redis server. A few things to understand ASAP about Redis replication.
@@ -662,22 +649,22 @@ However this is not enough if you are using Redis ACLs (for Redis version
 6 or greater), and the default user is not capable of running the PSYNC
 command and/or other commands needed for replication. In this case it's
 better to configure a special user to use with replication, and specify the
-masteruser configuration as such:
+masteruser configuration as such :
 # 但是，如果您正在使用Redis ACL（用于Redis版本6或更高版本），并且默认用户无法运行PSYNC命令和/或其他复制所需的命令，这还不够。在这种情况下，最好配置一个特殊用户以用于复制
 masteruser <username>
 
 When masteruser is specified, the replica will authenticate against its
-master using the new AUTH form: AUTH <username> <password>.
+master using the new AUTH form : AUTH <username> <password>.
 # 指定masteruser时，副本将使用新的AUTH表单针对其主服务器进行身份验证
 When a replica loses its connection with the master, or when the replication
-is still in progress, the replica can act in two different ways:
+is still in progress, the replica can act in two different ways :
 # 当副本失去与主数据库的连接时，或者仍在进行复制时，副本可以采取两种不同的方式进行操作
 1) if replica-serve-stale-data is set to 'yes' (the default) the replica will
 still reply to client requests, possibly with out of date data, or the
 data set may just be empty if this is the first synchronization.
 # 如果复制副本服务过时数据设置为“是”（默认值），则复制副本仍将回复客户端请求，可能包含过期数据，或者如果这是第一次同步，则数据集可能只是空的。
 2) If replica-serve-stale-data is set to 'no' the replica will reply with
-an error "SYNC with master in progress" to all commands except:
+an error "SYNC with master in progress" to all commands except :
 INFO, REPLICAOF, AUTH, PING, SHUTDOWN, REPLCONF, ROLE, CONFIG, SUBSCRIBE,
 UNSUBSCRIBE, PSUBSCRIBE, PUNSUBSCRIBE, PUBLISH, PUBSUB, COMMAND, POST,
 HOST and LATENCY.
@@ -692,7 +679,7 @@ misconfiguration.
 # 您可以配置副本实例以接受或不接受写入。针对副本实例进行写操作可能对存储一些临时数据很有用（因为与主实例重新同步后，写入副本上的数据将很容易删除），但是如果客户端由于配置错误而向其进行写操作，也会导致问题。
 Since Redis 2.6 by default replicas are read-only.
 
-Note: read only replicas are not designed to be exposed to untrusted clients
+Note : read only replicas are not designed to be exposed to untrusted clients
 on the internet. It's just a protection layer against misuse of the instance.
 Still a read only replica exports by default all the administrative commands
 such as CONFIG, DEBUG, and so forth. To a limited extent you can improve
@@ -700,20 +687,20 @@ security of read only replicas using 'rename-command' to shadow all the
 administrative / dangerous commands.
 # 只读副本并非旨在向Internet上不受信任的客户端公开。它只是防止实例滥用的保护层。默认情况下，只读副本仍会导出所有管理命令，例如CONFIG，DEBUG等。在一定程度上，您可以使用'rename-command'隐藏所有管理危险命令来提高只读副本的安全性
 replica-read-only yes
-Replication SYNC strategy: disk or socket.
+Replication SYNC strategy : disk or socket.
 
 New replicas and reconnecting replicas that are not able to continue the
 replication process just receiving differences, need to do what is called a
 "full synchronization". An RDB file is transmitted from the master to the
 replicas.
 # 仅仅接受差异就无法继续复制过程的新副本和重新连接的副本需要进行所谓的“完全同步”。 RDB文件从主数据库传输到副本数据库
-The transmission can happen in two different ways:
+The transmission can happen in two different ways :
 
-1) Disk-backed: The Redis master creates a new process that writes the RDB
-             file on disk. Later the file is transferred by the parent
-             process to the replicas incrementally.
-2) Diskless: The Redis master creates a new process that directly writes the
-          RDB file to replica sockets, without touching the disk at all.
+1) Disk-backed : The Redis master creates a new process that writes the RDB
+                 file on disk. Later the file is transferred by the parent
+                 process to the replicas incrementally.
+2) Diskless : The Redis master creates a new process that directly writes the
+              RDB file to replica sockets, without touching the disk at all.
 
 With disk-backed replication, while the RDB file is generated, more replicas
 can be queued and served with the RDB file as soon as the current child
@@ -744,7 +731,7 @@ it entirely just set it to 0 seconds and the transfer will start ASAP.
 repl-diskless-sync-delay 5
 
 -----------------------------------------------------------------------------
-WARNING: RDB diskless load is experimental. Since in this setup the replica
+WARNING : RDB diskless load is experimental. Since in this setup the replica
 does not immediately store an RDB on disk, it may cause data loss during
 failovers. RDB diskless load + Redis modules not handling I/O reads may also
 cause Redis to abort in case of I/O errors during the initial synchronization
@@ -760,13 +747,13 @@ the RDB file may increase replication time (and even increase the master's
 Copy on Write memory and salve buffers).
 However, parsing the RDB file directly from the socket may mean that we have
 to flush the contents of the current database before the full rdb was
-received. For this reason we have the following options:
+received. For this reason we have the following options :
 # 在许多情况下，磁盘的速度比网络慢，并且存储和加载RDB文件可能会增加复制时间（甚至会增加主服务器的“写时复制”内存和从属缓冲区）。但是，直接从套接字解析RDB文件可能意味着我们必须在收到完整的rdb之前刷新当前数据库的内容。因此，我们有以下选择
 "disabled"    - Don't use diskless load (store the rdb file to the disk first)
 # 不要使用无盘负载（首先将rdb文件存储到磁盘）
 "on-empty-db" - Use diskless load only when it is completely safe.
 # 仅在完全安全的情况下使用无盘加载
-"swapdb"      - Keep a copy of the current db contents in RAM while parsin 
+"swapdb"      - Keep a copy of the current db contents in RAM while parsin
 the data directly from the socket. note that this requires sufficient memory, if you don't have it, you risk an OOM kill.
 # 直接从套接字解析数据时，将当前数据库内容的副本保留在RAM中。请注意，这需要足够的内存，如果没有足够的内存，则可能会杀死OOM
 repl-diskless-load disabled
@@ -777,7 +764,7 @@ value is 10 seconds.
 # 副本以预定义的时间间隔将PING发送到服务器。可以使用repl_ping_replica_period选项更改此间隔。默认值为10秒
 repl-ping-replica-period 10
 
-The following option sets the replication timeout for:
+The following option sets the replication timeout for :
 # 以下选项设置了复制超时
 1) Bulk transfer I/O during SYNC, from the point of view of replica.
 # 从副本的角度来看，在SYNC期间进行批量传输IO。
@@ -829,7 +816,7 @@ buffer to be freed.
 # 主服务器在一段时间内没有连接的副本后，积压的订单将被释放。以下选项配置了从断开最后一个副本的时间开始，释放待办事项缓冲区所需的秒数
 Note that replicas never free the backlog for timeout, since they may be
 promoted to masters later, and should be able to correctly "partially
-resynchronize" with other replicas: hence they should always accumulate backlog.
+resynchronize" with other replicas : hence they should always accumulate backlog.
 # 请注意，副本永远不会释放积压的超时，因为它们可能稍后会升级为主副本，并且应该能够与其他副本正确“部分重新同步”：因此，它们应始终累积积压。
 A value of 0 means to never release the backlog.
 # 值为0表示永不释放积压
@@ -855,14 +842,14 @@ N replicas connected, having a lag less or equal than M seconds.
 # 如果连接的副本少于N个，且延迟小于或等于M秒，则主服务器可能会停止接受写入
 The N replicas need to be in "online" state.
 # N个副本需要处于“联机”状态
-The lag in seconds, that must be <= the specified value, is calculated from
+The lag in seconds, that must be < = the specified value, is calculated from
 the last ping received from the replica, that is usually sent every second.
 # 延迟（以秒为单位）必须小于等于指定值，该延迟是从副本接收到的最后一次ping计算得出的，通常每秒钟发送一次
 This option does not GUARANTEE that N replicas will accept the write, but
 will limit the window of exposure for lost writes in case not enough replicas
 are available, to the specified number of seconds.
 # 此选项不能保证N个副本将接受写操作，但是如果没有足够的副本可用，则会将丢失写操作的暴露窗口限制为指定的秒数
-For example to require at least 3 replicas with a lag <= 10 seconds use:
+For example to require at least 3 replicas with a lag < = 10 seconds use:
 # 例如，要求至少3个副本的延迟<= 10秒，请使用
 min-replicas-to-write 3
 min-replicas-max-lag 10
@@ -880,12 +867,12 @@ Another place where this info is available is in the output of the
 "ROLE" command of a master.
 # Redis主服务器能够以不同方式列出附加副本的地址和端口。例如，“ INFO复制”部分提供了此信息，Redis Sentinel使用此信息以及其他工具来发现副本实例。该信息可用的另一个位置是主服务器的“ ROLE”命令的输出
 The listed IP address and port normally reported by a replica is
-obtained in the following way:
+obtained in the following way :
 # 副本通常报告的列出的IP地址和端口可以通过以下方式获得
-IP: The address is auto detected by checking the peer address
+IP : The address is auto detected by checking the peer address
 of the socket used by the replica to connect with the master.
 # IP：通过检查副本用来与主服务器连接的套接字的对等地址来自动检测该地址
-Port: The port is communicated by the replica during the replication
+Port : The port is communicated by the replica during the replication
 handshake, and is normally the port that the replica is using to
 listen for connections.
 # 端口：端口在复制握手期间由副本进行通信，通常是副本用来侦听连接的端口。
@@ -904,33 +891,35 @@ replica-announce-port 1234
 
 ①、slave-serve-stale-data：默认值为yes。当一个 slave 与 master 失去联系，或者复制正在进行的时候，slave 可能会有两种表现：
 
-　　　　1) 如果为 yes ，slave 仍然会应答客户端请求，但返回的数据可能是过时，或者数据可能是空的在第一次同步的时候 
+1) 如果为 yes ，slave 仍然会应答客户端请求，但返回的数据可能是过时，或者数据可能是空的在第一次同步的时候
 
-　　　　2) 如果为 no ，在你执行除了 info he salveof 之外的其他命令时，slave 都将返回一个 "SYNC with master in progress" 的错误
+2) 如果为 no ，在你执行除了 info he salveof 之外的其他命令时，slave 都将返回一个 "SYNC with master in progress" 的错误
 
 ②、slave-read-only：配置Redis的Slave实例是否接受写操作，即Slave是否为只读Redis。默认值为yes。
 
 ③、repl-diskless-sync：主从数据复制是否使用无硬盘复制功能。默认值为no。
 
-④、repl-diskless-sync-delay：当启用无硬盘备份，服务器等待一段时间后才会通过套接字向从站传送RDB文件，这个等待时间是可配置的。 这一点很重要，因为一旦传送开始，就不可能再为一个新到达的从站服务。从站则要排队等待下一次RDB传送。因此服务器等待一段 时间以期更多的从站到达。延迟时间以秒为单位，默认为5秒。要关掉这一功能，只需将它设置为0秒，传送会立即启动。默认值为5。
+④、repl-diskless-sync-delay：当启用无硬盘备份，服务器等待一段时间后才会通过套接字向从站传送RDB文件，这个等待时间是可配置的。
+这一点很重要，因为一旦传送开始，就不可能再为一个新到达的从站服务。从站则要排队等待下一次RDB传送。因此服务器等待一段 时间以期更多的从站到达。延迟时间以秒为单位，默认为5秒。要关掉这一功能，只需将它设置为0秒，传送会立即启动。默认值为5。
 
-⑤、repl-disable-tcp-nodelay：同步之后是否禁用从站上的TCP_NODELAY 如果你选择yes，redis会使用较少量的TCP包和带宽向从站发送数据。但这会导致在从站增加一点数据的延时。 Linux内核默认配置情况下最多40毫秒的延时。如果选择no，从站的数据延时不会那么多，但备份需要的带宽相对较多。默认情况下我们将潜在因素优化，但在高负载情况下或者在主从站都跳的情况下，把它切换为yes是个好主意。默认值为no。
+⑤、repl-disable-tcp-nodelay：同步之后是否禁用从站上的TCP_NODELAY 如果你选择yes，redis会使用较少量的TCP包和带宽向从站发送数据。但这会导致在从站增加一点数据的延时。
+Linux内核默认配置情况下最多40毫秒的延时。如果选择no，从站的数据延时不会那么多，但备份需要的带宽相对较多。默认情况下我们将潜在因素优化，但在高负载情况下或者在主从站都跳的情况下，把它切换为yes是个好主意。默认值为no。
 
 ## KEYS TRACKING
 
 ```ini
-KEYS TRACKING 
+KEYS TRACKING
 # Redis为客户端的值缓存实现服务器辅助的支持。这是使用无效表实现的，该无效表使用1600万个插槽记住哪些客户端可能具有某些键子集。依次将其用于向客户端发送无效消息
 Redis implements server assisted support for client side caching of values.
 This is implemented using an invalidation table that remembers, using
 16 millions of slots, what clients may have certain subsets of keys. In turn
 this is used in order to send invalidation messages to clients. Please
-check this page to understand more about the feature:
+check this page to understand more about the feature :
 
-https://redis.io/topics/client-side-caching
+https : //redis.io/topics/client-side-caching
 
 When tracking is enabled for a client, all the read only queries are assumed
-to be cached: this will force Redis to store information in the invalidation
+to be cached : this will force Redis to store information in the invalidation
 table. When keys are modified, such information is flushed away, and
 invalidation messages are sent to the clients. However if the workload is
 heavily dominated by reads, Redis could use more and more memory in order
@@ -939,7 +928,7 @@ to track the keys fetched by many clients.
 For this reason it is possible to configure a maximum fill value for the
 invalidation table. By default it is set to 1M of keys, and once this limit
 is reached, Redis will start to evict keys in the invalidation table
-even if they were not modified, just to reclaim memory: this will in turn
+even if they were not modified, just to reclaim memory : this will in turn
 force the clients to invalidate the cached values. Basically the table
 maximum size is a trade off between the memory you want to spend server
 side to track information about who cached what, and the ability of clients
@@ -951,20 +940,18 @@ retain as many keys as needed in the invalidation table.
 In the "stats" INFO section, you can find information about the number of
 keys in the invalidation table at every given moment.
 
-Note: when key tracking is used in broadcasting mode, no memory is used
+Note : when key tracking is used in broadcasting mode, no memory is used
 in the server side so this setting is useless.
 
 tracking-table-max-keys 1000000
 ```
 
-
-
 ## SECURITY(重要)
 
 ```ini
-SECURITY 
+SECURITY
 
-Warning: since Redis is pretty fast, an outside user can try up to
+Warning : since Redis is pretty fast, an outside user can try up to
 1 million passwords per second against a modern box. This means that you
 should use very strong passwords, otherwise they will be very easy to break.
 Note that because the password is really a shared secret between the client
@@ -973,13 +960,13 @@ can be easily a long string from /dev/urandom or whatever, so by using a
 long and unguessable password no brute force attack will be possible.
 # 警告：由于Redis的速度非常快，因此外部用户每秒可以在一个现代机器上尝试最多100万个密码。这意味着您应该使用非常安全的密码，否则密码很容易破解。
 # 请注意，由于该密码实际上是客户端和服务器之间的共享机密，并且不应被任何人记住，因此该密码可以很容易地是来自devurandom或其他任何形式的长字符串，因此使用长而毫无疑问的密码不会造成暴力攻击是可能的
-Redis ACL users are defined in the following format:
+Redis ACL users are defined in the following format :
 
 user <username> ... acl rules ...
 
-For example:
+For example :
 
-user worker +@list +@connection ~jobs:* on >ffa9203c493aa99
+user worker +@list +@connection ~jobs : * on >ffa9203c493aa99
 
 The special username "default" is used for new connections. If this user
 has the "nopass" rule, then new connections will be immediately authenticated
@@ -989,88 +976,88 @@ the connections will start in not authenticated state, and will require
 AUTH (or the HELLO command AUTH option) in order to be authenticated and
 start to work.
 # 特殊的用户名“默认”用于新连接。如果该用户具有“ nopass”规则，则新连接将立即被认证为“默认”用户，而不需要通过AUTH命令提供的任何密码。否则，如果未将“默认”用户标记为“ nopass”，则连接将以未认证状态启动，并且需要AUTH（或HELLO命令AUTH选项）才能进行认证并开始工作
-The ACL rules that describe what a user can do are the following:
+The ACL rules that describe what a user can do are the following :
 
-on           Enable the user: it is possible to authenticate as this user.
-off          Disable the user: it's no longer possible to authenticate
-           with this user, however the already authenticated connections
-           will still work.
+on           Enable the user : it is possible to authenticate as this user.
+off          Disable the user : it's no longer possible to authenticate
+                                with this user, however the already authenticated connections
+                                will still work.
 +<command>   Allow the execution of that command
 -<command>   Disallow the execution of that command
 +@<category> Allow the execution of all the commands in such category
-           with valid categories are like @admin, @set, @sortedset, ...
-           and so forth, see the full list in the server.c file where
-           the Redis command table is described and defined.
-           The special category @all means all the commands, but currently
-           present in the server, and that will be loaded in the future
-           via modules.
+with valid categories are like @admin, @set, @sortedset, ...
+and so forth, see the full list in the server.c file where
+the Redis command table is described and defined.
+The special category @all means all the commands, but currently
+present in the server, and that will be loaded in the future
+via modules.
 +<command>|subcommand    Allow a specific subcommand of an otherwise
-                       disabled command. Note that this form is not
-                       allowed as negative like -DEBUG|SEGFAULT, but
-                       only additive starting with "+".
+disabled command. Note that this form is not
+allowed as negative like -DEBUG|SEGFAULT, but
+only additive starting with "+".
 allcommands  Alias for +@all. Note that it implies the ability to execute
-           all the future commands loaded via the modules system.
+all the future commands loaded via the modules system.
 nocommands   Alias for -@all.
 ~<pattern>   Add a pattern of keys that can be mentioned as part of
-           commands. For instance ~* allows all the keys. The pattern
-           is a glob-style pattern like the one of KEYS.
-           It is possible to specify multiple patterns.
+commands. For instance ~* allows all the keys. The pattern
+is a glob-style pattern like the one of KEYS.
+It is possible to specify multiple patterns.
 allkeys      Alias for ~*
 resetkeys    Flush the list of allowed keys patterns.
 ><password>  Add this password to the list of valid password for the user.
-           For example >mypass will add "mypass" to the list.
-           This directive clears the "nopass" flag (see later).
+For example >mypass will add "mypass" to the list.
+This directive clears the "nopass" flag (see later).
 <<password>  Remove this password from the list of valid passwords.
 nopass       All the set passwords of the user are removed, and the user
-           is flagged as requiring no password: it means that every
-           password will work against this user. If this directive is
-           used for the default user, every new connection will be
-           immediately authenticated with the default user without
-           any explicit AUTH command required. Note that the "resetpass"
-           directive will clear this condition.
+is flagged as requiring no password: it means that every
+password will work against this user. If this directive is
+used for the default user, every new connection will be
+immediately authenticated with the default user without
+any explicit AUTH command required. Note that the "resetpass"
+directive will clear this condition.
 resetpass    Flush the list of allowed passwords. Moreover removes the
-           "nopass" status. After "resetpass" the user has no associated
-           passwords and there is no way to authenticate without adding
-           some password (or setting it as "nopass" later).
-reset        Performs the following actions: resetpass, resetkeys, off,
-           -@all. The user returns to the same state it has immediately
-           after its creation.
+"nopass" status. After "resetpass" the user has no associated
+passwords and there is no way to authenticate without adding
+some password (or setting it as "nopass" later).
+reset        Performs the following actions : resetpass, resetkeys, off,
+-@all. The user returns to the same state it has immediately
+after its creation.
 
-ACL rules can be specified in any order: for instance you can start with
-passwords, then flags, or key patterns. However note that the additive
-and subtractive rules will CHANGE MEANING depending on the ordering.
-For instance see the following example:
+ACL rules can be specified in any order : for instance you can start with
+                                          passwords, then flags, or key patterns. However note that the additive
+                                          and subtractive rules will CHANGE MEANING depending on the ordering.
+                                          For instance see the following example :
 
-user alice on +@all -DEBUG ~* >somepassword
+                                          user alice on +@all -DEBUG ~* >somepassword
 
-This will allow "alice" to use all the commands with the exception of the
-DEBUG command, since +@all added all the commands to the set of the commands
-alice can use, and later DEBUG was removed. However if we invert the order
-of two ACL rules the result will be different:
-# 这将允许“ alice”使用除DEBUG命令之外的所有命令，因为+ @ all将所有命令添加到了alice可以使用的命令集中，并且后来删除了DEBUG。但是，如果我们颠倒两个ACL规则的顺序，结果将有所不同
-user alice on -DEBUG +@all ~* >somepassword
+                                          This will allow "alice" to use all the commands with the exception of the
+                                          DEBUG command, since +@all added all the commands to the set of the commands
+                                          alice can use, and later DEBUG was removed. However if we invert the order
+                                          of two ACL rules the result will be different:
+                                                                                       # 这将允许“ alice”使用除DEBUG命令之外的所有命令，因为+ @ all将所有命令添加到了alice可以使用的命令集中，并且后来删除了DEBUG。但是，如果我们颠倒两个ACL规则的顺序，结果将有所不同
+                                                                                       user alice on -DEBUG +@all ~* >somepassword
 
-Now DEBUG was removed when alice had yet no commands in the set of allowed
-commands, later all the commands are added, so the user will be able to
-execute everything.
+                                                                                       Now DEBUG was removed when alice had yet no commands in the set of allowed
+                                                                                       commands, later all the commands are added, so the user will be able to
+                                                                                       execute everything.
 
-Basically ACL rules are processed left-to-right.
+                                                                                       Basically ACL rules are processed left-to-right.
 
-For more information about ACL configuration please refer to
-the Redis web site at https://redis.io/topics/acl
+                                                                                       For more information about ACL configuration please refer to
+                                                                                       the Redis web site at https : //redis.io/topics/acl
 
 ACL LOG
 
 The ACL Log tracks failed commands and authentication events associated
-with ACLs. The ACL Log is useful to troubleshoot failed commands blocked 
-by ACLs. The ACL Log is stored in memory. You can reclaim memory with 
+with ACLs. The ACL Log is useful to troubleshoot failed commands blocked
+by ACLs. The ACL Log is stored in memory. You can reclaim memory with
 ACL LOG RESET. Define the maximum entry length of the ACL Log below.
 acllog-max-len 128
 # ACL日志跟踪与ACL关联的失败命令和身份验证事件。 ACL日志可用于对ACL阻止的失败命令进行故障排除。 ACL日志存储在内存中。您可以使用ACL LOG RESET回收内存。在下面定义ACL日志的最大输入长度。 acllog-max-len 128
 Using an external ACL file
 
 Instead of configuring users here in this file, it is possible to use
-a stand-alone file just listing users. The two methods cannot be mixed:
+a stand-alone file just listing users. The two methods cannot be mixed :
 if you configure users here and at the same time you activate the external
 ACL file, the server will refuse to start.
 # 除了在此文件中配置用户之外，还可以使用仅列出用户的独立文件。两种方法不能混用：如果您在此处配置用户并同时激活外部ACL文件，则服务器将拒绝启动
@@ -1079,18 +1066,18 @@ format that is used inside redis.conf to describe users.
 
 aclfile /etc/redis/users.acl
 
-IMPORTANT NOTE: starting with Redis 6 "requirepass" is just a compatibility
+IMPORTANT NOTE : starting with Redis 6 "requirepass" is just a compatibility
 layer on top of the new ACL system. The option effect will be just setting
 the password for the default user. Clients will still authenticate using
 AUTH <password> as usually, or more explicitly with AUTH default <password>
-if they follow the new protocol: both will work.
+if they follow the new protocol : both will work.
 # 重要说明：从Redis 6开始，“ requirepass”只是新ACL系统之上的兼容性层。选项效果将只是为默认用户设置密码。客户端仍将照常使用AUTH <password>进行身份验证，如果遵循新协议，则仍将使用AUTH default <password>进行更明确的身份验证
 requirepass foobared
 
 Command renaming (DEPRECATED).
 
 ------------------------------------------------------------------------
-WARNING: avoid using this option if possible. Instead use ACLs to remove
+WARNING : avoid using this option if possible. Instead use ACLs to remove
 commands from the default user, and put them only in some admin user you
 create for administrative purposes.
 ------------------------------------------------------------------------
@@ -1100,12 +1087,12 @@ environment. For instance the CONFIG command may be renamed into something
 hard to guess so that it will still be available for internal-use tools
 but not available for general clients.
 # 可以在共享环境中更改危险命令的名称。例如，CONFIG命令可能会重命名为一些难以猜测的名称，因此它仍可用于内部使用的工具，但不适用于一般客户
-Example:
+Example :
 
 rename-command CONFIG b840fc02d524045429941cc15f59e41cb7be6c52
 
 It is also possible to completely kill a command by renaming it into
-an empty string:
+an empty string :
 
 rename-command CONFIG ""
 
@@ -1122,7 +1109,7 @@ rename-command：命令重命名，对于一些危险命令例如：
 
 - config（客户端连接后可配置服务器）
 
-- keys（客户端连接后可查看所有存在的键）          
+- keys（客户端连接后可查看所有存在的键）
 
 > 作为服务端redis-server，常常需要禁用以上命令来使得服务器更加安全，禁用的具体做法是是：
 >
@@ -1134,7 +1121,7 @@ rename-command：命令重命名，对于一些危险命令例如：
 
 **requirepass:设置redis连接密码**
 
-　　比如: requirepass 123456 表示redis的连接密码为123456.
+比如: requirepass 123456 表示redis的连接密码为123456.
 
 ## CLIENTS
 
@@ -1158,12 +1145,13 @@ limit accordingly in case of very large clusters.
 maxclients 10000
 ```
 
-maxclients ：设置客户端最大并发连接数，默认无限制，Redis可以同时打开的客户端连接数为Redis进程可以打开的最大文件。 描述符数-32（redis server自身会使用一些），如果设置 maxclients为0 。表示不作限制。当客户端连接数到达限制时，Redis会关闭新的连接并向客户端返回max number of clients reached错误信息
+maxclients ：设置客户端最大并发连接数，默认无限制，Redis可以同时打开的客户端连接数为Redis进程可以打开的最大文件。 描述符数-32（redis server自身会使用一些），如果设置 maxclients为0
+。表示不作限制。当客户端连接数到达限制时，Redis会关闭新的连接并向客户端返回max number of clients reached错误信息
 
 ## MEMORY MANAGEMENT
 
 ```ini
-MEMORY MANAGEMENT 
+MEMORY MANAGEMENT
 
 Set a memory usage limit to the specified amount of bytes.
 When the memory limit is reached Redis will try to remove keys
@@ -1177,7 +1165,7 @@ to reply to read-only commands like GET.
 This option is usually useful when using Redis as an LRU or LFU cache, or to
 set a hard memory limit for an instance (using the 'noeviction' policy).
 # 当将Redis用作LRU或LFU缓存，或为实例设置硬盘限制时，此选项通常很有用
-WARNING: If you have replicas attached to an instance with maxmemory on,
+WARNING : If you have replicas attached to an instance with maxmemory on,
 the size of the output buffers needed to feed the replicas are subtracted
 from the used memory count, so that network problems / resyncs will
 not trigger a loop where keys are evicted, and in turn the output
@@ -1190,8 +1178,8 @@ output buffers (but this is not needed if the policy is 'noeviction').
 # 简而言之...如果您附加了副本，建议您为maxmemory设置一个下限，以便系统上有一些可用的RAM用于副本输出缓冲区（但是如果策略为“ noeviction”，则不需要这样做）
 maxmemory <bytes>
 
-MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
-is reached. You can select one from the following behaviors:
+MAXMEMORY POLICY : how Redis will select what to remove when maxmemory
+is reached. You can select one from the following behaviors :
 # MAXMEMORY POLICY：达到maxmemory后，Redis将如何选择要删除的内容。您可以从以下行为中选择一种
 volatile-lru -> Evict using approximated LRU, only keys with an expire set.
 allkeys-lru -> Evict any key using approximated LRU.
@@ -1206,21 +1194,21 @@ LRU means Least Recently Used       # LRU表示最近最少使用   LFU表示最
 LFU means Least Frequently Used
 
 Both LRU, LFU and volatile-ttl are implemented using approximated
-randomized algorithms. 
+randomized algorithms.
 # LRU，LFU和volatile-ttl均使用近似随机算法实现
 
-Note: with any of the above policies, Redis will return an error on write
-   operations, when there are no suitable keys for eviction.
+Note : with any of the above policies, Redis will return an error on write
+       operations, when there are no suitable keys for eviction.
 
-   At the date of writing these commands are: set setnx setex append
-   incr decr rpush lpush rpushx lpushx linsert lset rpoplpush sadd
-   sinter sinterstore sunion sunionstore sdiff sdiffstore zadd zincrby
-   zunionstore zinterstore hset hsetnx hmset hincrby incrby decrby
-   getset mset msetnx exec sort
+       At the date of writing these commands are: set setnx setex append
+       incr decr rpush lpush rpushx lpushx linsert lset rpoplpush sadd
+       sinter sinterstore sunion sunionstore sdiff sdiffstore zadd zincrby
+       zunionstore zinterstore hset hsetnx hmset hincrby incrby decrby
+       getset mset msetnx exec sort
 # 注意：使用上述任何策略时，如果没有合适的退出键，Redis将在写入操作中返回错误。在撰写本文时，这些命令是：
 # set setnx setex append incr decr rpush lpush rpushx lpushx linsert lset rpoplpush sadd interinterstore sunion 
 # sunionstore sdiff sdiffstore zadd zincrby zunionstore zinterstore hset hsetnx hmset hincrby mcrby deby byby
-The default is:
+The default is :
 
 maxmemory-policy noeviction
 
@@ -1255,7 +1243,7 @@ master hits the configured maxmemory setting.
 # 请注意，由于默认情况下该副本不会退出，因此它可能会结束使用比通过maxmemory设置的内存更多的内存（某些缓冲区在副本上可能会更大，或者数据结构有时会占用更多的内存，依此类推）。因此，请确保您监视副本，并确保副本具有足够的内存，以便在主副本达到配置的最大内存设置之前永远不会遇到真正的内存不足情况
 replica-ignore-maxmemory yes
 
-Redis reclaims expired keys in two ways: upon access when those keys are
+Redis reclaims expired keys in two ways : upon access when those keys are
 found to be expired, and also in background, in what is called the
 "active expire key". The key space is slowly and interactively scanned
 looking for expired keys to reclaim, so that it is possible to free memory
@@ -1275,30 +1263,31 @@ active-expire-effort 1
 
 > LRU是Least Recently Used的缩写，即最近最少使用
 > LFU（Least Frequently Used ，最近最少使用算法）也是一种常见的缓存算法
-> 
+>
 
 maxmemory：设置Redis的最大内存，如果设置为0 。表示不作限制。通常是配合下面介绍的maxmemory-policy参数一起使用。
 
 maxmemory-policy ：当内存使用达到maxmemory设置的最大值时，redis使用的内存清除策略。有以下几种可以选择：
 
-　　　　1）volatile-lru  利用LRU算法移除设置过过期时间的key 
+1）volatile-lru 利用LRU算法移除设置过过期时间的key
 
-　　　　2）allkeys-lru  利用LRU算法移除任何key 
+2）allkeys-lru 利用LRU算法移除任何key
 
-　　　　3）volatile-random 移除设置过过期时间的随机key 
+3）volatile-random 移除设置过过期时间的随机key
 
-　　　　4）allkeys-random 移除随机ke
+4）allkeys-random 移除随机ke
 
-　　　　5）volatile-ttl  移除即将过期的key(minor TTL) 
+5）volatile-ttl 移除即将过期的key(minor TTL)
 
-　　　　6）noeviction noeviction  不移除任何key，只是返回一个写错误 ，默认选项
+6）noeviction noeviction 不移除任何key，只是返回一个写错误 ，默认选项
 
-maxmemory-samples ：LRU 和 minimal TTL 算法都不是精准的算法，但是相对精确的算法(为了节省内存)。随意你可以选择样本大小进行检，redis默认选择5个样本进行检测，你可以通过maxmemory-samples进行设置样本数。
+maxmemory-samples ：LRU 和 minimal TTL 算法都不是精准的算法，但是相对精确的算法(为了节省内存)
+。随意你可以选择样本大小进行检，redis默认选择5个样本进行检测，你可以通过maxmemory-samples进行设置样本数。
 
 ## LAZY FREEING
 
 ```ini
-LAZY FREEING 
+LAZY FREEING
 
 Redis has two primitives to delete keys. One is called DEL and is a blocking
 deletion of the object. It means that the server stops processing new commands
@@ -1320,12 +1309,12 @@ It's up to the design of the application to understand when it is a good
 idea to use one or the other. However the Redis server sometimes has to
 delete keys or flush the whole database as a side effect of other operations.
 Specifically Redis deletes objects independently of a user call in the
-following scenarios:
+following scenarios :
 # 用户可以控制FLUSHALL和FLUSHDB的DEL，UNLINK和ASYNC选项。由应用程序的设计来决定何时使用一个或另一个是一个好主意。但是，Redis服务器有时必须删除键或刷新整个数据库，这是其他操作的副作用。特别是在以下情况下，Redis会独立于用户调用而删除对象
 1) On eviction, because of the maxmemory and maxmemory policy configurations,
 in order to make room for new data, without going over the specified
 memory limit.
-2) Because of expire: when a key with an associated time to live (see the
+2) Because of expire : when a key with an associated time to live (see the
 EXPIRE command) must be deleted from memory.
 3) Because of a side effect of a command that stores data on a key that may
 already exist. For example the RENAME command may delete the old key
@@ -1350,7 +1339,7 @@ replica-lazy-flush no
 It is also possible, for the case when to replace the user code DEL calls
 with UNLINK calls is not easy, to modify the default behavior of the DEL
 command to act exactly like UNLINK, using the following configuration
-directive:
+directive :
 # 对于用UNLINK调用替换用户代码DEL调用不容易的情况，也可以使用以下配置指令将DEL命令的默认行为修改为与UNLINK完全一样
 lazyfree-lazy-user-del no
 ```
@@ -1358,7 +1347,7 @@ lazyfree-lazy-user-del no
 ## THREADED I/O
 
 ```ini
-THREADED I/O 
+THREADED I/O
 
 Redis is mostly single threaded, however there are certain threaded
 operations such as UNLINK, slow I/O accesses and other things that are
@@ -1380,7 +1369,7 @@ there is no point in using this feature.
 # 默认情况下，线程是禁用的，我们建议仅在具有至少4个或更多内核的计算机上启用它，而至少保留一个备用内核。使用8个以上的线程不太可能有很大帮助。我们还建议仅在实际存在性能问题时才使用线程IO，Redis实例可以使用很大一部分CPU时间，否则使用此功能毫无意义。
 So for instance if you have a four cores boxes, try to use 2 or 3 I/O
 threads, if you have a 8 cores, try to use 6 threads. In order to
-enable I/O threads use the following configuration directive:
+enable I/O threads use the following configuration directive :
 # 因此，例如，如果您有四个核的盒子，请尝试使用2个或3个IO线程，如果您有8个核，请尝试使用6个线程。为了启用IO线程，请使用以下配置指令
 io-threads 4
 
@@ -1389,17 +1378,17 @@ When I/O threads are enabled, we only use threads for writes, that is
 to thread the write(2) syscall and transfer the client buffers to the
 socket. However it is also possible to enable threading of reads and
 protocol parsing using the following configuration directive, by setting
-it to yes:
+it to yes :
 # 将io-threads设置为1只会照常使用主线程。启用IO线程后，我们仅使用线程进行写操作，即对write（2）系统调用进行线程化，并将客户端缓冲区传输到套接字。但是，也可以使用以下配置指令，通过将其设置为yes，来启用读取线程和协议解析
 io-threads-do-reads no
 
 Usually threading reads doesn't help much.
 # 通常线程读取并没有多大帮助
-NOTE 1: This configuration directive cannot be changed at runtime via
+NOTE 1 : This configuration directive cannot be changed at runtime via
 CONFIG SET. Aso this feature currently does not work when SSL is
 enabled.
 # 注意1：无法在运行时通过CONFIG SET更改此配置指令。启用SSL后，该功能目前也无法使用。
-NOTE 2: If you want to test the Redis speedup using redis-benchmark, make
+NOTE 2 : If you want to test the Redis speedup using redis-benchmark, make
 sure you also run the benchmark itself in threaded mode, using the
 --threads option to match the number of Redis threads, otherwise you'll not
 be able to notice the improvements.
@@ -1439,7 +1428,7 @@ oom-score-adj-values 0 200 800
 ## APPEND ONLY MODE(重要)
 
 ```ini
-APPEND ONLY MODE 
+APPEND ONLY MODE
 
 By default Redis asynchronously dumps the dataset on disk. This mode is
 good enough in many applications, but an issue with the Redis process or
@@ -1457,11 +1446,11 @@ AOF and RDB persistence can be enabled at the same time without problems.
 If the AOF is enabled on startup Redis will load the AOF, that is the file
 with the better durability guarantees.
 # 可以同时启用AOF和RDB持久性，而不会出现问题。如果在启动时启用了AOF，则Redis将加载AOF，即具有更好持久性的文件
-Please check http://redis.io/topics/persistence for more information.
+Please check http : //redis.io/topics/persistence for more information.
 
 appendonly no
 
-The name of the append only file (default: "appendonly.aof")
+The name of the append only file (default : "appendonly.aof")
 
 appendfilename "appendonly.aof"
 
@@ -1469,11 +1458,11 @@ The fsync() call tells the Operating System to actually write data on disk
 instead of waiting for more data in the output buffer. Some OS will really flush
 data on disk, some other OS will just try to do it ASAP.
 # fsync（）调用告诉操作系统将数据实际写入磁盘，而不是等待输出缓冲区中的更多数据。某些操作系统确实会刷新磁盘上的数据，而另一些操作系统会尽快尝试
-Redis supports three different modes:
+Redis supports three different modes :
 
-no: don't fsync, just let the OS flush the data when it wants. Faster.
-always: fsync after every write to the append only log. Slow, Safest.
-everysec: fsync only one time every second. Compromise.
+no : don't fsync, just let the OS flush the data when it wants. Faster.
+always : fsync after every write to the append only log. Slow, Safest.
+everysec : fsync only one time every second. Compromise.
 
 The default is "everysec", as that's usually the right compromise between
 speed and data safety. It's up to you to understand if you can relax this to
@@ -1483,8 +1472,8 @@ some data loss consider the default persistence mode that's snapshotting),
 or on the contrary, use "always" that's very slow but a bit safer than
 everysec.
 
-More details please check the following article:
-http://antirez.com/post/redis-persistence-demystified.html
+More details please check the following article :
+http : //antirez.com/post/redis-persistence-demystified.html
 
 If unsure, use "everysec".
 
@@ -1517,7 +1506,7 @@ Automatic rewrite of the append only file.
 Redis is able to automatically rewrite the log file implicitly calling
 BGREWRITEAOF when the AOF log size grows by the specified percentage.
 # 自动重写仅附加文件。当AOF日志大小增加指定百分比时，Redis能够自动重写日志文件，隐式调用BGREWRITEAOF
-This is how it works: Redis remembers the size of the AOF file after the
+This is how it works : Redis remembers the size of the AOF file after the
 latest rewrite (if no rewrite has happened since the restart, the size of
 the AOF at startup is used).
 # 它是这样工作的：Redis在最近一次重写之后会记住AOF文件的大小（如果自重新启动以来未发生任何重写，则使用启动时AOF的大小）。
@@ -1537,7 +1526,7 @@ An AOF file may be found to be truncated at the end during the Redis
 startup process, when the AOF data gets loaded back into memory.
 This may happen when the system where Redis is running
 crashes, especially when an ext4 filesystem is mounted without the
-data=ordered option (however this can't happen when Redis itself
+data = ordered option (however this can't happen when Redis itself
 crashes or aborts but the operating system still works correctly).
 # 当AOF数据重新加载回内存时，在Redis启动过程中可能会发现AOF文件在末尾被截断。当运行Redis的系统崩溃时，尤其是在没有data = ordered选项的情况下挂载ext4文件系统时，可能会发生这种情况（但是，当Redis本身崩溃或中止，但操作系统仍然可以正常运行时，就不会发生这种情况）
 Redis can either exit with an error when this happens, or load as much
@@ -1560,12 +1549,12 @@ aof-load-truncated yes
 
 When rewriting the AOF file, Redis is able to use an RDB preamble in the
 AOF file for faster rewrites and recoveries. When this option is turned
-on the rewritten AOF file is composed of two different stanzas:
+on the rewritten AOF file is composed of two different stanzas :
 # 重写AOF文件时，Redis可以使用AOF文件中的RDB前同步码来更快地进行重写和恢复。启用此选项后，重写的AOF文件由两个不同的节组成
 [RDB file] [AOF tail]
 
-When loading, Redis recognizes that the AOF file starts with the "REDIS"
-string and loads the prefixed RDB file, then continues loading the AOF
+            When loading, Redis recognizes that the AOF file starts with the "REDIS"
+            string and loads the prefixed RDB file, then continues loading the AOF
 tail.
 # 加载时，Redis会识别AOF文件以“ REDIS”字符串开头并加载带前缀的RDB文件，然后继续加载AOF尾部。
 aof-use-rdb-preamble yes
@@ -1577,7 +1566,7 @@ appendonly（AOF）是一种替代的持久性模式，可提供更好的持久�
 
 appendonly（AOF）默认是关闭的，我们可以`appendonly yes`打开，默认文件名为`appendonly.aof`
 
-> 默认redis使用的是rdb方式持久化，这种方式在许多应用中已经足够用了。但是redis如果中途宕机，会导致可能有几分钟的数据丢失，根据save来策略进行持久化，Append Only File是另一种持久化方式，  可以提供更好的持久化特性。Redis会把每次写入的数据在接收后都写入appendonly.aof文件，每次启动时Redis都会先把这个文件的数据读入内存里，先忽略RDB文件。默认值为no
+> 默认redis使用的是rdb方式持久化，这种方式在许多应用中已经足够用了。但是redis如果中途宕机，会导致可能有几分钟的数据丢失，根据save来策略进行持久化，Append Only File是另一种持久化方式， 可以提供更好的持久化特性。Redis会把每次写入的数据在接收后都写入appendonly.aof文件，每次启动时Redis都会先把这个文件的数据读入内存里，先忽略RDB文件。默认值为no
 
 appendonly（AOF）的启动参数有三个：默认使用appendfsync everysec
 
@@ -1587,7 +1576,8 @@ appendonly（AOF）的启动参数有三个：默认使用appendfsync everysec
 >
 > aof持久化策略的配置；no表示不执行fsync，由操作系统保证数据同步到磁盘，速度最快；always表示每次写入都执行fsync，以保证数据同步到磁盘；everysec表示每秒执行一次fsync，可能会导致丢失这1s数据
 
-在aof重写或者写入rdb文件的时候，会执行大量IO，此时对于everysec和always的aof模式来说，执行fsync会造成阻塞过长时间，no-appendfsync-on-rewrite字段设置为默认设置为no。如果对延迟要求很高的应用，这个字段可以设置为yes，否则还是设置为no，这样对持久化特性来说这是更安全的选择。  设置为yes表示rewrite期间对新写操作不fsync,暂时存在内存中,等rewrite完成后再写入，默认为no，建议yes。Linux的默认fsync策略是30秒。可能丢失30秒数据。默认值为no。
+在aof重写或者写入rdb文件的时候，会执行大量IO，此时对于everysec和always的aof模式来说，执行fsync会造成阻塞过长时间，no-appendfsync-on-rewrite字段设置为默认设置为no。如果对延迟要求很高的应用，这个字段可以设置为yes，否则还是设置为no，这样对持久化特性来说这是更安全的选择。
+设置为yes表示rewrite期间对新写操作不fsync,暂时存在内存中,等rewrite完成后再写入，默认为no，建议yes。Linux的默认fsync策略是30秒。可能丢失30秒数据。默认值为no。
 
 > 如果您有延迟问题，请将其设置为“是”。否则，从耐用性的角度出发，将其保留为“ no”是最安全的选择
 
@@ -1595,13 +1585,15 @@ auto-aof-rewrite-percentage：默认值为100。aof自动重写配置，当目�
 
 auto-aof-rewrite-min-size：64mb。设置允许重写的最小aof文件大小，避免了达到约定百分比但尺寸仍然很小的情况还要重写。
 
-aof-load-truncated：aof文件可能在尾部是不完整的，当redis启动的时候，aof文件的数据被载入内存。重启可能发生在redis所在的主机操作系统宕机后，尤其在ext4文件系统没有加上data=ordered选项，出现这种现象 redis宕机或者异常终止不会造成尾部不完整现象，可以选择让redis退出，或者导入尽可能多的数据。如果选择的是yes，当截断的aof文件被导入的时候，会自动发布一个log给客户端然后load。如果是no，用户必须手动redis-check-aof修复AOF文件才可以。默认值为 yes
+aof-load-truncated：aof文件可能在尾部是不完整的，当redis启动的时候，aof文件的数据被载入内存。重启可能发生在redis所在的主机操作系统宕机后，尤其在ext4文件系统没有加上data=ordered选项，出现这种现象
+redis宕机或者异常终止不会造成尾部不完整现象，可以选择让redis退出，或者导入尽可能多的数据。如果选择的是yes，当截断的aof文件被导入的时候，会自动发布一个log给客户端然后load。如果是no，用户必须手动redis-check-aof修复AOF文件才可以。默认值为
+yes
 
 ## LUA SCRIPTING
 
 ```ini
 
-LUA SCRIPTING  
+LUA SCRIPTING
 
 Max execution time of a Lua script in milliseconds.
 # Lua脚本的最大执行时间（以毫秒为单位）。
@@ -1626,11 +1618,11 @@ lua-time-limit：一个lua脚本执行的最大时间，单位为ms。默认值�
 ## REDIS CLUSTER(重要)
 
 ```ini
-REDIS CLUSTER  
+REDIS CLUSTER
 
 Normal Redis instances can't be part of a Redis Cluster; only nodes that are
 started as cluster nodes can. In order to start a Redis instance as a
-cluster node enable the cluster support uncommenting the following:
+cluster node enable the cluster support uncommenting the following :
 # 普通Redis实例不能属于Redis集群；只有作为群集节点启动的节点可以。为了将Redis实例启动为集群节点，请启用集群支持
 cluster-enabled yes
 
@@ -1652,7 +1644,7 @@ A replica of a failing master will avoid to start a failover if its data
 looks too old.
 # 如果发生故障的主副本的数据看起来太旧，它将避免启动故障转移。
 There is no simple way for a replica to actually have an exact measure of
-its "data age", so the following two checks are performed:
+its "data age", so the following two checks are performed :
 # 没有一种简单的方法可以使副本实际上具有其“数据年龄”的准确度量，因此执行以下两项检查
 1) If there are multiple replicas able to failover, they exchange messages
 in order to try to give an advantage to the replica with the best
@@ -1669,7 +1661,7 @@ at all.
 # 每个单个副本都会计算与其主副本之间最后一次交互的时间。这可以是最后收到的ping或命令（如果主服务器仍处于“已连接”状态），也可以是自从与主服务器断开连接以来经过的时间（如果复制链接当前已关闭）。如果最后一次交互太旧，则副本将完全不会尝试故障转移
 The point "2" can be tuned by user. Specifically a replica will not perform
 the failover if, since the last interaction with the master, the time
-elapsed is greater than:
+elapsed is greater than :
 # 用户可以调整点“ 2”。特别是，如果自从上次与主服务器进行交互以来，如果经过的时间大于或等于一个副本，则副本将不执行故障转移。
 (node-timeout * cluster-replica-validity-factor) + repl-ping-replica-period
 # （节点超时 * 集群副本有效性因子）+ 复制周期
@@ -1737,43 +1729,47 @@ in the case of a total DC failure.
 cluster-replica-no-failover no
 
 This option, when set to yes, allows nodes to serve read traffic while the
-the cluster is in a down state, as long as it believes it owns the slots. 
+the cluster is in a down state, as long as it believes it owns the slots.
 # 设置为yes时，此选项允许节点在群集处于关闭状态时为其提供读取流量，只要它认为自己拥有插槽即可
-This is useful for two cases.  The first case is for when an application 
+This is useful for two cases.  The first case is for when an application
 doesn't require consistency of data during node failures or network partitions.
 One example of this is a cache, where as long as the node has the data it
-should be able to serve it. 
+should be able to serve it.
 # 这对于两种情况很有用。第一种情况是在节点故障或网络分区期间应用程序不需要数据一致性时。一个示例是高速缓存，只要节点具有数据，它就应该能够为其服务
-The second use case is for configurations that don't meet the recommended  
-three shards but want to enable cluster mode and scale later. A 
+The second use case is for configurations that don't meet the recommended
+three shards but want to enable cluster mode and scale later. A
 master outage in a 1 or 2 shard configuration causes a read/write outage to the
 entire cluster without this option set, with it set there is only a write outage.
-Without a quorum of masters, slot ownership will not change automatically. 
+Without a quorum of masters, slot ownership will not change automatically.
 # 第二个用例是针对不符合建议的三个分片但希望启用集群模式并在以后扩展的配置。如果没有设置此选项，则在1或2分片配置中的主服务器中断会导致整个集群的读写中断。如果没有法定人数的主持人，则插槽所有权不会自动更改
 cluster-allow-reads-when-down no
 
 In order to setup your cluster make sure to read the documentation
-available at http://redis.io web site.
+available at http : //redis.io web site.
 ```
 
 cluster-enabled：集群开关，默认是不开启集群模式。
 
-cluster-config-file：集群配置文件的名称，每个节点都有一个集群相关的配置文件，持久化保存集群的信息。 这个文件并不需要手动配置，这个配置文件有Redis生成并更新，每个Redis集群节点需要一个单独的配置文件。请确保与实例运行的系统中配置文件名称不冲突。默认配置为nodes-6379.conf
+cluster-config-file：集群配置文件的名称，每个节点都有一个集群相关的配置文件，持久化保存集群的信息。
+这个文件并不需要手动配置，这个配置文件有Redis生成并更新，每个Redis集群节点需要一个单独的配置文件。请确保与实例运行的系统中配置文件名称不冲突。默认配置为nodes-6379.conf
 
 cluster-node-timeout ：可以配置值为15000。节点互连超时的阀值，集群节点超时毫秒数
 
-cluster-slave-validity-factor ：可以配置值为10。在进行故障转移的时候，全部slave都会请求申请为master，但是有些slave可能与master断开连接一段时间了， 导致数据过于陈旧，这样的slave不应该被提升为master。该参数就是用来判断slave节点与master断线的时间是否过长。
+cluster-slave-validity-factor ：可以配置值为10。在进行故障转移的时候，全部slave都会请求申请为master，但是有些slave可能与master断开连接一段时间了，
+导致数据过于陈旧，这样的slave不应该被提升为master。该参数就是用来判断slave节点与master断线的时间是否过长。
 
-> 判断方法是：比较slave断开连接的时间和(node-timeout * slave-validity-factor) + repl-ping-slave-period   如果节点超时时间为三十秒, 并且slave-validity-factor为10,假设默认的repl-ping-slave-period是10秒，即如果超过310秒slave将不会尝试进行故障转移
+> 判断方法是：比较slave断开连接的时间和(node-timeout * slave-validity-factor) + repl-ping-slave-period 如果节点超时时间为三十秒, 并且slave-validity-factor为10,假设默认的repl-ping-slave-period是10秒，即如果超过310秒slave将不会尝试进行故障转移
 
-cluster-migration-barrier ：可以配置值为1。master的slave数量大于该值，slave才能迁移到其他孤立master上，如这个参数若被设为2，那么只有当一个主节点拥有2 个可工作的从节点时，它的一个从节点会尝试迁移。
+cluster-migration-barrier ：可以配置值为1。master的slave数量大于该值，slave才能迁移到其他孤立master上，如这个参数若被设为2，那么只有当一个主节点拥有2
+个可工作的从节点时，它的一个从节点会尝试迁移。
 
-cluster-require-full-coverage：默认情况下，集群全部的slot有节点负责，集群状态才为ok，才能提供服务。 设置为no，可以在slot没有全部分配的时候提供服务。不建议打开该配置，这样会造成分区的时候，小分区的master一直在接受写请求，而造成很长时间数据不一致。
+cluster-require-full-coverage：默认情况下，集群全部的slot有节点负责，集群状态才为ok，才能提供服务。
+设置为no，可以在slot没有全部分配的时候提供服务。不建议打开该配置，这样会造成分区的时候，小分区的master一直在接受写请求，而造成很长时间数据不一致。
 
-## CLUSTER DOCKER/NAT support 
+## CLUSTER DOCKER/NAT support
 
 ```ini
-CLUSTER DOCKER/NAT support  
+CLUSTER DOCKER/NAT support
 
 In certain deployments, Redis Cluster nodes address discovery fails, because
 addresses are NAT-ted or because ports are forwarded (the typical case is
@@ -1781,7 +1777,7 @@ Docker and other containers).
 # 在某些部署中，Redis群集节点地址发现失败，这是因为地址经过NAT限制或端口已转发（典型情况是Docker和其他容器）
 In order to make Redis Cluster working in such environments, a static
 configuration where each node knows its public address is needed. The
-following two options are used for this scope, and are:
+following two options are used for this scope, and are :
 # 为了使Redis Cluster在这样的环境中工作，需要一个静态配置，其中每个节点都知道其公共地址。以下两个选项用于此范围，分别是
 * cluster-announce-ip
 * cluster-announce-port
@@ -1800,25 +1796,24 @@ clients port + 10000, so you can specify any port and bus-port depending
 on how they get remapped. If the bus-port is not set, a fixed offset of
 10000 will be used as usual.
 # 请注意，重新映射时，总线端口可能不在客户端端口+ 10000的固定偏移处，因此您可以根据重新映射的方式指定任何端口和总线端口。如果未设置总线端口，则将照常使用10000的固定偏移量
-Example:
+Example :
 
 cluster-announce-ip 10.1.1.5
 cluster-announce-port 6379
 cluster-announce-bus-port 6380
 ```
 
-在某些部署中，Redis群集节点寻址失败，这是因为地址经过NAT限制或端口已转发（典型情况是Docker和其他容器），为了使Redis Cluster在这样的环境中工作，需要一个静态配置，其中每个节点都知道其公共地址。以下两个选项用于此范围，分别是
+在某些部署中，Redis群集节点寻址失败，这是因为地址经过NAT限制或端口已转发（典型情况是Docker和其他容器），为了使Redis
+Cluster在这样的环境中工作，需要一个静态配置，其中每个节点都知道其公共地址。以下两个选项用于此范围，分别是
 
 * cluster-announce-ip
 * cluster-announce-port
 * cluster-announce-bus-port
 
-
-
 ## SLOW LOG
 
 ```ini
-SLOW LOG 
+SLOW LOG
 
 The Redis Slow Log is a system to log queries that exceeded a specified
 execution time. The execution time does not include the I/O operations
@@ -1827,7 +1822,7 @@ but just the time needed to actually execute the command (this is the only
 stage of command execution where the thread is blocked and can not serve
 other requests in the meantime).
 # Redis Slow Log是一个用于记录超过指定执行时间的查询的系统。执行时间不包括与客户端交谈，发送回复等IO操作，而仅包括实际执行命令所需的时间（这是命令执行的唯一阶段，在该阶段线程被阻塞并且无法服务同时提出其他要求）
-You can configure the slow log with two parameters: one tells Redis
+You can configure the slow log with two parameters : one tells Redis
 what is the execution time, in microseconds, to exceed in order for the
 command to get logged, and the other parameter is the length of the
 slow log. When a new command is logged the oldest one is removed from the
@@ -1852,7 +1847,7 @@ slowlog-max-len: 日志的长度默认值为128，新日志将追加。就日志
 ## LATENCY MONITOR
 
 ```ini
-LATENCY MONITOR 
+LATENCY MONITOR
 
 The Redis latency monitoring subsystem samples different operations
 at runtime in order to collect data related to possible sources of
@@ -1875,23 +1870,23 @@ monitoring can easily be enabled at runtime using the command
 latency-monitor-threshold 0
 ```
 
-## EVENT NOTIFICATION 
+## EVENT NOTIFICATION
 
 ```ini
-EVENT NOTIFICATION 
+EVENT NOTIFICATION
 
 Redis can notify Pub/Sub clients about events happening in the key space.
-This feature is documented at http://redis.io/topics/notifications
+This feature is documented at http : //redis.io/topics/notifications
 # Redis可以通知PubSub客户端关键空间中发生的事件
 For instance if keyspace events notification is enabled, and a client
 performs a DEL operation on key "foo" stored in the Database 0, two
-messages will be published via Pub/Sub:
+messages will be published via Pub/Sub :
 # 例如，如果启用了键空间事件通知，并且客户端对存储在数据库0中的键“ foo”执行了DEL操作，则将通过PubSub发布两条消息
-PUBLISH __keyspace@0__:foo del
-PUBLISH __keyevent@0__:del foo
+PUBLISH __keyspace@0__ : foo del
+PUBLISH __keyevent@0__ : del foo
 
 It is possible to select the events that Redis will notify among a set
-of classes. Every class is identified by a single character:
+of classes. Every class is identified by a single character :
 # 可以在一组类中选择Redis将通知的事件。每个类别都由单个字符标识
 K     Keyspace events, published with __keyspace@<db>__ prefix.             # 空键事件，以__keyspace @ <db> __前缀发布
 E     Keyevent events, published with __keyevent@<db>__ prefix.             # 按键事件，以__keyevent @ <db> __前缀发布
@@ -1904,22 +1899,22 @@ z     Sorted set commands                                                   # �
 x     Expired events (events generated every time a key expires)            # 过期事件（每次密钥过期时生成的事件）
 e     Evicted events (events generated when a key is evicted for maxmemory) # 驱逐事件（将密钥驱逐到最大内存时生成的事件）
 t     Stream commands                                                       # 流命令
-m     Key-miss events (Note: It is not included in the 'A' class)           # 键丢失事件（注意：它不包含在“ A”类中）
+m     Key-miss events (Note : It is not included in the 'A' class)           # 键丢失事件（注意：它不包含在“ A”类中）
 A     Alias for g$lshzxet, so that the "AKE" string means all the events    # glshzxet的别名，因此“ AKE”字符串表示所有事件
-    (Except key-miss events which are excluded from 'A' due to their
-     unique nature).
+(Except key-miss events which are excluded from 'A' due to their
+unique nature).
 
 The "notify-keyspace-events" takes as argument a string that is composed
 of zero or multiple characters. The empty string means that notifications
 are disabled.
 # “ notify-keyspace-events”将由零个或多个字符组成的字符串作为参数。空字符串表示已禁用通知
-Example: to enable list and generic events, from the point of view of the
-       event name, use:
+Example : to enable list and generic events, from the point of view of the
+event name, use:
 
 notify-keyspace-events Elg
 
-Example 2: to get the stream of the expired keys subscribing to channel
-         name __keyevent@0__:expired use:
+Example 2 : to get the stream of the expired keys subscribing to channel
+name __keyevent@0__:expired use:
 
 notify-keyspace-events Ex
 
@@ -1995,7 +1990,7 @@ gopher-enabled no
 ## ADVANCED CONFIG
 
 ```ini
-ADVANCED CONFIG 
+ADVANCED CONFIG
 
 Hashes are encoded using a memory efficient data structure when they have a
 small number of entries, and the biggest entry does not exceed a given
@@ -2008,13 +2003,13 @@ Lists are also encoded in a special way to save a lot of space.
 The number of entries allowed per internal list node can be specified
 as a fixed maximum size or a maximum number of elements.
 # 列表也以特殊方式编码，以节省大量空间。每个内部列表节点允许的条目数可以指定为固定的最大大小或最大元素数
-For a fixed maximum size, use -5 through -1, meaning:
+For a fixed maximum size, use -5 through -1, meaning :
 # 对于固定的最大大小，请使用-5到-1，表示
--5: max size: 64 Kb  <-- not recommended for normal workloads
--4: max size: 32 Kb  <-- not recommended
--3: max size: 16 Kb  <-- probably not recommended
--2: max size: 8 Kb   <-- good
--1: max size: 4 Kb   <-- good
+-5 : max size: 64 Kb  <-- not recommended for normal workloads
+-4 : max size: 32 Kb  <-- not recommended
+-3 : max size: 16 Kb  <-- probably not recommended
+-2 : max size: 8 Kb   <-- good
+-1 : max size: 4 Kb   <-- good
 Positive numbers mean store up to _exactly_ that number of elements
 per list node.
 # 正数表示每个列表节点最多可存储_exactly_个元素
@@ -2026,96 +2021,96 @@ list-max-ziplist-size -2
 Lists may also be compressed.   # 列表也可以被压缩。
 Compress depth is the number of quicklist ziplist nodes from *each* side of
 the list to *exclude* from compression.  The head and tail of the list
-are always uncompressed for fast push/pop operations.  Settings are:
+are always uncompressed for fast push/pop operations.  Settings are :
 # 压缩深度是列表的每侧要从压缩中排除的快速列表ziplist节点的数量。列表的开头和结尾始终是未压缩的，以便快速进行pushpop操作。设置是
-0: disable all list compression # 禁用所有列表压缩
-1: depth 1 means "don't start compressing until after 1 node into the list,
+0 : disable all list compression # 禁用所有列表压缩
+1 : depth 1 means "don't start compressing until after 1 node into the list,
 going from either the head or tail" # 深度1表示“直到列表中有1个节点之后，才开始压缩，从头到尾
-So: [head]->node->node->...->node->[tail]
+So : [head]->node->node->...->node->[tail]
 [head], [tail] will always be uncompressed; inner nodes will compress.
-2: [head]->[next]->node->node->...->node->[prev]->[tail]
-2 here means: don't compress head or head->next or tail->prev or tail,
-but compress all nodes between them.
-3: [head]->[next]->[next]->node->node->...->node->[prev]->[prev]->[tail]
-etc.
-list-compress-depth 0
+                                          2 : [head]->[next]->node->node->...->node->[prev]->[tail]
+                                          2 here means : don't compress head or head->next or tail->prev or tail,
+                                          but compress all nodes between them.
+                                          3 : [head]->[next]->[next]->node->node->...->node->[prev]->[prev]->[tail]
+        etc.
+        list-compress-depth 0
 
-Sets have a special encoding in just one case: when a set is composed
-of just strings that happen to be integers in radix 10 in the range
-of 64 bit signed integers.
-The following configuration setting sets the limit in the size of the
-set in order to use this special memory saving encoding.
-# 在仅一种情况下，集合具有特殊的编码：当集合仅由恰好是基数10中整数（在64位有符号整数范围内）的字符串组成时。以下配置设置设置了大小限制，以便使用此特殊的内存节省编码
-set-max-intset-entries 512
+        Sets have a special encoding in just one case : when a set is composed
+        of just strings that happen to be integers in radix 10 in the range
+        of 64 bit signed integers.
+        The following configuration setting sets the limit in the size of the
+        set in order to use this special memory saving encoding.
+        # 在仅一种情况下，集合具有特殊的编码：当集合仅由恰好是基数10中整数（在64位有符号整数范围内）的字符串组成时。以下配置设置设置了大小限制，以便使用此特殊的内存节省编码
+        set-max-intset-entries 512
 
-Similarly to hashes and lists, sorted sets are also specially encoded in
-order to save a lot of space. This encoding is only used when the length and
-elements of a sorted set are below the following limits:
-# 与哈希表和列表类似，对排序集也进行了特殊编码，以节省大量空间。仅当排序集的长度和元素低于以下限制时，才使用此编码
-zset-max-ziplist-entries 128
-zset-max-ziplist-value 64
+        Similarly to hashes and lists, sorted sets are also specially encoded in
+        order to save a lot of space. This encoding is only used when the length and
+        elements of a sorted set are below the following limits :
+        # 与哈希表和列表类似，对排序集也进行了特殊编码，以节省大量空间。仅当排序集的长度和元素低于以下限制时，才使用此编码
+        zset-max-ziplist-entries 128
+        zset-max-ziplist-value 64
 
-HyperLogLog sparse representation bytes limit. The limit includes the
-16 bytes header. When an HyperLogLog using the sparse representation crosses
-this limit, it is converted into the dense representation.
-# HyperLogLog稀疏表示形式的字节数限制。限制包括16个字节的标头。当使用稀疏表示的HyperLogLog超过此限制时，它将转换为密集表示
-A value greater than 16000 is totally useless, since at that point the
-dense representation is more memory efficient.
-# 大于16000的值是完全没有用的，因为在那一点上，密集表示的存储效率更高
-The suggested value is ~ 3000 in order to have the benefits of
-the space efficient encoding without slowing down too much PFADD,
-which is O(N) with the sparse encoding. The value can be raised to
-~ 10000 when CPU is not a concern, but space is, and the data set is
-composed of many HyperLogLogs with cardinality in the 0 - 15000 range.
-# 建议值约为3000，以便在不减慢过多PFADD的情况下获得节省空间编码的好处，而PFADD的稀疏编码为O（N）。当不关心CPU但有空间时，该值可以提高到10000，并且数据集由基数在0-15000范围内的许多HyperLogLog组成
-hll-sparse-max-bytes 3000
+        HyperLogLog sparse representation bytes limit. The limit includes the
+        16 bytes header. When an HyperLogLog using the sparse representation crosses
+        this limit, it is converted into the dense representation.
+        # HyperLogLog稀疏表示形式的字节数限制。限制包括16个字节的标头。当使用稀疏表示的HyperLogLog超过此限制时，它将转换为密集表示
+        A value greater than 16000 is totally useless, since at that point the
+        dense representation is more memory efficient.
+        # 大于16000的值是完全没有用的，因为在那一点上，密集表示的存储效率更高
+        The suggested value is ~ 3000 in order to have the benefits of
+        the space efficient encoding without slowing down too much PFADD,
+        which is O(N) with the sparse encoding. The value can be raised to
+        ~ 10000 when CPU is not a concern, but space is, and the data set is
+        composed of many HyperLogLogs with cardinality in the 0 - 15000 range.
+        # 建议值约为3000，以便在不减慢过多PFADD的情况下获得节省空间编码的好处，而PFADD的稀疏编码为O（N）。当不关心CPU但有空间时，该值可以提高到10000，并且数据集由基数在0-15000范围内的许多HyperLogLog组成
+        hll-sparse-max-bytes 3000
 
-Streams macro node max size / items. The stream data structure is a radix
-tree of big nodes that encode multiple items inside. Using this configuration
-it is possible to configure how big a single node can be in bytes, and the
-maximum number of items it may contain before switching to a new node when
-appending new stream entries. If any of the following settings are set to
-zero, the limit is ignored, so for instance it is possible to set just a
-max entires limit by setting max-bytes to 0 and max-entries to the desired
-value.
-# 流宏节点最大大小的项目。流数据结构是一个大节点的基数树，它对内部的多个项目进行编码。使用此配置，可以配置单个节点的大小（以字节为单位），以及在添加新的流条目时切换到新节点之前它可能包含的最大项目数。如果以下任何设置被设置为零，则该限制将被忽略，例如，可以通过将max-bytes设置为0并将max-entries设置为所需的值来仅设置最大整数限制
-stream-node-max-bytes 4096
-stream-node-max-entries 100
+        Streams macro node max size / items. The stream data structure is a radix
+        tree of big nodes that encode multiple items inside. Using this configuration
+        it is possible to configure how big a single node can be in bytes, and the
+        maximum number of items it may contain before switching to a new node when
+        appending new stream entries. If any of the following settings are set to
+        zero, the limit is ignored, so for instance it is possible to set just a
+        max entires limit by setting max-bytes to 0 and max-entries to the desired
+        value.
+        # 流宏节点最大大小的项目。流数据结构是一个大节点的基数树，它对内部的多个项目进行编码。使用此配置，可以配置单个节点的大小（以字节为单位），以及在添加新的流条目时切换到新节点之前它可能包含的最大项目数。如果以下任何设置被设置为零，则该限制将被忽略，例如，可以通过将max-bytes设置为0并将max-entries设置为所需的值来仅设置最大整数限制
+        stream-node-max-bytes 4096
+        stream-node-max-entries 100
 
-Active rehashing uses 1 millisecond every 100 milliseconds of CPU time in
-order to help rehashing the main Redis hash table (the one mapping top-level
-keys to values). The hash table implementation Redis uses (see dict.c)
-performs a lazy rehashing: the more operation you run into a hash table
-that is rehashing, the more rehashing "steps" are performed, so if the
-server is idle the rehashing is never complete and some more memory is used
-by the hash table.
-# 活动重新哈希处理每100毫秒CPU时间使用1毫秒，以帮助重新哈希主Redis哈希表（将顶级键映射到值的一个哈希表）。 Redis使用的哈希表实现（请参阅dict.c）执行一次懒惰的重新哈希处理：您在要进行哈希处理的哈希表中运行的操作越多，执行的哈希处理“步骤”就越多，因此，如果服务器空闲，则哈希处理将永远不会完成哈希表使用了更多的内存
-The default is to use this millisecond 10 times every second in order to
-actively rehash the main dictionaries, freeing memory when possible.
-# 默认值是每秒使用10毫秒的毫秒数来主动重新哈希主字典，并在可能的情况下释放内存
-If unsure:
-use "activerehashing no" if you have hard latency requirements and it is
-not a good thing in your environment that Redis can reply from time to time
-to queries with 2 milliseconds delay.
-# 如果不确定：如果您有严格的延迟要求，则使用“ activehashing no”，并且在您的环境中，Redis可以不时地以2毫秒的延迟答复查询不是一件好事
+        Active rehashing uses 1 millisecond every 100 milliseconds of CPU time in
+        order to help rehashing the main Redis hash table (the one mapping top-level
+        keys to values). The hash table implementation Redis uses (see dict.c)
+        performs a lazy rehashing : the more operation you run into a hash table
+        that is rehashing, the more rehashing "steps" are performed, so if the
+        server is idle the rehashing is never complete and some more memory is used
+        by the hash table.
+        # 活动重新哈希处理每100毫秒CPU时间使用1毫秒，以帮助重新哈希主Redis哈希表（将顶级键映射到值的一个哈希表）。 Redis使用的哈希表实现（请参阅dict.c）执行一次懒惰的重新哈希处理：您在要进行哈希处理的哈希表中运行的操作越多，执行的哈希处理“步骤”就越多，因此，如果服务器空闲，则哈希处理将永远不会完成哈希表使用了更多的内存
+        The default is to use this millisecond 10 times every second in order to
+        actively rehash the main dictionaries, freeing memory when possible.
+        # 默认值是每秒使用10毫秒的毫秒数来主动重新哈希主字典，并在可能的情况下释放内存
+        If unsure :
+        use "activerehashing no" if you have hard latency requirements and it is
+        not a good thing in your environment that Redis can reply from time to time
+        to queries with 2 milliseconds delay.
+        # 如果不确定：如果您有严格的延迟要求，则使用“ activehashing no”，并且在您的环境中，Redis可以不时地以2毫秒的延迟答复查询不是一件好事
 
-use "activerehashing yes" if you don't have such hard requirements but
-want to free memory asap when possible.
-# 如果您没有如此严格的要求，但想在可能的情况下尽快释放内存，请使用“ activerehashing yes”
-activerehashing yes
+        use "activerehashing yes" if you don't have such hard requirements but
+        want to free memory asap when possible.
+        # 如果您没有如此严格的要求，但想在可能的情况下尽快释放内存，请使用“ activerehashing yes”
+        activerehashing yes
 
-The client output buffer limits can be used to force disconnection of clients
-that are not reading data from the server fast enough for some reason (a
-common reason is that a Pub/Sub client can't consume messages as fast as the
-publisher can produce them).
+        The client output buffer limits can be used to force disconnection of clients
+        that are not reading data from the server fast enough for some reason (a
+        common reason is that a Pub/Sub client can't consume messages as fast as the
+        publisher can produce them).
 # 客户端输出缓冲区限制可用于出于某些原因强制断开那些没有足够快地从服务器读取数据的客户端（常见原因是PubSub客户端不能像发布者产生消息那样快地消耗消息）
-The limit can be set differently for the three different classes of clients:
+The limit can be set differently for the three different classes of clients :
 # 可以为三种不同类别的客户设置不同的限制
 normal -> normal clients including MONITOR clients  # 普通客户，包括MONITOR客户
 replica  -> replica clients                         # 复制客户端
 pubsub -> clients subscribed to at least one pubsub channel or pattern  # 客户订阅了至少一个pubsub频道或模式
 
-The syntax of every client-output-buffer-limit directive is the following:
+The syntax of every client-output-buffer-limit directive is the following :
 # 每个client-output-buffer-limit指令的语法如下
 client-output-buffer-limit <class> <hard limit> <soft limit> <soft seconds>
 
@@ -2210,14 +2205,14 @@ idea to start with the default settings and only change them after investigating
 how to improve the performances and how the keys LFU change over time, which
 is possible to inspect via the OBJECT FREQ command.
 # 可以调整Redis LFU逐出（请参阅maxmemory设置）。但是，最好从默认设置开始，仅在研究了如何提高性能以及LFU密钥随时间变化后才进行更改，可以通过OBJECT FREQ命令进行检查。
-There are two tunable parameters in the Redis LFU implementation: the
+There are two tunable parameters in the Redis LFU implementation : the
 counter logarithm factor and the counter decay time. It is important to
 understand what the two parameters mean before changing them.
 # Redis LFU实现中有两个可调参数：计数器对数因子和计数器衰减时间。重要的是在更改它们之前了解两个参数的含义
 The LFU counter is just 8 bits per key, it's maximum value is 255, so Redis
 uses a probabilistic increment with logarithmic behavior. Given the value
 of the old counter, when a key is accessed, the counter is incremented in
-this way:
+this way :
 # LFU计数器每个密钥只有8位，最大值是255，因此Redis使用具有对数行为的概率增量。给定旧计数器的值，当访问键时，计数器以这种方式递增
 1. A random number R between 0 and 1 is extracted.
 2. A probability P is calculated as 1/(old_value*lfu_log_factor+1).
@@ -2225,7 +2220,7 @@ this way:
 
 The default lfu-log-factor is 10. This is a table of how the frequency
 counter changes with a different number of accesses with different
-logarithmic factors:
+logarithmic factors :
 
 +--------+------------+------------+------------+------------+------------+
 | factor | 100 hits   | 1000 hits  | 100K hits  | 1M hits    | 10M hits   |
@@ -2239,20 +2234,20 @@ logarithmic factors:
 | 100    | 8          | 11         | 49         | 143        | 255        |
 +--------+------------+------------+------------+------------+------------+
 
-NOTE: The above table was obtained by running the following commands:
+NOTE : The above table was obtained by running the following commands:
 
 redis-benchmark -n 1000000 incr foo
 redis-cli object freq foo
 
 NOTE 2: The counter initial value is 5 in order to give new objects a chance
-to accumulate hits.
+      to accumulate hits.
 
-The counter decay time is the time, in minutes, that must elapse in order
-for the key counter to be divided by two (or decremented if it has a value
-less <= 10).
+      The counter decay time is the time, in minutes, that must elapse in order
+      for the key counter to be divided by two (or decremented if it has a value
+      less < = 10).
 
-The default value for the lfu-decay-time is 1. A special value of 0 means to
-decay the counter every time it happens to be scanned.
+      The default value for the lfu-decay-time is 1. A special value of 0 means to
+      decay the counter every time it happens to be scanned.
 
 lfu-log-factor 10
 lfu-decay-time 1
@@ -2261,7 +2256,7 @@ lfu-decay-time 1
 ## ACTIVE DEFRAGMENTATION
 
 ```ini
-ACTIVE DEFRAGMENTATION 
+ACTIVE DEFRAGMENTATION
 
 What is active defragmentation?
 -------------------------------
@@ -2285,7 +2280,7 @@ and to allocate it in a better place), and at the same time, will release the
 old copies of the data. This process, repeated incrementally for all the keys
 will cause the fragmentation to drop back to normal values.
 # 基本上，当碎片超过一定级别时（请参阅下面的配置选项），Redis将开始通过利用某些特定的Jemalloc功能在连续的内存区域中创建值的新副本（以便了解分配是否导致碎片并进行分配更好的位置），同时将释放数据的旧副本。对于所有键，以增量方式重复此过程将导致碎片恢复到正常值
-Important things to understand:
+Important things to understand :
 
 1. This feature is disabled by default, and only works if you compiled Redis
 to use the copy of Jemalloc we ship with the source code of Redis.
@@ -2347,16 +2342,16 @@ possible to this via Redis configuration directly, both in Linux and FreeBSD.
 # 通常，您可以使用“ taskset”命令来执行此操作，但是在Linux和FreeBSD中，也可以直接通过Redis配置来执行此操作
 You can pin the server/IO threads, bio threads, aof rewrite child process, and
 the bgsave child process. The syntax to specify the cpu list is the same as
-the taskset command:
+the taskset command :
 # 您可以固定serverIO线程，bio线程，aof重写子进程和bgsave子进程。指定cpu列表的语法与taskset命令相同
-Set redis server/io threads to cpu affinity 0,2,4,6:
-server_cpulist 0-7:2
+Set redis server/io threads to cpu affinity 0,2,4,6 :
+server_cpulist 0-7 : 2
 
-Set bio threads to cpu affinity 1,3:
+Set bio threads to cpu affinity 1,3 :
 # 将生物线程设置为cpu亲和力1,3
 bio_cpulist 1,3
 
-Set aof rewrite child process to cpu affinity 8,9,10,11:
+Set aof rewrite child process to cpu affinity 8,9,10,11 :
 # 将aof重写子进程设置为cpu亲和力8,9,10,11
 aof_rewrite_cpulist 8-11
 
@@ -2370,10 +2365,7 @@ bgsave_cpulist 1,10-11
 
 遇到碎片之后，可以在需要时使用命令“ CONFIG SET activedefrag yes”启用此功能。
 
-Activedefrag 配置参数能够微调碎片整理过程的行为，默认为No
-active-defrag-ignore-bytes 启动主动碎片整理的最小碎片废物量默认100mb
-active-defrag-threshold-lower: 启动主动碎片整理的最小碎片百分比，默认10
-active-defrag-cycle-min：达到下限阈值时使用的最小的CPU碎片整理工作，默认1
-active-defrag-cycle-max：达到上限时使用的最大的CPU碎片整理工作，默认25
-active-defrag-max-scan-fields 主字典扫描将处理的sethashzsetlist字段的最大数目，默认1000
+Activedefrag 配置参数能够微调碎片整理过程的行为，默认为No active-defrag-ignore-bytes 启动主动碎片整理的最小碎片废物量默认100mb active-defrag-threshold-lower:
+启动主动碎片整理的最小碎片百分比，默认10 active-defrag-cycle-min：达到下限阈值时使用的最小的CPU碎片整理工作，默认1
+active-defrag-cycle-max：达到上限时使用的最大的CPU碎片整理工作，默认25 active-defrag-max-scan-fields 主字典扫描将处理的sethashzsetlist字段的最大数目，默认1000
 active-defrag-cycle-min：达到下限阈值时使用的最小的CPU碎片整理工作，默认1x

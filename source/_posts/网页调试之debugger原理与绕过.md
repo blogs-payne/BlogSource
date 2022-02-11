@@ -29,13 +29,19 @@ debugger 语句用于停止执行 JavaScript(以下简称JS)，并调用 (如果
 #### 直接使用书写debugger
 
 ```js
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE
+html >
+< html
+lang = "en" >
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Example DEBUGGER</title>
+    < head >
+    < meta
+charset = "UTF-8" >
+    < meta
+http - equiv = "X-UA-Compatible"
+content = "IE=edge" >
+    < title > Example
+DEBUGGER < /title>
 </head>
 
 <body>
@@ -84,22 +90,28 @@ debugger 语句用于停止执行 JavaScript(以下简称JS)，并调用 (如果
 #### 函数内执行debugger
 
 ```javascript
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE
+html >
+< html
+lang = "en" >
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Example DEBUGGER</title>
+    < head >
+    < meta
+charset = "UTF-8" >
+    < meta
+http - equiv = "X-UA-Compatible"
+content = "IE=edge" >
+    < title > Example
+DEBUGGER < /title>
 </head>
 
 <body>
     <script>
         (function a(){
-            var data = Date();
-            alert(data);
-            debugger;
-        }())
+        var data = Date();
+        alert(data);
+        debugger;
+    }())
     </script>
 </body>
 
@@ -119,13 +131,11 @@ debugger 语句用于停止执行 JavaScript(以下简称JS)，并调用 (如果
 debugger的绕过也很简单，我个人总结共有两种大的方向。它们分别是替换、掠过。其原理都是不让debugger执行。个人并不推荐新手使用替换法中的方法
 
 - 替换法
-  - JS注入
-  - 重写(Hook)
+    - JS注入
+    - 重写(Hook)
 - 掠过法
-  - Never pause here
-  - 条件断点
-
-
+    - Never pause here
+    - 条件断点
 
 #### JS注入
 
@@ -165,7 +175,7 @@ debugger的绕过也很简单，我个人总结共有两种大的方向。它们
 
 ```js
 function a() {
-	eval("debugger");
+    eval("debugger");
 }
 ```
 
@@ -188,8 +198,8 @@ function a() {
 
 ```js
 function a() {
-  debugger;
-	eval("debugger");
+    debugger;
+    eval("debugger");
 }
 ```
 

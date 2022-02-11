@@ -13,7 +13,7 @@ date: 2021-09-02 21:46:39
 
 ## mysql用户管理
 
->  DCL（Data Control Language，数据控制语言）：用于定义数据库的访问权限和安全级别，主要包含GRANT、REVOKE、COMMIT和ROLLBACK等语句。
+> DCL（Data Control Language，数据控制语言）：用于定义数据库的访问权限和安全级别，主要包含GRANT、REVOKE、COMMIT和ROLLBACK等语句。
 
 **mysql用户管理主要涉及到用户的增删改查与权限管理**
 
@@ -22,12 +22,11 @@ mysql中存在4个控制权限的表，分别为user表，db表，tables_priv表
 **权限表的验证过程**
 
 1. 先从user表中的Host,User,Password这3个字段中判断连接的ip、用户名、密码是否存在，存在则通过验证。
-2. 通过身份认证后，进行权限分配，按照user，db，tables_priv，columns_priv的顺序进行验证。即先检查全局权限表user，如果user中对应的权限为Y，则此用户对所有数据库的权限都为Y，将不再检查db, tables_priv,columns_priv；如果为N，则到db表中检查此用户对应的具体数据库，并得到db中为Y的权限；如果db中为N，则检查tables_priv中此数据库对应的具体表，取得表中的权限Y，以此类推。
+2. 通过身份认证后，进行权限分配，按照user，db，tables_priv，columns_priv的顺序进行验证。即先检查全局权限表user，如果user中对应的权限为Y，则此用户对所有数据库的权限都为Y，将不再检查db,
+   tables_priv,columns_priv；如果为N，则到db表中检查此用户对应的具体数据库，并得到db中为Y的权限；如果db中为N，则检查tables_priv中此数据库对应的具体表，取得表中的权限Y，以此类推。
 
 **MySQL 权限级别**
-全局性的管理权限： 作用于整个MySQL实例级别 
-数据库级别的权限： 作用于某个指定的数据库上或者所有的数据库上 
-数据库对象级别的权限：作用于指定的数据库对象上（表、视图等）或者所有的数据库对象上
+全局性的管理权限： 作用于整个MySQL实例级别 数据库级别的权限： 作用于某个指定的数据库上或者所有的数据库上 数据库对象级别的权限：作用于指定的数据库对象上（表、视图等）或者所有的数据库对象上
 
 ### 用户操作
 
@@ -53,10 +52,20 @@ alter user user_name@'host' identified by 'password';
 ## 修改密码
 alter user acs@'10.0.0.%' identified by '321312312123';
 ## 修改 host
-UPDATE `user` SET `Host` = '%' WHERE `user`.`Host` = '10.0.0.%' AND `user`.`User` = 'acs'
+UPDATE `user`
+SET `Host` = '%'
+WHERE `user`.`Host` = '10.0.0.%'
+  AND `user`.`User` = 'acs'
 ## 修改权限
-UPDATE `user` SET `Select_priv` = 'Y' WHERE `user`.`Host` = '%' AND `user`.`User` = 'acs'
-UPDATE `user` SET `Select_priv` = 'Y', `Delete_priv` = 'Y' WHERE `user`.`Host` = '%' AND `user`.`User` = 'acs'
+UPDATE `user`
+SET `Select_priv` = 'Y'
+WHERE `user`.`Host` = '%'
+  AND `user`.`User` = 'acs'
+UPDATE `user`
+SET `Select_priv` = 'Y',
+    `Delete_priv` = 'Y'
+WHERE `user`.`Host` = '%'
+  AND `user`.`User` = 'acs'
 ```
 
 ```mysql
@@ -64,7 +73,10 @@ UPDATE `user` SET `Select_priv` = 'Y', `Delete_priv` = 'Y' WHERE `user`.`Host` =
 drop user user_name@'host';
 # example
 drop user acs@'%'
-DELETE FROM `user` WHERE `user`.`Host` = '10.0.0.%' AND `user`.`User` = 'acs'
+DELETE
+FROM `user`
+WHERE `user`.`Host` = '10.0.0.%'
+  AND `user`.`User` = 'acs'
 ```
 
 > user_name：用户名
@@ -106,28 +118,27 @@ dbname.t1			---->指定表
 
 ```mysql
 # 查看MYSQL有哪些用户
-select user,host from mysql.user;
+select user, host
+from mysql.user;
 # 查看权限
 show grants for user_name@'host';
 ```
-
-
 
 ```mysql
 # 授权
 grant 权限 on 权限范围 to 用户 identified by 密码 with grant option;
 ```
 
- **all privileges：**表示将所有权限授予给用户。也可指定具体的权限，如：SELECT、CREATE、DROP等。
- **on：**表示这些权限对哪些数据库和表生效，格式：数据库名.表名，这里写“*”表示所有数据库，所有表。如果我要指定将权限应用到test库的user表中，可以这么写：test.user
- **to：**将权限授予哪个用户。格式：”用户名”@”登录IP或域名”。%表示没有限制，在任何主机都可以登录。比如：”payne”@”192.168.0%”，表示yangxin这个用户只能在192.168.0IP段登录
- **•identified by：**指定用户的登录密码
- **•with grant option：**表示允许用户将自己的权限授权给其它用户 
+**all privileges：**表示将所有权限授予给用户。也可指定具体的权限，如：SELECT、CREATE、DROP等。
+**on：**表示这些权限对哪些数据库和表生效，格式：数据库名.表名，这里写“*”表示所有数据库，所有表。如果我要指定将权限应用到test库的user表中，可以这么写：test.user
+**to：**将权限授予哪个用户。格式：”用户名”@”登录IP或域名”。%表示没有限制，在任何主机都可以登录。比如：”payne”@”192.168.0%”，表示yangxin这个用户只能在192.168.0IP段登录
+**•identified by：**指定用户的登录密码
+**•with grant option：**表示允许用户将自己的权限授权给其它用户
 
 ```mysql
 # 收回权限
 revoke delete on 权限范围 from 用户@‘host’
-revoke delete on app.*  from app@'10.0.0.%'；
+revoke delete on app.* from app@'10.0.0.%'；
 ```
 
 ### 如何授权
@@ -143,8 +154,6 @@ revoke delete on app.*  from app@'10.0.0.%'；
 - root禁用远程登录
 - 分级别，类似于公司管理。
 
-
-
 ## 注意
 
 ```undefined
@@ -155,7 +164,8 @@ grant 不再支持自动创建用户了，不支持改密码
 ```
 
 - 执行Grant,revoke,set password,rename user命令修改权限之后， MySQL会自动将修改后的权限信息同步加载到系统内存中
-- 如果执行insert/update/delete操作上述的系统权限表之后，则必须再执行刷新权限命令才能同步到系统内存中，刷新权限命令包括： `flush privileges`/mysqladmin flush-privileges / mysqladmin reload
+- 如果执行insert/update/delete操作上述的系统权限表之后，则必须再执行刷新权限命令才能同步到系统内存中，刷新权限命令包括： `flush privileges`/mysqladmin flush-privileges /
+  mysqladmin reload
 - 如果是修改tables和columns级别的权限，则客户端的下次操作新权限就会生效
 - 如果是修改database级别的权限，则新权限在客户端执行use database命令后生效
 - 如果是修改global级别的权限，则需要重新创建连接新权限才能生效

@@ -13,8 +13,7 @@ date: 2020-12-01 23:55:27
 
 一寸光阴一寸金，寸金难买寸光阴
 
-时间离我们仅在咫尺，无论是在编程中时间还是日常生活中对于时间的
-记述都是离我们最近的，那么让我们一起来学习一下GoLang中内置包time。
+时间离我们仅在咫尺，无论是在编程中时间还是日常生活中对于时间的 记述都是离我们最近的，那么让我们一起来学习一下GoLang中内置包time。
 
 <!--more-->
 
@@ -38,8 +37,8 @@ time.Duration是time包定义的一个类型，
 ```
 
 ### 基本使用
-打印显示出现在的时间，基本示例如下。
-其中now为`time.Time`类型,Month 为`time.Month`类型
+
+打印显示出现在的时间，基本示例如下。 其中now为`time.Time`类型,Month 为`time.Month`类型
 
 ```go
 func timeDemo() {
@@ -58,12 +57,13 @@ func timeDemo() {
 	// time.Time,int,time.Month,int,int,int,int
 }
 ```
-### 时间戳
-在编程中对于时间戳的应用也尤为广泛,例如在Web开发中做cookies有效期，接口加密，
-Redis中的key有效期等等，大部分都是使用到了时间戳。
 
-时间戳是自1970年1月1日（08:00:00GMT）至当前时间的总毫秒数。它也被称为Unix时间戳（UnixTimestamp）。
-在GoLang中,获取时间戳的操作如下
+### 时间戳
+
+在编程中对于时间戳的应用也尤为广泛,例如在Web开发中做cookies有效期，接口加密， Redis中的key有效期等等，大部分都是使用到了时间戳。
+
+时间戳是自1970年1月1日（08:00:00GMT）至当前时间的总毫秒数。它也被称为Unix时间戳（UnixTimestamp）。 在GoLang中,获取时间戳的操作如下
+
 ```go
 func timeStamp() {
 	now := time.Now()
@@ -71,7 +71,9 @@ func timeStamp() {
 	fmt.Printf("TimeStamp type:%T, TimeStamp:%v", now.Unix(), now.Unix())
 }
 ```
+
 除此之外还有纳秒时间戳，我们可以使用`time.Now().UnixNano()`来获取它
+
 ```go
 func timeStamp() {
 	now := time.Now()
@@ -79,6 +81,7 @@ func timeStamp() {
 	fmt.Printf("TimeStamp type:%T, TimeStamp:%v\n", now.UnixNano(), now.UnixNano())
 }
 ```
+
 那么基本的时间戳的先暂且为止了，那该如何由时间戳转化为普通的时间格式呢？
 
 当然也是有方法滴，莫急莫急，请听我一一道来，嘴比较笨就直接用代码吧，嘻嘻
@@ -99,6 +102,7 @@ func timeStampToTime() {
 	fmt.Printf("%d-%02d-%02d %02d:%02d:%02d\n", year, month, day, hour, minute, second)
 }
 ```
+
 这样我们就可以简单的将时间戳转化为时间格式，是不是很Nice
 
 基本的定义查看就以及搞完了，那咱们整一下高级一点的东西，时间的操作

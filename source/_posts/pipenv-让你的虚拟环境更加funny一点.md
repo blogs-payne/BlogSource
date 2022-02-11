@@ -12,7 +12,9 @@ date: 2020-12-22 00:34:28
 
 ## 什么是虚拟环境？
 
-- 由[百度百科](https://cuiqingcai.com/[https://baike.baidu.com/item/虚拟环境/6529153?fr=aladdin](https://baike.baidu.com/item/虚拟环境/6529153?fr=aladdin) ) 得知： 以专利的实时动态程序行为修饰与模拟算法，直接利用本机的 OS，模拟出自带与本机相容 OS 的虚拟机（Vista 下可模拟 Vista、XP，Windows 7 下则可模拟 Windows 7、Vista、XP），也称为 “虚拟环境”
+-
+由[百度百科](https://cuiqingcai.com/[https://baike.baidu.com/item/虚拟环境/6529153?fr=aladdin](https://baike.baidu.com/item/虚拟环境/6529153?fr=aladdin) )
+得知： 以专利的实时动态程序行为修饰与模拟算法，直接利用本机的 OS，模拟出自带与本机相容 OS 的虚拟机（Vista 下可模拟 Vista、XP，Windows 7 下则可模拟 Windows 7、Vista、XP），也称为 “虚拟环境”
 - 功能： 每一个环境都相当于一个新的 Python 环境。你可以在这个新的环境里安装库，运行代码等
 
 <!--more-->
@@ -27,7 +29,7 @@ date: 2020-12-22 00:34:28
 
 **例如：**
 
-- 项目依赖版本不同时 
+- 项目依赖版本不同时
 - 所需包与其他包(非此项目所需，但却存在)产生冲突时
 - 等等
 
@@ -37,7 +39,9 @@ date: 2020-12-22 00:34:28
 
 它会自动为您的项目创建和管理virtualenv，并`Pipfile`在您安装/卸载软件包时从您的软件包中添加/删除软件包。它还会生成非常重要的`Pipfile.lock`，用于生成确定性构建。
 
-Pipenv的主要目的是为应用程序的用户和开发人员提供一种简单的方法来设置工作环境。有关库和应用程序之间的区别以及使用`setup.py`vs`Pipfile`定义依赖[项的区别](https://docs.pipenv.org/advanced/#pipfile-vs-setuppy)，请参见[☤Pipfile vs setup.py](https://docs.pipenv.org/advanced/#pipfile-vs-setuppy)。
+Pipenv的主要目的是为应用程序的用户和开发人员提供一种简单的方法来设置工作环境。有关库和应用程序之间的区别以及使用`setup.py`vs`Pipfile`
+定义依赖[项的区别](https://docs.pipenv.org/advanced/#pipfile-vs-setuppy)，请参见[☤Pipfile vs
+setup.py](https://docs.pipenv.org/advanced/#pipfile-vs-setuppy)。
 
 Pipenv试图解决的问题是多方面的：
 
@@ -422,10 +426,6 @@ Docker 构建注意事项：
 
 2. 使用`pipenv update `而不是`pipenv sync`,为什么，我就不告诉你了。看上面就好
 
-
-
-
-
 ## 勘误
 
 ### 1.pip版本过低造成安装失败
@@ -477,11 +477,11 @@ pipenv shell
 # 即可重新进入虚拟环境
 ```
 
-3. 创建虚拟环境需注意 
-   pipenv 并不支持嵌套的虚拟环境，默认使用此文件的父级目录中的pipfile
-   
+3. 创建虚拟环境需注意 pipenv 并不支持嵌套的虚拟环境，默认使用此文件的父级目录中的pipfile
+
    > 比如：在projectfile中有文件src-1，pipfile, src-2,如果进入src-1 中执行`pipenv install`or`pipenv --python 3.8`or `pipenv  tree`,中任何一个命令都会优先使用projectfile/pipfile
-   >
+
+>
 
 ## Referer
 

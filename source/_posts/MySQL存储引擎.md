@@ -17,7 +17,8 @@ date: 2021-09-10 02:21:20
 
 | Engine             | Support | Comment                                               | Transactions | XA     | Savepoints |      |
 | :----------------- | :------ | :---------------------------------------------------- | :----------- | :----- | :--------- | ---- |
-| FEDERATED          | NO      | Federated MySQL storage engine                        | *NULL*       | *NULL* | *NULL*     |      |
+| FEDERATED          | NO      | Federated MySQL storage engine                        | *NULL*       | *NULL* | *
+NULL*     |      |
 | MEMORY             | YES     | Hash based, stored in memory, useful for temporary... | NO           | NO     | NO         |      |
 | InnoDB             | DEFAULT | Supports transactions, row-level locking, and fore... | YES          | YES    | YES        |      |
 | PERFORMANCE_SCHEMA | YES     | Performance Schema                                    | NO           | NO     | NO         |      |
@@ -33,17 +34,12 @@ MySQL中常用的存储引擎有InnoDB、MyISAM、MEMORY、ARCHIVE和CSV
 
 ### InnoDB存储引擎
 
-支持事务
-锁级别为行锁，比MyISAM存储引擎支持更高的并发
-能够通过二进制日志恢复数据
-支持外键操作
+支持事务 锁级别为行锁，比MyISAM存储引擎支持更高的并发 能够通过二进制日志恢复数据 支持外键操作
 在索引存储上，索引和数据存储在同一个文件中，默认按照B+Tree组织索引的结构。同时，主键索引的叶子节点存储完整的数据记录，非主键索引的叶子节点存储主键的值。
 
 **在MySQL 5.6版本之后，默认使用InnoDB存储引擎。**
 
 **在MySQL 5.6版本之后，InnoDB存储引擎支持全文索引。**
-
-
 
 ### MyISAM存储引擎
 
@@ -59,8 +55,6 @@ MySQL中常用的存储引擎有InnoDB、MyISAM、MEMORY、ARCHIVE和CSV
 
 支持全文索引。
 
-
-
 ### MEMORY存储引擎
 
 不支持TEXT和BLOB数据类型，只支持固定长度的字符串类型。例如，在MEMORY存储引擎中，会将VARCHAR类型自动转化成CHAR类型。
@@ -71,8 +65,6 @@ MySQL中常用的存储引擎有InnoDB、MyISAM、MEMORY、ARCHIVE和CSV
 
 数据存储在内存中，重启服务器后数据会丢失。如果是需要持久化的数据，不适合存储在MEMORY存储引擎的数据表中。
 
-
-
 ### ARCHIVE存储引擎
 
 支持数据压缩，在存储数据前会对数据进行压缩处理，适合存储归档的数据。
@@ -81,17 +73,12 @@ MySQL中常用的存储引擎有InnoDB、MyISAM、MEMORY、ARCHIVE和CSV
 
 只支持在整数自增类型的字段上添加索引。
 
-
-
 ### CSV存储引擎
 
 主要存储的是csv格式的文本数据，可以直接打开存储的文件进行编辑。
 
 可以将MySQL中某个数据表中的数据直接导出为csv文件，也可以将.csv文件导入数据表中。
 
-
-
 https://dev.mysql.com/doc/refman/8.0/en/storage-engines.html
-
 
 https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html

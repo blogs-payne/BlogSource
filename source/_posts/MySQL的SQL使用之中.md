@@ -21,13 +21,14 @@ date: 2021-08-26 14:53:02
 
 ```mysql
 # INSERT语法
-INSERT [INTO] table_name[(field_name_1, field_name_2...)] VALUES(value1, value2...),[(value1, value2...)...]
+INSERT [INTO] table_name [(field_name_1, field_name_2...)]
+VALUES (value1, value2...),[(value1, value2...)...]
 # 常见示例
 ## 插入
-INSERT INTO ch_people_msg(`p_uic`, `p_nickname`, `p_gender`, `p_age`, `p_pnum`, `p_address`, `p_email`) VALUES
-("431122200008868162", "payne", "m", 22, 17672655132, "湖南省xx市xx区雨花a世界", "127xxxx261"),
-("431122200002148162", "tom", "m", 25, 17672655132, "湖南省xx市xx区雨花a世界", "127xxxx221"),
-("431122200002168163", "tom", "m", 25, 17672655132, "湖南省xx市xx区雨花a世界", "127xxxx221")
+INSERT INTO ch_people_msg(`p_uic`, `p_nickname`, `p_gender`, `p_age`, `p_pnum`, `p_address`, `p_email`)
+VALUES ("431122200008868162", "payne", "m", 22, 17672655132, "湖南省xx市xx区雨花a世界", "127xxxx261"),
+       ("431122200002148162", "tom", "m", 25, 17672655132, "湖南省xx市xx区雨花a世界", "127xxxx221"),
+       ("431122200002168163", "tom", "m", 25, 17672655132, "湖南省xx市xx区雨花a世界", "127xxxx221")
 ```
 
 > ```mysql
@@ -58,7 +59,7 @@ truncate: DDL操作,对与表段中的数据页进行清空,速度快.
 
 ```
 
->  当表被TRUNCATE 后，这个表和索引所占用的空间会恢复到初始大小，
+> 当表被TRUNCATE 后，这个表和索引所占用的空间会恢复到初始大小，
 >
 >  DELETE操作不会减少表或索引所占用的空间。
 >
@@ -68,7 +69,8 @@ truncate: DDL操作,对与表段中的数据页进行清空,速度快.
 
 **delete**
 
-- delete是DML，执行delete操作时，每次从表中删除一行，并且同时将该行的的删除操作记录在redo和undo表空间中以便进行回滚（rollback）和重做操作，但要注意表空间要足够大，需要手动提交（commit）操作才能生效，可以通过rollback撤消操作。
+-
+delete是DML，执行delete操作时，每次从表中删除一行，并且同时将该行的的删除操作记录在redo和undo表空间中以便进行回滚（rollback）和重做操作，但要注意表空间要足够大，需要手动提交（commit）操作才能生效，可以通过rollback撤消操作。
 - delete可根据条件删除表中满足条件的数据，如果不指定where子句，那么删除表中所有记录。
 
 - delete语句不影响表所占用的extent，高水线(high watermark)保持原位置不变。
@@ -76,7 +78,8 @@ truncate: DDL操作,对与表段中的数据页进行清空,速度快.
 **truncate**
 
 - truncate是DDL，会隐式提交，所以，不能回滚，不会触发触发器。
-- truncate会删除表中所有记录，并且将重新设置高水线和所有的索引，缺省情况下将空间释放到minextents个extent，除非使用reuse storage，。不会记录日志，所以执行速度很快，但不能通过rollback撤消操作（如果一不小心把一个表truncate掉，也是可以恢复的，只是不能通过rollback来恢复）。
+- truncate会删除表中所有记录，并且将重新设置高水线和所有的索引，缺省情况下将空间释放到minextents个extent，除非使用reuse
+  storage，。不会记录日志，所以执行速度很快，但不能通过rollback撤消操作（如果一不小心把一个表truncate掉，也是可以恢复的，只是不能通过rollback来恢复）。
 
 - 对于外键（foreignkey ）约束引用的表，不能使用 truncate table，而应使用不带 where 子句的 delete 语句。
 
@@ -89,11 +92,11 @@ truncate: DDL操作,对与表段中的数据页进行清空,速度快.
 
 - drop语句将删除表的结构所依赖的约束，触发器，索引，依赖于该表的存储过程/函数将保留,但是变为invalid状态。
 
-> - 如果想删除表，当然用drop； 
+> - 如果想删除表，当然用drop；
 >
 > - 如果想保留表而将所有数据删除，如果和事务无关，用truncate即可；
 >
-> -  如果和事务有关，或者想触发trigger，还是用delete；
+> - 如果和事务有关，或者想触发trigger，还是用delete；
 >
 > - 如果是整理表内部的碎片，可以用truncate跟上reuse stroage，再重新导入/插入数据。
 
@@ -101,12 +104,20 @@ truncate: DDL操作,对与表段中的数据页进行清空,速度快.
 
 ```sql
 1.添加状态列
-ALTER TABLE ch_people_msg ADD state TINYINT NOT NULL DEFAULT 1 ;
-SELECT * FROM ch_people_msg;
-2. UPDATE 替代 DELETE
-UPDATE ch_people_msg SET state=0 WHERE id=6;
+ALTER TABLE ch_people_msg
+    ADD state TINYINT NOT NULL DEFAULT 1;
+SELECT *
+FROM ch_people_msg;
+2.
+UPDATE 替代
+DELETE
+UPDATE ch_people_msg
+SET state=0
+WHERE id = 6;
 3. 业务语句查询
-SELECT * FROM ch_people_msg WHERE state=1;
+SELECT *
+FROM ch_people_msg
+WHERE state = 1;
 ```
 
 ### 改
@@ -170,22 +181,20 @@ SELECT  *  FROM 表
 
 根据 by后面的条件进行**分组**，方便统计，by后面跟一个列或多个列
 
-> **max()**      			：最大值
-> **min()**			       ：最小值
-> **avg()**     			   ：平均值
-> **sum()**     			  ：总和
-> **count()**    			：个数
+> **max()**                ：最大值
+> **min()**                   ：最小值
+> **avg()**                   ：平均值
+> **sum()**                  ：总和
+> **count()**                ：个数
 > **group_concat()** : 列转行
 
 **having**
 
-​		having语句是分组后过滤的条件，在group by之后使用，也就是如果要用having语句，必须要先有group by语句。
+​ having语句是分组后过滤的条件，在group by之后使用，也就是如果要用having语句，必须要先有group by语句。
 
 #### order by
 
 实现先排序，by后添加条件列
-
-
 
 ```
 # distinct：去重复查询

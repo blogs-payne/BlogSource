@@ -10,7 +10,9 @@ categories:
 abbrlink: 44075
 date: 2021-01-11 16:21:48
 ---
-还记得那是在2018年的十月的某个日子，虽早已入秋，但夏日的炎热却丝毫不减退散。那时的我正捧着一本`SQL Server程序设计`的白蓝皮书与九栋315的狗子们，匆匆的走向`j1-402`进行了我们人生中第一次`SQL数据库的学习`，时光总是戏人，现实总是玩笑。当初的几个伙伴都走向了各行各业，而唯有我编程课，问啥啥不会，写啥啥就废的我进入了IT行业。说来实在嘲讽，缅怀那些我错过的编程课，致那些年说过无数次“让我学`SQL`,根本不可能”，我承认我打脸了。正如此章的title一般，“SQL语句， 何必在忆？”
+还记得那是在2018年的十月的某个日子，虽早已入秋，但夏日的炎热却丝毫不减退散。那时的我正捧着一本`SQL Server程序设计`的白蓝皮书与九栋315的狗子们，匆匆的走向`j1-402`进行了我们人生中第一次`SQL数据库的学习`
+，时光总是戏人，现实总是玩笑。当初的几个伙伴都走向了各行各业，而唯有我编程课，问啥啥不会，写啥啥就废的我进入了IT行业。说来实在嘲讽，缅怀那些我错过的编程课，致那些年说过无数次“让我学`SQL`
+,根本不可能”，我承认我打脸了。正如此章的title一般，“SQL语句， 何必在忆？”
 
 很久之前就学了SQL，然而又忘记，今天正式系统的性的回顾一下，温故而知新。可以为师矣
 
@@ -98,9 +100,8 @@ show collation;
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwgy1gmd66b11g5j313o0piabh.jpg)
 
-`*`即便 DATETIME 和 TIMESTAMP 返回相同的格式，它们的工作方式很不同。在 INSERT 或 UPDATE 查询中，TIMESTAMP 自动把自身设置为当前的日期和时间。TIMESTAMP 也接受不同的格式，比如 YYYYMMDDHHMMSS、YYMMDDHHMMSS、YYYYMMDD 或 YYMMDD。
-
-
+`*`即便 DATETIME 和 TIMESTAMP 返回相同的格式，它们的工作方式很不同。在 INSERT 或 UPDATE 查询中，TIMESTAMP 自动把自身设置为当前的日期和时间。TIMESTAMP 也接受不同的格式，比如
+YYYYMMDDHHMMSS、YYMMDDHHMMSS、YYYYMMDD 或 YYMMDD。
 
 ## 什么是SQL语句
 
@@ -108,15 +109,19 @@ SQL语句是结构化查询语言(Structured Query Language)的简称,是一种�
 
 ## SQL语句的类型
 
-数据查询语言（[DQL](https://baike.baidu.com/item/DQL):Data Query Language）：其语句，也称为“数据检索[语句](https://baike.baidu.com/item/语句)”，用以从表中获得数据，确定数据怎样在应用程序给出。保留字[SELECT](https://baike.baidu.com/item/SELECT/10735068)是DQL（也是所有SQL）用得最多的动词，其他DQL常用的保留字有WHERE，ORDER BY，GROUP BY和HAVING。这些DQL保留字常与其它类型的SQL语句一起使用。
+数据查询语言（[DQL](https://baike.baidu.com/item/DQL):Data Query
+Language）：其语句，也称为“数据检索[语句](https://baike.baidu.com/item/语句)”，用以从表中获得数据，确定数据怎样在应用程序给出。保留字[SELECT](https://baike.baidu.com/item/SELECT/10735068)是DQL（也是所有SQL）用得最多的动词，其他DQL常用的保留字有WHERE，ORDER
+BY，GROUP BY和HAVING。这些DQL保留字常与其它类型的SQL语句一起使用。
 
-[数据操作语言](https://baike.baidu.com/item/数据操作语言)（DML：Data Manipulation Language）：其语句包括动词[INSERT](https://baike.baidu.com/item/INSERT)、[UPDATE](https://baike.baidu.com/item/UPDATE)和[DELETE](https://baike.baidu.com/item/DELETE)。它们分别用于添加、修改和删除。
+[数据操作语言](https://baike.baidu.com/item/数据操作语言)（DML：Data Manipulation
+Language）：其语句包括动词[INSERT](https://baike.baidu.com/item/INSERT)、[UPDATE](https://baike.baidu.com/item/UPDATE)和[DELETE](https://baike.baidu.com/item/DELETE)。它们分别用于添加、修改和删除。
 
 事务控制语言（TCL）：它的语句能确保被DML语句影响的表的所有行及时得以更新。包括COMMIT（提交）命令、SAVEPOINT（保存点）命令、ROLLBACK（回滚）命令。
 
 [数据控制语言](https://baike.baidu.com/item/数据控制语言)（DCL）：它的语句通过GRANT或REVOKE实现权限控制，确定单个用户和用户组对[数据库对象](https://baike.baidu.com/item/数据库对象)的访问。某些RDBMS可用GRANT或REVOKE控制对[表单](https://baike.baidu.com/item/表单)个列的访问。
 
-数据定义语言（[DDL](https://baike.baidu.com/item/DDL/21997)）：其语句包括动词CREATE,ALTER和DROP。在数据库中创建新表或修改、删除表（CREATE TABLE 或 DROP TABLE）；为表加入索引等。
+数据定义语言（[DDL](https://baike.baidu.com/item/DDL/21997)）：其语句包括动词CREATE,ALTER和DROP。在数据库中创建新表或修改、删除表（CREATE TABLE 或 DROP
+TABLE）；为表加入索引等。
 
 指针控制语言（CCL）：它的语句，像DECLARE CURSOR，FETCH INTO和UPDATE WHERE CURRENT用于对一个或多个表单独行的操作。
 
@@ -164,76 +169,97 @@ resetconnection(\x) Clean session context.
 
 ```sql
 #增
-create database dbname
-eg: create database dbname charset utf8mb4
+create
+database dbname
+eg: create
+database dbname charset utf8mb4
 ## 删
-drop database dbname
-## 改 (从小到大改， utf8 -> utf8mb4, 严格超集)
-alter  database dbname 将修改的属性名 将要修改的属性值
+drop
+database dbname
+## 改 (从小到大改
+， utf8 -> utf8mb4, 严格超集)
+alter
+database dbname 将修改的属性名 将要修改的属性值
 ## 查
 show databases;
 ```
 
 > 建库规范：
-> 
+>
 > 1.库名不能有大写字母,不能太长(<30字符) 多平台兼容性问题
-> 
+>
 > 2.建库要加字符集
-> 
+>
 > 3.库名不能有数字开头
-> 
+>
 > 4.库名要和业务相关
 
 **表**
 
 ```sql
-# 增加
-create table tableName(
-列1  属性（数据类型、约束、其他属性） ，
-列2  属性，
-列3  属性
-)
-eg:
-CREATE TABLE student(
-id      INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '学号',
-sname   VARCHAR(255) NOT NULL COMMENT '姓名',
-sage    TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '年龄',
-sgender ENUM('m','f','n') NOT NULL DEFAULT 'n' COMMENT '性别' ,
-sfz     CHAR(18) NOT NULL UNIQUE  COMMENT '身份证',
-intime  TIMESTAMP NOT NULL DEFAULT NOW() COMMENT '入学时间'
+#
+增加
+create table tableName
+(
+    列1 属性（数据类型、约束、其他属性） ， 列2 属性， 列3 属性
+) eg:
+CREATE TABLE student
+(
+    id      INT          NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '学号',
+    sname   VARCHAR(255) NOT NULL COMMENT '姓名',
+    sage    TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '年龄',
+    sgender ENUM('m','f','n') NOT NULL DEFAULT 'n' COMMENT '性别',
+    sfz     CHAR(18)     NOT NULL UNIQUE COMMENT '身份证',
+    intime  TIMESTAMP    NOT NULL DEFAULT NOW() COMMENT '入学时间'
 ) ENGINE=INNODB CHARSET=utf8 COMMENT '学生表';
 
-id INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '全局id', 
+id
+INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '全局id',
 
 CREATE TABLE TableName2 LIKE TableName1;
 
-# 删除表
+#
+删除表
 drop table tableName
 
-# 修改
+    # 修改
 ALTER TABLE tableName ADD(DROP) 属性（数据类型、约束、其他属性）
 eg:
 # 在stuent表中添加qq列
-ALTER TABLE student ADD qq VARCHAR(20) NOT NULL UNIQUE COMMENT 'qq';
-# 在sname后加微信列
-ALTER TABLE student ADD wechat VARCHAR(64) NOT NULL UNIQUE  COMMENT '微信号' AFTER sname ;
-# 在id列前加一个新列num
-ALTER TABLE student ADD num INT NOT NULL COMMENT '数字' FIRST;
+ALTER TABLE student
+    ADD qq VARCHAR(20) NOT NULL UNIQUE COMMENT 'qq';
+#
+在sname后加微信列
+ALTER TABLE student
+    ADD wechat VARCHAR(64) NOT NULL UNIQUE COMMENT '微信号' AFTER sname;
+#
+在id列前加一个新列num
+ALTER TABLE student
+    ADD num INT NOT NULL COMMENT '数字' FIRST;
 
-# 删除列 
+#
+删除列
 ALTER TABLE stu DROP num;
 ALTER TABLE stu DROP qq;
 ALTER TABLE stu DROP wechat;
 
-# 将sgender 改为 sg 数据类型改为 CHAR 类型
-ALTER TABLE student change sgender sg CHAR(1) NOT NULL DEFAULT 'n' ;
+#
+将sgender 改为 sg 数据类型改为 CHAR 类型
+ALTER TABLE student change sgender sg CHAR (1) NOT NULL DEFAULT 'n';
 
 
-用的时候，一定要注意：
-修改数据类型，修改字段位置  ---用modify
+用的时候
+，
+一定要注意
+：
+修改数据类型
+，修改字段位置  ---用modify
 修改名字 --就用change
-# 范围大用change，小用modify。
-# 均需要加入类型，限制
+# 范围大用change
+，小用modify
+。
+# 均需要加入类型
+，限制
 ```
 
 > 1. 表名小写
@@ -245,8 +271,7 @@ ALTER TABLE student change sgender sg CHAR(1) NOT NULL DEFAULT 'n' ;
 > 7. 每个列设置为非空，无法保证非空，用0来填充。
 > 8. 必须有主键
 
-
-####  DCL 数据控制语言
+#### DCL 数据控制语言
 
 控制就是操作权限，而在DCL之中，主要有两个语法：GRANT,REVOKE
 
@@ -281,18 +306,16 @@ grant 权限1，权限2，权限3... on 对象 to 用户 identified by “密码
 ```
 
 权限:
-	ALL: 管理员(不包含“	Grant option”，给他人授权)
-	权限1，权限2，权限3...： 普通人员(开发人员)
-	Grant option
+ALL: 管理员(不包含“ Grant option”，给他人授权)
+权限1，权限2，权限3...： 普通人员(开发人员)
+Grant option
 
 对象范围:  库，表
 
-|     "."     |      ---> chmod  -R 755 /      |  管理员  |
+|     "."     |      ---> chmod -R 755 /      |  管理员  |
 | :---------: | :----------------------------: | :------: |
-| userName.*  |  ---> chmod  -R 755 userName/  | 普通用户 |
-| userName.t1 | ---> chmod  -R 755 userName/t1 |          |
-
-
+| userName.*  |  ---> chmod -R 755 userName/  | 普通用户 |
+| userName.t1 | ---> chmod -R 755 userName/t1 |          |
 
 ```
 # 授权
@@ -493,9 +516,9 @@ truncate table student;
 ```
 
 > 区别:
-> 
+>
 > delete: DML操作, 是逻辑性质删除,逐行进行删除,速度慢.
-> 
+>
 > truncate: DDL操作,对与表段中的数据页进行清空,速度快.
 
 伪删除：用update来替代delete，最终保证业务中查不到（select）
@@ -540,8 +563,6 @@ SELECT * FROM stu WHERE state=1;
 >
 > ![](https://tva1.sinaimg.cn/large/008eGmZEgy1gmhjljoy2gj30j20643zc.jpg)
 
-
-
 #### DQL 数据查询语言
 
 show类
@@ -556,25 +577,84 @@ show CREATE TABLE table;
 desc tableName;
 ```
 
-**select类** 
+**select类**
 
 > 获取表中的数据行
 
 ```css
-# select @@xxx 查看系统参数
-SELECT @@port;
-SELECT @@basedir;
-SELECT @@datadir;
-SELECT @@socket;
-SELECT @@server_id;
+#
+select @
 
-# select 函数
-SELECT NOW();
-SELECT DATABASE();
-SELECT USER();
-SELECT CONCAT("hello world");
-SELECT CONCAT(USER,"@",HOST) FROM mysql.user;
-SELECT GROUP_CONCAT(USER,"@",HOST) FROM mysql.user;
+@xxx 查看系统参数
+SELECT @ @port;
+SELECT @
+
+@basedir;
+SELECT @
+
+@datadir;
+SELECT @
+
+@socket;
+SELECT @
+
+@server_id;
+
+#
+select 函数
+SELECT
+
+NOW
+(
+)
+;
+SELECT
+
+DATABASE
+(
+)
+;
+SELECT
+
+USER
+(
+)
+;
+SELECT
+
+CONCAT
+(
+"hello world"
+)
+;
+SELECT
+
+CONCAT
+(
+USER,
+
+"@"
+,
+HOST
+
+)
+FROM mysql.user
+
+;
+SELECT
+
+GROUP_CONCAT
+(
+USER,
+
+"@"
+,
+HOST
+
+)
+FROM mysql.user
+
+;
 ```
 
 手册 https://dev.mysql.com/doc/refman/8.0/en/sql-function-reference.html
@@ -591,8 +671,6 @@ HAVING 过滤条件1，过滤条件2，过滤条件3 ...
 ORDER BY 条件列1，条件列2，条件列3 ...
 LIMIT 限制条件;
 ```
-
-
 
 **单表子句-from**
 
@@ -625,7 +703,7 @@ SELECT * FROM city  WHERE population >1000000 AND population <2000000;
 SELECT * FROM city  WHERE population BETWEEN 1000000 AND 2000000;
 ```
 
- **group by**
+**group by**
 
 根据 by后面的条件进行分组，方便统计，by后面跟一个列或多个列
 
@@ -681,16 +759,22 @@ UNION ALL 不去重复
 限制查询
 
 ```sql
-select * FROM 表名 LIMIT 限制条件
+select *
+FROM 表名 LIMIT 限制条件
 eg:
 --- 只输出前1000条
-select * FROM 表名 LIMIT 1000
+select *
+FROM 表名 LIMIT 1000
 --- 只输出前1000-2000条
-select * FROM 表名 LIMIT 1000, 2000
+select *
+FROM 表名 LIMIT 1000, 2000
 
-select * FROM 表名 LIMIT 1000, 2000
+select *
+FROM 表名 LIMIT 1000, 2000
 相当于
-select * FROM 表名 LIMIT 2000 OFFSET 1000
+select *
+FROM 表名 LIMIT 2000
+OFFSET 1000
 ```
 
 **join 多表连接查询**
@@ -702,18 +786,20 @@ select * FROM 表名 LIMIT 2000 OFFSET 1000
 查询li4家的地址
 
 ```sql
-SELECT A.name,B.address FROM
-A JOIN  B
-ON A.id=B.id	--- 关联列
-WHERE A.name='li4'
+SELECT A.name, B.address
+FROM A
+         JOIN B
+              ON A.id = B.id --- 关联列
+WHERE A.name = 'li4'
 
 
 --- 相当于
 
-SELECT A.name,B.address FROM
-A JOIN  B
-ON A.id=B.id
-WHERE A.name='li4'
+SELECT A.name, B.address
+FROM A
+         JOIN B
+              ON A.id = B.id
+WHERE A.name = 'li4'
 ```
 
 **外连接**
@@ -721,18 +807,20 @@ WHERE A.name='li4'
 驱动表建议使用 数据少的表 为驱动表
 
 ```sql
-SELECT A.name,B.address FROM
-A JOIN  B
-ON A.id=B.id	--- 关联列
-WHERE A.name='li4'
+SELECT A.name, B.address
+FROM A
+         JOIN B
+              ON A.id = B.id --- 关联列
+WHERE A.name = 'li4'
 
 
 --- 相当于
 
-SELECT A.name,B.address FROM
-A left JOIN  B
-ON A.id=B.id
-WHERE A.name='li4'
+SELECT A.name, B.address
+FROM A
+         left JOIN B
+                   ON A.id = B.id
+WHERE A.name = 'li4'
 
 ---  A left JOIN  B 其中a位驱动表
 ```

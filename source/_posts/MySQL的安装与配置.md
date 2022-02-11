@@ -11,18 +11,17 @@ abbrlink: 1439700985
 date: 2021-09-04 23:29:41
 ---
 
-
 ## Linux平台下MySQL的安装
 
-LSB Version:	:core-4.1-amd64:core-4.1-noarch
+LSB Version:    :core-4.1-amd64:core-4.1-noarch
 
-Distributor ID:	CentOS
+Distributor ID:    CentOS
 
-Description:	CentOS Linux release 7.9.2009 (Core)
+Description:    CentOS Linux release 7.9.2009 (Core)
 
-Release:	7.9.2009
+Release:    7.9.2009
 
-Codename:	Core
+Codename:    Core
 
 ldd (GNU libc) :2.17
 
@@ -42,9 +41,9 @@ yum remove -y mariadb-libs.x86_64
 
 ![image-20210904233814767](https://tva1.sinaimg.cn/large/008i3skNgy1gu50sz34orj616r0u079a02.jpg)
 
-官方rpm包:	https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+官方rpm包:    https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
 
-清华镜像rpm包:	https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql80-community-el7/mysql80-community-release-el7-3.noarch.rpm
+清华镜像rpm包:    https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql80-community-el7/mysql80-community-release-el7-3.noarch.rpm
 
 ```
 wget -c rpm地址
@@ -82,8 +81,6 @@ tar zf mysql-8.0.20-linux-glibc2.12-x86_64.tar.xz
 useradd mysql && usermod -s /sbin/nologin mysql
 mkdir -p /opt/databases/mysql && chown -R mysql. /opt/databases/mysql
 ```
-
-
 
 ## 配置
 
@@ -137,8 +134,6 @@ default-character-set=utf8mb4
 ```
 grep 'temporary password' /var/log/mysqld.log
 ```
-
-
 
 ### 创建用户与授权
 

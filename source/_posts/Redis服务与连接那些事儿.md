@@ -13,7 +13,6 @@ abbrlink: 51496
 date: 2021-01-18 01:28:06
 ---
 
-
 ## 启动示例
 
 当我们需要使用Redis的时候需要把redis的服务开启。如下
@@ -96,10 +95,10 @@ redis-cli -h host -p port -a passwd
 
 ![](https://tva1.sinaimg.cn/large/008eGmZEgy1gmq0glrkj0j31pc07udgu.jpg)
 
-> DENIED Redis is running in protected mode because protected mode is enabled, no bind address was specified, no authentication password is requested to clients. In this mode connections are only accepted from the loopback interface. If you want to connect from external computers to Redis you may adopt one of the following solutions: 
-> 1) Just disable protected mode sending the command 'CONFIG SET protected-mode no' from the loopback interface by connecting to Redis from the same host the server is running, however MAKE SURE Redis is not publicly accessible from internet if you do so. Use CONFIG REWRITE to make this change permanent. 
-> 2) Alternatively you can just disable the protected mode by editing the Redis configuration file, and setting the protected mode option to 'no', and then restarting the server. 
-> 3) If you started the server manually just for testing, restart it with the '--protected-mode no' option. 
+> DENIED Redis is running in protected mode because protected mode is enabled, no bind address was specified, no authentication password is requested to clients. In this mode connections are only accepted from the loopback interface. If you want to connect from external computers to Redis you may adopt one of the following solutions:
+> 1) Just disable protected mode sending the command 'CONFIG SET protected-mode no' from the loopback interface by connecting to Redis from the same host the server is running, however MAKE SURE Redis is not publicly accessible from internet if you do so. Use CONFIG REWRITE to make this change permanent.
+> 2) Alternatively you can just disable the protected mode by editing the Redis configuration file, and setting the protected mode option to 'no', and then restarting the server.
+> 3) If you started the server manually just for testing, restart it with the '--protected-mode no' option.
 > 4) Setup a bind address or an authentication password. NOTE: You only need to do one of the above things in order for the server to start accepting connections from the outside.
 >
 > 译文：DENIED Redis正在保护模式下运行，因为已启用保护模式、未指定绑定地址、未向客户端请求身份验证密码。在这种模式下，只接受来自环回接口的连接。如果您想从外部计算机连接到Redis
@@ -116,7 +115,8 @@ redis-cli -h host -p port -a passwd
 
 那么从以上得知，redis是默认关闭远程连接以及开启保护模式。开启远程连接的方式有以下几种
 
-1. 在本地(打开redis服务)的机器，采用回环地址连接(即是127.0.0.1)，连接redis，后使用`CONFIG SET protected mode no`就可以允许远程连接(推荐)，使用CONFIG REWRITE将此更改永久化
+1. 在本地(打开redis服务)的机器，采用回环地址连接(即是127.0.0.1)，连接redis，后使用`CONFIG SET protected mode no`就可以允许远程连接(推荐)，使用CONFIG
+   REWRITE将此更改永久化
 2. 在配置文件中关闭保护模式`protected mode no`,重启redis服务(不推荐)
 3. 关闭redis服务，使用`redis-server -protected mode no`，启动服务
 4. 配置ip访问或密码(最推荐)
@@ -131,8 +131,6 @@ dir /database/6379
 dbfilename dump.rdb
 requirepass 123321
 ```
-
-
 
 ## 性能测试
 

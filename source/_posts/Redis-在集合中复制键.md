@@ -20,7 +20,6 @@ date: 2021-06-03 19:06:09
 - 将所有的此集合中的所有的值从redis里面读取出来，然后再存进去。
 - 使用集合的思想进行取差集或并集。如果二者有一个且仅有一个为空那么他们返回的结果为有值的集合
 
-
 <!--more-->
 
 ## Redis:在集合中复制键
@@ -42,6 +41,8 @@ date: 2021-06-03 19:06:09
 ```python
 from loguru import logger
 import redis
+
+
 def conn_redis(db):
     """
     link redis
@@ -78,7 +79,7 @@ def get_val(key: str, step):
 
 def set_newVal(db):
     redis_client = conn_redis(db)
-    redis_client.sadd("NewKey",result)
+    redis_client.sadd("NewKey", result)
 ```
 
 **方案一优化**
@@ -95,15 +96,13 @@ def set_newVal(db):
 >
 > 2.集合的并集 | ,set. union()
 >
-> 3.集合的差集  set.difference(s2) 将集合s1里去掉和s2交集的部分
+> 3.集合的差集 set.difference(s2) 将集合s1里去掉和s2交集的部分
 >
-> 4.集合的交叉补集  set.symmetric_difference() 并集里去掉交集的部分
+> 4.集合的交叉补集 set.symmetric_difference() 并集里去掉交集的部分
 
 
 
 ![](https://tva1.sinaimg.cn/large/008i3skNgy1gr5exvf9xmj30q30aywej.jpg)
-
-
 
 创建集合 1，2，3
 
@@ -146,8 +145,6 @@ summary: Subtract multiple sets and store the resulting set in a key 减去多�
 since: 1.0.0
 group: set
 ```
-
-
 
 ## 总结
 

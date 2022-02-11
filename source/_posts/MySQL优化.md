@@ -9,7 +9,6 @@ categories:
     - MySQL
 abbrlink: 507251385
 date: 2021-09-04 00:27:43
-
 ---
 
 mysql优化老生常谈了，但却也离不开业务。脱离业务来讲mysql可以从两个方面进行优化
@@ -69,7 +68,8 @@ MySQL的命名机制使用由3个数字和一个后缀组成的版本号。例�
 
 **·alpha表明发行包含大量未被彻底测试的新代码**。已知的缺陷应该在新闻小节被记录。请参见附录D：MySQL变更史。在大多数alpha版本中也有新的命令和扩展。alpha版本也可能有主要代码更改等开发。但我们在发布前一定对其进行测试。
 
-**·beta意味着该版本功能是完整的**，并且所有的新代码被测试了，没有增加重要的新特征，应该没有已知的缺陷。当alpha版本至少一个月没有出现报导的致命漏洞，并且没有计划增加导致已经实施的功能不稳定的新功能时，版本则从alpha版变为beta版。
+**·beta意味着该版本功能是完整的**
+，并且所有的新代码被测试了，没有增加重要的新特征，应该没有已知的缺陷。当alpha版本至少一个月没有出现报导的致命漏洞，并且没有计划增加导致已经实施的功能不稳定的新功能时，版本则从alpha版变为beta版。
 
 在以后的beta版、发布版或产品发布中，所有API、外部可视结构和SQL命令列均不再更改。
 
@@ -149,8 +149,6 @@ log_bin = /data/mysql/mysql-bin
 
 重启服务
 
-
-
 ## 性能优化
 
 ```bash
@@ -172,11 +170,8 @@ IBM 小型机 P6  570  595   P7 720  750 780     P8
 
 > 根据业务场景选择
 
-OLTP \ OLAP
-IO密集型：线上系统，OLTP主要是IO密集型的业务，高并发
-CPU密集型：数据分析数据处理，OLAP，cpu密集型的，需要CPU高计算能力（i系列，IBM power系列）
-CPU密集型： I 系列的，主频很高，核心少 
-IO密集型：  E系列（至强），主频相对低，核心数量多
+OLTP \ OLAP IO密集型：线上系统，OLTP主要是IO密集型的业务，高并发 CPU密集型：数据分析数据处理，OLAP，cpu密集型的，需要CPU高计算能力（i系列，IBM power系列） CPU密集型： I
+系列的，主频很高，核心少 IO密集型： E系列（至强），主频相对低，核心数量多
 
 #### 内存
 
@@ -184,23 +179,16 @@ IO密集型：  E系列（至强），主频相对低，核心数量多
 
 #### 磁盘选择
 
-SATA-III   SAS    Fc    SSD（sata） pci-e  ssd  Flash
-主机 RAID卡的BBU(Battery Backup Unit)关闭
+SATA-III SAS Fc SSD（sata） pci-e ssd Flash 主机 RAID卡的BBU(Battery Backup Unit)关闭
 
 #### 存储
 
-根据存储数据种类的不同，选择不同的存储设备
-配置合理的RAID级别(raid5、raid10、热备盘)   
-r0 :条带化 ,性能高
-r1 :镜像，安全
-r5 :校验+条带化，安全较高+性能较高（读），写性能较低 （适合于读多写少）
-r10：安全+性能都很高，最少四块盘，浪费一半的空间（高IO要求）
+根据存储数据种类的不同，选择不同的存储设备 配置合理的RAID级别(raid5、raid10、热备盘)   
+r0 :条带化 ,性能高 r1 :镜像，安全 r5 :校验+条带化，安全较高+性能较高（读），写性能较低 （适合于读多写少） r10：安全+性能都很高，最少四块盘，浪费一半的空间（高IO要求）
 
 #### 网络
 
-1、硬件买好的（单卡单口）
-2、网卡绑定（bonding），交换机堆叠
-以上问题，提前规避掉。
+1、硬件买好的（单卡单口） 2、网卡绑定（bonding），交换机堆叠 以上问题，提前规避掉。
 
 ### 操作系统优化
 
@@ -213,11 +201,10 @@ echo 0 >/proc/sys/vm/swappiness的内容改成0（临时），
 sysctl -p
 ```
 
-此参数决定了Linux是倾向于使用swap，还是倾向于释放文件系统cache。在内存紧张的情况下，数值越低越倾向于释放文件系统cache。
-当然，这个参数只能减少使用swap的概率，并不能避免Linux使用swap。
+此参数决定了Linux是倾向于使用swap，还是倾向于释放文件系统cache。在内存紧张的情况下，数值越低越倾向于释放文件系统cache。 当然，这个参数只能减少使用swap的概率，并不能避免Linux使用swap。
 
-修改MySQL的配置参数innodb_flush_method，开启O_DIRECT模式
-这种情况下，InnoDB的buffer pool会直接绕过文件系统cache来访问磁盘，但是redo log依旧会使用文件系统cache。值得注意的是，Redo log是覆写模式的，即使使用了文件系统的cache，也不会占用太多
+修改MySQL的配置参数innodb_flush_method，开启O_DIRECT模式 这种情况下，InnoDB的buffer pool会直接绕过文件系统cache来访问磁盘，但是redo
+log依旧会使用文件系统cache。值得注意的是，Redo log是覆写模式的，即使使用了文件系统的cache，也不会占用太多
 
 #### IO调度策略
 
@@ -241,7 +228,7 @@ show status like
 
 ##### **max_connect_errors**
 
- max_connect_errors是一个mysql中与安全有关的计数器值，它负责阻止过多尝试失败的客户端以防止暴力破解密码等情况，当超过指定次数，mysql服务器将禁连接请求，
+max_connect_errors是一个mysql中与安全有关的计数器值，它负责阻止过多尝试失败的客户端以防止暴力破解密码等情况，当超过指定次数，mysql服务器将禁连接请求，
 
 直到mysql服务器重启或通过flush hosts命令清空此host的相关信息 max_connect_errors的值与性能并无太大关系。
 
@@ -255,11 +242,11 @@ max_connect_errors=1000
 > Mysql的最大连接数，如果服务器的并发请求量比较大，可以调高这个值，当然这是要建立在机器能够支撑的情况下，因为如果连接数越来越多，mysql会为每个连接提供缓冲区，就会开销的越多的内存，所以需要适当的调整该值，不能随便去提高设值
 
 开启数据库时,临时设置一个比较大的测试值, 观察show status like 'Max_used_connections';变化
-如果max_used_connections跟max_connections相同,那么就是max_connections设置过低或者超过服务器的负载上限了，低于10%则设置过大. 
+如果max_used_connections跟max_connections相同,那么就是max_connections设置过低或者超过服务器的负载上限了，低于10%则设置过大.
 
 ##### **back_log**
 
->  mysql能暂存的连接数量，当主要mysql线程在一个很短时间内得到非常多的连接请求时候它就会起作用，如果mysql的连接数据达到max_connections时候，新来的请求将会被存在堆栈中，等待某一连接释放资源，该推栈的数量及back_log,如果等待连接的数量超过back_log，将不被授予连接资源。
+> mysql能暂存的连接数量，当主要mysql线程在一个很短时间内得到非常多的连接请求时候它就会起作用，如果mysql的连接数据达到max_connections时候，新来的请求将会被存在堆栈中，等待某一连接释放资源，该推栈的数量及back_log,如果等待连接的数量超过back_log，将不被授予连接资源。
 > back_log值指出在mysql暂时停止回答新请求之前的短时间内有多少个请求可以被存在推栈中，只有如果期望在一个短时间内有很多连接的时候需要增加它
 
 <u>*判断依据*</u>
@@ -283,13 +270,11 @@ back_log=xxx
 
 **interactive_timeout**
 
->  如果设置太大，容易造成连接打开时间过长造成资源损耗，在show processlist时候，能看到很多的连接 ，一般希望wait_timeout尽可能低
+> 如果设置太大，容易造成连接打开时间过长造成资源损耗，在show processlist时候，能看到很多的连接 ，一般希望wait_timeout尽可能低
 
 关闭一个交互的连接之前所需要等待的秒数，比如我们在终端上进行mysql管理，使用的即使交互的连接，这时候，如果没有操作的时间超过了interactive_time设置的时间就会自动的断开，默认的是28800，可调优为7200
 
-
-
-#####  key_buffer_size
+##### key_buffer_size
 
 key_buffer_size指定索引缓冲区的大小，它决定索引处理的速度，尤其是索引读的速度
 
@@ -315,14 +300,12 @@ distinct
 union 
 ```
 
-Sort_Buffer_Size并不是越大越好，由于是connection级的参数，过大的设置+高并发可能会耗尽系统内存资源。
-列如：500个连接将会消耗500*sort_buffer_size（2M）=1G内存
+Sort_Buffer_Size并不是越大越好，由于是connection级的参数，过大的设置+高并发可能会耗尽系统内存资源。 列如：500个连接将会消耗500*sort_buffer_size（2M）=1G内存
 
 **配置方法**
-修改/etc/my.cnf文件，在[mysqld]下面添加如下：
-sort_buffer_size=1M
+修改/etc/my.cnf文件，在[mysqld]下面添加如下： sort_buffer_size=1M
 
-##### max_allowed_packet 
+##### max_allowed_packet
 
 > mysql根据配置文件会限制，server接受的数据包大小
 
@@ -334,16 +317,13 @@ max_allowed_packet=32M
 
 ##### join_buffer_size
 
-用于表间关联缓存的大小，和sort_buffer_size一样，该参数对应的分配内存也是每个连接独享。
-尽量在SQL与方面进行优化，效果较为明显。
-优化的方法：在on条件列加索引，至少应当是有MUL索引
+用于表间关联缓存的大小，和sort_buffer_size一样，该参数对应的分配内存也是每个连接独享。 尽量在SQL与方面进行优化，效果较为明显。 优化的方法：在on条件列加索引，至少应当是有MUL索引
 
 ##### thread_cache_size
 
 > 服务器线程缓存，这个值表示可以重新利用保存在缓存中线程的数量,当断开连接时,那么客户端的线程将被放到缓存中以响应下一个客户而不是销毁(前提是缓存数未达上限),如果线程重新被请求，那么请求将从缓存中读取,如果缓存中是空的或者是新的请求，那么这个线程将被重新创建,如果有很多新的线程，增加这个值可以改善系统性能
 
-通过比较 Connections 和 Threads_created 状态的变量，可以看到这个变量的作用。
-设置规则如下：1GB 内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。
+通过比较 Connections 和 Threads_created 状态的变量，可以看到这个变量的作用。 设置规则如下：1GB 内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。
 服务器处理此客户的线程将会缓存起来以响应下一个客户而不是销毁(前提是缓存数未达上限)
 
 | Variable_name     | Value |                                                              |
@@ -353,9 +333,7 @@ max_allowed_packet=32M
 | Threads_created   | 479   | 从最近一次服务启动，已创建线程的数量，如果发现Threads_created值过大的话，表明MySQL服务器一直在创建线程，这也是比较耗cpu SYS资源，可以适当增加配置文件中thread_cache_size值 |
 | Threads_running   | 2     | 当前激活的（非睡眠状态）线程数。并不是代表正在使用的线程数，有时候连接已建立，但是连接处于sleep状态 |
 
-Threads_created  ：一般在架构设计阶段，会设置一个测试值，做压力测试。
-结合zabbix监控，看一段时间内此状态的变化。
-如果在一段时间内，Threads_created趋于平稳，说明对应参数设定是OK。
+Threads_created ：一般在架构设计阶段，会设置一个测试值，做压力测试。 结合zabbix监控，看一段时间内此状态的变化。 如果在一段时间内，Threads_created趋于平稳，说明对应参数设定是OK。
 如果一直陡峭的增长，或者出现大量峰值，那么继续增加此值的大小，在系统资源够用的情况下（内存）
 
 ##### innodb_buffer_pool_size
@@ -370,15 +348,12 @@ InnoDB使用该参数指定大小的内存来缓冲数据和索引。
 
 <u>*配置方法*</u>
 
-
 innodb_buffer_pool_size=2048M
 
 ##### **innodb_flush_log_at_trx_commit**
 
-主要控制了innodb将log buffer中的数据写入日志文件并flush磁盘的时间点，取值分别为0、1、2三个。
-0，表示当事务提交时，不做日志写入操作，而是每秒钟将log buffer中的数据写入日志文件并flush磁盘一次；
-1，每次事务的提交都会引起redo日志文件写入、flush磁盘的操作，确保了事务的ACID；
-2，每次事务提交引起写入日志文件的动作,但每秒钟完成一次flush磁盘操作。
+主要控制了innodb将log buffer中的数据写入日志文件并flush磁盘的时间点，取值分别为0、1、2三个。 0，表示当事务提交时，不做日志写入操作，而是每秒钟将log buffer中的数据写入日志文件并flush磁盘一次；
+1，每次事务的提交都会引起redo日志文件写入、flush磁盘的操作，确保了事务的ACID； 2，每次事务提交引起写入日志文件的动作,但每秒钟完成一次flush磁盘操作。
 
 ***配置依据***
 实际测试发现，该值对插入数据的速度影响非常大，设置为2时插入10000条记录只需要2秒，设置为0时只需要1秒，而设置为1时则需要229秒。因此，MySQL手册也建议尽量将插入操作合并成一个事务，这样可以大幅提高速度。
@@ -386,8 +361,7 @@ innodb_buffer_pool_size=2048M
 
 <u>*配置方法*</u>
 
-innodb_flush_log_at_trx_commit=1
-双1标准中的一个1
+innodb_flush_log_at_trx_commit=1 双1标准中的一个1
 
 ##### **innodb_thread_concurrency**
 
@@ -396,33 +370,22 @@ innodb_flush_log_at_trx_commit=1
 在官方文档上，对于innodb_thread_concurrency的使用，也给出了一些建议，如下：
 
 - 如果一个工作负载中，并发用户线程的数量小于64，建议设置innodb_thread_concurrency=0；
-- 如果工作负载一直较为严重甚至偶尔达到顶峰，建议先设置innodb_thread_concurrency=128，
-  并通过不断的降低这个参数，96, 80, 64等等，直到发现能够提供最佳性能的线程数，
+- 如果工作负载一直较为严重甚至偶尔达到顶峰，建议先设置innodb_thread_concurrency=128， 并通过不断的降低这个参数，96, 80, 64等等，直到发现能够提供最佳性能的线程数，
 
-假设系统通常有40到50个用户，但定期的数量增加至60，70，甚至200。你会发现，
-性能在80个并发用户设置时表现稳定，如果高于这个数，性能反而下降。在这种情况下，
+假设系统通常有40到50个用户，但定期的数量增加至60，70，甚至200。你会发现， 性能在80个并发用户设置时表现稳定，如果高于这个数，性能反而下降。在这种情况下，
 建议设置innodb_thread_concurrency参数为80，以避免影响性能。
 
-如果你不希望InnoDB使用的虚拟CPU数量比用户线程使用的虚拟CPU更多（比如20个虚拟CPU），
-建议通过设置innodb_thread_concurrency 参数为这个值（也可能更低，这取决于性能体现），
+如果你不希望InnoDB使用的虚拟CPU数量比用户线程使用的虚拟CPU更多（比如20个虚拟CPU）， 建议通过设置innodb_thread_concurrency 参数为这个值（也可能更低，这取决于性能体现），
 
-如果你的目标是将MySQL与其他应用隔离，你可以l考虑绑定mysqld进程到专有的虚拟CPU。
-但是需 要注意的是，这种绑定，在myslqd进程一直不是很忙的情况下，可能会导致非最优的硬件使用率。在这种情况下，
-你可能会设置mysqld进程绑定的虚拟 CPU，允许其他应用程序使用虚拟CPU的一部分或全部。
-在某些情况下，最佳的innodb_thread_concurrency参数设置可以比虚拟CPU的数量小。
+如果你的目标是将MySQL与其他应用隔离，你可以l考虑绑定mysqld进程到专有的虚拟CPU。 但是需 要注意的是，这种绑定，在myslqd进程一直不是很忙的情况下，可能会导致非最优的硬件使用率。在这种情况下，
+你可能会设置mysqld进程绑定的虚拟 CPU，允许其他应用程序使用虚拟CPU的一部分或全部。 在某些情况下，最佳的innodb_thread_concurrency参数设置可以比虚拟CPU的数量小。
 定期检测和分析系统，负载量、用户数或者工作环境的改变可能都需要对innodb_thread_concurrency参数的设置进行调整
 
-128   -----> top  cpu 
+128 -----> top cpu
 <u>*设置标准*</u>
-1、当前系统cpu使用情况，均不均匀
-top
+1、当前系统cpu使用情况，均不均匀 top
 
-2、当前的连接数，有没有达到顶峰
-show status like 'threads_%';
-show processlist;
-（3）配置方法：
-innodb_thread_concurrency=8
-方法:
+2、当前的连接数，有没有达到顶峰 show status like 'threads_%'; show processlist; （3）配置方法： innodb_thread_concurrency=8 方法:
 
        1. 看top ,观察每个cpu的各自的负载情况
     2. 发现不平均,先设置参数为cpu个数,然后不断增加(一倍)这个数值
@@ -446,7 +409,7 @@ innodb_log_buffer_size=128M
 innodb_log_file_size = 100M
 ```
 
-##### **innodb_log_files_in_group = 3** 
+##### **innodb_log_files_in_group = 3**
 
 ```undefined
 为提高性能，MySQL可以以循环方式将日志文件写到多个文件。推荐设置为3
@@ -476,8 +439,6 @@ TiDB
 MongoDB
 ```
 
-
-
 ##### **binary log**
 
 ```kotlin
@@ -496,8 +457,6 @@ innodb_flush_log_at_trx_commit=1
 set sql_log_bin=0;
 show status like 'com_%';
 ```
-
-
 
 ```
 [mysqld]
@@ -542,15 +501,13 @@ bulk_insert_buffer_size=8M
 socket=/tmp/mysql.sock  
 ```
 
-
-
 ## sql与索引优化
 
 ### sql使用建议
 
 1.对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。
 
-2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：   
+2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：
 
 ```
 select id from t where num is null 
@@ -560,7 +517,7 @@ select id from t where num=0
 
 3.应尽量避免在 where 子句中使用!=或<>操作符，否则将引擎放弃使用索引而进行全表扫描。
 
-4.应尽量避免在 where 子句中使用 or 来连接条件，否则将导致引擎放弃使用索引而进行全表扫描，如：   
+4.应尽量避免在 where 子句中使用 or 来连接条件，否则将导致引擎放弃使用索引而进行全表扫描，如：
 
 ```
 select id from t where num=10 or num=20   
@@ -570,7 +527,7 @@ union all
 select id from t where num=20   
 ```
 
-5.in 和 not in 也要慎用，否则会导致全表扫描，如：   
+5.in 和 not in 也要慎用，否则会导致全表扫描，如：
 
 ```
 select id from t where num in(1,2,3)   
@@ -584,7 +541,7 @@ select id from t where num between 1 and 3
 select id from t where name like '%abc%'   
 ```
 
-7.应尽量避免在 where 子句中对字段进行表达式操作，这将导致引擎放弃使用索引而进行全表扫描。如：   
+7.应尽量避免在 where 子句中对字段进行表达式操作，这将导致引擎放弃使用索引而进行全表扫描。如：
 
 ```
 select id from t where num/2=100   
@@ -592,7 +549,7 @@ select id from t where num/2=100
 select id from t where num=100*2   
 ```
 
-8.应尽量避免在where子句中对字段进行函数操作，这将导致引擎放弃使用索引而进行全表扫描。如：   
+8.应尽量避免在where子句中对字段进行函数操作，这将导致引擎放弃使用索引而进行全表扫描。如：
 
 ```
 select id from t where substring(name,1,3)='abc'--name以abc开头的id   
@@ -600,19 +557,13 @@ select id from t where substring(name,1,3)='abc'--name以abc开头的id
 select id from t where name like 'abc%'   
 ```
 
-9.不要在 where 子句中的“=”左边进行函数、算术运算或其他表达式运算，否则系统将可能无法正确使用索引。   
+9.不要在 where 子句中的“=”左边进行函数、算术运算或其他表达式运算，否则系统将可能无法正确使用索引。
 
-
-
-10.在使用索引字段作为条件时，如果该索引是复合索引，那么必须使用到该索引中的第一个字段作为条件时才能保证系统使用该索引，否则该索引将不会被使用，并且应尽可能的让字段顺序与索引顺序相一致。   
-
-
+10.在使用索引字段作为条件时，如果该索引是复合索引，那么必须使用到该索引中的第一个字段作为条件时才能保证系统使用该索引，否则该索引将不会被使用，并且应尽可能的让字段顺序与索引顺序相一致。
 
 11.不要写一些没有意义的查询，如需要生成一个空表结构
 
-
-
-12.很多时候用 exists 代替 in 是一个好的选择：   
+12.很多时候用 exists 代替 in 是一个好的选择：
 
 ```
 select num from a where num in(select num from b)   
@@ -620,64 +571,38 @@ select num from a where num in(select num from b)
 select num from a where exists(select 1 from b where num=a.num)   
 ```
 
-13.并不是所有索引对查询都有效，SQL是根据表中数据来进行查询优化的，当索引列有大量数据重复时，SQL查询可能不会去利用索引，如一表中有字段sex，male、female几乎各一半，那么即使在sex上建了索引也对查询效率起不了作用。   
+13.并不是所有索引对查询都有效，SQL是根据表中数据来进行查询优化的，当索引列有大量数据重复时，SQL查询可能不会去利用索引，如一表中有字段sex，male、female几乎各一半，那么即使在sex上建了索引也对查询效率起不了作用。
 
+14.索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率， 因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。
+一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有必要。
 
-
-14.索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，
-因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。
-一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有必要。   
-
-15.尽量使用数字型字段，若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储开销。 
-这是因为引擎在处理查询和连接时会逐个比较字符串中每一个字符，而对于数字型而言只需要比较一次就够了。   
-
-
+15.尽量使用数字型字段，若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储开销。 这是因为引擎在处理查询和连接时会逐个比较字符串中每一个字符，而对于数字型而言只需要比较一次就够了。
 
 16.尽可能的使用 varchar 代替 char ，因为首先变长字段存储空间小，可以节省存储空间，   
-其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。   
+其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。
 
-
-
-17.任何地方都不要使用 select * from t ，用具体的字段列表代替“*”，不要返回用不到的任何字段。   
-
-
+17.任何地方都不要使用 select * from t ，用具体的字段列表代替“*”，不要返回用不到的任何字段。
 
 18.避免频繁创建和删除临时表，以减少系统表资源的消耗。
 
-
-
 19.临时表并不是不可使用，适当地使用它们可以使某些例程更有效，例如，当需要重复引用大型表或常用表中的某个数据集时。但是，对于一次性事件，最好使用导出表。
-
-
 
 20.在新建临时表时，如果一次性插入数据量很大，那么可以使用 select into 代替 create table，避免造成大量 log ，   
 以提高速度；如果数据量不大，为了缓和系统表的资源，应先create table，然后insert。
 
+21.如果使用到了临时表，在存储过程的最后务必将所有的临时表显式删除，先 truncate table ，然后 drop table ，这样可以避免系统表的较长时间锁定。
 
-
-21.如果使用到了临时表，在存储过程的最后务必将所有的临时表显式删除，先 truncate table ，然后 drop table ，这样可以避免系统表的较长时间锁定。  
-
-
-
-22.尽量避免使用游标，因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写。   
-
-
+22.尽量避免使用游标，因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写。
 
 23.使用基于游标的方法或临时表方法之前，应先寻找基于集的解决方案来解决问题，基于集的方法通常更有效。
-
-
 
 24.与临时表一样，游标并不是不可使用。对小型数据集使用 FAST_FORWARD 游标通常要优于其他逐行处理方法，尤其是在必须引用几个表才能获得所需的数据时。
 
 在结果集中包括“合计”的例程通常要比使用游标执行的速度快。如果开发时间允许，基于游标的方法和基于集的方法都可以尝试一下，看哪一种方法的效果更好。
 
-
-
 25.尽量避免大事务操作，提高系统并发能力。
 
-
 26.尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。
-
 
 ### sql调优思路
 

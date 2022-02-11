@@ -19,8 +19,6 @@ ok，那么我们先说说核心本质吧，其核心本质个人认为依旧是
 
 无论是一下的**补环境**、**扣代码**、**手动还原**，也都是在模拟生成加密逻辑。
 
-
-
 ## 补环境
 
 ### 补环境的定义
@@ -48,7 +46,7 @@ ok，那么我们先说说核心本质吧，其核心本质个人认为依旧是
 ```javascript
 window = global;
 document = {
-    location: { 'protocol': 'https:' },
+    location: {'protocol': 'https:'},
     referrer: '',
     getElementById: () => {
         console.log("getElementById:", arguments);
@@ -112,7 +110,9 @@ Proxy
 创建DOM节点：当作`{ }`处理
 
 ```javascript
-null_function = () => { console.log(arguments) };
+null_function = () => {
+    console.log(arguments)
+};
 
 
 // 代理
@@ -126,26 +126,23 @@ const proxy = (obj, obj_name) => {
 }
 
 
-
-
 //吐环境
-function proxy(proxy_array){
-    for(let i = 0;i<proxy_array;i++){
+function proxy(proxy_array) {
+    for (let i = 0; i < proxy_array; i++) {
         eval(proxy_array[i] + ' = new Proxy(' + proxy_array[i] + ',{ ' +
             'get(target,key){ ' +
             'debugger;' +
-            'console.log("====================")'+
-            'console.log("获取了",'+ proxy_array[i] + ' 的key属性"); ' +
-            'console.log("====================")'+
+            'console.log("====================")' +
+            'console.log("获取了",' + proxy_array[i] + ' 的key属性"); ' +
+            'console.log("====================")' +
             'return target[key]; }')
     }
 }
+
 //常用的proxy_array
-var proxy_array = ["window","document","location","navigator"]
+var proxy_array = ["window", "document", "location", "navigator"]
 proxy(proxy_array)
 ```
-
-
 
 ## 抠代码
 

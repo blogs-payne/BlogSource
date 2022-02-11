@@ -11,9 +11,6 @@ abbrlink: 2760374101
 date: 2021-09-03 23:46:49
 ---
 
-
-
-
 ## NFS实践
 
 ### 安装NFS
@@ -80,8 +77,8 @@ spec:
   selector:
     app: nginx
   ports:
-  - port: 80
-    name: web
+    - port: 80
+      name: web
   clusterIP: None
 
 ---
@@ -102,26 +99,24 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: wangyanglinux/myapp:v2
-        ports:
-        - containerPort: 80
-          name: web
-        volumeMounts:
-        - name: www
-          mountPath: /usr/share/nginx/html
+        - name: nginx
+          image: wangyanglinux/myapp:v2
+          ports:
+            - containerPort: 80
+              name: web
+          volumeMounts:
+            - name: www
+              mountPath: /usr/share/nginx/html
   volumeClaimTemplates:
-  - metadata:
-      name: www
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "nfs"
-      resources:
-        requests:
-          storage: 1Gi
+    - metadata:
+        name: www
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "nfs"
+        resources:
+          requests:
+            storage: 1Gi
 ```
-
-
 
 ### 验证
 

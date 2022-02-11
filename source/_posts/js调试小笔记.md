@@ -24,8 +24,6 @@ date: 2021-09-20 18:40:06
 
 ![image-20210920184244435](https://tva1.sinaimg.cn/large/008i3skNgy1guna6e3v4wj60bm01imwy02.jpg)
 
-
-
 **resume/pause script execution**: 恢复/暂停脚本执行
 
 **step over next function call**: 跨过，实际表现是不遇到函数时，执行下一步。遇到函数时，不进入函数直接执行下一步。
@@ -37,8 +35,6 @@ date: 2021-09-20 18:40:06
 **deactivate breakpoints**:停用断点
 
 **don‘t pause on exceptions**:不暂停异常捕获
-
-
 
 ## Watch
 
@@ -54,8 +50,6 @@ date: 2021-09-20 18:40:06
 
 ![image-20210920184528622](https://tva1.sinaimg.cn/large/008i3skNgy1guna98mrchj60jm082mxp02.jpg)
 
-
-
 ## Scope
 
 该范围内所有变量的值
@@ -67,8 +61,6 @@ date: 2021-09-20 18:40:06
 **一个 procedure（通常译作“过程”）吃进来一些参数，干一些事情，再吐出去一个返回值（或者什么也不吐）**
 
 ![image-20210920185959949](https://tva1.sinaimg.cn/large/008i3skNgy1gunaocua19j60co02m3ye02.jpg)
-
-
 
 ## XHR/fetch Breakpints
 
@@ -94,11 +86,10 @@ XHR/fetch Breakpints：请求断点（拦截），当发生符合要求的将触
 
 ![image-20210920190803044](https://tva1.sinaimg.cn/large/008i3skNgy1gunawqe43pj60gw0nyjsk02.jpg)
 
-
-
 ### 预览几种不同的breakpoint类型
 
-众人皆知的breakpoint类型是line-of-code。但是line-of-code型breakpoint有的时候没法设置（**其实就是没法在代码左边点出一个绿点来**），或者如果你正在使用一个大型的代码库。通过学习如何和何时使用这些不同类型的breakpoint debug，会大大节约你的时间。
+众人皆知的breakpoint类型是line-of-code。但是line-of-code型breakpoint有的时候没法设置（**其实就是没法在代码左边点出一个绿点来**
+），或者如果你正在使用一个大型的代码库。通过学习如何和何时使用这些不同类型的breakpoint debug，会大大节约你的时间。
 
 | 断点类型                 | 当你想Pause的时候使用                                      |
 | ------------------------ | ---------------------------------------------------------- |
@@ -112,9 +103,9 @@ XHR/fetch Breakpints：请求断点（拦截），当发生符合要求的将触
 
 ## this指向
 
-全局作用域 this = window 
+全局作用域 this = window
 
-局部作用域 this = 调用者 
+局部作用域 this = 调用者
 
 类的方法里面 this = 类自己
 

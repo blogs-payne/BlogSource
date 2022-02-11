@@ -26,8 +26,6 @@ date: 2021-04-26 19:59:17
 
 ![image-20210426191253111](https://tva1.sinaimg.cn/large/008i3skNly1gpxcygvyc2j31100mctht.jpg)
 
-
-
 ## 定制zsh编辑器
 
 原生的mac，zsh是没有命令提示的，以及显示也并没有那么好看。自定制一下
@@ -105,6 +103,7 @@ git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core" remote set-url 
 ```
 
 ### kubectl 自动补全
+
 > 由于我习惯于zsh终端。这里给出zsh的，后面还有bash的
 
 ```shell
@@ -112,6 +111,7 @@ source <(kubectl completion bash)
 ```
 
 如果是`bash`
+
 ```shell
 # Automatic completion of command
 source /usr/share/bash-completion/bash_completion

@@ -10,6 +10,7 @@ categories:
 abbrlink: 3018
 date: 2020-12-19 14:11:52
 ---
+
 ## Scrapy-Splash使用及代理失败处理
 
 在日常做爬虫的时候肯定遇到这么一些问题，网页js渲染，接口加密等，以至于无法有效的获取数据，那么此时若想获取数据大致有两种方向，`硬刚加密参数`或`使用渲染工具`
@@ -39,7 +40,8 @@ date: 2020-12-19 14:11:52
 
 **Splash-一种JavaScript渲染服务**
 
-Splash是一种javascript渲染服务。这是一个带有HTTP API的轻量级Web浏览器，使用Twisted和QT5在Python 3中实现。（扭曲的）QT反应器用于使服务完全异步，从而允许通过QT主循环利用Webkit并发性。Splash的一些功能：
+Splash是一种javascript渲染服务。这是一个带有HTTP API的轻量级Web浏览器，使用Twisted和QT5在Python
+3中实现。（扭曲的）QT反应器用于使服务完全异步，从而允许通过QT主循环利用Webkit并发性。Splash的一些功能：
 
 - 并行处理多个网页；
 - 获取HTML结果和/或获取屏幕截图；
@@ -121,6 +123,7 @@ Httbin.py
 ```python
 import scrapy
 from scrapy_splash import SplashRequest
+
 
 class HttbinSpider(scrapy.Spider):
     name = 'httpbin'
@@ -249,10 +252,10 @@ class HttbinSpider(scrapy.Spider):
 
 ```python
 class MyHttpProxyMiddleware(object):
-      def process_request(self, request, spider):
-	      request.meta['splash']['args']['proxy'] = proxyServer	# （eg：'http://119.114.100.159:22992'）
-        # 认证消息，没有可以不写
-	      # request.headers["Proxy-Authorization"] = proxyAuth
+    def process_request(self, request, spider):
+        request.meta['splash']['args']['proxy'] = proxyServer  # （eg：'http://119.114.100.159:22992'）
+    # 认证消息，没有可以不写
+    # request.headers["Proxy-Authorization"] = proxyAuth
 ```
 
 此时的中间件设置为

@@ -10,6 +10,7 @@ categories:
 abbrlink: 3376299280
 date: 2021-08-23 22:37:55
 ---
+
 ## SQL介绍
 
 结构化查询语言,5.7 以后符合SQL92严格模式,通过sql_mode参数来控制
@@ -81,32 +82,76 @@ ALTER DATABASE 数据库名 [charset 字符编码名称] [collate 排序规则];
 #### 增
 
 ```sql
-create table [if not exists] 表名(
- 字段1 数据类型 [约束条件] [默认值],
- 字段2 数据类型 [约束条件] [默认值],
-  [表约束条件]
+create table [if not exists] 表名
+(
+    字段1
+    数据类型 [
+    约束条件] [
+    默认值],
+    字段2
+    数据类型 [
+    约束条件] [
+    默认值],
+[
+    表约束条件]
 ) [表选项1,表选项2]
 
-# example
+    # example
 
-CREATE TABLE IF NOT EXISTS `ch_people_msg` ( 
-  `p_id`  SERIAL NOT NULL AUTO_INCREMENT COMMENT '用户id' , 
-  `p_uic` CHAR(18) NOT NULL COMMENT '用户身份证',
-  `p_nickname` VARCHAR(50) NOT NULL COMMENT '用户昵称', 
-  `p_gender` ENUM('m','f', 'n') NOT NULL DEFAULT 'n' COMMENT '用户性别', 
-  `p_age` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '用户年龄', 
-  `p_pnum` CHAR(11) NOT NULL COMMENT '用户电话', 
-  `p_address` VARCHAR(100) NOT NULL COMMENT '用户地址', 
-  `p_email` VARCHAR(50) NOT NULL COMMENT '用户邮箱', 
-  `p_add_time` TIMESTAMP NOT NULL DEFAULT NOW() COMMENT '统计用户时间',
-   PRIMARY KEY (`p_id`),
-   UNIQUE KEY `p_uic`(`p_uic`)
-) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT = '中国成员信息表';
+CREATE TABLE IF NOT EXISTS `ch_people_msg`
+(
+    `p_id`
+    SERIAL
+    NOT
+    NULL
+    AUTO_INCREMENT
+    COMMENT
+    '用户id',
+    `p_uic`
+    CHAR
+(
+    18
+) NOT NULL COMMENT '用户身份证',
+    `p_nickname` VARCHAR
+(
+    50
+) NOT NULL COMMENT '用户昵称',
+    `p_gender` ENUM
+(
+    'm',
+    'f',
+    'n'
+) NOT NULL DEFAULT 'n' COMMENT '用户性别',
+    `p_age` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '用户年龄',
+    `p_pnum` CHAR
+(
+    11
+) NOT NULL COMMENT '用户电话',
+    `p_address` VARCHAR
+(
+    100
+) NOT NULL COMMENT '用户地址',
+    `p_email` VARCHAR
+(
+    50
+) NOT NULL COMMENT '用户邮箱',
+    `p_add_time` TIMESTAMP NOT NULL DEFAULT NOW
+(
+) COMMENT '统计用户时间',
+    PRIMARY KEY
+(
+    `p_id`
+),
+    UNIQUE KEY `p_uic`
+(
+    `p_uic`
+)
+    ) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT = '中国成员信息表';
 ```
 
 > 注意：字段结束为`,`分隔， 整体结束为`)`分隔
 
-####  删除(生产中禁用命令)
+#### 删除(生产中禁用命令)
 
 DROP TABLE table_name
 
@@ -139,18 +184,24 @@ ALTER TABLE `table_name` MODIFY 字段名 约束条件 默认值
 #### 表属性查询（DQL）
 
 ```sql
-# 罗列所有表
-show tables；
+#
+罗列所有表
+show tables
+；
 
 # 查看表状态
 show table status [from db_name] [like table_name];
 
-# 查看表结构
+#
+查看表结构
 desc `table_name`;
 
-# 查看创建表语句
-show create table `table_name`;
+#
+查看创建表语句
+show
+create table `table_name`;
 
-# 创建相同类型的表
+#
+创建相同类型的表
 CREATE TABLE `db_name_2` LIKE `db_name_1`;
 ```

@@ -25,8 +25,6 @@ UiAutomator是Google提供的用来做安卓自动化测试的一个Java库，�
 - 实现了一个设备管理平台(也支持iOS) [atxserver2](https://github.com/openatx/atxserver2)
 - 扩充了toast获取和展示的功能
 
-
-
 相关链接如下：
 
 [UiAutomator](https://developer.android.com/training/testing/ui-automator.html)：https://developer.android.com/training/testing/ui-automator.html
@@ -54,8 +52,6 @@ python3 -m pip install --upgrade uiautomator2
 python3 -m pip install --upgrade --pre uiautomator2
 ```
 
-
-
 源码安装
 
 > 需要git客户端，若未安装git，可移步`https://git-scm.com/downloads`进行下载，
@@ -67,19 +63,15 @@ git clone https://github.com/openatx/uiautomator2
 python3 -m pip install -e uiautomator2
 ```
 
-
-
 ### 校验
 
 先准备一台（不要两台）开启了`开发者选项`的安卓手机，连接上电脑，确保执行`adb devices`可以看到连接上的设备。如下图所示
 
 ![image-20211206153159233](https://tva1.sinaimg.cn/large/008i3skNgy1gx45djlejbj30mr01e0sq.jpg)
 
-运行`python3 -m uiautomator2 init`安装包含httprpc服务的apk到手机+`atx-agent, minicap, minitouch` 
+运行`python3 -m uiautomator2 init`安装包含httprpc服务的apk到手机+`atx-agent, minicap, minitouch`
 
 > 在过去的版本中，这一步是必须执行的，但是从1.3.0之后的版本，当运行python代码`u2.connect()`时就会自动推送这些文件了
-
-
 
 ```python
 import uiautomator2 as u2
@@ -97,8 +89,6 @@ pprint(device.wlan_ip)
 # get serial id
 pprint(device.serial)
 ```
-
-
 
 ![image-20211206153746081](https://tva1.sinaimg.cn/large/008i3skNgy1gx45jkcixoj30d906qmxa.jpg)
 
@@ -144,8 +134,6 @@ time.sleep(random.uniform(10, 20))
 device.app_stop_all()
 ```
 
-
-
 > Tips: 复习一下adb command
 
 ```bash
@@ -161,8 +149,6 @@ adb -s {device_serial} shell pm list packages | grep “keyword”
 # 查看包安装位置 
 adb -s {device_serial} shell pm list packages -f
 ```
-
-
 
 ## 点击
 
@@ -183,19 +169,19 @@ adb -s {device_serial} shell pm list packages -f
 
 - These key names are currently supported:
 
-  - home、back、
+    - home、back、
 
-  - left、right、up、down
+    - left、right、up、down
 
-  - center、menu、search
+    - center、menu、search
 
-  - enter、delete ( or del)
+    - enter、delete ( or del)
 
-  - recent (recent apps)
+    - recent (recent apps)
 
-  - volume_up、volume_down、volume_mute
+    - volume_up、volume_down、volume_mute
 
-  - camera、power
+    - camera、power
 
 - Click on the screen
 
@@ -216,8 +202,6 @@ d.double_click(x, y, 0.1) # default duration between two click is 0.1s
 d.long_click(x, y)
 d.long_click(x, y, 0.5) # long click 0.5s (default)
 ```
-
-
 
 ## 滑动
 
@@ -269,8 +253,6 @@ ex, ey：目标坐标
 # swipe_points(self, points, duration: float = 0.5)
 d.swipe_points([(x0, y0), (x1, y1), (x2, y2)], 0.2))
 ```
-
-
 
 ## 选择器
 

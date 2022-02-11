@@ -12,6 +12,8 @@ categories:
 abbrlink: 4032605777
 date: 2021-08-30 23:20:51
 ---
+  
+
 ## 错误如下
 
 cni already has an IP address different from ...
@@ -52,8 +54,6 @@ kubeadm token create --print-join-command
 ```
 
 重新加入节点
-
-
 
 ## Reference
 

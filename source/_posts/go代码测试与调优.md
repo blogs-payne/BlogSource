@@ -141,7 +141,8 @@ go test [build/test flags] [packages] [build/test flags & test binary flags]
   $ go test -list Sum
 ```
 
-- `-parallel n`：允许并行执行通过调用 t.Parallel 的测试函数的最大次数。默认值为 GOMAXPROCS 的值。-parallel 仅适用于单个二进制测试文件，但`go test`命令可以通过指定 -p 并行测试不同的包。查看 `go help build`。
+- `-parallel n`：允许并行执行通过调用 t.Parallel 的测试函数的最大次数。默认值为 GOMAXPROCS 的值。-parallel 仅适用于单个二进制测试文件，但`go test`命令可以通过指定 -p
+  并行测试不同的包。查看 `go help build`。
 
 ```
   $ go test -run=TestSumParallel -parallel=2
@@ -205,13 +206,12 @@ go test [build/test flags] [packages] [build/test flags & test binary flags]
 - `-outputdir directory`：在指定的目录中放置输出文件，默认情况下，`go test` 正在运行的目录。
 - `-trace trace.out`：在退出之前，将执行跟踪写入指定文件。
 
-
-
 ## 单元测试
 
 > 以下是来自wiki对于单元测试的定义
 
-在[计算机编程](https://zh.wikipedia.org/wiki/计算机编程)中，**单元测试**（英语：Unit Testing）又称为**模块测试**，是针对[程序模块](https://zh.wikipedia.org/wiki/模組_(程式設計))（[软件设计](https://zh.wikipedia.org/wiki/软件设计)的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在[过程化编程](https://zh.wikipedia.org/wiki/過程化編程)中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
+在[计算机编程](https://zh.wikipedia.org/wiki/计算机编程)中，**单元测试**（英语：Unit Testing）又称为**模块测试**
+，是针对[程序模块](https://zh.wikipedia.org/wiki/模組_(程式設計))（[软件设计](https://zh.wikipedia.org/wiki/软件设计)的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在[过程化编程](https://zh.wikipedia.org/wiki/過程化編程)中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
 
 通常来说，程序员每修改一次程序就会进行最少一次单元测试，在编写程序的过程中前后很可能要进行多次单元测试，以证实程序达到[软件规格书](https://zh.wikipedia.org/wiki/規格_(技術標準))要求的工作目标，没有[程序错误](https://zh.wikipedia.org/wiki/Bug)；虽然单元测试不是必须的，但也不坏，这牵涉到[项目管理](https://zh.wikipedia.org/wiki/專案管理)的政策决定。
 
@@ -347,8 +347,6 @@ func TestSplit2(t *testing.T) {
 2. 不在是`package main`,而是`packge projectFileName`
 3. 函数名为TestFuncName
 
-
-
 ## 基准测试
 
 ### 基准测试函数格式
@@ -361,7 +359,8 @@ func BenchmarkName(b *testing.B){
 }
 ```
 
-基准测试以`Benchmark`为前缀，需要一个`*testing.B`类型的参数b，基准测试必须要执行`b.N`次，这样的测试才有对照性，`b.N`的值是系统根据实际情况去调整的，从而保证测试的稳定性。 `testing.B`拥有的方法如下：
+基准测试以`Benchmark`为前缀，需要一个`*testing.B`类型的参数b，基准测试必须要执行`b.N`次，这样的测试才有对照性，`b.N`的值是系统根据实际情况去调整的，从而保证测试的稳定性。 `testing.B`
+拥有的方法如下：
 
 ```go
 func (c *B) Error(args ...interface{})
@@ -422,7 +421,7 @@ ok  	Gp/part5/splitStr	1.963s
 
 ![](https://tva1.sinaimg.cn/large/008eGmZEgy1gnrw3i5yuej312k07adg0.jpg)
 
->  112 B/op：表示每次操作内存分配了112字节
+> 112 B/op：表示每次操作内存分配了112字节
 >
 > `3 allocs/op`：则表示每次操作进行了3次内存分配！！！
 
@@ -549,8 +548,6 @@ func BenchmarkFibWrong2(b *testing.B) {
 }
 ```
 
-
-
 ## 重置时间
 
 `b.ResetTimer`之前的处理不会放到执行时间里，也不会输出到报告中，所以可以在之前做一些不计划作为测试报告的操作。例如：
@@ -569,7 +566,8 @@ func BenchmarkSplit(b *testing.B) {
 
 `func (b *B) RunParallel(body func(*PB))`会以并行的方式执行给定的基准测试。
 
-`RunParallel`会创建出多个`goroutine`，并将`b.N`分配给这些`goroutine`执行， 其中`goroutine`数量的默认值为`GOMAXPROCS`。用户如果想要增加非CPU受限（non-CPU-bound）基准测试的并行性， 那么可以在`RunParallel`之前调用`SetParallelism` 。`RunParallel`通常会与`-cpu`标志一同使用。
+`RunParallel`会创建出多个`goroutine`，并将`b.N`分配给这些`goroutine`执行， 其中`goroutine`数量的默认值为`GOMAXPROCS`
+。用户如果想要增加非CPU受限（non-CPU-bound）基准测试的并行性， 那么可以在`RunParallel`之前调用`SetParallelism` 。`RunParallel`通常会与`-cpu`标志一同使用。
 
 ```go
 func BenchmarkSplitParallel(b *testing.B) {
@@ -601,8 +599,6 @@ ok      github.com/payne/Gp/code_demo/test_demo/split       3.308s
 
 测试程序有时需要在测试之前进行额外的设置（setup）或在测试之后进行拆卸（teardown）。
 
-
-
 ## Go性能优化
 
 做了这么多的测试最终的目的是测试代码有没有写对，性能是否可以优化。接下来进行性能优化与调优
@@ -627,7 +623,8 @@ pprof开启后，每隔一段时间（10ms）就会收集下当前的堆栈信�
 
 ### pprof应用
 
-如果你的应用程序是运行一段时间就结束退出类型。那么最好的办法是在应用退出的时候把 profiling 的报告保存到文件中，进行分析。对于这种情况，可以使用`runtime/pprof`库。 首先在代码中导入`runtime/pprof`工具：
+如果你的应用程序是运行一段时间就结束退出类型。那么最好的办法是在应用退出的时候把 profiling 的报告保存到文件中，进行分析。对于这种情况，可以使用`runtime/pprof`库。 首先在代码中导入`runtime/pprof`
+工具：
 
 ```go
 import "runtime/pprof"
@@ -665,7 +662,8 @@ pprof.WriteHeapProfile(w io.Writer)
 
 如果你的应用程序是一直运行的，比如 web 应用，那么可以使用`net/http/pprof`库，它能够在提供 HTTP 服务进行分析。
 
-如果使用了默认的`http.DefaultServeMux`（通常是代码直接使用 http.ListenAndServe(“0.0.0.0:8000”, nil)），只需要在你的web server端代码中按如下方式导入`net/http/pprof`
+如果使用了默认的`http.DefaultServeMux`（通常是代码直接使用 http.ListenAndServe(“0.0.0.0:8000”, nil)），只需要在你的web
+server端代码中按如下方式导入`net/http/pprof`
 
 ```go
 import _ "net/http/pprof"
@@ -772,11 +770,13 @@ Mac：
 brew install graphviz
 ```
 
-Windows: 下载[graphviz](https://graphviz.gitlab.io/_pages/Download/Download_windows.html) 将`graphviz`安装目录下的bin文件夹添加到Path环境变量中。 在终端输入`dot -version`查看是否安装成功。
+Windows: 下载[graphviz](https://graphviz.gitlab.io/_pages/Download/Download_windows.html) 将`graphviz`
+安装目录下的bin文件夹添加到Path环境变量中。 在终端输入`dot -version`查看是否安装成功。
 
 ![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpihc6efdzj310a0q676g.jpg)
 
-关于图形的说明： 每个框代表一个函数，理论上框的越大表示占用的CPU资源越多。 方框之间的线条代表函数之间的调用关系。 线条上的数字表示函数调用的次数。 方框中的第一行数字表示当前函数占用CPU的百分比，第二行数字表示当前函数累计占用CPU的百分比。
+关于图形的说明： 每个框代表一个函数，理论上框的越大表示占用的CPU资源越多。 方框之间的线条代表函数之间的调用关系。 线条上的数字表示函数调用的次数。
+方框中的第一行数字表示当前函数占用CPU的百分比，第二行数字表示当前函数累计占用CPU的百分比。
 
 除了分析CPU性能数据，pprof也支持分析内存性能数据。比如，使用下面的命令分析http服务的heap性能数据，查看当前程序的内存占用以及热点内存对象使用的情况。
 
@@ -791,7 +791,8 @@ go tool pprof -alloc_objects http://127.0.0.1:8080/debug/pprof/heap
 
 ## go-torch和火焰图
 
-火焰图（Flame Graph）是 Bredan Gregg 创建的一种性能分析图表，因为它的样子近似 🔥而得名。上面的 profiling 结果也转换成火焰图，如果对火焰图比较了解可以手动来操作，不过这里我们要介绍一个工具：`go-torch`。这是 uber 开源的一个工具，可以直接读取 golang profiling 数据，并生成一个火焰图的 svg 文件。
+火焰图（Flame Graph）是 Bredan Gregg 创建的一种性能分析图表，因为它的样子近似 🔥而得名。上面的 profiling
+结果也转换成火焰图，如果对火焰图比较了解可以手动来操作，不过这里我们要介绍一个工具：`go-torch`。这是 uber 开源的一个工具，可以直接读取 golang profiling 数据，并生成一个火焰图的 svg 文件。
 
 ### 安装go-torch
 

@@ -36,8 +36,6 @@ npm config set registry https://registry.npm.taobao.org
 npm config set sass_binary_site=https://npm.taobao.org/mirrors/node-sass/phantomjs_cdn
 ```
 
-
-
 ## `yarn` 查看镜像源
 
 ```bash
@@ -59,8 +57,6 @@ yarn add --registry=https://registry.npm.taobao.org
 yarn config set registry https://registry.npm.taobao.org -g
 yarn config set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g
 ```
-
-
 
 `yarn`使用
 

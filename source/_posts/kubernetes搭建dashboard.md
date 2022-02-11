@@ -20,8 +20,6 @@ helm相关文档：
 - [helm](https://helm.sh/zh/docs/)
 - [CNCF Helm 项目过程报告](https://www.cncf.io/reports/cncf-helm-project-journey-report/)
 
-
-
 ## helm初始化
 
 在这里推荐使用Kubernetes dashboard官方的仓库。在helm初始化完成后可使用如下命令进行helm repo初始化
@@ -86,8 +84,6 @@ kubectl edit -n monitor service kubernetes-dashboard
 
 至此部署部分已经完成
 
-
-
 ## 获取token与授权访问
 
 ### 获取token
@@ -110,8 +106,6 @@ kubectl describe secrets -n monitor | grep kubernetes-dashboard-token-你自己�
 > https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/README.md
 
 ![image-20210830222709899](https://tva1.sinaimg.cn/large/008i3skNgy1gtz6nfrdq3j62060oktgn02.jpg)
-
-
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

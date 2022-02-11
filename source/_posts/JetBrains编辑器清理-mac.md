@@ -9,15 +9,11 @@ abbrlink: 3686442481
 date: 2021-12-10 13:32:10
 ---
 
-
-
 ## 缘由
 
 由于不可描述的原因，我需要将`JetBrains`的所有已安装的编辑器进行清理。但我们知道MAC上单纯将应用软件中的软件拖入废纸篓是无法进行彻底删除的。
 
 > Tip: 有`Cleaner One Pro`或者`clean my mac` 专业版的（也就是付费版）的朋友可以直接在该软件中进行软件的卸载与清理，具体操作便不再此过多赘述
-
-
 
 ## 关键目录
 
@@ -29,8 +25,6 @@ date: 2021-12-10 13:32:10
 /Applications
 ```
 
-
-
 ### 删除
 
 > Tip：建议先将`/Applications` 中的内容先进行删除
@@ -41,10 +35,6 @@ rm -rf ~/Library/Logs/JetBrains/*
 rm -rf ~/Library/Preferences/JetBrains.*
 rm -rf ~/Library/Caches/JetBrains/*
 ```
-
-
-
-
 
 ## Evalreset Cleanr Script
 
@@ -121,12 +111,10 @@ End If
 MsgBox "done"
 ```
 
-
-
 [qXHrKqdrtjJX6xtX](https://shimo.im/docs/qXHrKqdrtjJX6xtX/read)
 
 [vrg123](http://vrg123.com/) :  4565
 
 [zhile](https://zhile.io/2020/11/18/jetbrains-eval-reset-da33a93d.html)
 
-[Zhile-plug](https://plugins.zhile.io):	https://plugins.zhile.io
+[Zhile-plug](https://plugins.zhile.io):    https://plugins.zhile.io

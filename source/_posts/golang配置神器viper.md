@@ -38,7 +38,7 @@ viper主要包含以下操作：
 - key/value存储
 - 默认值
 
->  **重要提示：** Viper 配置键不区分大小写。正在进行关于使之成为可选项的讨论。
+> **重要提示：** Viper 配置键不区分大小写。正在进行关于使之成为可选项的讨论。
 
 ## Viper使用场景
 
@@ -91,8 +91,6 @@ func main() {
 }
 ```
 
-
-
 ### 覆盖设置
 
 这些可能来自命令行标志，也可能来自你自己的应用程序逻辑。
@@ -120,7 +118,9 @@ viper.GetBool("verbose") // true
 
 ### 读取配置文件
 
-抽离统一化管理成为配置文件，将所有的配置写在文件中便于管理修改与编辑。Viper 支持 "json", "toml", "yaml", "yml", "properties", "props", "prop", "hcl", "tfvars", "dotenv", "env", "ini" 属性文件。Viper 可以搜索多个路径，但目前单个 Viper 实例仅支持单个配置文件。Viper 不会默认任何配置搜索路径，将默认决定留给应用程序。不需要任何特定路径，但应至少提供一个需要配置文件的路径。以下是如何使用 Viper 搜索和读取配置文件的示例。
+抽离统一化管理成为配置文件，将所有的配置写在文件中便于管理修改与编辑。Viper 支持 "json", "toml", "yaml", "yml", "properties", "props", "prop", "hcl", "
+tfvars", "dotenv", "env", "ini" 属性文件。Viper 可以搜索多个路径，但目前单个 Viper 实例仅支持单个配置文件。Viper
+不会默认任何配置搜索路径，将默认决定留给应用程序。不需要任何特定路径，但应至少提供一个需要配置文件的路径。以下是如何使用 Viper 搜索和读取配置文件的示例。
 
 ```go
 viper.SetConfigFile("./config.yaml") 			// 指定配置文件路径
@@ -199,9 +199,7 @@ func jsonConf() {
 - WriteConfigAs - 将当前的`viper`配置写入给定的文件路径。将覆盖给定的文件(如果它存在的话)。
 - SafeWriteConfigAs - 将当前的`viper`配置写入给定的文件路径。不会覆盖给定的文件(如果它存在的话)。
 
->  根据经验，标记为`safe`的所有方法都不会覆盖任何文件，而是直接创建（如果不存在），而默认行为是创建或截断。
-
-
+> 根据经验，标记为`safe`的所有方法都不会覆盖任何文件，而是直接创建（如果不存在），而默认行为是创建或截断。
 
 ### 监听配置文件
 
@@ -259,8 +257,6 @@ func main() {
 }
 
 ```
-
-
 
 ## 环境变量
 
@@ -355,28 +351,26 @@ IsSet(key string) bool
 AllSettings() map[string]interface{}
 ```
 
-
-
 ### 访问嵌套的键
 
 访问器方法也接受深度嵌套键的格式化路径。例如，如果加载下面的JSON文件：
 
 ```json
 {
-    "host": {
-        "address": "localhost",
-        "port": 5799
+  "host": {
+    "address": "localhost",
+    "port": 5799
+  },
+  "datastore": {
+    "metric": {
+      "host": "127.0.0.1",
+      "port": 3099
     },
-    "datastore": {
-        "metric": {
-            "host": "127.0.0.1",
-            "port": 3099
-        },
-        "warehouse": {
-            "host": "198.21.112.32",
-            "port": 2112
-        }
+    "warehouse": {
+      "host": "198.21.112.32",
+      "port": 2112
     }
+  }
 }
 ```
 
@@ -387,9 +381,12 @@ GetString("datastore.datastore.warehouse.host")
 // 返回 "198.21.112.32"
 ```
 
-这遵守上面建立的优先规则；搜索路径将遍历其余配置注册表，直到找到为止。(译注：因为Viper支持从多种配置来源，例如磁盘上的配置文件>命令行标志位>环境变量>远程Key/Value存储>默认值，我们在查找一个配置的时候如果在当前配置源中没找到，就会继续从后续的配置源查找，直到找到为止。)
+这遵守上面建立的优先规则；搜索路径将遍历其余配置注册表，直到找到为止。(译注：因为Viper支持从多种配置来源，例如磁盘上的配置文件>命令行标志位>环境变量>远程Key/Value存储>
+默认值，我们在查找一个配置的时候如果在当前配置源中没找到，就会继续从后续的配置源查找，直到找到为止。)
 
-例如，在给定此配置文件的情况下，`datastore.metric.host`和`datastore.metric.port`均已定义（并且可以被覆盖）。如果另外在默认值中定义了`datastore.metric.protocol`，Viper也会找到它。然而，如果`datastore.metric`被直接赋值覆盖（被flag，环境变量，`set()`方法等等…），那么`datastore.metric`的所有子键都将变为未定义状态，它们被高优先级配置级别“遮蔽”（shadowed）了。最后，如果存在与分隔的键路径匹配的键，则返回其值。例如：
+例如，在给定此配置文件的情况下，`datastore.metric.host`和`datastore.metric.port`均已定义（并且可以被覆盖）。如果另外在默认值中定义了`datastore.metric.protocol`
+，Viper也会找到它。然而，如果`datastore.metric`被直接赋值覆盖（被flag，环境变量，`set()`方法等等…），那么`datastore.metric`
+的所有子键都将变为未定义状态，它们被高优先级配置级别“遮蔽”（shadowed）了。最后，如果存在与分隔的键路径匹配的键，则返回其值。例如：
 
 ```go
 {
@@ -413,8 +410,6 @@ GetString("datastore.datastore.warehouse.host")
 GetString("datastore.metric.host") 
 // 返回 "0.0.0.0"
 ```
-
-
 
 ### 提取子树
 
@@ -563,8 +558,6 @@ func yamlStringSettings() string {
 }
 ```
 
-
-
 ## 远程Key/Value存储支持
 
 在Viper中启用远程支持，需要在代码中匿名导入`viper/remote`这个包。
@@ -573,7 +566,8 @@ func yamlStringSettings() string {
 import _ "github.com/spf13/viper/remote"
 ```
 
-Viper将读取从Key/Value存储（例如etcd或Consul）中的路径检索到的配置字符串（如`JSON`、`TOML`、`YAML`、`HCL`、`envfile`和`Java properties`格式）。这些值的优先级高于默认值，但是会被从磁盘、flag或环境变量检索到的配置值覆盖。（译注：也就是说Viper加载配置值的优先级为：磁盘上的配置文件>命令行标志位>环境变量>远程Key/Value存储>默认值。）
+Viper将读取从Key/Value存储（例如etcd或Consul）中的路径检索到的配置字符串（如`JSON`、`TOML`、`YAML`、`HCL`、`envfile`和`Java properties`
+格式）。这些值的优先级高于默认值，但是会被从磁盘、flag或环境变量检索到的配置值覆盖。（译注：也就是说Viper加载配置值的优先级为：磁盘上的配置文件>命令行标志位>环境变量>远程Key/Value存储>默认值。）
 
 Viper使用[crypt](https://github.com/bketelsen/crypt)从K/V存储中检索配置，这意味着如果你有正确的gpg密匙，你可以将配置值加密存储并自动解密。加密是可选的。
 
@@ -611,7 +605,7 @@ err := viper.ReadRemoteConfig()
 ```json
 viper.AddRemoteProvider("consul", "localhost:8500", "MY_CONSUL_KEY")
 viper.SetConfigType("json") // 需要显示设置成json
-err := viper.ReadRemoteConfig()
+err: = viper.ReadRemoteConfig()
 ```
 
 #### Firestore
@@ -664,8 +658,6 @@ go func(){
 	}
 }()
 ```
-
-
 
 ## 基于Viper实现的环境变量动态链接
 

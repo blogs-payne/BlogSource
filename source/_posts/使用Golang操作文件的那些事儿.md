@@ -8,6 +8,7 @@ categories:
 abbrlink: 1627
 date: 2020-11-28 00:11:57
 ---
+
 ## Golang 文件操作
 
 Os模块的使用与源码研究
@@ -44,7 +45,8 @@ func Open(name string) (*File, error) {
 > // 其中os.Open中的name为路径Path
 > ```
 
-基础使用的介绍暂且为止，其实我们更应该关心的应该是`OpenFile(name, O_RDONLY, 0)`，这个函数到底干了啥，我们追踪一下这个函数(在GoLang编辑器中， mac可以直接使用command + 鼠标左键直接进入，Win可以使用ctrl + 鼠标左键)，如下:
+基础使用的介绍暂且为止，其实我们更应该关心的应该是`OpenFile(name, O_RDONLY, 0)`，这个函数到底干了啥，我们追踪一下这个函数(在GoLang编辑器中， mac可以直接使用command +
+鼠标左键直接进入，Win可以使用ctrl + 鼠标左键)，如下:
 
 ```go
 func OpenFile(name string, flag int, perm FileMode) (*File, error) {
@@ -300,7 +302,7 @@ func NewReaderSize(rd io.Reader, size int) *Reader {
 
 它简便的原因是因为已经帮我们定义了文件的指针，以及它还定义了缓冲区，这样我们使用它来读取更加的快与便捷。
 
- bufio.NewReader语法格式
+bufio.NewReader语法格式
 
 ```go
 func NewReader(rd io.Reader) *Reader 

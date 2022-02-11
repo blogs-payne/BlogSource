@@ -20,7 +20,8 @@ date: 2021-06-12 22:25:29
 
 ### 什么是Hook？
 
-Hook 又叫作钩子技术，它就是在程序运行的过程中，对其中的某个方法进行重写，在原有的方法前后自定义的代码。相当于在系统没有调用该函数之前，钩子程序就先捕获该消息，可以先得到控制权，这时钩子函数便可以加工处理（改变）该函数的执行行为。执行函数后释放控制权限，继续运行原有逻辑。
+Hook
+又叫作钩子技术，它就是在程序运行的过程中，对其中的某个方法进行重写，在原有的方法前后自定义的代码。相当于在系统没有调用该函数之前，钩子程序就先捕获该消息，可以先得到控制权，这时钩子函数便可以加工处理（改变）该函数的执行行为。执行函数后释放控制权限，继续运行原有逻辑。
 
 <!--more-->
 
@@ -40,20 +41,21 @@ Hook 又叫作钩子技术，它就是在程序运行的过程中，对其中的
 ```javascript
 // 函数hooker
 var func_copy = func
-func = function(argument){
-	// hooker
-  return func.apply(obj,argument)
+func = function (argument) {
+    // hooker
+    return func.apply(obj, argument)
 }
 
 // 属性hooker
 var attr_copy = obj.attr
-Object.defineProprety(obj, 'attr' {
-  get:function() {
-		// your code
-  }
-  set:function() {
-		// your code
-  }
+Object.defineProprety(obj, 'attr'
+{
+    get:function () {
+        // your code
+    }
+    set:function () {
+        // your code
+    }
 }
 ```
 
@@ -64,6 +66,7 @@ Object.defineProprety(obj, 'attr' {
 (function () {
     'use strict'
     alert('Start Hooking ...');
+
     function hook(obj, attr) {
         var func = obj[attr]
         obj[attr] = function () {
@@ -79,36 +82,37 @@ Object.defineProprety(obj, 'attr' {
         };
         attr.length = 1;
     }
+
     hook(window, 'btoa')
 })()
 
-// hook eval
-(function () {
-    alert('Start Hooking ...');
-    function Hooker(obj, attr) {
-        var func = obj[attr]
-        obj[attr] = function () {
-            console.log('hooked', obj, attr, arguments);
-            var result = func.apply(obj, arguments);
-            debugger;
-            console.log('result', result);
-            return result;
+    // hook eval
+    (function () {
+        alert('Start Hooking ...');
+
+        function Hooker(obj, attr) {
+            var func = obj[attr]
+            obj[attr] = function () {
+                console.log('hooked', obj, attr, arguments);
+                var result = func.apply(obj, arguments);
+                debugger;
+                console.log('result', result);
+                return result;
+            }
+            // Disguise the prototype
+            attr.toString = function () {
+                return "function eval() { [native code] }";
+            };
+            attr.length = 1;
         }
-        // Disguise the prototype
-        attr.toString = function () {
-            return "function eval() { [native code] }";
-        };
-        attr.length = 1;
-    }
-    Hooker(window, 'eval')
-})()
+
+        Hooker(window, 'eval')
+    })()
 
 
 // hook document.cookie
 
 ```
-
-
 
 ### Hook 优与劣
 
@@ -129,12 +133,10 @@ Object.defineProprety(obj, 'attr' {
 ```js
 // Disguise the prototype
 attr.toString = function () {
-return "function btoa() { [native code] }";
+    return "function btoa() { [native code] }";
 };
 attr.length = 1;
 ```
-
-
 
 ![](https://tva1.sinaimg.cn/large/008i3skNgy1grgwa9ysgcj31d00bcjv6.jpg)
 
@@ -150,12 +152,15 @@ attr.length = 1;
 func = "需Hook处"
 
 # 常规hook思路(错误示例)
-1.保存改写函数
-2.重写hook函数
-3.下debugger或其他调试逻辑
+1.
+保存改写函数
+2.
+重写hook函数
+3.
+下debugger或其他调试逻辑
 
-split = function(val) {
-  debugger;
+split = function (val) {
+    debugger;
 }
 ```
 
@@ -180,12 +185,13 @@ split = function(val) {
 那么我们直接对于进行如下操作,在控制台（console）中输入
 
 ```js
-as = “hook mark”;
+as = “hook
+mark”;
 
 # rewrite
-String.prototype.split = function() {
-		console.log('val');
-		debugger;
+String.prototype.split = function () {
+    console.log('val');
+    debugger;
 }
 ```
 
@@ -198,7 +204,7 @@ String.prototype.split = function() {
 ```js
 // create split cache from proto
 String.prototype.split_cache = String.prototype.split
-String.prototype.split = function(val) {
+String.prototype.split = function (val) {
     // Gets the variable of the current scope
     str = this.String();
     console.log('Arguments:', val)
@@ -208,8 +214,6 @@ String.prototype.split = function(val) {
 ```
 
 > 如果感觉不明白为什么需要这样写的，或许需要复习一下js 原型链相关知识
-
-
 
 ### Hook失败原因归纳
 

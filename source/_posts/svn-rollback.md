@@ -5,11 +5,11 @@ tags:
   - svn
 categories:
   - - svn
-    - svn rollbackc2
+    - svn rollbackc
 date: 2022-02-11 15:22:55
 ---
 
-
+`svn`使用 命令行实现rollback
 
 ```bash
 # 查看前100条提交日志

@@ -12,6 +12,7 @@ categories:
 abbrlink: 16882
 date: 2021-03-31 03:13:58
 ---
+
 ### 发布golang第三方包
 
 事情是这样的，随着公司的业务的增长。各种重复的工作越来约多。CV久了就想在进一步的那啥，毕竟我懒，不是。我就想着能不能把那些重复cv的干脆写成一个第三方包，进行调用。咱不谈那些啥封装啥的，我也想过，我也做过。但无论咋封装，总不可能跨项目吧,还是需要。。。
@@ -156,8 +157,6 @@ git push origin master
 
 ![](https://tva1.sinaimg.cn/large/008eGmZEgy1gp2hsentogj322q0smgn2.jpg)
 
-
-
 先 填写标签号(常规格式是 x.y.z)例如我的`v0.0.1`,
 
 填写发表的标题，一般是项目名
@@ -174,13 +173,9 @@ git push origin master
 
 至此，发布部分就已经完成了。那么自己来测试一下这个第三方包
 
-
-
 ### 使用发布的第三方包
 
 新建一个项目、go mod init初始化、创建文件夹就不过多赘述了
-
-
 
 下载我们发布的包
 
@@ -189,8 +184,6 @@ git push origin master
 ```sh
 go get github.com/Golzaes/simpleExample/exampleCode
 ```
-
-
 
 ![](https://tva1.sinaimg.cn/large/008eGmZEgy1gp2ibah1b2j31gt0u0my1.jpg)
 

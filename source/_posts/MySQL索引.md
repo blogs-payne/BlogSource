@@ -15,13 +15,11 @@ date: 2021-09-09 19:26:41
 
 > 索引：可简单理解为一本书的目录的集合
 
-​		索引（在MySQL中也叫**键（key）**）是存储引擎用于快速查找记录的一种数据结构。索引对于性能拥有至关重要的地位。尤其是当表中的数据量越来越大，索引对于性能的影响愈发重要。反之不恰当的索引对于性能也会急剧下降。
+​ 索引（在MySQL中也叫**键（key）**）是存储引擎用于快速查找记录的一种数据结构。索引对于性能拥有至关重要的地位。尤其是当表中的数据量越来越大，索引对于性能的影响愈发重要。反之不恰当的索引对于性能也会急剧下降。
 
 **索引是一把双刃剑**
 
 ## 索引的优与劣
-
-
 
 ### 索引的优点
 
@@ -30,8 +28,6 @@ date: 2021-09-09 19:26:41
 - 将随机I/O变为顺序I/O
 - 可以大大加快数据的检索速度，这也是创建索引的最主要的用途。
 - 通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。
-
-
 
 ### 索引的缺点
 
@@ -49,8 +45,6 @@ date: 2021-09-09 19:26:41
 
 锁竞争
 
-
-
 ## 索引的类型
 
 索引有很多种类，可以为不同场景提供更好的性能。索引在存储引擎层实现的，故并没有**统一的**索引标准
@@ -59,15 +53,11 @@ date: 2021-09-09 19:26:41
 
 ### 索引的种类
 
-
-
 #### 物理顺序与键值的索引逻辑顺序关系
 
 聚集索引：数据行的物理顺序与列值（一般是主键的那一列）的逻辑顺序相同，一个表中只能拥有**一个聚集索引**。
 
 非聚集索引：逻辑顺序与磁盘上行的物理存储顺序不同，一个表中可以拥有**多个非聚集索引**。
-
-
 
 **聚簇索引与非聚簇索引异同**
 
@@ -78,26 +68,24 @@ date: 2021-09-09 19:26:41
 聚簇索引与非聚簇索引的区别：
 
 - 非聚集索引与聚集索引的区别在于非聚集索引的叶子节点不存储表中的数据，而是存储该列对应的主键（行号）
-- 对于InnoDB来说，想要查找数据我们还需要根据主键再去聚集索引中进行查找，这个再根据聚集索引查找数据的过程，我们称为**回表**。第一次索引一般是顺序IO，回表的操作属于随机IO。需要回表的次数越多，即随机IO次数越多，我们就越倾向于使用全表扫描 。
+- 对于InnoDB来说，想要查找数据我们还需要根据主键再去聚集索引中进行查找，这个再根据聚集索引查找数据的过程，我们称为**回表**
+  。第一次索引一般是顺序IO，回表的操作属于随机IO。需要回表的次数越多，即随机IO次数越多，我们就越倾向于使用全表扫描 。
 - 通常情况下， 主键索引（聚簇索引）查询只会查一次，而非主键索引（非聚簇索引）需要回表查询多次。当然，如果是覆盖索引的话，查一次即可
 
 注意：MyISAM无论主键索引还是二级索引都是非聚簇索引，而InnoDB的主键索引是聚簇索引，二级索引是非聚簇索引。我们自己建的索引基本都是非聚簇索引。
-
-
 
 #### 存储结构
 
 > 这里所描述的是索引存储时保存的形式
 
-- B Tree索引（B-Tree或B+Tree索引）BTREE索引就是一种将索引值按一定的算法，存入一个树形的数据结构中（二叉树），每次查询都是从树的入口root开始，依次遍历node，获取leaf。这是**MySQL里默认和最常用的索引类型。**
+- B Tree索引（B-Tree或B+Tree索引）BTREE索引就是一种将索引值按一定的算法，存入一个树形的数据结构中（二叉树），每次查询都是从树的入口root开始，依次遍历node，获取leaf。这是**
+  MySQL里默认和最常用的索引类型。**
 
 - Hash索引，HASH索引可以一次定位，不需要像树形索引那样逐层查找,因此具有极高的效率。但是，这种高效是有条件的，即只在“=”和“in”条件下高效，对于范围查询、排序及组合索引仍然效率不高
 
 - full index 全文索引，其可以在CREATE TABLE ，ALTER TABLE ，CREATE INDEX 使用，不过只有 CHAR、VARCHAR ，TEXT 列上可以创建全文索引
 
 - R-Tree索引。RTREE在MySQL很少使用，**仅支持geometry数据类型**，相对于BTREE，RTREE的优势在于范围查找。
-
-
 
 ##### B Tree 索引
 
@@ -121,7 +109,8 @@ date: 2021-09-09 19:26:41
 
 基于Hash表实现，只有**精确匹配**索引**所有列**的查询**才有效**
 
-对于每一行数据存储引擎都会对所有的索引计算一个hash code。hash code 较小的值，并且不同键值的行计算出来的hash code页不一样。hash索引将所有的hash code存储在索引中，同时在hash table中保存指向每个数据的指针
+对于每一行数据存储引擎都会对所有的索引计算一个hash code。hash code 较小的值，并且不同键值的行计算出来的hash code页不一样。hash索引将所有的hash code存储在索引中，同时在hash
+table中保存指向每个数据的指针
 
 **hash索引查询步骤**
 
@@ -148,7 +137,7 @@ date: 2021-09-09 19:26:41
 
 这类索引无需前缀查询，空间索引将会从所有的维度来进行索引数据
 
-##### full index 
+##### full index
 
 > 全文索引
 
@@ -158,28 +147,22 @@ date: 2021-09-09 19:26:41
 
 全文索引更类似于搜索引擎所做的事情，而不是简单的where条件匹配，而是MATCH AGAINST操作。支持Char、VARCHAR、TEXT类型、自然语言搜索、bool搜索
 
-
-
 #### 应用层次
 
-- 主键索引：	加速查询 + 列值唯一（不可以有null）+ 表中只有一个
-- 普通索引：    仅加速查询
+- 主键索引： 加速查询 + 列值唯一（不可以有null）+ 表中只有一个
+- 普通索引： 仅加速查询
 
 - 唯一索引:       加速查询 + 列值唯一（可以有null）
 
 - 复合索引:       多列值组成一个索引，专门用于组合搜索，其效率大于索引合并
-- 全文索引：    对文本的内容进行分词，进行搜索
+- 全文索引： 对文本的内容进行分词，进行搜索
 - 覆盖索引:     select的数据列只用从索引中就能够取得，不必读取数据行，换句话说查询列要被所建的索引覆盖
 
 > 索引合并，使用多个单列索引组合搜索
 
-
-
 ## 索引创建
 
 正确的创建索引是实现高性能查询的基础
-
-
 
 ### 建索引的原则
 
@@ -192,36 +175,38 @@ date: 2021-09-09 19:26:41
 > - **索引设计原则**
 
 1. 必须要有主键,如果没有可以做为主键条件的列,创建无关列
-2. 经常做为where条件列  order by  group by  join on, distinct 的条件(业务:产品功能+用户行为)
-3.  最好使用唯一值多的列作为索引,如果索引列重复值较多,可以考虑使用联合索引
+2. 经常做为where条件列 order by group by join on, distinct 的条件(业务:产品功能+用户行为)
+3. 最好使用唯一值多的列作为索引,如果索引列重复值较多,可以考虑使用联合索引
 4. 列值长度较长的索引列,建议使用前缀索引.
-5.  降低索引条目,一方面不要创建没用索引,不常使用的索引清理,percona toolkit(xxxxx)
-6.  索引维护要避开业务繁忙期
-
-
+5. 降低索引条目,一方面不要创建没用索引,不常使用的索引清理,percona toolkit(xxxxx)
+6. 索引维护要避开业务繁忙期
 
 **CREATE TABLE创建索引**
 
 ```mysql
-CREATE TABLE IF NOT EXISTS `ch_people_msg` ( 
-  `p_id`  SERIAL NOT NULL AUTO_INCREMENT COMMENT '用户id' , 
-  `p_uic` CHAR(18) NOT NULL COMMENT '用户身份证',
-  `p_nickname` VARCHAR(50) NOT NULL COMMENT '用户昵称', 
-  `p_gender` ENUM('m','f', 'n') NOT NULL DEFAULT 'n' COMMENT '用户性别', 
-  `p_age` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '用户年龄', 
-  `p_pnum` CHAR(11) NOT NULL COMMENT '用户电话', 
-  `p_address` VARCHAR(100) NOT NULL COMMENT '用户地址', 
-  `p_email` VARCHAR(50) NOT NULL COMMENT '用户邮箱', 
-  `p_add_time` TIMESTAMP NOT NULL DEFAULT NOW() COMMENT '统计用户时间',
-   PRIMARY KEY (`p_id`),
-   UNIQUE KEY `p_uic`(`p_uic`)
-) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT = '中国成员信息表';
+CREATE TABLE IF NOT EXISTS `ch_people_msg`
+(
+    `p_id`       SERIAL              NOT NULL AUTO_INCREMENT COMMENT '用户id',
+    `p_uic`      CHAR(18)            NOT NULL COMMENT '用户身份证',
+    `p_nickname` VARCHAR(50)         NOT NULL COMMENT '用户昵称',
+    `p_gender`   ENUM ('m','f', 'n') NOT NULL DEFAULT 'n' COMMENT '用户性别',
+    `p_age`      TINYINT UNSIGNED    NOT NULL DEFAULT 0 COMMENT '用户年龄',
+    `p_pnum`     CHAR(11)            NOT NULL COMMENT '用户电话',
+    `p_address`  VARCHAR(100)        NOT NULL COMMENT '用户地址',
+    `p_email`    VARCHAR(50)         NOT NULL COMMENT '用户邮箱',
+    `p_add_time` TIMESTAMP           NOT NULL DEFAULT NOW() COMMENT '统计用户时间',
+    PRIMARY KEY (`p_id`),
+    UNIQUE KEY `p_uic` (`p_uic`)
+) ENGINE = InnoDB
+  CHARSET = utf8mb4
+  COLLATE utf8mb4_general_ci COMMENT = '中国成员信息表';
 ```
 
 **ALTER TABLE命令去增加索引**
 
 ```mysql
-ALTER TABLE table_name ADD INDEX index_name (column_list);
+ALTER TABLE table_name
+    ADD INDEX index_name (column_list);
 ```
 
 ### 创建索引时注意点
@@ -230,21 +215,23 @@ ALTER TABLE table_name ADD INDEX index_name (column_list);
 - 取值离散大的字段：（变量各个取值之间的差异程度）的列放到联合索引的前面，可以通过count()函数查看字段的差异值，返回值越大说明字段的唯一值越多字段的离散程度高；
 - 索引字段越小越好：数据库的数据存储以页为单位一页存储的数据越多一次IO操作获取的数据越大效率越高。
 
-
-
 ## 索引失效
 
 **函数导致的索引失效**
 
 ```mysql
-SELECT * FROM `user` WHERE DATE(create_time) = '2012-11-03';
+SELECT *
+FROM `user`
+WHERE DATE(create_time) = '2012-11-03';
 ```
 
 **运算符导致的索引失效**
 
 ```mysql
 # 如果对列进行了（+，-，*，/，!）运算, 那么都将不会走索引。
-select p_id from xxx where p_id + 10 = 12
+select p_id
+from xxx
+where p_id + 10 = 12
 ```
 
 **OR引起的索引失效**
@@ -254,7 +241,10 @@ select p_id from xxx where p_id + 10 = 12
 > 如果OR连接的是同一个字段，那么索引不会失效，反之索引失效。
 
 ```mysql
-SELECT * FROM `xxx` WHERE `name` = 'xxx' OR age = 20;
+SELECT *
+FROM `xxx`
+WHERE `name` = 'xxx'
+   OR age = 20;
 ```
 
 **模糊搜索导致的索引失效**
@@ -273,8 +263,6 @@ SELECT * FROM `xxx` WHERE `name` = 'xxx' OR age = 20;
 2. 模糊查询`%`不在前
 3. 索引列不运算
 
-
-
 ## 索引下推
 
 自5.6引入了索引下推优化。默认开启
@@ -286,10 +274,13 @@ SELECT * FROM `xxx` WHERE `name` = 'xxx' OR age = 20;
 
 官方文档中给的例子和解释如下：
 
-在 people_table中有一个二级索引(zipcode，lastname，firstname)，查询是SELECT * FROM people WHERE zipcode=’95054′ AND lastname LIKE ‘%etrunia%’ AND address LIKE ‘%Main Street%’;
+在 people_table中有一个二级索引(zipcode，lastname，firstname)，查询是SELECT * FROM people WHERE zipcode=’95054′ AND lastname LIKE
+‘%etrunia%’ AND address LIKE ‘%Main Street%’;
 
-- 如果没有使用索引下推技术，则MySQL会通过zipcode=’95054’从存储引擎中查询对应的数据，返回到MySQL服务端，然后MySQL服务端基于lastname LIKE ‘%etrunia%’ and address LIKE ‘%Main Street%’来判断数据是否符合条件
-- 如果使用了索引下推技术，则MYSQL首先会返回符合zipcode=’95054’的索引，然后根据lastname LIKE ‘%etrunia%’ and address LIKE ‘%Main Street%’来判断索引是否符合条件。如果符合条件，则根据该索引来定位对应的数据，如果不符合，则直接reject掉。
+- 如果没有使用索引下推技术，则MySQL会通过zipcode=’95054’从存储引擎中查询对应的数据，返回到MySQL服务端，然后MySQL服务端基于lastname LIKE ‘%etrunia%’ and address LIKE
+  ‘%Main Street%’来判断数据是否符合条件
+- 如果使用了索引下推技术，则MYSQL首先会返回符合zipcode=’95054’的索引，然后根据lastname LIKE ‘%etrunia%’ and address LIKE ‘%Main
+  Street%’来判断索引是否符合条件。如果符合条件，则根据该索引来定位对应的数据，如果不符合，则直接reject掉。
 
 ## 默认使用B+Tree的优势
 
@@ -297,8 +288,10 @@ SELECT * FROM `xxx` WHERE `name` = 'xxx' OR age = 20;
 
 B-tree：
 
-- B+树的磁盘读写代价更低：B+树的内部节点并没有指向关键字具体信息的指针，因此其内部节点相对B(B-)树更小，如果把所有同一内部节点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多，一次性读入内存的需要查找的关键字也就越多，相对`IO读写次数就降低`了。
-- 由于B+树的数据都存储在叶子结点中，分支结点均为索引，方便扫库，只需要扫一遍叶子结点即可，但是B树因为其分支结点同样存储着数据，我们要找到具体的数据，需要进行一次中序遍历按序来扫，所以B+树更加适合在`区间查询`的情况，所以通常B+树用于数据库索引。
+- B+树的磁盘读写代价更低：B+树的内部节点并没有指向关键字具体信息的指针，因此其内部节点相对B(B-)
+  树更小，如果把所有同一内部节点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多，一次性读入内存的需要查找的关键字也就越多，相对`IO读写次数就降低`了。
+- 由于B+树的数据都存储在叶子结点中，分支结点均为索引，方便扫库，只需要扫一遍叶子结点即可，但是B树因为其分支结点同样存储着数据，我们要找到具体的数据，需要进行一次中序遍历按序来扫，所以B+树更加适合在`区间查询`
+  的情况，所以通常B+树用于数据库索引。
 
 Hash：
 
@@ -314,10 +307,6 @@ Hash：
 二叉树：树的高度不均匀，不能自平衡，查找效率跟数据有关（树的高度），并且IO代价高。
 
 红黑树：树的高度随着数据量增加而增加，IO代价高。
-
-
-
-
 
 ## Referer
 

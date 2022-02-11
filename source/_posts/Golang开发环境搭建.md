@@ -17,8 +17,8 @@ date: 2020-11-21 22:10:19
 >
 > 编辑器
 >
-> - Golang:<https://www.jetbrains.com/go/> 
-> - Visual Studio Code: <https://code.visualstudio.com/> 
+> - Golang:<https://www.jetbrains.com/go/>
+> - Visual Studio Code: <https://code.visualstudio.com/>
 
 搭建 Go 语言开发环境，需要先下载 Go 语言开发包。
 
@@ -36,13 +36,15 @@ Linux:
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwgy1gkfw129kelj31qe03c0uw.jpg)
 <!--more-->
+
 ### Golang语言开发包
 
 ![Golang开发包](https://tva1.sinaimg.cn/large/0081Kckwgy1gkfvdmu9zsj31au0u0ap5.jpg)
 
 MSI 安装的方式比较简单推荐使用
 
-Windows 系统上推荐使用这种方式。现在的操作系统基本上都是 64 位的，所以选择 64 位的 go1.15.windows-amd64.msi 下载即可，如果操作系统是 32 位的，选择 go1.15.windows-386.msi 进行下载。
+Windows 系统上推荐使用这种方式。现在的操作系统基本上都是 64 位的，所以选择 64 位的 go1.15.windows-amd64.msi 下载即可，如果操作系统是 32 位的，选择 go1.15.windows-386.msi
+进行下载。
 
 下载后双击该 MSI 安装文件，按照提示一步步地安装即可。在默认情况下，Go 语言开发工具包会被安装到 c:\Go 目录，你也可以在安装过程中选择自己想要安装的目录。
 
@@ -58,7 +60,8 @@ Windows 系统上推荐使用这种方式。现在的操作系统基本上都是
 
 ### macOS 下安装
 
-如果你的操作系统是 macOS，可以采用 PKG 安装包。下载 `go1.15.darwin-amd64.pkg` 后，双击按照提示安装即可。安装成功后，路径` /usr/local/go/bin` 应该已经被添加到了 PATH 环境变量中。
+如果你的操作系统是 macOS，可以采用 PKG 安装包。下载 `go1.15.darwin-amd64.pkg` 后，双击按照提示安装即可。安装成功后，路径` /usr/local/go/bin` 应该已经被添加到了 PATH
+环境变量中。
 
 如果没有的话，你可以手动添加，把如下内容添加到 /etc/profile 或者 $HOME/.profile 文件保存即可。命令如下
 
@@ -169,7 +172,8 @@ GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmess
 
 Go1.14版本之后，都推荐使用`go mod`模式来管理依赖环境了，也不再强制我们把代码必须写在`GOPATH`下面的src目录了，你可以在你电脑的任意位置编写go代码。（网上有些教程适用于1.11版本之前。）
 
-默认GoPROXY配置是：`GOPROXY=https://proxy.golang.org,direct`，由于国内访问不到`https://proxy.golang.org`，所以我们需要换一个PROXY，这里推荐使用`https://goproxy.io`或`https://goproxy.cn`。
+默认GoPROXY配置是：`GOPROXY=https://proxy.golang.org,direct`，由于国内访问不到`https://proxy.golang.org`
+，所以我们需要换一个PROXY，这里推荐使用`https://goproxy.io`或`https://goproxy.cn`。
 
 可以执行下面的命令修改GOPROXY：
 
@@ -229,8 +233,6 @@ GOOS=linux GOARCH=amd64 go build /Users/stringle-004/go/main.go
 安装完毕后右下角会提示`重启VS Code`，重启之后你的VS Code就显示中文啦！
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwgy1gkfxc0dxgxg30xq0ppngg.gif)
-
-
 
 第二款是老牌 IDE 公司 JetBrains 推出的 Goland，所有插件已经全部集成，更容易上手，并且功能强大，新手老手都适合，你可以通过官方网站 https://www.jetbrains.com/go/ 下载使用。
 

@@ -8,9 +8,12 @@ categories:
 abbrlink: 4479
 date: 2020-12-13 23:44:48
 ---
+  
+
 ## Docker swarm部署控制
 
-还记得我之前写过一片文章叫做[《Docker快速部署项目，极速搭建分布式》](https://mp.weixin.qq.com/s?__biz=Mzg2MzM4NTg3MA==&tempkey=MTA5MF9RcFZ5c1B4QTFmSnZHd2Qxa3hMNWhpLXFoOEJYWVBBaUZyME1sRmVBQnR1QWN3V3FUZ1hfa1BnemdtOWpLY1o0RTlzVnE2OUtRblZPS1ZDV2pDSk9QU3BadDUzLTNJa3RHYmxFQXNqMjQyQ1dSNUlrcDdfTG1scDRTWVg2UDdiLTI5eWo4dE9HSHI4TlVKOVltZEdtVzZObW9NT19GN2I5eF9YbzdBfn4%3D&chksm=4e78226b790fab7d1fb0283f8b6294c40456df7aebf58d947412ed03d0c3fc3aa188de79f130#rd)，在那里讲述了如何去使用docker swarm，如何构建自己的私人镜像仓库。随着最近的业务量的增长，机子加多。对于docker swarm管理难度有上升的趋势。主要的问题有以下几个
+还记得我之前写过一片文章叫做[《Docker快速部署项目，极速搭建分布式》](https://mp.weixin.qq.com/s?__biz=Mzg2MzM4NTg3MA==&tempkey=MTA5MF9RcFZ5c1B4QTFmSnZHd2Qxa3hMNWhpLXFoOEJYWVBBaUZyME1sRmVBQnR1QWN3V3FUZ1hfa1BnemdtOWpLY1o0RTlzVnE2OUtRblZPS1ZDV2pDSk9QU3BadDUzLTNJa3RHYmxFQXNqMjQyQ1dSNUlrcDdfTG1scDRTWVg2UDdiLTI5eWo4dE9HSHI4TlVKOVltZEdtVzZObW9NT19GN2I5eF9YbzdBfn4%3D&chksm=4e78226b790fab7d1fb0283f8b6294c40456df7aebf58d947412ed03d0c3fc3aa188de79f130#rd)，在那里讲述了如何去使用docker
+swarm，如何构建自己的私人镜像仓库。随着最近的业务量的增长，机子加多。对于docker swarm管理难度有上升的趋势。主要的问题有以下几个
 
 - 物理机配置不同（比如 CPU、内存等）
 - 部署着不同类型的服务（比如 Web服务、Job服务等）
@@ -90,26 +93,26 @@ registry:2
 # docker-compose.yaml 
 version: '3'
 services:
-    registry:
-         registry:2
-         ports:
-           - target: 8080
-           - published: 8080
-           - protocol: tcp
-           - mode: ingress
-         deploy:
-           mode: global
-           placement:
-              constraints:                      # 添加条件约束
-                - node.id==ytsyvuhfs60spr361y6irpynm
-           restart_policy:
-             condition: on-failure
-             max_attempts: 3
+  registry:
+    registry:2
+    ports:
+        - target: 8080
+          - published: 8080
+          - protocol: tcp
+          - mode: ingress
+    deploy:
+      mode: global
+      placement:
+        constraints: # 添加条件约束
+          - node.id==ytsyvuhfs60spr361y6irpynm
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
 ```
 
 ### HOSTNAME
 
-​	除此之外我们还可以指定hostname 去将应用部署到指定的hostname上，操作与以上差不多。那让我们来实现一下，首先我们需要查看对应节点的信息，在manager节点上使用`docker node ls `查看，如下
+​ 除此之外我们还可以指定hostname 去将应用部署到指定的hostname上，操作与以上差不多。那让我们来实现一下，首先我们需要查看对应节点的信息，在manager节点上使用`docker node ls `查看，如下
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwgy1glmhr7pa7oj31yo07ewfw.jpg)
 
@@ -140,24 +143,22 @@ docker service scale nginx=3
 # docker-compose.yaml 
 version: '3'
 services:
-    nginx:
-         image: nginx
-         ports:
-           - target: 80
-           - published: 80
-           - protocol: tcp
-           - mode: ingress
-         deploy:
-           mode: global
-           placement:
-              constraints:                      # 添加条件约束
-                - node.hostname==ecs-dc8a-0003
-           restart_policy:
-             condition: on-failure
-             max_attempts: 3
+  nginx:
+    image: nginx
+    ports:
+      - target: 80
+      - published: 80
+      - protocol: tcp
+      - mode: ingress
+    deploy:
+      mode: global
+      placement:
+        constraints: # 添加条件约束
+          - node.hostname==ecs-dc8a-0003
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
 ```
-
-
 
 ### Node role
 
@@ -193,21 +194,21 @@ docker service create \
 # docker-compose.yaml 
 version: '3'
 services:
-    nginx:
-         image: nginx
-         ports:
-           - target: 80
-           - published: 80
-           - protocol: tcp
-           - mode: ingress
-         deploy:
-           mode: global
-           placement:
-              constraints:                      # 添加条件约束
-                - node.role!=manager
-           restart_policy:
-             condition: on-failure
-             max_attempts: 3
+  nginx:
+    image: nginx
+    ports:
+      - target: 80
+      - published: 80
+      - protocol: tcp
+      - mode: ingress
+    deploy:
+      mode: global
+      placement:
+        constraints: # 添加条件约束
+          - node.role!=manager
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
 ```
 
 ### Node lables
@@ -288,8 +289,6 @@ services:
 | `node.platform.arch` | Node architecture              | `node.platform.arch==x86_64`                  |
 | `node.labels`        | User-defined node labels       | `node.labels.security==high`                  |
 | `engine.labels`      | Docker Engine’s labels         | `engine.labels.operatingsystem==ubuntu-14.04` |
-
-
 
 ### 推荐阅读
 

@@ -34,8 +34,6 @@ ali、akamai、jd、pdd、google(含无感验证码)、各大银行支付接口
 
 <!--more-->
 
-
-
 #### ali滑块
 
 ![](https://tva1.sinaimg.cn/large/008i3skNgy1gs4rk7k7tgj31p60qkq5m.jpg)
@@ -135,8 +133,6 @@ demo：https://www.geetest.com/demo/
 
 <!---------->
 
-
-
 ##### 数美
 
 官网：https://www.ishumei.com/
@@ -161,8 +157,6 @@ https://www.vaptcha.com/
 
 ##### 顶象
 
-
-
 ![image-20210711195702599](/Users/stringle-004/Library/Application Support/typora-user-images/image-20210711195702599.png)
 
 ### 三线
@@ -185,7 +179,7 @@ JJEncode:http://www.atoolbox.net/Tool.php?Id=703
 
 Eval:https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval;
 
-​	分析：eval换为console.log()(前提：console.log未改写)
+​ 分析：eval换为console.log()(前提：console.log未改写)
 
 #### 分析
 
@@ -198,7 +192,7 @@ Eval:https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Ob
 3. 解密函数（常见regex内存检测，建议不format绕过或remove regex）
 4. 定时器setInterval() 、setTimeout() + 无限debugger （可能含有）
 5. **业务代码 + 控制流平坦化：（ob强度90%取决于此代码强度、这里是加密前的逻辑）**
-6. 控制流平坦化  + 无限debugger + 僵尸代码注入（一般不含有业务逻辑）
+6. 控制流平坦化 + 无限debugger + 僵尸代码注入（一般不含有业务逻辑）
 
 Example:
 

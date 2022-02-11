@@ -8,6 +8,7 @@ categories:
 abbrlink: 52507
 date: 2020-12-06 10:46:03
 ---
+
 ## 单个goroutine
 
 Go语言中使用`goroutine`非常简单，只需要在调用函数的时候在前面加上`go`关键字，就可以为一个函数创建一个`goroutine`。
@@ -43,7 +44,7 @@ func main() {
 // 我是 main goroutine
 ```
 
-> 细心的伙伴坑定发现了`	time.Sleep(time.Second)`，在这里并不仅仅是为睡一秒，还有进类似于等待执行的作用。如果没有	time.Sleep(time.Second)，你会发现 **我是 demo goroutine**，将不会被打印。
+> 细心的伙伴坑定发现了`    time.Sleep(time.Second)`，在这里并不仅仅是为睡一秒，还有进类似于等待执行的作用。如果没有 time.Sleep(time.Second)，你会发现 **我是 demo goroutine**，将不会被打印。
 >
 > 首先为什么会先打印`我是 main goroutine`，这是因为我们在创建新的goroutine的时候需要花费一些时间，而此时main函数所在的`goroutine`是继续执行的。
 
@@ -72,7 +73,7 @@ func main() {
 }
 ```
 
-没错，这样确实可行的，但之间的相互通信，以及	time.Sleep(time.Second)该怎么去掉，不可能为了这个所为的并发而强制去睡一秒吧，这也并不现实。其实我们可以使用channel（通道）来解决这个问题
+没错，这样确实可行的，但之间的相互通信，以及 time.Sleep(time.Second)该怎么去掉，不可能为了这个所为的并发而强制去睡一秒吧，这也并不现实。其实我们可以使用channel（通道）来解决这个问题
 
 ### channel的定义
 
@@ -135,10 +136,6 @@ ChCache:=make(chan int,10)
 - 接收操作是从队列的头部获取元素并把它从队列中删除，如果队列为空，则阻塞等待，直到另一个 goroutine 执行，发送操作插入新的元素。
 
 我创建了一个容量为 5 的 channel，内部的元素类型是 int，也就是说这个 channel 内部最多可以存放 5 个类型为 int 的元素
-
-
-
-
 
 ```go
 package main
@@ -204,11 +201,12 @@ Close(channel)
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwgy1glaz73x65uj31bs0iiqfn.jpg)
 
-
 ### 多协程-worker pool（goroutine池）
+
 在工作中我们通常会使用可以指定启动的goroutine数量–worker pool模式，控制goroutine的数量，防止goroutine泄漏和暴涨。
 
 一个简易的work pool示例代码如下：
+
 ```go
 func worker(id int, jobs <-chan int, results chan<- int) {
 	for j := range jobs {
@@ -238,11 +236,13 @@ func main() {
 	}
 }
 ```
+
 ### 多路复用
 
 假设要从网上下载一个文件，启动 3 个 goroutine 进行下载，并把结果发送到 3 个 channel 中。哪个先下载好，就会使用哪个 channel 的结果。
 
-在这种情况下，如果我们尝试获取第一个 channel 的结果，程序就会被阻塞，无法获取剩下两个 channel 的结果，也无法判断哪个先下载好。这个时候就需要用到多路复用操作了，在 Go 语言中，通过 select 语句可以实现多路复用，其语句格式如下：
+在这种情况下，如果我们尝试获取第一个 channel 的结果，程序就会被阻塞，无法获取剩下两个 channel 的结果，也无法判断哪个先下载好。这个时候就需要用到多路复用操作了，在 Go 语言中，通过 select
+语句可以实现多路复用，其语句格式如下：
 
 ```go
 select {

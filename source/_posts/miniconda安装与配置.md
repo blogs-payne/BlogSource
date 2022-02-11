@@ -12,7 +12,8 @@ date: 2022-01-10 13:29:40
 ---
 
 
-在科学计算、深度学习、机器学习等领域 Python 语言拥有举足轻重的地位,Python 开发环境,相关链接如下： 
+在科学计算、深度学习、机器学习等领域 Python 语言拥有举足轻重的地位,Python 开发环境,相关链接如下：
+
 - PyPi(第三方库)地址： https://pypi.org/
 
 - Anconda 官方地址： https://www.anaconda.com/
