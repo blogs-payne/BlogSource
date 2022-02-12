@@ -24,7 +24,7 @@ jobs:
 
       - name: Check validation
         run: |
-          npm install
+          npm ci
           sudo npm install -g hexo-cli
           hexo clean
           hexo generate
