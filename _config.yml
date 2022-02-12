@@ -68,7 +68,7 @@ prismjs:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 8
+  per_page: 20
   order_by: -date
 
 # Category & Tag
@@ -91,7 +91,7 @@ updated_option: 'mtime'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 30
+per_page: 25
 pagination_dir: page
 
 # Include / Exclude file(s)
@@ -125,7 +125,7 @@ symbols_count_time:
   time: true                   # 文章阅读时长
   total_symbols: true          # 站点总字数统计
   total_time: true             # 站点总阅读时长
-  exclude_codeblock: true     # 排除代码字数统计
+  exclude_codeblock: true      # 排除代码字数统计
 
 
 live2d:
