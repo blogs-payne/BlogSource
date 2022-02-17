@@ -5,35 +5,65 @@ tags:
   - Mac
 categories:
   - - Mac
+    - HomeBrew
+    - zsh
+    - terminal
 abbrlink: 34489
 date: 2021-04-26 19:59:17
 ---
-当第一手拿到mac，第一件事也许是去。。。
+## HomeBrew
 
-然而我想要说的是，把基本的环境搭建一下，设置调配一下
+[HomeBrew官方地址](https://brew.sh/)
 
-<!--more-->
+[brew.idayer](https://brew.idayer.com/)
 
-### 键盘、鼠标的灵敏度
+简单来说他是类似于`yum、apt`,mac的包管理工具，使用它我们可以非常简单、丝滑的下载大部分的包、或者软件
 
-这也是个人习惯吧，我个人比较畅想那种打字、拖鼠标丝滑的感觉
+或许第一次可以尝试使用如下命令进行安装
 
-偏好设置 -> 鼠标灵敏度看自己感觉拉。
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
-偏好设置 -> 键盘
+由于种种原因，如果安装不上，可以使用华科大的源进行安装
 
-> 个人建议拉满
+```shell
+/bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
+```
 
-![image-20210426191253111](https://tva1.sinaimg.cn/large/008i3skNly1gpxcygvyc2j31100mctht.jpg)
+安装完成后，检查一下
+
+```bash
+brew update && brew upgrade && brew doctor
+```
+
+设置
+
+```bash
+git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core" remote set-url origin https://github.com/Homebrew/homebrew-core
+```
+
+
 
 ## 定制zsh编辑器
 
-原生的mac，zsh是没有命令提示的，以及显示也并没有那么好看。自定制一下
+原生的mac，zsh是没有命令提示的，以及显示也并没有那么好看。自定制一下,终端建议使用`iterm2`
+
+下载`iterm2`
+
+```bash
+brew install --cask iterm2
+```
+
+
 
 #### 下载oh-my-zsh
 
 ```sh
-git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+# curl 安装方式
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# wget 安装方式
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
 
 #### 复制 .zshrc
@@ -52,68 +82,151 @@ chsh -s /bin/zsh
 
 ![image-20210426191816929](https://tva1.sinaimg.cn/large/008i3skNly1gpxd433qdsj317o0e0wes.jpg)
 
-#### 配置命令补全的插件
+
+
+#### 安装插件
 
 ```shell
-git clone git://github.com/zsh-users/zsh-autosuggestions ～/.oh-my-zsh/plugins/zsh-autosuggestions
+# zsh-autosuggestions 提供自动补全功能
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+# zsh-syntax-highlighting 语法高亮
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
+# git-open 插件 提供 快捷打开远程地址 git open
+git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open
+
+# zsh-z z -h
+git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 ```
 
-#### 编辑 .zshrc 文件
+`.zshrc` 文件如下
 
-找到`plugins=(git)`,修改成`plugins=(git zsh-autosuggestions)`
+```bash
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gpxee9jh16j30zc06wtb6.jpg)
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-#### 生效配置
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="random"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+    git
+    git-open
+    z
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+export EDITOR='nvim'
+
+# Compilation flags
+export ARCHFLAGS="-arch arm64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cp='cp -i'
+alias mv='mv -i'
+alias vim="nvim"
+alias brewski='brew update; brew upgrade; brew cleanup; brew doctor'
+alias pyfmt='fd . -e py | xargs black'
+alias gofmtl='fd . -e go | xargs gofmt -w'
+```
+
+
+
+### 自动补全
 
 ```shell
-source ~/.zshrc
-```
-
-此时你就可以看到一个全新的Terminal,快来试试吧。爽不爽自己知道
-
-## HomeBrew
-
-[HomeBrew官方地址](https://brew.sh/)
-
-简单来说他是类似于`yum、apt`,mac的包管理工具，使用它我们可以非常简单、丝滑的下载大部分的包、或者软件
-
-或许第一次可以尝试使用如下命令进行安装
-
-```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-由于种种原因，如果安装不上，可以使用华科大的源进行安装
-
-```shell
-/bin/bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)"
-```
-
-安装完成后，检查一下
-
-```shell
-brew update && brew upgrade && brew doctor
-```
-
-设置
-
-```
-git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core" remote set-url origin https://github.com/Homebrew/homebrew-core
-```
-
-### kubectl 自动补全
-
-> 由于我习惯于zsh终端。这里给出zsh的，后面还有bash的
-
-```shell
-source <(kubectl completion bash)
-```
-
-如果是`bash`
-
-```shell
-# Automatic completion of command
+# zsh
+source <(kubectl completion zsh)
+# bash (需要下载bash-completion)
 source /usr/share/bash-completion/bash_completion
 source <(kubectl completion bash)
 ```
+
