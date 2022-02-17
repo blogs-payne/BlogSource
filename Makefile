@@ -1,9 +1,5 @@
 .PHONY: build test clean
 
-rely:
-	@yarn install
-	@yarn install --update-checksums
-
 clean:
 	@find . -type f -name *.log -delete
 	@npm run clean
