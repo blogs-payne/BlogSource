@@ -5612,11 +5612,6 @@
     "decamelize" "^1.0.0"
     "window-size" "0.1.0"
 
-"yarn@^1.22.17":
-  "integrity" "sha1-v5EHR9Ikl7VzEx9zQcDh0Vx0A2w="
-  "resolved" "https://registry.npmmirror.com/yarn/download/yarn-1.22.17.tgz?cache=0&sync_timestamp=1634398132152&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fyarn%2Fdownload%2Fyarn-1.22.17.tgz"
-  "version" "1.22.17"
-
 "zlibjs@^0.3.1":
   "integrity" "sha1-UBl+2yihxCymWcyLTmqd3W1ERVQ="
   "resolved" "https://registry.npmjs.org/zlibjs/-/zlibjs-0.3.1.tgz"
