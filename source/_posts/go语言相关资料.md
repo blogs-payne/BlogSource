@@ -115,6 +115,8 @@ Go夜读：https://space.bilibili.com/326749661
 
 ## 其他
 
+代码安全指南：https://github.com/Tencent/secguide
+
 Go语言标准库文档中文版：[Go语言标准库文档中文版](https://studygolang.com/pkgdoc)
 
 go学习线路图：[go学习线路图 · Go语言中文文档 (topgoer.com)](https://www.topgoer.com/开源/go学习线路图.html)
@@ -156,4 +158,4 @@ Github Top 100:  https://api.github.com/search/repositories?q=language:go&per_pa
 
 ## referer
 
-Go语言第一课 —白明
+Go语言第一课 — 白明
