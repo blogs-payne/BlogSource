@@ -7,6 +7,7 @@ categories:
   - - VimIDE-spacevim
     - spacevim
     - vim
+abbrlink: 3120335305
 date: 2022-02-16 20:36:52
 ---
 

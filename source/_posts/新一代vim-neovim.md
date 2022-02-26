@@ -7,6 +7,7 @@ categories:
   - - neovim
     - vim
     - Linux
+abbrlink: 4264397657
 date: 2022-01-25 10:46:27
 ---
 
