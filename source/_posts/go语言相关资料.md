@@ -37,6 +37,8 @@ date: 2022-02-26 15:44:03
 
 ### 在线图书
 
+[《go语言设计与实现》](https://draveness.me/golang/)
+
 [《go语言原本》](https://golang.design/under-the-hood/)
 
 [《Golang 编译器》](https://gocompiler.shizhz.me/)
