@@ -32,11 +32,11 @@ ali、akamai、jd、pdd、google(含无感验证码)、各大银行支付接口
 
 
 
-<!--more-->
-
 #### ali滑块
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gs4rk7k7tgj31p60qkq5m.jpg)
+阿里云验证码: https://help.aliyun.com/product/28308.html
+
+
 
 控制台中有g.alicdn.com字样，其中/后为版本号
 
@@ -77,8 +77,6 @@ ali、akamai、jd、pdd、google(含无感验证码)、各大银行支付接口
 
 1. 未带cookie访问首先是一段神奇的页面，如下图所示
 
-![image-20210711183607468](/Users/stringle-004/Library/Application Support/typora-user-images/image-20210711183607468.png)
-
 特征：
 
 1.
@@ -101,15 +99,12 @@ script标签中带有 r=“m”的字样
 
    ![](https://tva1.sinaimg.cn/large/008i3skNgy1gsd8b8qfa3j305y00i0si.jpg)
 
-   ![image-20210711192226256](/Users/stringle-004/Library/Application Support/typora-user-images/image-20210711192226256.png)
 
 首数字开头的编号，编号常见的有4、5、6代
 
 ##### 创宇超防（加速乐）
 
 1. 未带cookies访问，先是一段神奇的JS，设置cookie。如下图所示
-
-![image-20210711183150521](/Users/stringle-004/Library/Application Support/typora-user-images/image-20210711183150521.png)
 
 实际内容如下图所示
 
@@ -129,8 +124,6 @@ geetest(极验)官网：https://www.geetest.com/
 
 demo：https://www.geetest.com/demo/
 
-![image-20210711195920957](/Users/stringle-004/Library/Application Support/typora-user-images/image-20210711195920957.png)
-
 <!---------->
 
 ##### 数美
@@ -139,15 +132,11 @@ demo：https://www.geetest.com/demo/
 
 体验：https://www.ishumei.com/trial/captcha.html
 
-![image-20210711195358760](/Users/stringle-004/Library/Application Support/typora-user-images/image-20210711195358760.png)
-
 ##### 网易易盾
 
 官网：https://dun.163.com/
 
 Demo：https://dun.163.com/trial/space-inference
-
-![image-20210711200120467](/Users/stringle-004/Library/Application Support/typora-user-images/image-20210711200120467.png)
 
 ##### Vaptcha
 
@@ -157,7 +146,7 @@ https://www.vaptcha.com/
 
 ##### 顶象
 
-![image-20210711195702599](/Users/stringle-004/Library/Application Support/typora-user-images/image-20210711195702599.png)
+
 
 ### 三线
 
@@ -179,7 +168,7 @@ JJEncode:http://www.atoolbox.net/Tool.php?Id=703
 
 Eval:https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval;
 
-​ 分析：eval换为console.log()(前提：console.log未改写)
+ 分析：eval换为console.log()(前提：console.log未改写)
 
 #### 分析
 
@@ -211,7 +200,7 @@ Example:
 
 ![](https://tva1.sinaimg.cn/large/008i3skNgy1gsdbfu2amkj31ae02maa0.jpg)
 
-![image-20210711211026971](/Users/stringle-004/Library/Application Support/typora-user-images/image-20210711211026971.png)
+
 
 > 2.控制台不报错，构建强制报错。删除一些代码（为了不干扰原本代码，建议删除括号或加无意义代码）
 >
@@ -235,3 +224,34 @@ webpack：https://webpack.docschina.org/
 
 扣取思路：找到加载器、扣出加载器构建自己的加载器（网站与关键参数（函数））、补环境
 
+
+
+
+
+
+
+### 验证码汇总
+
+[ali](https://help.aliyun.com/product/28308.html)
+
+[tencent](https://007.qq.com/)
+
+[reCAPTCHA (google.com)](https://www.google.com/recaptcha/about/)
+
+[163](https://dun.163.com/trial/sense):[网易易盾-数字内容风控-内容安全|业务安全|移动安全 (163.com)](https://dun.163.com/)
+
+[dingxiang](http://cdn.dingxiang-inc.com/ctu-group/captcha-ui/demo/)：[顶象-业务安全引领者，让数字世界无风险 (dingxiang-inc.com)](https://www.dingxiang-inc.com/)
+
+[geetest](https://www.geetest.com/demo/)
+
+[vaptcha](https://www.vaptcha.com/)
+
+[ishumei](https://www.ishumei.com/trial/captcha.html)
+
+
+
+
+
+[yescaptch](http://www.yescaptcha.com/)
+
+[2captcha](https://2captcha.com/)

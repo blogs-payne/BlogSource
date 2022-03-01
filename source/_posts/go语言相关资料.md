@@ -11,6 +11,8 @@ date: 2022-02-26 15:44:03
 
 ## Book
 
+> 官方wiki：https://github.com/golang/go/wiki/Books
+
 ### 经典书籍
 
 《The Way To Go》- Go 语言百科全书
@@ -22,6 +24,8 @@ date: 2022-02-26 15:44:03
 《Go 语言实战》- 实战系列经典之作，紧扣 Go 语言的精华
 
 《Go 程序设计语言》- 人手一本的 Go 语言“圣经”
+
+[《Go语法树入门——开启自制编程语言和编译器之旅》](https://github.com/chai2010/go-ast-book)
 
 
 
