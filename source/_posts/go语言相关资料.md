@@ -147,7 +147,7 @@ awesome-go: https://github.com/avelino/awesome-go
 
 ### 算法
 
-Leet code cook book：https://www.topgoer.cn/docs/leecode_go
+[Leet code cook book](https://books.halfrost.com/leetcode/)
 
 algorithms：
 
