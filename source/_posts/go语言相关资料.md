@@ -53,6 +53,8 @@ date: 2022-02-26 15:44:03
 
 [《go2》](https://chai2010.cn/go2-book/)
 
+[《algorithm-pattern》](https://greyireland.gitbook.io/algorithm-pattern/)
+
 go语言地鼠文档：https://www.topgoer.cn/、https://www.topgoer.com/
 
 > 仅个人见解
