@@ -16,6 +16,6 @@ test: build
 deploy: clean
 	@git pull
 	@git add -A
-	@-git commit -am "upload or change some file"
+	@-git commit -am "Release `date +'%Y%m%d'`"
 	@-git push origin master:master
 
