@@ -151,10 +151,6 @@ aiomultiprocess：[https://pypi.org/project/aiomultiprocess/](https://pypi.org/p
 - 绕过 CPython，使用 JPython（Java 实现的 Python 解释器）等别的实现；
 - 把关键性能代码，放到别的语言（一般是 C++）中实现。
 
-# 
-
-
-
 ## referer
 
 [也许你对 Python GIL 锁的理解是 错的。—— kingname](https://mp.weixin.qq.com/s/a37OxUjgHdps1ZsPB7pKcQ)
