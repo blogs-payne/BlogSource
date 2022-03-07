@@ -7,6 +7,7 @@ categories:
   - - python
     - cpython
     - GIL
+abbrlink: 2204086615
 date: 2022-03-07 12:52:45
 ---
 

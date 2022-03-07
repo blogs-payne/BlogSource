@@ -11,7 +11,7 @@ build: clean
 	@npm run build
 
 test: build
-	@npm run server -p 4321 --debug
+	@npm run server --debug
 
 deploy: clean
 	@git pull

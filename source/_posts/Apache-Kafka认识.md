@@ -7,6 +7,7 @@ categories:
   - - Apache Kafka
     - MQ
     - Kafka
+abbrlink: 532288655
 date: 2022-02-26 13:32:01
 ---
 
