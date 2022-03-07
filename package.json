@@ -1,6 +1,6 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
+  "name": "blogsource",
+  "description": "My Blogs",
   "private": true,
   "scripts": {
     "build": "NODE_OPTIONS='--max-old-space-size=32768' npx hexo generate",
