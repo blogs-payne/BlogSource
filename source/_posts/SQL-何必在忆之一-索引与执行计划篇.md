@@ -269,3 +269,8 @@ Extra 					：额外的信息
 type： ALL(全表扫描) > index(全索引扫描) > range(索引范围查询) > ref(辅助索引等值查询\非唯一索引扫描) > eq_ref(唯一索引扫描) > const(system)结果只有一条主键或唯一索引扫描
 ```
 
+
+
+
+
+![image-20220323231549044](https://tva1.sinaimg.cn/large/e6c9d24egy1h0k838iw2ij223g0s6adu.jpg)
