@@ -10,10 +10,6 @@ categories:
 date: 2022-03-29 18:57:28
 ---
 
-[toc]
-
-
-
 ## Kafka 发行版本
 
 ### Apache Kafka
