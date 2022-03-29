@@ -16,7 +16,7 @@ test: build
 deploy: clean
 	@git pull
 	@git add -A
-	@git commit -am "Release `date +'%Y%m%d%H%M%S'`"
+	@git commit -am "`date +'%Y%m%d%H%M%S'`"
 	@git push -u origin master
 	@#git tag -a "`date +'%Y%m%d%H%M%S'`" -m "Release `date +'%Y%m%d%H%M%S'`"
 	@#git push origin --tags
