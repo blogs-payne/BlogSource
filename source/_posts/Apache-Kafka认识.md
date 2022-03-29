@@ -19,7 +19,8 @@ Mirror of Apache Kafka github: [https://github.com/apache/kafka](https://github.
 
 ## 什么是Kafka
 
-- Apache Kafka 是一款开源的**消息引擎**系统,  
+Apache Kafka 是一款开源的**消息引擎**系统,  也是一个分布式流处理平台（Distributed Streaming Platform）
+
 - 处理实时数据提供一个统一、高吞吐、低延迟的平台。
 - 它使用的是纯二进制的字节序列, 以时间复杂度为 O(1) 的方式提供消息持久化能力，即使对 TB 级以上数据也能保证常数时间复杂度的访问性能。
 - 高吞吐率。即使在非常廉价的商用机器上也能做到单机支持每秒 100K 条以上消息的传输。
@@ -31,7 +32,7 @@ Mirror of Apache Kafka github: [https://github.com/apache/kafka](https://github.
 
 ## Kafka功能
 
-### 削峰填谷解耦合
+> 削峰填谷解耦合
 
 ## KafKa传输模型
 
