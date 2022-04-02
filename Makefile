@@ -13,7 +13,7 @@ build: clean
 test: build
 	@npm run server --debug
 
-deploy: clean
+deploy: clean build clean
 	@git pull
 	@git add -A
 	@git commit -am "`date +'%Y%m%d%H%M%S'`"

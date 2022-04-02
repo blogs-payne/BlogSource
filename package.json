@@ -1,9 +1,9 @@
 {
   "name": "blogsource",
-  "description": "My Blogs",
+  "description": "My Blog Source Code",
   "private": true,
   "scripts": {
-    "build": "NODE_OPTIONS='--max-old-space-size=32768' npx hexo generate",
+    "build": "NODE_OPTIONS='--max-old-space-size=8192' npx hexo generate",
     "clean": "npx hexo clean",
     "deploy": "npx hexo deploy",
     "server": "npx hexo server"
