@@ -13,6 +13,7 @@ build: clean
 test: build
 	@npm run server --debug
 
+# AttrLink index needs to be generated when before deployment
 deploy: clean build clean
 	@git pull
 	@git add -A
