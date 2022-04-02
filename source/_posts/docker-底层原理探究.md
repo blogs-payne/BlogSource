@@ -101,4 +101,4 @@ technologies such as BSD Jails or Solaris Zones.
 
 ## 总结
 
-docker使用go语言编写，基于**Namespaces**进行虚拟化隔离，Control groups进行对资源的限制，联合文件Union file systems来快速构建（可复用的镜像层），
+docker使用go语言编写，基于**Namespaces**进行虚拟化隔离，Control groups进行对资源的限制，联合文件Union file systems来快速构建（可复用的镜像层）
