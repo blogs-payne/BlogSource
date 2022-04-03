@@ -274,3 +274,5 @@ type： ALL(全表扫描) > index(全索引扫描) > range(索引范围查询) >
 
 
 ![image-20220323231549044](https://tva1.sinaimg.cn/large/e6c9d24egy1h0k838iw2ij223g0s6adu.jpg)
+
+https://www.cnblogs.com/kerrycode/p/9909093.html

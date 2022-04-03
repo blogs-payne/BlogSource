@@ -19,7 +19,7 @@ date: 2021-04-26 19:59:17
 
 简单来说他是类似于`yum、apt`,mac的包管理工具，使用它我们可以非常简单、丝滑的下载大部分的包、或者软件
 
-或许第一次可以尝试使用如下命令进行安装
+第一次可以尝试使用如下命令进行安装
 
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -115,6 +115,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="random"
 
+HISTSIZE=999999
+HISTFILESIZE=999999
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -176,10 +179,23 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# gitopen: git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open
+# zsh-z: git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
+# zsh-autosuggestions: git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+# zsh-syntax-highlighting: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git  $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 plugins=(
+    rails
     git
+    adb
+    textmate
+    lighthouse
+    bundler
+    dotenv
+    macos
+    rake
+    rbenv
     git-open
-    z
+    zsh-z
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -216,6 +232,54 @@ alias vim="nvim"
 alias brewski='brew update; brew upgrade; brew cleanup; brew doctor'
 alias pyfmt='fd . -e py | xargs black'
 alias gofmtl='fd . -e go | xargs gofmt -w'
+alias cls='clear'
+
+# util
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export GUILE_TLS_CERTIFICATE_DIRECTORY=/opt/homebrew/etc/gnutls/
+. /opt/homebrew/etc/profile.d/z.sh
+export PATH="/opt/homebrew/opt/bc/bin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/payne/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/payne/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/payne/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/payne/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# kubectl completion
+source <(kubectl completion zsh)
+source <(helm completion zsh)
+
+# program env 
+## php
+export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
+
+## node
+export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/node@14/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/node@14/include"
+
+## go
+# export PATH="/opt/homebrew/opt/go@1.17/bin:$PATH"
+export GOROOT="/opt/homebrew/opt/go@1.17/bin"
+export GOPATH="/Users/payne/Workspace/go"
+export GOBIN="${GOPATH}/bin"
+export PATH="${GOROOT}:${GOBIN}:${GOPATH}:$PATH"
+
+## HOMEBREW
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 ```
 
 
