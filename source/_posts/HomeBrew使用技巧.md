@@ -2,11 +2,9 @@
 title: HomeBrew使用技巧
 author: Payne
 tags:
-  - t1
+  - HomeBrew
 categories:
-  - - c1
-    - c2
-    - c3
+  - - HomeBrew
 abbrlink: 1872139441
 date: 2022-04-04 01:13:22
 ---
@@ -38,10 +36,6 @@ Homebrew简单来说他是类似于`yum、apt`,mac的包管理工具，使用它
 
 ```bash
 brew update && brew upgrade && brew doctor && brew -v
-```
-
-```
-
 ```
 
 
