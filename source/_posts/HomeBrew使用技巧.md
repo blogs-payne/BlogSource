@@ -103,3 +103,20 @@ sudo yum install -y procps-ng curl file git libxcrypt-compat
 
 
 https://docs.brew.sh/Homebrew-on-Linux#requirements
+
+
+
+
+
+## TAP
+
+```
+homebrew/cask
+homebrew/core
+homebrew/services
+isacikgoz/taps
+mongodb/brew
+petere/postgresql
+shivammathur/php
+```
+
