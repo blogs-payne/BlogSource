@@ -27,7 +27,7 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
           # setup deploy git account
-          git config --global user.name "Payne"
+          git config --global user.name "payne-wu"
           git config --global user.email "wuzhipeng1289690157@gamil.com"
 
       - name: Hexo Build and Deploy
