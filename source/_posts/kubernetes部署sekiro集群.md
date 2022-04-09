@@ -373,3 +373,6 @@ var client = new SekiroClient("wss://域名/websocket?group=ws-group-test&client
 
 
 
+[basic-authentication](https://doc.traefik.io/traefik/v1.7/user-guide/kubernetes/#basic-authentication)
+
+[security-headers-annotations](https://doc.traefik.io/traefik/v1.7/configuration/backends/kubernetes/#security-headers-annotations)
