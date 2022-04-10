@@ -15,6 +15,7 @@ date: 2020-12-22 00:34:28
 -
 由[百度百科](https://cuiqingcai.com/[https://baike.baidu.com/item/虚拟环境/6529153?fr=aladdin](https://baike.baidu.com/item/虚拟环境/6529153?fr=aladdin) )
 得知： 以专利的实时动态程序行为修饰与模拟算法，直接利用本机的 OS，模拟出自带与本机相容 OS 的虚拟机（Vista 下可模拟 Vista、XP，Windows 7 下则可模拟 Windows 7、Vista、XP），也称为 “虚拟环境”
+
 - 功能： 每一个环境都相当于一个新的 Python 环境。你可以在这个新的环境里安装库，运行代码等
 
 <!--more-->
@@ -79,7 +80,7 @@ sudo yum install -y pipenv
 
 ## 创建虚拟环境
 
-```sh
+```bash
 # python3 环境创建
 pipenv --python 3.x
 pipenv --three
@@ -95,13 +96,16 @@ python3 -m pip install --upgrade pip
 
 ## 安装删除第三方库
 
-```sh
+```bash
 pipenv install packageName
 
 # 安装多个包，中间以空格分隔即可
 pipenv install packageName-1 packageName-2 packageNama-3
 
 pipenv uninstall packageName
+
+# 当然还可以使用-r 
+pipenv install -r requirements.txt 
 ```
 
 ## Terminal激活虚拟环境
