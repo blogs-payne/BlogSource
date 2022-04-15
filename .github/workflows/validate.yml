@@ -16,14 +16,24 @@ jobs:
     runs-on: ${{matrix.os}}
     strategy:
       fail-fast: false
-      max-parallel: 25
+      max-parallel: 50
       matrix:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         # See supported Node.js release schedule at https://nodejs.org/zh-cn/download/releases/
-        node-version: [ 12.x, 14.x, 16.x, 17.x ]
+        node-version: [
+            12.x,
+            14.x,
+            15.x,
+            16.x,
+            17.x
+        ]
         os: [
-            ubuntu-18.04, ubuntu-20.04, ubuntu-latest,
-            macos-10.15, macos-11, macos-latest
+            ubuntu-18.04,
+            ubuntu-20.04,
+            ubuntu-latest,
+            macos-10.15,
+            macos-11,
+            macos-latest
         ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
