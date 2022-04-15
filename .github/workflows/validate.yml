@@ -11,7 +11,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    name: Test it On ${{matrix.node-version}} and ${{matrix.os}}
+    name: Test it On ${{matrix.os}} and ${{matrix.node-version}}
     # The type of runner that the job will run on
     runs-on: ${{matrix.os}}
     strategy:
