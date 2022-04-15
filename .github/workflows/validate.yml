@@ -1,43 +1,43 @@
-## This is a basic workflow to help you get started with Actions
-#
-#name: Validate
-#
-## Controls when the action will run. Triggers the workflow on push or pull request
-## events but only for the master branch
-#on:
-#  [ push, pull_request ]
-#
-## A workflow run is made up of one or more jobs that can run sequentially or in parallel
-#jobs:
-#  # This workflow contains a single job called "build"
-#  build:
-#    name: Test it On ${{matrix.node-version}} and ${{matrix.os}}
-#    # The type of runner that the job will run on
-#    runs-on: ${{matrix.os}}
-#    strategy:
-#      fail-fast: false
-#      max-parallel: 25
-#      matrix:
-#        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-#        # See supported Node.js release schedule at https://nodejs.org/zh-cn/download/releases/
-#        node-version: [ 12.x, 14.x, 16.x, 17.x ]
-#        os: [
-#            ubuntu-18.04, ubuntu-20.04, ubuntu-latest,
-#            macos-10.15, macos-11, macos-latest
-#        ]
-#
-#    # Steps represent a sequence of tasks that will be executed as part of the job
-#    steps:
-#      - uses: actions/checkout@v3
-#      - name: Use Node.js ${{ matrix.node-version }} environment
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: ${{ matrix.node-version }}
-#          cache: 'npm'
-#
-#      - name: Check validation
-#        run: |
-#          npm ci
-#          sudo npm install -g hexo-cli
-#          hexo clean
-#          hexo generate
+# This is a basic workflow to help you get started with Actions
+
+name: Validate
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  [ push, pull_request ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    name: Test it On ${{matrix.node-version}} and ${{matrix.os}}
+    # The type of runner that the job will run on
+    runs-on: ${{matrix.os}}
+    strategy:
+      fail-fast: false
+      max-parallel: 25
+      matrix:
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        # See supported Node.js release schedule at https://nodejs.org/zh-cn/download/releases/
+        node-version: [ 12.x, 14.x, 16.x, 17.x ]
+        os: [
+            ubuntu-18.04, ubuntu-20.04, ubuntu-latest,
+            macos-10.15, macos-11, macos-latest
+        ]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }} environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Check validation
+        run: |
+          npm ci
+          sudo npm install -g hexo-cli
+          hexo clean
+          hexo generate
