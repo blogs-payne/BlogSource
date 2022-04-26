@@ -13,7 +13,7 @@ date: 2022-04-10 03:12:18
 
 ## Sekiro简介
 
-> 开抄！以下来自https://sekiro.virjar.com/sekiro-doc/index.html，
+> 开抄！以下来自sekiro官方文档 https://sekiro.virjar.com/sekiro-doc/index.html
 
 SEKIRO 是一个android下的API服务暴露框架，可以用在app逆向、app数据抓取、android群控等场景。同时Sekiro也是目前公开方案唯一稳定的JSRPC框架。
 
