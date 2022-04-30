@@ -2,11 +2,10 @@
 title: GC垃圾回收原理
 author: Payne
 tags:
-  - t1
+  - GC
 categories:
-  - - c1
-    - c2
-    - c3
+  - - GC
+    - 垃圾回收原理
 abbrlink: 2352241434
 date: 2022-04-30 19:05:41
 ---
