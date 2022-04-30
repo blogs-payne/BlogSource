@@ -203,6 +203,15 @@ GOOS=linux GOARCH=amd64 go build /Users/stringle-004/go/main.go
 
 关于 GOOS 和 GOARCH 更多的组合，参考[官方文档](https://golang.org/doc/install/source#environment)的 $GOOS and $GOARCH 这一节即可
 
+### 相关工具链安装
+
+```bash
+go install golang.org/x/lint/golint@latest
+go install golang.org/x/tools/cmd/godoc@latest
+```
+
+
+
 ## Go 编辑器
 
 第一款是 Visual Studio Code + Go 扩展插件，可以让你非常高效地开发，通过[官方网站]( https://code.visualstudio.com/ )下载所对应操作系统版本的Visual Studio Code。
@@ -248,3 +257,6 @@ func main() {			// 主函数main
 }
 # 你好，我叫payne
 ```
+
+
+
