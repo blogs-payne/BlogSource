@@ -2,9 +2,9 @@
 title: go-reflect
 author: Payne
 tags:
-  - go-reflect
+  - go
 categories:
-  - - go-reflect
+  - - go
     - reflect
     - 反射
 abbrlink: 586178490
