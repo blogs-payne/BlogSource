@@ -14,7 +14,7 @@ date: 2022-05-29 00:41:19
 
 ### 通用
 
-.ignore：生成git 配置文件
+ignore：生成git、dodkcer配置文件
 
 Node.js：提供nodejs 支持
 
@@ -30,7 +30,7 @@ Ideolog： “.log”文件的交互式查看器。
 
 CodeGlance3：提供代码缩略图
 
-.env files support：基于 .env、Dockerfile 和 docker-compose.yml 文件的环境变量补全。
+env files support：基于 .env、Dockerfile 和 docker-compose.yml 文件的环境变量补全。
 
 BashSupport Pro：是用于高级Bash和shell脚本开发的插件—调试器、测试运行程序、代码完成、查找用法、重命名、ShellCheck、shfmt等。
 
@@ -47,6 +47,8 @@ Monokai Pro：主题
 Graph Buddy: 旨在加快您阅读和学习源代码的过程。Graph Buddy 插件提供了一组有用的功能和技术，可帮助您轻松浏览扭曲的代码依赖项。同时，它可以让您更好地了解代码库中的代码结构。
 
 Material Theme UI Plugin： 提供主题
+
+Material Design Dark-Theme: 黑暗主题
 
 AEM IDE： 保护您避免引入讨厌的错误，在编写代码时给您反馈
 
