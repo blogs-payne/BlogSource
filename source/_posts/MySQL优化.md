@@ -92,6 +92,8 @@ MySQL的命名机制于其它产品稍有不同。一般情况，我们可以很
 
 root权限太高，拥有安全隐患，root只允许本地登陆
 
+
+
 **mysql用户登录shell为nologin**
 
 ```bash
