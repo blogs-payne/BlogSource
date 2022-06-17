@@ -6,7 +6,7 @@
 title: 吴志鹏｜Payne-Wu
 subtitle: ""
 description: "Talk is free，please state clearly"
-keywords: "吴志鹏,Payne,payne-wu,Python,Java,Golang,go,spider,crawler,js,爬虫,Kubernetes,docker"
+keywords: "吴志鹏,Payne,payne-wu,Python,Java,Golang,go,spider,crawler,js,爬虫, CloudNative"
 author: 吴志鹏
 language: zh-CN
 timezone: 'Asia/Shanghai'
@@ -14,12 +14,10 @@ timezone: 'Asia/Shanghai'
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://paynewu.com
-#permalink: :abbrlink.html  # 此处可以自己设置，也可以直接使用 :/abbrlink
 root: /
 permalink: :abbrlink.html
 abbrlink:
   alg: crc32   #算法： crc16(default) and crc32
-#    rep: hex     #进制： dec(default) and hex
 permalink_defaults:
   lang: en
 pretty_urls:
