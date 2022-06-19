@@ -18,7 +18,6 @@ deploy: clean build clean
 	@git pull
 	@git add -A && git commit -am "`date +'%Y%m%d%H%M%S'`" && git push -u origin master
 
-milestone:
-	@git add -A && git commit -am "`date +'%Y%m%d%H%M%S'`" && git push -u origin master
+milestone: deploy
 	@git tag -a "`date +'%Y%m%d%H%M%S'`" -m "Release `date +'%Y%m%d%H%M%S'`"
 	@git push origin --tags

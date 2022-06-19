@@ -83,6 +83,10 @@ optional arguments:
 
 ## Injection
 
+> attach hook app运行中的
+>
+> spawn 重启app hook，适合hook app 启动时
+
 ### Shell
 
 #### attach
@@ -121,7 +125,7 @@ script.on('message', message_callback)
 script.load()
 sys.stdin.read()
 
-# sapwn
+# spawn
 device = frida.get_use_device(-1)
 pid = devices.spawn(['packageName'])
 process = device.attach(pid)
