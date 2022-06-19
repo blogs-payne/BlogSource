@@ -92,14 +92,14 @@ optional arguments:
 #### attach
 
 ```bash
-frida -U -p pid -l script_hook.js
-frida -U -n name -l script_hook.js
+frida -Ul script_hook.js [-n] app_name
+frida -Ul script_hook.js -p pid
 ```
 
 #### spawn
 
 ```bash
-frida -U -f TARGET -l script_hook.js --no-pause
+frida -Ul script_hook.js -f Identifier --no-pause
 ```
 
 ### Python script
@@ -109,7 +109,6 @@ import sys
 import frida
 from loguru import logger
 from pptrint import pprint
-
 
 
 def message_callback(message, data):
