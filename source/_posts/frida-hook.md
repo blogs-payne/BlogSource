@@ -83,9 +83,10 @@ optional arguments:
 
 ## Injection
 
-> attach hook app运行中的
->
-> spawn 重启app hook，适合hook app 启动时
+> attach hook: 这种模式建立在app已经启动的情况下，frida利用ptrace的原理注入app进而完成Hook
+> spawn hook： 将app启动权限交与frida 来控制。使用spawn实现hook时会由frida将app重启在进行hook
+> 注意：由于attach hook 基于ptrace原理进行完成，因此无法在IDA正在调试的目标app以attach注入进程中，当然若先用frida attach注入
+> 在使用IDA进行调试则正常
 
 ### Shell
 
