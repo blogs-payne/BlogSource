@@ -14,7 +14,7 @@ test: build
 	@npm run server --debug
 
 # AttrLink index needs to be generated when before deployment
-deploy: clean build clean
+deploy: build clean
 	@git pull
 	@git add -A && git commit -am "`date +'%Y%m%d%H%M%S'`" && git push -u origin master
 
