@@ -113,9 +113,9 @@ from pptrint import pprint
 
 
 def message_callback(message, data):
-  logger.info(f"[*] {message}")
+    logger.info(f"[*] {message}")
 
-  
+
 device = frida.get_use_device(-1)
 
 # attach
@@ -135,48 +135,95 @@ script.load()
 sys.stdin.read()
 ```
 
+## frida api
 
+JavaScript-api : https://frida.re/docs/javascript-api
+
+JavaScript-api-java: https://frida.re/docs/javascript-api/#java
+
+JavaScript-api-module: https://frida.re/docs/javascript-api/#module
 
 ## Hook
 
 ```js
-Java.perfrom(() => {
-	console.log('start hook...');
-	// hook script
+Java.perfrom(function () {
+    console.log('script successfully loaded, start hook...');
+    // hook script
 });
 ```
-
-
 
 ### Hook 类方法
 
 ```js
-Java.perfrom(() => {
-	console.log('start hook...');
-	// hook class script
-  let class_name = Java.use('com.xxx.xxx.class_name');
-	class_name.method.implementation = func() {
-     // do something
-     // this.xx
-  }
+Java.perfrom(function () {
+    console.log('script successfully loaded, start hook...');
+    // hook class script
+    let class_name = Java.use('com.xxx.xxx.class_name');
+    class_name.method.implementation = function () {
+        // do something
+        // this.xx
+    }
 });
 ```
 
-### Hook 内部方法
+> this.成员变量名.value
+
+### Hook 内部(匿名)类方法
 
 ```js
-Java.perfrom(() => {
-	console.log('start hook...');
-	// hook class script
-  // 类路径$内部类名
-  let class_name = Java.use('com.xxx.xxx.class_name$xx');
-	class_name.method.implementation = func() {
-     // do something
-     // this.xx
-  }
+Java.perfrom(function () {
+    console.log('script successfully loaded, start hook...');
+    // hook class script
+    // 类路径$内部类名 在smail找
+    let class_name = Java.use('com.xxx.xxx.class_name$xx');
+    class_name.method.implementation = function () {
+        // do something
+        // this.xx
+    }
+});
+```
+
+> 从匿名类/内部类访问外部类的属性写法： this.this$0.value.外部类的属性名.value
+
+## Hook 重载方法
+
+```js
+Java.perfrom(function () {
+    console.log('script successfully loaded, start hook...');
+    // hook class script
+    // 类路径$内部类名 在smail找
+    let class_name = Java.use('com.xxx.xxx.class_name');
+    class_name.method.overload(参数1, 参数2...).implementation = function () {
+        // do something
+        // this.xx
+    }
+});
+// overload(参数1，参数2...) 可以根据报错来确定
+```
+
+## Hook 构造方法
+
+```js
+Java.perfrom(function () {
+    console.log('script successfully loaded, start hook...');
+    // hook class script
+    // 类路径$内部类名 在smail找
+    let class_name = Java.use('com.xxx.xxx.class_name');
+    class_name.$init().implementation = function () {
+        // do something
+        // this.xx
+    }
+});
+```
+
+## Hook 实例
+
+```js
+Java.perfrom(function () {
+    console.log('script successfully loaded, start hook...');
+    let variable = Java.use('com.xxx.xxx.class_name').$new(参数);
 });
 ```
 
 
 
-待续...
