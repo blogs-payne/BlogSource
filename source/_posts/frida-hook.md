@@ -100,7 +100,7 @@ frida -Ul script_hook.js -p pid
 #### spawn
 
 ```bash
-frida -Ul script_hook.js -f Identifier --no-pause
+frida -Ul script_hook.js -f Identifier(package name) --no-pause
 ```
 
 ### Python script
