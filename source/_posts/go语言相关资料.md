@@ -28,13 +28,13 @@ date: 2022-02-26 15:44:03
 
 [《Go语法树入门——开启自制编程语言和编译器之旅》](https://github.com/chai2010/go-ast-book)
 
-
+[《golang编译器代码解析》](https://gocompiler.shizhz.me/)
 
 ### 值得一读
 
 《go语言精进之路》(全两册)—白明
 
-[《Go语言高级编程》](https://chai2010.cn/advanced-go-programming-book/) 
+[《Go语言高级编程》](https://chai2010.cn/advanced-go-programming-book/)
 
 《Go语言底层原理剖析》
 
@@ -62,7 +62,7 @@ go语言地鼠文档：https://www.topgoer.cn/、https://www.topgoer.com/
 
 ## 文档
 
-官方文档：项目主线分支（master）上最新开发版本的文档： 
+官方文档：项目主线分支（master）上最新开发版本的文档：
 
 - [The Go Programming Language (golang.org)](https://tip.golang.org/)
 
@@ -79,8 +79,6 @@ Effective Go：[Effective Go - The Go Programming Language](https://go.dev/doc/e
 Go语言标准库参考手册：https://pkg.go.dev
 
 go 常见问答：[Frequently Asked Questions (FAQ) - The Go Programming Language](https://go.dev/doc/faq)
-
-
 
 ## 相关博客
 
@@ -104,8 +102,6 @@ Go 语言百科全书：[The golang.design Initiative](https://golang.design/)
 
 Go 项目的代码 review 站点：https://go-review.googlesource.com/
 
-
-
 ## 技术演讲
 
 Go 官方的技术演讲归档 :[talks - The Go Programming Language](https://go.dev/talks/)
@@ -124,8 +120,6 @@ GopherChina 技术大会: https://space.bilibili.com/436361287
 
 Go夜读：https://space.bilibili.com/326749661
 
-
-
 ## 其他
 
 代码安全指南：https://github.com/Tencent/secguide
@@ -136,7 +130,9 @@ go学习线路图：[go学习线路图 · Go语言中文文档 (topgoer.com)](ht
 
 gobyexample: [gobyexample](https://gobyexample.com/)
 
-Uber代码规范：[guide/style.md at master · uber-go/guide (github.com)](https://github.com/uber-go/guide/blob/master/style.md)、[Uber Go 语言编码规范中文版](https://github.com/xxjwxc/uber_go_guide_cn)
+Uber代码规范：[guide/style.md at master · uber-go/guide (github.com)](https://github.com/uber-go/guide/blob/master/style.md)、
+
+[Uber Go 语言编码规范中文版](https://github.com/xxjwxc/uber_go_guide_cn)
 
 awesome-go: https://github.com/avelino/awesome-go
 
@@ -154,7 +150,7 @@ awesome-go: https://github.com/avelino/awesome-go
 
 ### 算法
 
-[Leet code cook book](https://books.halfrost.com/leetcode/)
+[leetcode cookbook](https://books.halfrost.com/leetcode/)
 
 algorithms：
 
@@ -162,7 +158,6 @@ algorithms：
 - https://github.com/TheAlgorithms
 
 Github Top 100:  https://api.github.com/search/repositories?q=language:go&per_page=100
-
 
 [go-collection](https://github.com/jiujuan/go-collection): https://github.com/jiujuan/go-collection
 
