@@ -8,7 +8,6 @@ categories:
     - Android
 date: 2022-06-25 08:54:51
 ---
-    
 
 ## Smali
 
@@ -17,16 +16,18 @@ date: 2022-06-25 08:54:51
 Android代码一般是用JVM语言编写，执行Androdi程序一般需要用到JVM，在Android平台上也不例外，但是出于性能上的考虑，并没有使用标准的JVM，而是使用专门的Android虚拟机（5.0以下为Dalvik，5.0以上为ART）。Android虚拟机的可执行文件并不是普通的class文件，而是再重新整合打包后生成的dex文件。smali是dex格式的文件的汇编器
 反汇编器\ 其语法是一种宽松的jasmin/dedexer 语法,实现了.dex格式的所有功能(注解/调试信息/线路信息等)
 
-## 为什么需要学习smali
+## 学习smali必要性
 
 1. 动态调试与修改APK, 当静态分析已经无法满足时,此时便需要对Android进行动态调试, 而动态调试便是调试smail
 2. 修改APK运行逻辑, 通过修改smali代码,在重新打包.便可对app进行持久化的修改.(常用的注入均在外部而不是app内部)
+
+> 插件: java2smail
 
 ## Smali基本语法
 
 ### 关键字
 
-**语法关键字**
+**关键字**
 
 | 关键字          | 说明                                 |
 | --------------- | ------------------------------------ |
@@ -62,28 +63,52 @@ Android代码一般是用JVM语言编写，执行Androdi程序一般需要用到
 | Lpackage/name; | 对象类型 | L表示这是一个对象类型，package表示该对象所在的包，；表示对象名称的结束 |
 | [类型          | 数组     | [I表示一个int型数据，[Ljava/lang/String 表示一个String的对象数组 |
 
+**类声明**
+
+```java
+.class + 修饰符 + 类名
+```
+
+**构造函数**
+
+```java
+.method 权限修饰符 constructor <init>(参数类型) V
+# 方法体
+.end method
+```
+
 **成员变量定义格式**
 
-```bash
+```java
 .field public/private [static][final] varName:<类型>
+.field 访问权限修饰符 类型修饰符 变量名:类名路径
 ```
+
+**返回值关键字**
+
+| 返回关键字    | Java数据类型                  |
+| ------------- | ----------------------------- |
+| return        | byte short float char boolean |
+| return-void   | void                          |
+| return-wide   | long double                   |
+| return-object | 数组 object                   |
 
 **获取指令**
 
-```bash
+```java
 iget, sget, iget-boolean, sget-boolean, iget-object, sget-object
 ```
 
 **操作指令**
 
-```bash 
+```java
 iput, sput, iput-boolean, sput-boolean, iput-object, sput-object
 array的操作是aget和aput
 ```
 
 **指令解析**
 
-```bash
+```java
 sget-object v0,Lcom/aaa;->ID:Ljava/lang/String;
 获取ID这个String类型的成员变量并放到v0这个寄存器中
 iget-object v0,p0,Lcom/aaa;->view:Lcom/aaa/view;
@@ -92,7 +117,7 @@ iget-object比sget-object多一个参数p0，这个参数代表变量所在类�
 
 example
 
-```bash
+```java
 // example 1 相当于java代码：this.timer = null;
 const/4 v3, 0x0
 sput-object v3, Lcom/aaa;->timer:Lcom/aaa/timer;
@@ -105,7 +130,14 @@ iput v1,v0,Landroid/os/Message;->what:I
 ```
 
 **调用指令**
-invoke-direct invoke-virtual invoke-static invoke-super invoke-interface
+
+| 调用关键字       | 作用                       |
+| ---------------- | -------------------------- |
+| invoke-virtual   | 非私有实例方法调用         |
+| invoke-direct    | 构造方法以及私有方法的调用 |
+| invoke-static    | 静态方法的调用             |
+| invoke-super     | 父类方法的调用             |
+| invoke-interface | 接口方法调用               |
 
 调用格式： invoke-指令类型 {参数1, 参数2,...}, L类名;->方法名 如果不是是静态方法，参数1代表调用该方法的实例。
 
@@ -129,6 +161,8 @@ iput-boolean v0,p0,Lcom/aaa;->IsRegisterd:Z //把v0中的值赋给com.aaa.IsRegi
 查看smali代码时可以和java代码结合来看
 
 ## referer
+
+[Dalvik 字节码](https://source.android.com/devices/tech/dalvik/dalvik-bytecode)
 
 https://www.jianshu.com/p/9931a1e77066
 
