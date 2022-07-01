@@ -40,7 +40,7 @@ Missing pubkey for dev verification
 Run composer self-update --update-keys to set them up
 ```
 
-打开https://composer.github.io/pubkeys.html，将图中内容放在第一次的input。
+打开[pubkeys](https://composer.github.io/pubkeys.html) 将图中内容放在第一次的input。
 
 ![image-20220404021653505](https://tva1.sinaimg.cn/large/e6c9d24egy1h0x352w42mj215w0j60y8.jpg)
 
