@@ -193,7 +193,9 @@ Java.perfrom(function () {
     // hook class script
     // 类路径$内部类名 在smail找
     let class_name = Java.use('com.xxx.xxx.class_name');
-    class_name.method.overload(参数1, 参数2...).implementation = function () {
+    class_name.method.overload(参数1, 参数2
+...).
+    implementation = function () {
         // do something
         // this.xx
     }

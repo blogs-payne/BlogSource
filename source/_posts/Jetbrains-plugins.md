@@ -24,7 +24,7 @@ Rainbow CSV：用于以不同颜色突出显示 CSV 文件的插件。
 
 Rainbow：基于 IntelliJ IDEA 的 IDE 的彩虹高亮标识符和分隔符
 
-[Tabnine](https://www.tabnine.com/install)： 代码智能提示 
+[Tabnine](https://www.tabnine.com/install)： 代码智能提示
 
 Ideolog： “.log”文件的交互式查看器。
 
@@ -94,9 +94,7 @@ Jrebel：热部署插件
 
 EasyCode： 数据库表自动的生成实体类
 
-Arthas Idea：  Java 在线诊断工具
-
-
+Arthas Idea： Java 在线诊断工具
 
 源码插件技巧：https://juejin.cn/post/7012168150493954079
 

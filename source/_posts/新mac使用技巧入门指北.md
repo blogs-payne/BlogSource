@@ -43,8 +43,6 @@ brew update && brew upgrade && brew doctor
 git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core" remote set-url origin https://github.com/Homebrew/homebrew-core
 ```
 
-
-
 ## 定制zsh编辑器
 
 原生的mac，zsh是没有命令提示的，以及显示也并没有那么好看。自定制一下,终端建议使用`iterm2`
@@ -54,8 +52,6 @@ git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core" remote set-url 
 ```bash
 brew install --cask iterm2
 ```
-
-
 
 #### 下载oh-my-zsh
 
@@ -81,8 +77,6 @@ chsh -s /bin/zsh
 在终端中新建一个窗口(快捷键：command + n），你就发现不一样的shell，如下图所示
 
 ![image-20210426191816929](https://tva1.sinaimg.cn/large/008i3skNly1gpxd433qdsj317o0e0wes.jpg)
-
-
 
 #### 安装插件
 
@@ -281,8 +275,6 @@ export PATH="${GOROOT}:${GOBIN}:${GOPATH}:$PATH"
 ## HOMEBREW
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 ```
-
-
 
 ### 自动补全
 

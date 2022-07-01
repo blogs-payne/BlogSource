@@ -13,7 +13,7 @@ date: 2021-09-09 19:26:41
 
 ## 索引是什么
 
- 索引（在MySQL中也叫**键（key）**）是存储引擎用于快速查找记录的一种数据结构。索引对于性能拥有至关重要的地位。尤其是当表中的数据量越来越大，索引对于性能的影响愈发重要。反之不恰当的索引对于性能也会急剧下降。
+索引（在MySQL中也叫**键（key）**）是存储引擎用于快速查找记录的一种数据结构。索引对于性能拥有至关重要的地位。尤其是当表中的数据量越来越大，索引对于性能的影响愈发重要。反之不恰当的索引对于性能也会急剧下降。
 
 **索引是一把双刃剑**
 
@@ -177,8 +177,6 @@ table中保存指向每个数据的指针
 
 > 索引合并，使用多个单列索引组合搜索
 
-
-
 ## 索引创建
 
 正确的创建索引是实现高性能查询的基础
@@ -225,7 +223,8 @@ CREATE TABLE IF NOT EXISTS `ch_people_msg`
 **增加索引**
 
 ```mysql
-ALTER TABLE table_name ADD INDEX index_name (column_list);
+ALTER TABLE table_name
+    ADD INDEX index_name (column_list);
 CREATE INDEX (index_type) index_name ON TABEL_NAME(COLUMN_NAME)
 ```
 
@@ -271,7 +270,8 @@ where p_id + 10 = 12
 ```mysql
 SELECT *
 FROM `xxx`
-WHERE `name` = 'xxx' OR age = 20;
+WHERE `name` = 'xxx'
+   OR age = 20;
 ```
 
 **模糊搜索导致的索引失效**

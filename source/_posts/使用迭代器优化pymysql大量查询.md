@@ -42,12 +42,10 @@ cursor = client.cursor()
 page_count = 1000
 for pg in range(1000):
     query_sql = f"""select * from xiaohongshu_comment_note_2 limit {page_number * page_count}, {page_count};"""
-		cursor.execute(query_sql)
-    for results in cursor.fetchall_unbuffered():
-        print(results)
+    cursor.execute(query_sql)
+for results in cursor.fetchall_unbuffered():
+    print(results)
 ```
-
-
 
 当然还可以在函数中这样写
 
@@ -67,7 +65,5 @@ def unbuffer_query(page_count=1000, max_page=1000):
 for i in unbuffer_query(page_count=999, max_page=9999):
     print(i)
 ```
-
-
 
 瑞思拜～

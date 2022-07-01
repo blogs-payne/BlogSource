@@ -70,7 +70,9 @@ truncate: DDL操作,对与表段中的数据页进行清空,速度快.
 **delete**
 
 -
+
 delete是DML，执行delete操作时，每次从表中删除一行，并且同时将该行的的删除操作记录在redo和undo表空间中以便进行回滚（rollback）和重做操作，但要注意表空间要足够大，需要手动提交（commit）操作才能生效，可以通过rollback撤消操作。
+
 - delete可根据条件删除表中满足条件的数据，如果不指定where子句，那么删除表中所有记录。
 
 - delete语句不影响表所占用的extent，高水线(high watermark)保持原位置不变。

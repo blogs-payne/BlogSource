@@ -513,8 +513,6 @@ func main() {
 
 ```
 
-
-
 ## referer
 
 [`fmt`](https://golang.google.cn/src/fmt/doc.go)

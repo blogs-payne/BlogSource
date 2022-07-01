@@ -1009,7 +1009,7 @@ For example >mypass will add "mypass" to the list.
 This directive clears the "nopass" flag (see later).
 <<password>  Remove this password from the list of valid passwords.
 nopass       All the set passwords of the user are removed, and the user
-is flagged as requiring no password: it means that every
+is flagged as requiring no password : it means that every
 password will work against this user. If this directive is
 used for the default user, every new connection will be
 immediately authenticated with the default user without
@@ -1034,17 +1034,17 @@ ACL rules can be specified in any order : for instance you can start with
                                           DEBUG command, since +@all added all the commands to the set of the commands
                                           alice can use, and later DEBUG was removed. However if we invert the order
                                           of two ACL rules the result will be different:
-                                                                                       # 这将允许“ alice”使用除DEBUG命令之外的所有命令，因为+ @ all将所有命令添加到了alice可以使用的命令集中，并且后来删除了DEBUG。但是，如果我们颠倒两个ACL规则的顺序，结果将有所不同
-                                                                                       user alice on -DEBUG +@all ~* >somepassword
+                                          # 这将允许“ alice”使用除DEBUG命令之外的所有命令，因为+ @ all将所有命令添加到了alice可以使用的命令集中，并且后来删除了DEBUG。但是，如果我们颠倒两个ACL规则的顺序，结果将有所不同
+                                          user alice on -DEBUG +@all ~* >somepassword
 
-                                                                                       Now DEBUG was removed when alice had yet no commands in the set of allowed
-                                                                                       commands, later all the commands are added, so the user will be able to
-                                                                                       execute everything.
+                                          Now DEBUG was removed when alice had yet no commands in the set of allowed
+                                          commands, later all the commands are added, so the user will be able to
+                                          execute everything.
 
-                                                                                       Basically ACL rules are processed left-to-right.
+                                          Basically ACL rules are processed left-to-right.
 
-                                                                                       For more information about ACL configuration please refer to
-                                                                                       the Redis web site at https : //redis.io/topics/acl
+                                          For more information about ACL configuration please refer to
+                                          the Redis web site at https : //redis.io/topics/acl
 
 ACL LOG
 
@@ -1909,12 +1909,12 @@ of zero or multiple characters. The empty string means that notifications
 are disabled.
 # “ notify-keyspace-events”将由零个或多个字符组成的字符串作为参数。空字符串表示已禁用通知
 Example : to enable list and generic events, from the point of view of the
-event name, use:
+event name, use :
 
 notify-keyspace-events Elg
 
 Example 2 : to get the stream of the expired keys subscribing to channel
-name __keyevent@0__:expired use:
+name __keyevent@0__ : expired use:
 
 notify-keyspace-events Ex
 

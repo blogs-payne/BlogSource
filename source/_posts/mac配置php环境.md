@@ -50,8 +50,6 @@ Run composer self-update --update-keys to set them up
 
 https://github.com/composer/composer/issues/4839
 
-
-
 ## 配置php
 
 ```
@@ -93,8 +91,6 @@ xdebug.var_display_max_depth=10
 xdebug.idekey = PHPSTROM
 EOF
 ```
-
-
 
 ## 禁止更新
 

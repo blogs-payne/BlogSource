@@ -13,7 +13,8 @@ date: 2022-03-07 00:38:21
 
 
 
-MitmProxy是一组优秀的网络代理拦截工具，可为 HTTP/1、HTTP/2 和 WebSockets 提供交互式、支持 SSL/TLS 的拦截代理。它提供 拦截 HTTP 和 HTTPS 请求和响应并动态修改它们、保存完整的 HTTP 会话，以供重放攻击和分析、反向代理模式将流量转发到指定服务器、macOS 和 Linux 上的透明代理、对 HTTP 流量进行脚本化更改等功能。
+MitmProxy是一组优秀的网络代理拦截工具，可为 HTTP/1、HTTP/2 和 WebSockets 提供交互式、支持 SSL/TLS 的拦截代理。它提供 拦截 HTTP 和 HTTPS 请求和响应并动态修改它们、保存完整的 HTTP
+会话，以供重放攻击和分析、反向代理模式将流量转发到指定服务器、macOS 和 Linux 上的透明代理、对 HTTP 流量进行脚本化更改等功能。
 
 - 官方地址：https://mitmproxy.org/
 - 官方文档：https://docs.mitmproxy.org
@@ -55,23 +56,22 @@ mitmproxy 由mitmproxy、mitmdump、mitmweb组成
 
 ### mitmproxy
 
-mitmproxy是用于调试、测试、隐私测量和渗透测试的瑞士军刀。它可用于拦截、检查、修改和重放 Web 流量，例如 HTTP/1、HTTP/2、WebSockets 或任何其他受 SSL/TLS 保护的协议。您可以美化和解码从 HTML 到 Protobuf 的各种消息类型，即时截取特定消息，在它们到达目的地之前对其进行修改，并稍后将它们重播到客户端或服务器。
+mitmproxy是用于调试、测试、隐私测量和渗透测试的瑞士军刀。它可用于拦截、检查、修改和重放 Web 流量，例如 HTTP/1、HTTP/2、WebSockets 或任何其他受 SSL/TLS 保护的协议。您可以美化和解码从 HTML
+到 Protobuf 的各种消息类型，即时截取特定消息，在它们到达目的地之前对其进行修改，并稍后将它们重播到客户端或服务器。
 
 ### mitmdump
 
 强大的插件功能与python api集成，提供了对mitmproxy的完全控制，可以自动修改消息、重定向流量、可视化消息或实现自定义命令。基于mitmdump可实现拓展，完全自由定制。实现基于此的流量转发代理中间件。
 
-###  mitmproxy
+### mitmproxy
 
- 在图形界面中使用 mitmproxy 的主要功能 mitmweb。mitmweb 为您提供任何其他应用程序或设备的类似体验，以及请求拦截和重放等附加功能。
+在图形界面中使用 mitmproxy 的主要功能 mitmweb。mitmweb 为您提供任何其他应用程序或设备的类似体验，以及请求拦截和重放等附加功能。
 
 ## 证书安装与配置
 
 对于任何中间人抓包工具来说，若需要完整的捕获HTTPS请求，必须需要配置HTTPS证书。由于mitmproxy的证书在安装时便已经自带了，所以不必多次安装。只需配置证书即可。
 
 手机上需要下载直接进入  http://mitm.it/ 即可（需要先连接上mitmproxy的代理）
-
-
 
 ## mitmproxy界面
 
@@ -83,17 +83,13 @@ mitmproxy有许多的功能界面主要有以下几个
 
 ![image-20220307012744921](https://tva1.sinaimg.cn/large/e6c9d24egy1h00od9mq9lj21js0u0qls.jpg)
 
-
-
 ### 包详情界面
 
 使用`j `、`k` （或者上下方向键）实现包之间的移动，enter（回车）进入包的详情界面，可以使用tab进行切换。如下图所示
 
->  当然是要大写的 `P` 也可以进入这里
+> 当然是要大写的 `P` 也可以进入这里
 
 ![image-20220307012909484](https://tva1.sinaimg.cn/large/e6c9d24egy1h00oeqi65tj21hp0u0tf3.jpg)
-
-
 
 ### 帮助界面
 
@@ -121,17 +117,11 @@ mitmproxy有许多的功能界面主要有以下几个
 
 ![image-20220307013411247](https://tva1.sinaimg.cn/large/e6c9d24egy1h00ojylhwpj215g0u0tc4.jpg)
 
-
-
-
-
 ### Events界面
 
 此界面可以查看捕获流量的所有事件，使用`E` 进入，如下所示
 
 ![image-20220307014113646](https://tva1.sinaimg.cn/large/e6c9d24egy1h00oraucocj21bz0u0ai3.jpg)
-
-
 
 ### Command Reference界面
 
@@ -143,9 +133,7 @@ mitmproxy有许多的功能界面主要有以下几个
 
 ![image-20220307014328724](https://tva1.sinaimg.cn/large/e6c9d24egy1h00otmz81bj21kd0u0wke.jpg)
 
-
-
-###  Options界面
+### Options界面
 
 参数选项界面，可以认为这是mitmproxy设置界面， 如下所示
 
@@ -171,8 +159,6 @@ mitmproxy有许多的功能界面主要有以下几个
 | ctrl f | console.nav.pagedown | 跳到本页最后一行   |
 | tab    | console.nav.next     |                    |
 
-
-
 可参考 help 界面
 
 e: 快速生成请求
@@ -180,8 +166,6 @@ e: 快速生成请求
 ## mitmdump具体实现
 
 一个基于mitmdump 实现的流式流量转发处理平台: [mitmdumpMan](https://github.com/WebSpiderSuperStar/MitmDumpMan)
-
-
 
 ## 抓包tips
 

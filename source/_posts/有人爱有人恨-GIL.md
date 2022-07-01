@@ -11,11 +11,10 @@ abbrlink: 2204086615
 date: 2022-03-07 12:52:45
 ---
 
-
-
 ## 什么是GIL
 
-GIL（Global Interpreter Lock，即全局解释器锁），是最流行的 Python 解释器 CPython 中的一个技术术语。它的意思是全局解释器锁，本质上是**类似操作系统的 Mutex**，它可以帮助CPython解决其在内存管理中存在的线程不安全问题。
+GIL（Global Interpreter Lock，即全局解释器锁），是最流行的 Python 解释器 CPython 中的一个技术术语。它的意思是全局解释器锁，本质上是**类似操作系统的 Mutex**
+，它可以帮助CPython解决其在内存管理中存在的线程不安全问题。
 
 每一个 Python 线程，在 CPython 解释器中执行时，都会先锁住自己的线程，阻止别的线程执行。
 
@@ -30,10 +29,8 @@ GIL（Global Interpreter Lock，即全局解释器锁），是最流行的 Pytho
 - 设计者为了规避类似于内存管理这样的复杂的竞争风险问题（race condition）；
 - 因为 CPython 大量使用 C 语言库，但大部分 C 语言库都不是原生线程安全的（线程安全会降低性能和增加复杂度）。
 
-为什么 CPython 需要 GIL 呢？这其实和 CPython 的实现有关。Python 的内存管理机制，
-CPython 使用引用计数来管理内存，所有 Python 脚本中创建的实例，都会有一个引用计数，来记录有多少个指针指向它。当引用计数只有 0 时，则会自动释放内存。
-
-
+为什么 CPython 需要 GIL 呢？这其实和 CPython 的实现有关。Python 的内存管理机制， CPython 使用引用计数来管理内存，所有 Python
+脚本中创建的实例，都会有一个引用计数，来记录有多少个指针指向它。当引用计数只有 0 时，则会自动释放内存。
 
 ## GIL工作原理
 
@@ -46,9 +43,6 @@ CPython 使用引用计数来管理内存，所有 Python 脚本中创建的实�
 > Python2中，check_interavl是当前线程遇见IO操作或者ticks计数达到100*。*
 >
 > 在Python3中是执行时间达到阈值（默认为15毫秒）
-
-
-
 
 ## GIL存在的利弊
 
@@ -74,8 +68,6 @@ GIL 的设计，主要是为了方便 CPython 解释器层面的编写者
 
 但是，我们将一个8线程的Python程序（由CPython作解释器）运行在一个4核处理器上，那么总共只会有1个核在工作，8个线程都要在这一个核上面时间片轮转。
 
-
-
 ## Python 的线程安全
 
 有了 GIL，并不意味着我们 Python 编程者就不用去考虑线程安全了。即使我们知道，GIL 仅允许一个 Python 线程执行，但前面我也讲到了，Python 还有 **check interval** 这样的抢占机制。
@@ -83,8 +75,6 @@ GIL 的设计，主要是为了方便 CPython 解释器层面的编写者
 所以有了 GIL 并不意味着你的Python程序就可以高枕无忧了，我们仍然需要去注意线程安全。
 
 GIL 的设计，主要是为了方便 CPython 解释器层面的编写者，而不是 Python 应用层面的程序员。作为 Python 的使用者，我们还是需要 lock 等锁，来确保线程安全。
-
-
 
 ## Python多线程
 
@@ -98,15 +88,19 @@ GIL 的全称是 Global Interpreter Lock, 全局解释器锁。它锁的是解�
 
 在 Python 官方文档Releasing the GIL from extension code中，有这样一段话：
 
-Here is how these functions work: **the global interpreter lock is used to protect the pointer to the current thread state.** When releasing the lock and saving the thread state, the current thread state pointer must be retrieved before the lock is released (since another thread could immediately acquire the lock and store its own thread state in the global variable). Conversely, when acquiring the lock and restoring the thread state, the lock must be acquired before storing the thread state pointer.
+Here is how these functions work: **the global interpreter lock is used to protect the pointer to the current thread
+state.** When releasing the lock and saving the thread state, the current thread state pointer must be retrieved before
+the lock is released (since another thread could immediately acquire the lock and store its own thread state in the
+global variable). Conversely, when acquiring the lock and restoring the thread state, the lock must be acquired before
+storing the thread state pointer.
 
 其中加黑的这一句话是说：GIL 锁用来保护指向当前进程**状态的指针**。
 
 再看文档Thread State and the Global Interpreter Lock中提到的这样一句话：
 
-Without the lock, even the simplest operations could cause problems in a multi-threaded program: for example, when two threads simultaneously increment the **reference count** of the same object, the reference count could end up being incremented only once instead of twice.
-
-
+Without the lock, even the simplest operations could cause problems in a multi-threaded program: for example, when two
+threads simultaneously increment the **reference count** of the same object, the reference count could end up being
+incremented only once instead of twice.
 
 当两个线程同时提高同一个对象的引用计数时，（如果没有 GIL 锁）那么引用计数只会被提高了 1 次而不是 2 次。
 
@@ -115,8 +109,6 @@ Without the lock, even the simplest operations could cause problems in a multi-t
 所以 GIL 锁住的东西，都是不需要你的代码直接交互的东西。
 
 Python 的解释器通过切换线程来模拟多线程并发的情况，如上面举的例子，虽然同一个时间只有一个线程在活动，但仍然可以导致并发冲突。
-
-
 
 ## GIL 对 Python 多线程开发的影响
 
@@ -129,8 +121,6 @@ Python 的解释器通过切换线程来模拟多线程并发的情况，如上�
 
 I/O 密集型的程序只的是那些花费大量时间在等待 I/O 运行结束的程序，比如从用户指定的文件中读取数据，从数据库或者从网络中读取数据，I/O 密集型的程序对 CPU 的资源需求不是很高。
 
-
-
 ### 如何加速？
 
 一般来说 IO 密集型用多线程、协程来加速，CPU 密集型用多进程来加速。
@@ -139,14 +129,11 @@ I/O 密集型的程序只的是那些花费大量时间在等待 I/O 运行结�
 
 aiomultiprocess：[https://pypi.org/project/aiomultiprocess/](https://pypi.org/project/aiomultiprocess/)
 
-
-
 **如何绕过GIL？**
 
 你并不需要过多考虑 GIL。因为如果多线程计算成为性能瓶颈，往往已经有 Python 库来解决这个问题了。
 
 绕过 GIL 的大致思路有这么两种：
-
 
 - 绕过 CPython，使用 JPython（Java 实现的 Python 解释器）等别的实现；
 - 把关键性能代码，放到别的语言（一般是 C++）中实现。

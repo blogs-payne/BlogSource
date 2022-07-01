@@ -71,27 +71,27 @@ date: 2022-02-26 15:44:03
 
 - [The Go Programming Language](https://go.dev/)
 
-[Go语言规范  The Go Programming Language Specification - The Go Programming Language](https://go.dev/ref/spec)
+[Go语言规范 The Go Programming Language Specification - The Go Programming Language](https://go.dev/ref/spec)
 
-[Go mod参考文档  Go Modules Reference - The Go Programming Language](https://go.dev/ref/mod)
+[Go mod参考文档 Go Modules Reference - The Go Programming Language](https://go.dev/ref/mod)
 
-[Go语言命令参考手册  Command Documentation - The Go Programming Language](https://go.dev/doc/cmd)
+[Go语言命令参考手册 Command Documentation - The Go Programming Language](https://go.dev/doc/cmd)
 
 [Effective Go  Effective Go - The Go Programming Language](https://go.dev/doc/effective_go)
 
 [Go语言标准库参考手册](https://pkg.go.dev)
 
-[go 常见问答   Frequently Asked Questions (FAQ) - The Go Programming Language](https://go.dev/doc/faq)
+[go 常见问答 Frequently Asked Questions (FAQ) - The Go Programming Language](https://go.dev/doc/faq)
 
 ## 相关博客
 
-[Go语言官方博客  The Go Blog - The Go Programming Language](https://go.dev/blog/)
+[Go语言官方博客 The Go Blog - The Go Programming Language](https://go.dev/blog/)
 
-[Go 语言之父 Rob Pike 的个人博客  command center](https://commandcenter.blogspot.com/)
+[Go 语言之父 Rob Pike 的个人博客 command center](https://commandcenter.blogspot.com/)
 
 [Go 核心团队技术负责人 Russ Cox 的个人博客](https://research.swtch.com/)
 
-[Go 核心开发者 Josh Bleecher Snyder 的个人博客  Don't Panic (commaok.xyz)](https://commaok.xyz/)
+[Go 核心开发者 Josh Bleecher Snyder 的个人博客 Don't Panic (commaok.xyz)](https://commaok.xyz/)
 
 [Go 核心团队前成员 Jaana Dogan 的个人博客](https://rakyll.org/)
 
@@ -101,10 +101,9 @@ date: 2022-02-26 15:44:03
 
 [GoCN社区](https://gocn.vip/)
 
-[Go 语言百科全书  The golang.design Initiative](https://golang.design/)
+[Go 语言百科全书 The golang.design Initiative](https://golang.design/)
 
 [Go 项目的代码 review 站点](https://go-review.googlesource.com/)
-
 
 ## 技术演讲
 

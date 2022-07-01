@@ -82,7 +82,8 @@ date: 2022-04-30 19:05:41
 
 ### generation-collect 分代收集算法
 
-如下图所示，可以将内存分成了三大块：年青代（Young Genaration）、老年代（Old Generation）、永久代（Permanent Generation）。其中 Young Genaration 更是又细为分 eden、S0、S1 三个区。
+如下图所示，可以将内存分成了三大块：年青代（Young Genaration）、老年代（Old Generation）、永久代（Permanent Generation）。其中 Young Genaration 更是又细为分
+eden、S0、S1 三个区。
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1h1ry01acb0j20ns0723z4.jpg)
 
@@ -144,7 +145,8 @@ date: 2022-04-30 19:05:41
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1h1ry0zgme5j20de0ew74o.jpg)
 
-如果老年代，最终也放满了，就会发生 major GC（即 Full GC）。由于老年代的的对象通常会比较多，标记-清理-整理（压缩）的耗时通常也会比较长，会让应用出现卡顿的现象。这也就是为什么很多应用要优化，尽量避免或减少 Full GC 的原因。
+如果老年代，最终也放满了，就会发生 major GC（即 Full GC）。由于老年代的的对象通常会比较多，标记-清理-整理（压缩）的耗时通常也会比较长，会让应用出现卡顿的现象。这也就是为什么很多应用要优化，尽量避免或减少 Full GC
+的原因。
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1h1ry11sat4j20jm0g8gmj.jpg)
 
@@ -210,15 +212,17 @@ Concurrent Mark Sweep，从名字上看，就能猜出它是并发多线程的�
 
 #### G1 垃圾收集器的原理
 
-如下图，G1 将 heap 内存区，划分为一个个大小相等（1-32M，2的 n 次方）、内存连续的 Region 区域，每个 region 都对应 Eden、Survivor 、Old、Humongous 四种角色之一，但是 region 与 region 之间不要求连续。
+如下图，G1 将 heap 内存区，划分为一个个大小相等（1-32M，2的 n 次方）、内存连续的 Region 区域，每个 region 都对应 Eden、Survivor 、Old、Humongous 四种角色之一，但是 region
+与 region 之间不要求连续。
 
 > 注：Humongous，简称 H 区是专用于存放超大对象的区域，通常 >= 1/2 Region Size，且只有 Full GC 阶段，才会回收 H 区，避免了频繁扫描、复制/移动大对象。
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1h1ry1bnt2nj20u00afq3t.jpg)
 
-所有的垃圾回收，都是基于 1 个个 region 的。JVM 内部知道，哪些 region 的对象最少（即该区域最空），总是会优先收集这些 region（因为对象少，内存相对较空，肯定快）。这就是 Garbage-First 得名的由来，G 即是 Garbage 的缩写，1 即 First。
+所有的垃圾回收，都是基于 1 个个 region 的。JVM 内部知道，哪些 region 的对象最少（即该区域最空），总是会优先收集这些 region（因为对象少，内存相对较空，肯定快）。这就是 Garbage-First 得名的由来，G
+即是 Garbage 的缩写，1 即 First。
 
-1.  G1 Young GC young GC 前：
+1. G1 Young GC young GC 前：
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1h1ry3j8ripj20k007oaan.jpg)
 
@@ -230,9 +234,9 @@ young GC 后：
 
 由于 region 与 region 之间并不要求连续，而使用 G1 的场景通常是大内存，比如 64G 甚至更大，为了提高扫描根对象和标记的效率，G1 使用了二个新的辅助存储结构：
 
-*   Remembered Sets：简称 RSets，用于根据每个 region 里的对象，是从哪指向过来的（即谁引用了我），每个 Region 都有独立的 RSets（Other Region -> Self Region）。
+* Remembered Sets：简称 RSets，用于根据每个 region 里的对象，是从哪指向过来的（即谁引用了我），每个 Region 都有独立的 RSets（Other Region -> Self Region）。
 
-*   Collection Sets ：简称 CSets，记录了等待回收的 Region 集合，GC 时这些 Region 中的对象会被回收（copied or moved）。
+* Collection Sets ：简称 CSets，记录了等待回收的 Region 集合，GC 时这些 Region 中的对象会被回收（copied or moved）。
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1h1ry1gs145j20gf0a1aae.jpg)
 
@@ -242,7 +246,8 @@ RSets 的引入，在 YGC 时，将年青代 Region 的 RSets 做为根对象，
 
 Old Generation Collection（也称为 Mixed GC）
 
-按 oracle 官网文档描述，分为 5 个阶段：Initial Mark(STW) -> Root Region Scan -> Cocurrent Marking -> Remark(STW) -> Copying/Cleanup(STW && Concurrent)
+按 oracle 官网文档描述，分为 5 个阶段：Initial Mark(STW) -> Root Region Scan -> Cocurrent Marking -> Remark(STW) -> Copying/Cleanup(
+STW && Concurrent)
 
 > 注：也有很多文章会把 Root Region Scan 省略掉，合并到 Initial Mark 里，变成 4 个阶段。
 
@@ -266,7 +271,8 @@ Old Generation Collection（也称为 Mixed GC）
 
 上图是，老年代收集完后的示意图。
 
-通过这几个阶段的分析，虽然看上去很多阶段仍然会发生 STW，但是 G1 提供了一个预测模型，通过统计方法，根据历史数据来预测本次收集，需要选择多少个 Region 来回收，尽量满足用户的预期停顿值（-XX:MaxGCPauseMillis 参数可指定预期停顿值）。
+通过这几个阶段的分析，虽然看上去很多阶段仍然会发生 STW，但是 G1 提供了一个预测模型，通过统计方法，根据历史数据来预测本次收集，需要选择多少个 Region 来回收，尽量满足用户的预期停顿值（-XX:MaxGCPauseMillis
+参数可指定预期停顿值）。
 
 > 注：如果 Mixed GC 仍然效果不理想，跟不上新对象分配内存的需求，会使用 Serial Old GC（Full GC）强制收集整个 Heap。
 
@@ -288,11 +294,11 @@ G1 中每个 Region 需要借助额外的 RSets 来记录“谁引用了我”�
 
 这里的指针类似 Java 中的引用，意为对某块虚拟内存的引用。ZGC 采用了64位指针（注：目前只支持 linux 64 位系统），将 42-45 这 4 个 bit 位置赋予了不同含义，即所谓的颜色标志位，也换为指针的 metadata。
 
-*   finalizable 位：仅 finalizer（类比 C++ 中的析构函数）可访问；
+* finalizable 位：仅 finalizer（类比 C++ 中的析构函数）可访问；
 
-*   remap 位：指向对象当前（最新）的内存地址，参考下面提到的relocation；
+* remap 位：指向对象当前（最新）的内存地址，参考下面提到的relocation；
 
-*   marked0 && marked1 位：用于标志可达对象。
+* marked0 && marked1 位：用于标志可达对象。
 
 这 4 个标志位，同一时刻只会有 1 个位置是 1。每当指针对应的内存数据发生变化，比如内存被移动，颜色会发生变化。
 
@@ -316,7 +322,8 @@ G1 中每个 Region 需要借助额外的 RSets 来记录“谁引用了我”�
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1h1ry20tepej20u00aj74t.jpg)
 
-但 ZGC 做得更高明，它直接将 4，5 复制到了一个空的新 Region 就完事了，然后中间的 2 个 Region 直接废弃，或理解为“释放”，作为下次回收的“新” Region。这样的好处是避免了中间 Region 的 compact 整理过程。
+但 ZGC 做得更高明，它直接将 4，5 复制到了一个空的新 Region 就完事了，然后中间的 2 个 Region 直接废弃，或理解为“释放”，作为下次回收的“新” Region。这样的好处是避免了中间 Region 的 compact
+整理过程。
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1h1ry22szyaj20u00ajq3l.jpg)
 
@@ -328,7 +335,8 @@ G1 中每个 Region 需要借助额外的 RSets 来记录“谁引用了我”�
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1h1ry24pjryj20gp07ujrr.jpg)
 
-zgc 的 64 位颜色指针，在解除映射关系时，代价较高（需要屏蔽额外的 42-45 的颜色标志位）。考虑到这 4 个标志位，同 1 时刻，只会有 1 位置成 1（如下图），另外 finalizable 标志位，永远不希望被解除映射绑定（可不用考虑映射问题）。
+zgc 的 64 位颜色指针，在解除映射关系时，代价较高（需要屏蔽额外的 42-45 的颜色标志位）。考虑到这 4 个标志位，同 1 时刻，只会有 1 位置成 1（如下图），另外 finalizable
+标志位，永远不希望被解除映射绑定（可不用考虑映射问题）。
 
 所以剩下 3 种颜色的虚拟内存，可以都映射到同1段物理内存。即映射复用，或者更通俗点讲，本来 3 种不同颜色的指针，哪怕 0-41 位完全相同，也需要映射到 3 段不同的物理内存，现在只需要映射到同 1 段物理内存即可。
 

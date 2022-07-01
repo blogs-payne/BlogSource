@@ -6,16 +6,17 @@ tags:
 categories:
   - - frida
     - rpc
+abbrlink: 4038451747
 date: 2022-06-26 14:40:16
 ---
 
-##  frida 主动调用
+## frida 主动调用
 
 主动调用: 强制去调用函数执行
 
 被动调用: 由app主导,按照正常的执行顺序执行函数. 函数执行完全依靠与用户交互完成从而间接的调用到关键函数
 
-在Java中,类的函数可以分为两种: 类函数与实例方法, 也可以称之为静态方法和动态方法. 
+在Java中,类的函数可以分为两种: 类函数与实例方法, 也可以称之为静态方法和动态方法.
 
 类函数使用关键字`static` 修饰,与对应的类绑定, 当然如果该类函数还被`public` 修饰,则在外部就可以直接通过类去调用
 
@@ -30,7 +31,7 @@ setImmediate(function () {
     console.log('Script loaded successfully, start hook...');
     Java.perform(function () {
         console.log('Inside java perform function...');
-        
+
         // 静态(类)函数 主动调用
         let class_name = Java.use('com.xxx.xxx.xxx');
         let result1 = class_name.method();
@@ -92,8 +93,6 @@ rpc.exports = {
 }
 ```
 
-
-
 ```python
 # rpc.py
 # File: proc.py
@@ -107,6 +106,7 @@ from loguru import logger
 device = frida.get_usb_device()
 script_path = "HookScript/example.js"
 
+
 def message_call_back(message, data):
     """
     message call back
@@ -116,6 +116,7 @@ def message_call_back(message, data):
     """
     logger.info(message)
     logger.info(data)
+
 
 def attach_hook(app_name):
     """

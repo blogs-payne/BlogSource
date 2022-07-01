@@ -603,33 +603,33 @@ SELECT @
 #
 select 函数
 SELECT
-
 NOW
+
 (
 )
 ;
 SELECT
-
 DATABASE
+
 (
 )
 ;
 SELECT
-
 USER
+
 (
 )
 ;
 SELECT
-
 CONCAT
+
 (
 "hello world"
 )
 ;
 SELECT
-
 CONCAT
+
 (
 USER,
 
@@ -642,8 +642,8 @@ FROM mysql.user
 
 ;
 SELECT
-
 GROUP_CONCAT
+
 (
 USER,
 

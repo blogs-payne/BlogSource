@@ -17,13 +17,9 @@ date: 2022-03-02 02:19:16
 
 [openresty](http://openresty.org/en/)
 
-
-
 [商业nginx](https://nginx.com/)
 
 [商业openresty](http://openresty.com)
-
-
 
 ## 什么是Nginx
 
@@ -31,21 +27,18 @@ date: 2022-03-02 02:19:16
 
 **反向代理：**
 
-反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。
+反向代理（Reverse
+Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。
 
 **正向代理:**
 
 是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端才能使用正向代理。
-
-
 
 ### 正向代理和反向代理区别？
 
 **正向代理**，**是在客户端的。**比如需要访问某些国外网站，我们可能需要购买vpn。并且**vpn是在我们的用户浏览器端设置的**(并不是在远端的服务器设置)。浏览器先访问vpn地址，vpn地址转发请求，并最后将请求结果原路返回来。
 
 **反向代理是作用在服务器端的，是一个虚拟ip(VIP)**。对于用户的一个请求，会转发到多个后端处理器中的一台来处理该具体请求。
-
-
 
 ## 为什么是Nginx？
 
@@ -55,8 +48,6 @@ date: 2022-03-02 02:19:16
 
 比Apache(一个连接对应一个进程)更快
 
-
-
 ### Nginx优点
 
 - 高并发、高性能
@@ -64,8 +55,6 @@ date: 2022-03-02 02:19:16
 - 高可靠
 - 热部署
 - BSD认证
-
-
 
 ## Nginx 主要使用场景
 
@@ -75,21 +64,12 @@ date: 2022-03-02 02:19:16
 
 <img src="https://tva1.sinaimg.cn/large/e6c9d24egy1gzuy0uhn4zj20lz0l3dgt.jpg" alt="image-20220302040819009" style="zoom:50%;" />
 
-
-
-
-
-
 ## Nginx组成
 
 - Nginx，二进制可执行文件
 - Nginx config 配置文件： 控制nginx行为
 - access log : 记录每一条请求
 - error log：错误日志
-
-
-
-
 
 ## Nginx 版本
 
@@ -106,8 +86,6 @@ Legacy versions：历史版本
 - Bugfix： 修复bug
 - Change： 修改
 - Feature： 新特性
-
-
 
 ## 编译安装Nginx
 
@@ -146,8 +124,6 @@ make install
 相关参数
 
 <img src="https://tva1.sinaimg.cn/large/e6c9d24egy1gzv31s7hj2j20qq0d0js5.jpg" alt="1051646169511_.pic"/>
-
-
 
 ## nginx源码目录结构
 
@@ -206,11 +182,9 @@ drwxr-xr-x 9 1001 1001   4096 Nov 16 22:44 src： nginx源代码
     └── stream
 ```
 
-
-
 tips
 
-将  contrib 中的文件夹copy 到vim目录下，以便于使用vim对配置文件等进行便捷的编辑，如下command
+将 contrib 中的文件夹copy 到vim目录下，以便于使用vim对配置文件等进行便捷的编辑，如下command
 
 ```bash
 DIR="ftdetect ftplugin indent syntax"
@@ -219,12 +193,6 @@ for dir in $DIR; do
   cp -r contrib/vim/${dir}/nginx.vim ~/.vim/${dir}/nginx.vim
 done
 ```
-
-
-
-
-
-
 
 ## Nginx 配置
 
@@ -261,11 +229,7 @@ m/M: megabytes
 
 g/G: gigabytes
 
-
-
 ### 配置指令块
-
-
 
 <img src="https://tva1.sinaimg.cn/large/e6c9d24egy1gzv0wsgmh8j20va0kzwfu.jpg" alt="image-20220302040819009" style="zoom:50%;" />
 
@@ -327,7 +291,5 @@ fail_timeout=time: `fail_timeout`的值包含两层意思：
 backup: 标记服务器是备用服务器，只有在其他服务器都不可用的情况下，才会请求该服务器。（在哈希、IP哈希、随机三种负载均衡模式下不可用）
 
 down: 标记服务器永久不可用状态。
-
-
 
 [正则表达式匹配路由](https://developer.aliyun.com/article/753379)

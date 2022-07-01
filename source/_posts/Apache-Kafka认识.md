@@ -15,11 +15,9 @@ date: 2022-02-26 13:32:01
 
 Mirror of Apache Kafka github: [https://github.com/apache/kafka](https://github.com/apache/kafka)
 
-
-
 ## 什么是Kafka
 
-Apache Kafka 是一款开源的**消息引擎**系统,  也是一个分布式流处理平台（Distributed Streaming Platform）
+Apache Kafka 是一款开源的**消息引擎**系统, 也是一个分布式流处理平台（Distributed Streaming Platform）
 
 - 处理实时数据提供一个统一、高吞吐、低延迟的平台。
 - 它使用的是纯二进制的字节序列, 以时间复杂度为 O(1) 的方式提供消息持久化能力，即使对 TB 级以上数据也能保证常数时间复杂度的访问性能。
@@ -27,8 +25,6 @@ Apache Kafka 是一款开源的**消息引擎**系统,  也是一个分布式流
 - 支持 Kafka Server 间的消息分区，及分布式消费，同时保证每个 Partition 内的消息顺序传输。
 - 同时支持离线数据处理和实时数据处理。
 - Scale out：支持在线水平扩展。
-
-
 
 ## Kafka功能
 
@@ -40,9 +36,9 @@ Kfaka有两种传输模型，分别是基于一对一、多对多的思想。
 
 一对一：一般也称之为消息队列模型，系统 A 发送的消息只能被系统 B 接收，其他任何系统都不能读取 A 发送的消息。
 
-多对多：一般称之为发布订阅模型。与上面不同的是，它有一个**主题（Topic）**的概念，该模型也有发送方和接收方，只不过提法不同。发送方也称为发布者（Publisher）接收方称为订阅者（Subscriber）。和点对点模型不同的是，这个模型可能存在多个发布者向相同的主题发送消息，而订阅者也可能存在多个，它们都能接收到**相同主题**的消息。
-
-
+多对多：一般称之为发布订阅模型。与上面不同的是，它有一个**主题（Topic）**
+的概念，该模型也有发送方和接收方，只不过提法不同。发送方也称为发布者（Publisher）接收方称为订阅者（Subscriber）。和点对点模型不同的是，这个模型可能存在多个发布者向相同的主题发送消息，而订阅者也可能存在多个，它们都能接收到**
+相同主题**的消息。
 
 ## Kafka术语
 
@@ -76,7 +72,8 @@ Kfaka有两种传输模型，分别是基于一对一、多对多的思想。
 
 **Broker**
 
-​		Kafka 的服务器端由被称为 Broker 的服务进程构成，即一个 Kafka 集群由多个 Broker 组成，Broker 负责接收和处理客户端发送过来的请求，以及对消息进行持久化。虽然多个 Broker 进程能够运行在同一台机器上，但更常见的做法是将不同的 Broker 分散运行在不同的机器上，这样如果集群中某一台机器宕机，即使在它上面运行的所有 Broker 进程都挂掉了，其他机器上的 Broker 也依然能够对外提供服务。
+​ Kafka 的服务器端由被称为 Broker 的服务进程构成，即一个 Kafka 集群由多个 Broker 组成，Broker 负责接收和处理客户端发送过来的请求，以及对消息进行持久化。虽然多个 Broker
+进程能够运行在同一台机器上，但更常见的做法是将不同的 Broker 分散运行在不同的机器上，这样如果集群中某一台机器宕机，即使在它上面运行的所有 Broker 进程都挂掉了，其他机器上的 Broker 也依然能够对外提供服务。
 
 **Replication**
 
@@ -99,17 +96,7 @@ Kafka 定义了两类副本：
 
 ![](https://static001.geekbang.org/resource/image/58/91/58c35d3ab0921bf0476e3ba14069d291.jpg)
 
-
-
-
-
-
-
 ![](https://upload.wikimedia.org/wikipedia/commons/6/64/Overview_of_Apache_Kafka.svg)
-
-
-
-
 
 ## referer
 

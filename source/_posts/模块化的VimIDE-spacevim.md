@@ -27,7 +27,7 @@ SpaceVim 是一个社区驱动的模块化的 Vim IDE，以模块的方式组织
 
 ## 安装
 
->  **前置条件**: 需要安装完成`vim`或`neovim`
+> **前置条件**: 需要安装完成`vim`或`neovim`
 
 ```
 # 前置安装
@@ -36,8 +36,6 @@ python3 -m pip install -U pip && python3 -m pip install pynvim && pip3 install n
 ## Mac
 python3 -m pip install -U pip && python3 -m pip install pynvim && pip3 install neovim && brew install neovim
 ```
-
-
 
 ### Windows
 
@@ -61,8 +59,6 @@ ln -s $HOME/.vim $HOME/.config/nvim
 ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 ```
 
-
-
 ```bash
 # 安装
 curl -sLf https://spacevim.org/cn/install.sh | bash
@@ -74,14 +70,8 @@ curl -sLf https://spacevim.org/cn/install.sh | bash -s -- -h
 
 [SpaceVim离线安装 (github.com)](https://github.com/marmotedu/marmotVim)
 
-
-
 环境搭建请参考：
 
 [在线教程](https://spacevim.org/cn/quick-start-guide/#在线教程)
-
-
-
-
 
 更多sao操作情参考官方文档，瑞思拜～

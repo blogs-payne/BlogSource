@@ -92,8 +92,6 @@ MySQL的命名机制于其它产品稍有不同。一般情况，我们可以很
 
 root权限太高，拥有安全隐患，root只允许本地登陆
 
-
-
 **mysql用户登录shell为nologin**
 
 ```bash
@@ -190,7 +188,7 @@ r0 :条带化 ,性能高 r1 :镜像，安全 r5 :校验+条带化，安全较高
 
 #### 网络
 
-1、硬件买好的（单卡单口） 
+1、硬件买好的（单卡单口）
 
 2、网卡绑定(bonding)，交换机堆叠 以上问题，提前规避掉。
 
@@ -448,63 +446,63 @@ MongoDB
 ##### binary log
 
 ```ini
-log-bin=/data/mysql-bin
+log-bin = /data/mysql-bin
 binlog_cache_size = 2M //为每个session 分配的内存，在事务过程中用来存储二进制日志的缓存, 提高记录bin-log的效率。没有什么大事务，dml也不是很频繁的情况下可以设置小一点，如果事务大而且多，dml操作也频繁，则可以适当的调大一点。前者建议是--1M，后者建议是：即 2--4M
 max_binlog_cache_size = 8M //表示的是binlog 能够使用的最大cache 内存大小
-max_binlog_size= 512M //指定binlog日志文件的大小，如果当前的日志大小达到max_binlog_size，还会自动创建新的二进制日志。你不能将该变量设置为大于1GB或小于4096字节。默认值是1GB。在导入大容量的sql文件时，建议关闭sql_log_bin，否则硬盘扛不住，而且建议定期做删除。
+max_binlog_size = 512M //指定binlog日志文件的大小，如果当前的日志大小达到max_binlog_size，还会自动创建新的二进制日志。你不能将该变量设置为大于1GB或小于4096字节。默认值是1GB。在导入大容量的sql文件时，建议关闭sql_log_bin，否则硬盘扛不住，而且建议定期做删除。
 expire_logs_days = 7 //定义了mysql清除过期日志的时间。
 二进制日志自动删除的天数。默认值为0,表示“没有自动删除”。
-log-bin=/mysql-bin
-binlog_format=row 
-sync_binlog=1
+log-bin = /mysql-bin
+binlog_format = row
+sync_binlog = 1
 双1标准(基于安全的控制)：
-sync_binlog=1   // 什么时候刷新binlog到磁盘，每次事务commit
-innodb_flush_log_at_trx_commit=1
-set sql_log_bin=0;
+sync_binlog = 1   // 什么时候刷新binlog到磁盘，每次事务commit
+innodb_flush_log_at_trx_commit = 1
+set sql_log_bin = 0;
 show status like 'com_%';
 ```
 
 ```ini
 [mysqld]
-basedir=/data/mysql
-datadir=/data/mysql/data
-socket=/tmp/mysql.sock
-log-error=/var/log/mysql.log
-log_bin=/data/binlog/mysql-bin
-binlog_format=row
+basedir = /data/mysql
+datadir = /data/mysql/data
+socket = /tmp/mysql.sock
+log-error = /var/log/mysql.log
+log_bin = /data/binlog/mysql-bin
+binlog_format = row
 skip-name-resolve
-server-id=52
-gtid-mode=on
-enforce-gtid-consistency=true
-log-slave-updates=1
-relay_log_purge=0
-max_connections=1024
-back_log=128
-wait_timeout=60
-interactive_timeout=7200
-key_buffer_size=16M
-query_cache_size=64M
-query_cache_type=1
-query_cache_limit=50M
-max_connect_errors=20
-sort_buffer_size=2M
-max_allowed_packet=32M
-join_buffer_size=2M
-thread_cache_size=200
-innodb_buffer_pool_size=1024M
-innodb_flush_log_at_trx_commit=1
-innodb_log_buffer_size=32M
-innodb_log_file_size=128M
-innodb_log_files_in_group=3
-binlog_cache_size=2M
-max_binlog_cache_size=8M
-max_binlog_size=512M
-expire_logs_days=7
-read_buffer_size=2M
-read_rnd_buffer_size=2M
-bulk_insert_buffer_size=8M
+server-id = 52
+gtid-mode = on
+enforce-gtid-consistency = true
+log-slave-updates = 1
+relay_log_purge = 0
+max_connections = 1024
+back_log = 128
+wait_timeout = 60
+interactive_timeout = 7200
+key_buffer_size = 16M
+query_cache_size = 64M
+query_cache_type = 1
+query_cache_limit = 50M
+max_connect_errors = 20
+sort_buffer_size = 2M
+max_allowed_packet = 32M
+join_buffer_size = 2M
+thread_cache_size = 200
+innodb_buffer_pool_size = 1024M
+innodb_flush_log_at_trx_commit = 1
+innodb_log_buffer_size = 32M
+innodb_log_file_size = 128M
+innodb_log_files_in_group = 3
+binlog_cache_size = 2M
+max_binlog_cache_size = 8M
+max_binlog_size = 512M
+expire_logs_days = 7
+read_buffer_size = 2M
+read_rnd_buffer_size = 2M
+bulk_insert_buffer_size = 8M
 [client]
-socket=/tmp/mysql.sock  
+socket = /tmp/mysql.sock  
 ```
 
 ## sql与索引优化
@@ -516,9 +514,12 @@ socket=/tmp/mysql.sock
 2. 应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：
 
 ```sql
-select id from t where num is null 
-# 可以在num上设置默认值0，确保表中num列没有null值，然后这样查询：
-select id from t where num=0 
+select id
+from t
+where num is null # 可以在num上设置默认值0，确保表中num列没有null值，然后这样查询：
+select id
+from t
+where num = 0 
 ```
 
 3. 应尽量避免在 where 子句中使用!=或<>操作符，否则将引擎放弃使用索引而进行全表扫描。
@@ -526,41 +527,59 @@ select id from t where num=0
 4. 应尽量避免在 where 子句中使用 or 来连接条件，否则将导致引擎放弃使用索引而进行全表扫描，如：
 
 ```sql
-select id from t where num=10 or num=20   
-# 可以这样查询：   
-select id from t where num=10   
-union all   
-select id from t where num=20   
+select id
+from t
+where num = 10
+   or num = 20 # 可以这样查询：
+select id
+from t
+where num = 10
+union all
+select id
+from t
+where num = 20   
 ```
 
 5. in 和 not in 也要慎用，否则会导致全表扫描，如：
 
 ```sql
-select id from t where num in (1,2,3)   
-# 对于连续的数值，能用 between 就不要用 in 了：   
-select id from t where num between 1 and 3  
+select id
+from t
+where num in (1, 2, 3) # 对于连续的数值，能用 between 就不要用 in 了：
+select id
+from t
+where num between 1 and 3  
 ```
 
 6. 下面的查询也将导致全表扫描：
 
 ```sql
-select id from t where name like '%abc%'   
+select id
+from t
+where name like '%abc%'   
 ```
 
 7. 应尽量避免在 where 子句中对字段进行表达式操作，这将导致引擎放弃使用索引而进行全表扫描。如：
 
 ```sql
-select id from t where num/2=100   
-# 应改为:   
-select id from t where num=100*2   
+select id
+from t
+where num / 2 = 100 # 应改为:
+select id
+from t
+where num = 100 * 2   
 ```
 
 8. 应尽量避免在where子句中对字段进行函数操作，这将导致引擎放弃使用索引而进行全表扫描。如：
 
 ```sql
-select id from t where substring(name,1,3)='abc'--name以abc开头的id   
-# 应改为:   
-select id from t where name like 'abc%'   
+select id
+from t
+where substring(name, 1, 3) = 'abc'--name以abc开头的id   
+    # 应改为:
+select id
+from t
+where name like 'abc%'   
 ```
 
 9. 不要在 where 子句中的“=”左边进行函数、算术运算或其他表达式运算，否则系统将可能无法正确使用索引。
@@ -572,9 +591,12 @@ select id from t where name like 'abc%'
 12. 很多时候用 exists 代替 in 是一个好的选择：
 
 ```sql
-select num from a where num in(select num from b)   
-# 用下面的语句替换：   
-select num from a where exists(select 1 from b where num=a.num)   
+select num
+from a
+where num in (select num from b) # 用下面的语句替换：
+select num
+from a
+where exists(select 1 from b where num = a.num)   
 ```
 
 13. 并不是所有索引对查询都有效，SQL是根据表中数据来进行查询优化的，当索引列有大量数据重复时，SQL查询可能不会去利用索引，如一表中有字段sex，male、female几乎各一半，那么即使在sex上建了索引也对查询效率起不了作用。
@@ -625,6 +647,6 @@ select num from a where exists(select 1 from b where num=a.num)
 4. 错误的使用`lIKE`, 进行模糊查询
 5. 查询条件与索引列类型不一致，造成类型转换
 6. WHERE 子查询中`OR` 使用不当
-7. `< >`、`IS NOT NULL` 、`NOT IN`、`NOT EXISTS` 
+7. `< >`、`IS NOT NULL` 、`NOT IN`、`NOT EXISTS`
 8. `ORDER BY` 多个字段时不走索引
 9. 优化器判断失误不走索引

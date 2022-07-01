@@ -210,8 +210,6 @@ go install golang.org/x/lint/golint@latest
 go install golang.org/x/tools/cmd/godoc@latest
 ```
 
-
-
 ## Go 编辑器
 
 第一款是 Visual Studio Code + Go 扩展插件，可以让你非常高效地开发，通过[官方网站]( https://code.visualstudio.com/ )下载所对应操作系统版本的Visual Studio Code。

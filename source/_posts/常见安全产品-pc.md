@@ -30,13 +30,9 @@ date: 2021-07-11 21:36:28
 
 ali、akamai、jd、pdd、google(含无感验证码)、各大银行支付接口
 
-
-
 #### ali滑块
 
 阿里云验证码: https://help.aliyun.com/product/28308.html
-
-
 
 控制台中有g.alicdn.com字样，其中/后为版本号
 
@@ -99,7 +95,6 @@ script标签中带有 r=“m”的字样
 
    ![](https://tva1.sinaimg.cn/large/008i3skNgy1gsd8b8qfa3j305y00i0si.jpg)
 
-
 首数字开头的编号，编号常见的有4、5、6代
 
 ##### 创宇超防（加速乐）
@@ -146,8 +141,6 @@ https://www.vaptcha.com/
 
 ##### 顶象
 
-
-
 ### 三线
 
 > 主要来源于开源框架
@@ -168,7 +161,7 @@ JJEncode:http://www.atoolbox.net/Tool.php?Id=703
 
 Eval:https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval;
 
- 分析：eval换为console.log()(前提：console.log未改写)
+分析：eval换为console.log()(前提：console.log未改写)
 
 #### 分析
 
@@ -224,12 +217,6 @@ webpack：https://webpack.docschina.org/
 
 扣取思路：找到加载器、扣出加载器构建自己的加载器（网站与关键参数（函数））、补环境
 
-
-
-
-
-
-
 ### 验证码汇总
 
 [ali](https://help.aliyun.com/product/28308.html)
@@ -240,17 +227,14 @@ webpack：https://webpack.docschina.org/
 
 [163](https://dun.163.com/trial/sense):[网易易盾-数字内容风控-内容安全|业务安全|移动安全 (163.com)](https://dun.163.com/)
 
-[dingxiang](http://cdn.dingxiang-inc.com/ctu-group/captcha-ui/demo/)：[顶象-业务安全引领者，让数字世界无风险 (dingxiang-inc.com)](https://www.dingxiang-inc.com/)
+[dingxiang](http://cdn.dingxiang-inc.com/ctu-group/captcha-ui/demo/)：[顶象-业务安全引领者，让数字世界无风险 (
+dingxiang-inc.com)](https://www.dingxiang-inc.com/)
 
 [geetest](https://www.geetest.com/demo/)
 
 [vaptcha](https://www.vaptcha.com/)
 
 [ishumei](https://www.ishumei.com/trial/captcha.html)
-
-
-
-
 
 [yescaptch](http://www.yescaptcha.com/)
 

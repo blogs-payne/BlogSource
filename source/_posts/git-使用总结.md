@@ -23,8 +23,6 @@ brew install git git-lfs
 yum install -y git git-lfs
 ```
 
-
-
 ## git配置初始化
 
 ```bash
@@ -35,8 +33,6 @@ git config --global core.longpaths true
 git config --global core.quotepath off
 git lfs install --skip-repo
 ```
-
-
 
 ## 实践
 
@@ -70,8 +66,6 @@ git commit -am 'v1'
 
 > 可以使用 `git status` 查看状态
 
-
-
 ### 查看提交日志
 
 ```bash
@@ -103,21 +97,16 @@ git reset --hard hash
 
 ```
 
-
-
 ### 撤销修改
 
-总结： 
+总结：
 
-- 场景 1：当改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令 git checkout — file。 
+- 场景 1：当改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令 git checkout — file。
 
-- 场景 2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令 git reset HEAD file，就回到了场景 1，第二步按场景 1 操作。 
+- 场景 2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令 git reset HEAD file，就回到了场景 1，第二步按场景 1 操作。
 
-- 场景 3：已经提交了不合适的修改到版本库时，想要撤销本次提交，进行版本回退，不过前提是没有推送到远程库。 8. 删除文件 假如现在你新建了一个 hello.txt 文件，你已经 add 并 commit 到了本地分支之中。 现在你想删除，如果直接执行
-
-
-
-
+- 场景 3：已经提交了不合适的修改到版本库时，想要撤销本次提交，进行版本回退，不过前提是没有推送到远程库。 8. 删除文件 假如现在你新建了一个 hello.txt 文件，你已经 add 并 commit 到了本地分支之中。
+  现在你想删除，如果直接执行
 
 ### 分支
 
@@ -138,15 +127,11 @@ git checkout -b dev
 git merge
 ```
 
-
-
 ### push
 
 ```
 git push -u origin branch-name
 ```
-
-
 
 ### tag
 
@@ -180,8 +165,6 @@ git clean -nxfd
 git clean -nf
 git clean -nfd
 ```
-
-
 
 ### 子模块
 

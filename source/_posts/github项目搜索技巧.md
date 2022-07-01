@@ -32,13 +32,11 @@ springboot+mybatis starter
 
 ## 教程与学习路线
 
-xxx tutorial 
+xxx tutorial
 
-例如: python tutorial	 
+例如: python tutorial
 
 > 当然结合 `awesome-xxx` 更香哦
-
-
 
 ## 常用快捷键
 
@@ -46,11 +44,9 @@ s: 快速定位到搜索框进行搜索
 
 t: 项目文件数
 
-`ctrl  + K` : 快速查看文件
+`ctrl + K` : 快速查看文件
 
 `.`: 在线预览\运行项目
-
-
 
 快捷键: https://docs.github.com/cn/get-started/using-github/keyboard-shortcuts
 

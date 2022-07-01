@@ -20,8 +20,6 @@ sudo yum install -y python38 python38-pip
 sudo dnf install -y python38 python38-pip
 ```
 
-
-
 ## 修改指向
 
 ### alternatives 修改
