@@ -1,5 +1,5 @@
 ---
-title: Tag Cloud
+title: Tags Cloud
 type: tags
 comments: false
 ---
