@@ -231,5 +231,200 @@ type PathError struct {
 
 > 在某些情况下,这种二分错误处理方法是不够的, 例如与外界交互(网络), 需要调用方法查错误的性质,以确定重试是否合理. 在这种情况下,可以使用断言错误实现了**特定的行为**.
 
+## Handle Error
+
+### Indented flow is for errors
+
+> 缩进流用于错误
+
+```go
+// 无错误的正常流程代码应为一条直线
+f, err := os.Open(filePath)
+if err != nil {
+    // handle error
+}
+
+// do stuff
+```
+
+### Eliminate error handing by eliminating errors
+
+> 通过消除错误来消除错误处理
+
+```go
+func AuthenticateRequest(r *Requests) error {
+    err := authenticate(r.user)
+    if err != nil {
+        return err
+    }
+    return nil
+}
+
+
+func AuthenticateRequest(r *Requests) error {
+	return authenticate(r.user)
+}
+```
+
+#### io Reader Example
+
+**统计 `io.Reader` 读取内容的行数代码实例**
+
+```go
+func CountLines(r io.Reader) (int, error) {
+	var (
+		br    = bufio.NewReader(r)
+		lines int
+		err   error
+	)
+
+	for {
+		_, err := br.ReadString('\n')
+		lines++
+		if err != nil {
+			break
+		}
+	}
+	if err != io.EOF {
+		return 0, err
+	}
+	return lines, nil
+}
+```
+
+改进-使用`bufio.scanner`
+
+```go
+func CountLines1(r io.Reader) (int, error) {
+	var lines int
+	sc := bufio.NewScanner(r)
+
+	for sc.Scan() {
+		lines++
+	}
+
+	return lines, sc.Err()
+}
+```
+
+#### Http Example
+
+```go
+type Header struct {
+	Key, Value string
+}
+
+type Status struct {
+	Code   int
+	Reason string
+}
+
+func WriteResponse(w io.Writer, s Status, headers []Header, body io.Reader) error {
+	_, err := fmt.Fprintf(w, "HTTP/1.1 %d %s\r\n", s.Code, s.Reason)
+	if err != nil {
+		return err
+	}
+	for _, h := range headers {
+		_, err := fmt.Fprintf(w, "%s:%s\r\n", h.Key, h.Value)
+		if err != nil {
+			return err
+		}
+	}
+	if _, err := fmt.Fprintf(w, "\r\n"); err != nil {
+		return err
+	}
+
+	_, err = io.Copy(w, body)
+	return err
+}
+```
+
+
+
+```go
+import (
+	"fmt"
+	"io"
+)
+
+type Header struct {
+	Key, Value string
+}
+
+type Status struct {
+	Code   int
+	Reason string
+}
+
+type errWrite struct {
+	io.Writer
+	err error
+}
+
+func (e *errWrite) Write(buf []byte) (int, error) {
+	var n int
+	if e.err != nil {
+		return 0, nil
+	}
+
+	n, e.err = e.Writer.Write(buf)
+	return n, nil
+
+}
+func WriteResponse(w io.Writer, s Status, headers []Header, body io.Reader) error {
+	ew := &errWrite{Writer: w}
+	fmt.Fprintf(ew, "HTTP/1.1 %d %s\r\n", s.Code, s.Reason)
+
+	for _, h := range headers {
+		fmt.Fprintf(ew, "%s:%s\r\n", h.Key, h.Value)
+	}
+	fmt.Fprint(ew, "\r\n")
+	io.Copy(ew, body)
+
+	return ew.err
+}
+```
+
+### Wrap errors
+
+you should only handle errors once. Handing an error means inspecting the error value, and make a single decision
+
+
+
+日志与错误无关且对调试没有帮助的信息都应视为噪声, 应予以质疑. 记录的原因是应为某些东西失败了,而包含了答案
+
+- 错误要被日志记录
+- 应用程序处理错误,保证百分百完整性
+- 之后不在报当前错误
+
+[pkg-errors](http://github.com/pkg/errors)
+
+[dev-pkg-errors](https://pkg.go.dev/errors)
+
+#### pkg-errors
+
+- 在应用代码中,使用`pkg/errors`中的`errors.New` 或者 `error.Errorf`返回错误
+- 如果调用其他包内的函数,通常简单的直接返回
+- 如果与其他库协作, 考虑使用`pkg/errors`中的`errors.New` 或者 `error.Errorf`返回错误保持堆栈信息
+- 直接放回错误, 而不是每个错误产生的地方打日志
+- 在程序的顶部或者是工作的 goroutine顶部(请求入口), 使用`%+v`保存堆栈详情记录
+- 使用`errors.Cause`获取`root error` 在进行sentinel error判定
+
+**小结**
+
+Packages that are reusable across many projects only return root error values.
+
+>  选择 wrap error 是只有 applications 可以选择应用的策略。具有最高可重用性的包只能返回根错误值。此机制与 Go 标准库中使用的相同**（**kit* *库的* *sql.ErrNoRows**）**。
+
+If the error is not going to be handled, wrap and return up the call stack.
+
+> 这是关于函数/方法调用返回的每个错误的基本问题。如果函数/方法不打算处理错误，那么用足够的上下文 wrap errors 并将其返回到调用堆栈中。例如，额外的上下文可以是使用的**输入参数**或失败的查询**语句**。确定您记录的上下文是足够多还是太多的一个好方法是检查日志并验证它们在开发期间是否为您工作。
+
+Once an error is handled, it is not allowed to be passed up the call stack any longer.
+
+>  *一旦确定函数/方法将处理错误，错误就不再是错误。如果函数/方法仍然需要发出返回，则它不能返回错误值。它应该只返回零**（比如降级处理中，你返回了降级数据，然后需要* *return nil**）**。*
+
+
+
 
 
