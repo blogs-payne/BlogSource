@@ -44,7 +44,7 @@ func main() {
 // 我是 main goroutine
 ```
 
-> 细心的伙伴坑定发现了`    time.Sleep(time.Second)`，在这里并不仅仅是为睡一秒，还有进类似于等待执行的作用。如果没有 time.Sleep(time.Second)，你会发现 **我是 demo goroutine**，将不会被打印。
+> 细心的伙伴肯定发现了`time.Sleep(time.Second)`，在这里并不仅仅是为睡一秒，还有进类似于等待执行的作用。如果没有 time.Sleep(time.Second)，你会发现 **我是 demo goroutine**，将不会被打印。
 >
 > 首先为什么会先打印`我是 main goroutine`，这是因为我们在创建新的goroutine的时候需要花费一些时间，而此时main函数所在的`goroutine`是继续执行的。
 
