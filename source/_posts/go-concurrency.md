@@ -6,6 +6,7 @@ tags:
 categories:
   - - go
     - concurrency
+abbrlink: 3870895095
 date: 2022-07-03 11:25:25
 ---
 
