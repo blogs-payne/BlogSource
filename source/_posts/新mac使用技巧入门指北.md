@@ -286,3 +286,12 @@ source /usr/share/bash-completion/bash_completion
 source <(kubectl completion bash)
 ```
 
+
+
+
+
+## font
+
+- https://github.com/romkatv/powerlevel10k
+
+- https://github.com/powerline/fonts
