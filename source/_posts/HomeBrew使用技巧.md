@@ -70,6 +70,23 @@ brew unpin [formula]
 
 
 
+```bash
+# 查看使用brew安装的服务列表
+brew services list
+ # 启动服务（仅启动不注册）
+brew services run formula|--all
+# 启动服务，并注册
+brew services start formula|--all
+# 停止服务，并取消注册
+brew services stop formula|--all
+# 重启服务，并注册
+brew services restart formula|--all
+# 清除已卸载应用的无用的配置
+brew services cleanup  
+```
+
+
+
 ### 基于软连接实现多版本控制
 
 当hombrew中有多个版本时，可以基于`link` or `unlink` 实现包版本的控制
@@ -97,8 +114,6 @@ sudo yum install -y procps-ng curl file git libxcrypt-compat
 
 
 https://docs.brew.sh/Homebrew-on-Linux#requirements
-
-
 
 
 
