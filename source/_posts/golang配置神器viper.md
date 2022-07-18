@@ -107,8 +107,8 @@ viper.Set("LogFile", LogFile)
 ```go
 viper.RegisterAlias("loud", "Verbose")  // 注册别名（此处loud和Verbose建立了别名）
 
-viper.Set("verbose", true) // 结果与下一行相同
-viper.Set("loud", true)   // 结果与前一行相同
+viper.Set("verbose", true) 
+viper.Set("loud", true)  
 
 viper.GetBool("loud") // true
 viper.GetBool("verbose") // true
@@ -123,17 +123,22 @@ tfvars", "dotenv", "env", "ini" 属性文件。Viper 可以搜索多个路径，
 不会默认任何配置搜索路径，将默认决定留给应用程序。不需要任何特定路径，但应至少提供一个需要配置文件的路径。以下是如何使用 Viper 搜索和读取配置文件的示例。
 
 ```go
-viper.SetConfigFile("./config.yaml") 			// 指定配置文件路径
-
-viper.SetConfigName("config") 						// 配置文件名称(无扩展名)
-viper.SetConfigType("yaml") 							// 如果配置文件的名称中没有扩展名，则需要配置此项
-
-viper.AddConfigPath("/etc/appname/")   		// 查找配置文件所在的路径
-viper.AddConfigPath("$HOME/.appname")  		// 多次调用以添加多个搜索路径
-viper.AddConfigPath(".")               		// 还可以在工作目录中查找配置
-
-err := viper.ReadInConfig() 							// 查找并读取配置文件
-if err != nil { 													// 处理读取配置文件的错误
+// 指定配置文件路径
+viper.SetConfigFile("./config.yaml") 			
+// 配置文件名称(无扩展名)
+viper.SetConfigName("config") 						
+// 如果配置文件的名称中没有扩展名，则需要配置此项
+viper.SetConfigType("yaml") 							
+// 查找配置文件所在的路径
+viper.AddConfigPath("/etc/appname/")   		
+// 多次调用以添加多个搜索路径
+viper.AddConfigPath("$HOME/.appname")  		
+// 还可以在工作目录中查找配置
+viper.AddConfigPath(".")               		
+// 查找并读取配置文件
+err := viper.ReadInConfig() 							
+// 处理读取配置文件的错误
+if err != nil { 													
 	panic(fmt.Errorf("Fatal error config file: %s \n", err))
 }
 

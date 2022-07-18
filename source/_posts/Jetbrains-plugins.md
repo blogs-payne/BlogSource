@@ -28,7 +28,7 @@ Rainbow：基于 IntelliJ IDEA 的 IDE 的彩虹高亮标识符和分隔符
 
 Ideolog： “.log”文件的交互式查看器。
 
-CodeGlance3：提供代码缩略图
+CodeGlance Pro：提供代码缩略图
 
 env files support：基于 .env、Dockerfile 和 docker-compose.yml 文件的环境变量补全。
 
